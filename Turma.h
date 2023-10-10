@@ -2,7 +2,6 @@
 // Created by Alexandre on 08/10/2023.
 //
 #include "Schedule.h"
-#include "string"
 #ifndef AED_PROJECT_TURMA_H
 #define AED_PROJECT_TURMA_H
 

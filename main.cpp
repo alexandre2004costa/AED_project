@@ -1,22 +1,21 @@
 //
 // Created by Alexandre on 09/10/2023.
 //
-#include <iostream>
 #include <fstream>
-#include <string>
 #include "Student.h"
-#include "Turma.h"
 
-void loadingInfoToClasses(std::vector<Student> & students)  {
-    std::ifstream arquivo("stu.txt");
-    std::cout<<arquivo.is_open();
+void loadingInfoToClasses(std::vector<Student>& students)  {
+    std::ifstream in ("stu.txt");
+    if (!in.is_open()) {  // Verifique se o arquivo foi aberto com sucesso
+        std::cerr << "Erro ao abrir o arquivo." << std::endl;
+        return;
+    }
     std::string line;
     std::string name;
     int lastNumber = 0;
     int i = 0;
-    Student student = Student(" ",0);
-    while (std::getline(arquivo, line)) {
-        std::cout<<i;
+    Student student = Student();
+    while (std::getline(in, line)) {
         i++;
         if (i==1)continue;
         int number = std::stoi(line.substr(0, 9));
@@ -26,7 +25,6 @@ void loadingInfoToClasses(std::vector<Student> & students)  {
         std::string ucCode = line.substr(k+1,k2-k-1);
         std::string turma = line.substr(k2+1);
         if (number!=lastNumber){
-            std::cout<<1;
             Student student = Student(name,number);
             students.push_back(student);
         }
@@ -36,14 +34,13 @@ void loadingInfoToClasses(std::vector<Student> & students)  {
 
     }
 
-    arquivo.close();
+    in.close();
 }
 
 int main() {
     std::vector<Student> students;
     loadingInfoToClasses(students);
     for(auto k : students){
-        std::cout<<1;
         k.show();
     }
     return 0;

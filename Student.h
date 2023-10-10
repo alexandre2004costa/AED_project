@@ -1,7 +1,6 @@
 //
 // Created by Alexandre on 08/10/2023.
 //
-#include "Schedule.h"
 #include "Turma.h"
 #ifndef AED_PROJECT_STUDENT_H
 #define AED_PROJECT_STUDENT_H
