@@ -8,7 +8,7 @@
 #include "Turma.h"
 
 void loadingInfoToClasses(std::vector<Student> & students)  {
-    std::ifstream arquivo("students_classes.csv");
+    std::ifstream arquivo("stu.txt");
     std::cout<<arquivo.is_open();
     std::string line;
     std::string name;
