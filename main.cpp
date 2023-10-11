@@ -5,7 +5,7 @@
 #include "Student.h"
 
 void loadingInfoToClasses(std::vector<Student>& students)  {
-    std::ifstream in ("stu.txt");
+    std::ifstream in ("students_classes.csv");
     if (!in.is_open()) {  // Verifique se o arquivo foi aberto com sucesso
         std::cerr << "Erro ao abrir o arquivo." << std::endl;
         return;
@@ -33,13 +33,13 @@ void loadingInfoToClasses(std::vector<Student>& students)  {
 
 
     }
-
     in.close();
 }
 
 int main() {
     std::vector<Student> students;
     loadingInfoToClasses(students);
+    std::cout<<1;
     for(auto k : students){
         k.show();
     }
