@@ -36,11 +36,52 @@ void loadingInfoToStudents(std::vector<Student>& students)  {
     students.push_back(student);
     in.close();
 }
+void loadingInfoToClasses(std::vector<Turma>& turmas){
+    std::ifstream in ("classes.csv");
+    std::string line;
+    int i = 0;
+    Turma t;
+    while (std::getline(in, line)) {
+        i++;
+        if (i==1)continue; //Ignorar a linha de descrição
+        int k = line.find_first_of(',');
+        std::string classCode = line.substr(0,k);
+        int k2 = line.find_first_of(',',k+1);
+        std::string uc = line.substr(k+1,k2-k-1);
+        k = k2;
+        k2 = line.find_first_of(',',k+1);
+        std::string weekDay = line.substr(k+1,k2-k-1);
+        k = k2;
+        k2 = line.find_first_of(',',k+1);
+        std::string st = line.substr(k+1,k2-k);
+        double initialTime = std::stod(st); 
+        k = k2;
+        k2 = line.find_first_of(',',k+1);
+        std::string dur = line.substr(k+1,k2-k);
+        double duration = std::stod(dur);
+        std::string type = line.substr(k2+1);
+        Class aula = Class(uc,weekDay,type,initialTime,duration);
+        bool isIn = false;
+        for (auto &turma : turmas){
+            if (turma.getClassCode()==classCode){
+                isIn = true;
+                turma.addClassToS(aula);
+                }
+            }
+        if (!isIn){
+            t = Turma(classCode);
+            t.addClassToS(aula);
+            turmas.push_back(t);    
+        }   
+    }
+}
 
 int main() {
     //std::vector<Student> students;
     //loadingInfoToStudents(students);
     //for(auto k : students){k.show();}
-    loadingInfoToClasses
+    std::vector<Turma> turmas;
+    loadingInfoToClasses(turmas);
+    for(auto k : turmas){k.show();}
     return 0;
 }

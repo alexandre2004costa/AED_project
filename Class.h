@@ -10,19 +10,13 @@
 class Class {
 private:
     std::string UC;
-    std::string weekday;
+    std::string weekDay;
     std::string type;
-    std::pair<int,int>startTime;
+    double startTime;
     int duration;
 public:
-    Class(std::string uc,std::string wd,std::string tp,std::pair<int,int>st,int dur){
-        UC = uc;
-        weekday = wd;
-        type = tp;
-        startTime = st;
-        duration = dur;
-
-    }
+    Class(std::string uc,std::string wd,std::string tp,double st,int dur);
+    void show();
 };
 
 

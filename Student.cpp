@@ -21,7 +21,7 @@ void Student::addUcs(std::pair<std::string ,Turma >t){
 void Student::show(){
     std::cout<<name<<" and number : "<<number<<std::endl;
     for(auto k : turmas){
-        std::cout<<k.first<<" : "<<k.second.show()<<std::endl;
+        std::cout<<k.first<<" : "<<k.second.getClassCode()<<std::endl;
     }
 }
 

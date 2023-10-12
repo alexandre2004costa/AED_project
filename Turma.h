@@ -11,8 +11,11 @@ private:
     std::string classCode;
     Schedule schedule;
 public:
+    Turma();
     Turma(std::string classCode);
-    std::string show();
+    void show();
+    std::string getClassCode();
+    void addClassToS(Class c);
 };
 
 

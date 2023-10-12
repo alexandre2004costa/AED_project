@@ -3,8 +3,14 @@
 //
 
 #include "Turma.h"
-
+Turma::Turma(){classCode=" ";}
 Turma::Turma(std::string classCode):classCode(classCode){};
-std::string Turma::show(){
-    return classCode;
+void Turma::show(){
+    std::cout<<classCode<<" And : "<<std::endl;
+    schedule.show();
 }
+std::string Turma::getClassCode(){return classCode;}
+void Turma::addClassToS(Class c){
+    schedule.addClasses(c);
+}
+

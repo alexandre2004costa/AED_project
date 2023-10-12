@@ -10,6 +10,9 @@
 class Schedule {
 private:
     std::vector<Class>classes;
+public:
+    void addClasses(Class a);
+    void show();
 };
 
 
