@@ -15,7 +15,9 @@ private:
 public:
     Student();
     Student(std::string name,int number);
-    void addUcs(std::pair<std::string ,Turma >turmas);
+    std::string getName();
+    int getNumber();
+    void addUcs(std::pair<std::string ,Turma >t);
     void show();
 };
 

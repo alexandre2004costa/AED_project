@@ -8,11 +8,20 @@ Student::Student(){
     name = " ";
     number = 1;
 }
+
 Student::Student(std::string name,int number): name(name), number(number){};
-void Student::addUcs(std::pair<std::string ,Turma >turmas){
-    this->turmas.push_back(turmas);
+
+std::string Student::getName(){return name;}
+int Student::getNumber(){return number;}
+
+void Student::addUcs(std::pair<std::string ,Turma >t){
+    turmas.push_back(t);
 }
+
 void Student::show(){
     std::cout<<name<<" and number : "<<number<<std::endl;
+    for(auto k : turmas){
+        std::cout<<k.first<<" : "<<k.second.show()<<std::endl;
+    }
 }
 

@@ -12,6 +12,7 @@ private:
     Schedule schedule;
 public:
     Turma(std::string classCode);
+    std::string show();
 };
 
 

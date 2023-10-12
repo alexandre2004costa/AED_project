@@ -14,7 +14,17 @@ private:
     std::string type;
     std::pair<int,int>startTime;
     int duration;
+public:
+    Class(std::string uc,std::string wd,std::string tp,std::pair<int,int>st,int dur){
+        UC = uc;
+        weekday = wd;
+        type = tp;
+        startTime = st;
+        duration = dur;
+
+    }
 };
+
 
 
 #endif //AED_PROJECT_CLASS_H
