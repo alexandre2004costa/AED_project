@@ -13,4 +13,7 @@ std::string Turma::getClassCode(){return classCode;}
 void Turma::addClassToS(Class c){
     schedule.addClasses(c);
 }
+Schedule Turma::getSchedule(){
+    return schedule;
+}
 

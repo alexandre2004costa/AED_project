@@ -13,6 +13,7 @@ private:
 public:
     void addClasses(Class a);
     void show();
+    std::vector<Class> getClasses();
 };
 
 

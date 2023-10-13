@@ -13,4 +13,6 @@ Class::Class(std::string uc,std::string wd,std::string tp,double st,int dur){
 void Class::show(){
     std::cout<<UC<<"|"<<weekDay<<"|"<<startTime<<"|"<<duration<<"|"<<type<<std::endl;
 }
+std::string Class::getUc(){return UC;}
+
 

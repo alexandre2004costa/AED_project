@@ -17,6 +17,7 @@ private:
 public:
     Class(std::string uc,std::string wd,std::string tp,double st,int dur);
     void show();
+    std::string getUc();
 };
 
 
