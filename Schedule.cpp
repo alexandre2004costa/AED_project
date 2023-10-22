@@ -12,3 +12,5 @@ void Schedule::show(){
     }
     //std::cout<<std::endl;
 }
+std::vector<Class>Schedule:: getClasses(){return classes;}
+
