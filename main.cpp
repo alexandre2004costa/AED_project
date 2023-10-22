@@ -71,7 +71,7 @@ void loadingInfoToClasses(std::vector<Turma>& turmas){
         std::string dur = line.substr(k+1,k2-k);
         double duration = std::stod(dur);
         std::string type = line.substr(k2+1);
-        Class aula = Class(uc,weekDay,type,initialTime,duration);
+        Class aula = Class(uc,weekDay,type,initialTime,duration,classCode);
         bool isIn = false;
         for (auto &turma : turmas){
             if (turma.getClassCode()==classCode){
@@ -94,7 +94,9 @@ int main() {
     loadingInfoToClasses(turmas);
     std::vector<Student> students;
     loadingInfoToStudents(students,turmas);
-    for(auto k : students){k.show();}
+    for(auto k : students){
+        k.show();
+    }
     
     return 0;
 }
