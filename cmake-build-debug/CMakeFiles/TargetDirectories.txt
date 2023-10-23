@@ -1,3 +1,0 @@
-C:/Users/Bárbara/Desktop/2ano/AED/ProjetoAED/cmake-build-debug/CMakeFiles/P_AED.dir
-C:/Users/Bárbara/Desktop/2ano/AED/ProjetoAED/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/Bárbara/Desktop/2ano/AED/ProjetoAED/cmake-build-debug/CMakeFiles/rebuild_cache.dir
