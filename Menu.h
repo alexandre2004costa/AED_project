@@ -6,6 +6,15 @@ public:
     bool running = true;
     Menu();
     //void draw();
-    void manage(char k);
     void menuBase();
+    void Horario();
+        void HorarioE();
+        void HorarioT();
+    /*void Estudante();
+        void EstudanteT();
+        void EstudanteC();
+    void nEstudantes();
+    void ocupacao();
+    void maiorN();*/
+    
 };
