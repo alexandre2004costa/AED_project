@@ -97,6 +97,6 @@ int main() {
     std::vector<Student> students;
     loadingInfoToStudents(students,turmas);
     Menu menu = Menu();
-    menu.menuBase();
+    menu.MenuBase();
     return 0;
 }

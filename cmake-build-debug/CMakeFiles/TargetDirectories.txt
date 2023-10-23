@@ -1,3 +1,0 @@
-C:/Users/User/Documents/SEGUNDO ANO/projetoaed2/cmake-build-debug/CMakeFiles/P_AED.dir
-C:/Users/User/Documents/SEGUNDO ANO/projetoaed2/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/User/Documents/SEGUNDO ANO/projetoaed2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
