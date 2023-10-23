@@ -3,6 +3,7 @@
 //
 #include <fstream>
 #include "Student.h"
+#include "Menu.h"
 
 void addClassToStudent(Student &student,std::string uc,std::string classC , std::vector<Turma> turmas){
     for (Turma turma: turmas){
@@ -94,8 +95,12 @@ int main() {
     loadingInfoToClasses(turmas);
     std::vector<Student> students;
     loadingInfoToStudents(students,turmas);
-    for(auto k : students){
-        k.show();
+    Menu menu = Menu();
+    while (menu.running){
+        menu.menuBase();
+        char input;
+        cin<<input;
+        menu.manage(input);
     }
     
     return 0;
