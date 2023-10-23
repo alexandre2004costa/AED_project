@@ -44,7 +44,13 @@
         "ostream": "cpp",
         "stdexcept": "cpp",
         "streambuf": "cpp",
+<<<<<<< HEAD
         "typeinfo": "cpp",
         "sstream": "cpp"
     }
+=======
+        "typeinfo": "cpp"
+    },
+    "C_Cpp.default.compilerPath": ""
+>>>>>>> be717d92983e7115c520b4e35c5528314b67a7d4
 }

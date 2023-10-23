@@ -4,7 +4,18 @@
 #include <fstream>
 #include "Student.h"
 
-void loadingInfoToStudents(std::vector<Student>& students)  {
+void addClassToStudent(Student &student,std::string uc,std::string classC , std::vector<Turma> turmas){
+    for (Turma turma: turmas){
+        if (classC == turma.getClassCode()){
+            for (Class c : turma.getSchedule().getClasses()){
+                if (c.getUc() == uc){
+                    student.addToSchedule(c);
+                }
+            }
+        }
+    }
+}
+void loadingInfoToStudents(std::vector<Student>& students,std::vector<Turma>turmas)  {
     std::ifstream in ("students_classes.csv");
     if (!in.is_open()) {  // Verifique se o arquivo foi aberto com sucesso
         std::cout << "Erro ao abrir o arquivo." << std::endl;
@@ -23,13 +34,13 @@ void loadingInfoToStudents(std::vector<Student>& students)  {
         name = line.substr(10,k-10);
         int k2 = line.find_first_of(',',k+1);
         std::string ucCode = line.substr(k+1,k2-k-1);
-        std::string turma = line.substr(k2+1);
+        std::string classCode = line.substr(k2+1);
         if (number==lastNumber){
-            student.addUcs({ucCode, Turma(turma)});
+            addClassToStudent(student,ucCode,classCode,turmas);
         }else{
             if(student.getName()!=" "){students.push_back(student);}
             student = Student(name,number);
-            student.addUcs({ucCode, Turma(turma)});
+            addClassToStudent(student,ucCode,classCode,turmas);
         }
         lastNumber = number;
     }
@@ -60,7 +71,7 @@ void loadingInfoToClasses(std::vector<Turma>& turmas){
         std::string dur = line.substr(k+1,k2-k);
         double duration = std::stod(dur);
         std::string type = line.substr(k2+1);
-        Class aula = Class(uc,weekDay,type,initialTime,duration);
+        Class aula = Class(uc,weekDay,type,initialTime,duration,classCode);
         bool isIn = false;
         for (auto &turma : turmas){
             if (turma.getClassCode()==classCode){
@@ -76,12 +87,16 @@ void loadingInfoToClasses(std::vector<Turma>& turmas){
     }
 }
 
+
+
 int main() {
-    //std::vector<Student> students;
-    //loadingInfoToStudents(students);
-    //for(auto k : students){k.show();}
     std::vector<Turma> turmas;
     loadingInfoToClasses(turmas);
-    for(auto k : turmas){k.show();}
+    std::vector<Student> students;
+    loadingInfoToStudents(students,turmas);
+    for(auto k : students){
+        k.show();
+    }
+    
     return 0;
 }

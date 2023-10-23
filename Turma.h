@@ -16,6 +16,7 @@ public:
     void show();
     std::string getClassCode();
     void addClassToS(Class c);
+    Schedule getSchedule();
 };
 
 

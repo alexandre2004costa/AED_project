@@ -12,11 +12,13 @@ private:
     std::string UC;
     std::string weekDay;
     std::string type;
+    std::string classCode;
     double startTime;
     int duration;
 public:
-    Class(std::string uc,std::string wd,std::string tp,double st,int dur);
+    Class(std::string uc,std::string wd,std::string tp,double st,int dur, std::string cC);
     void show();
+    std::string getUc();
 };
 
 

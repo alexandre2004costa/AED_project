@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 ToolSet: w64 11.0 (local)@C:\Users\Bárbara\Desktop\2ano\AED\CLion 2023.2.2\bin\mingw
 Options: 
 
 Options:-DCMAKE_MAKE_PROGRAM=C:/Users/Bárbara/Desktop/2ano/AED/CLion 2023.2.2/bin/ninja/win/x64/ninja.exe
+=======
+ToolSet: w64 9.0 (local)@C:\Users\User\Documents\CLion 2022.3.2\bin\mingw
+Options: 
+
+Options:
+>>>>>>> be717d92983e7115c520b4e35c5528314b67a7d4

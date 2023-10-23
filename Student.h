@@ -10,15 +10,14 @@ class Student {
 private:
     std::string name;
     Schedule schedule;
-    std::vector<std::pair<std::string ,Turma >> turmas;
     int number;
 public:
     Student();
     Student(std::string name,int number);
     std::string getName();
     int getNumber();
-    void addUcs(std::pair<std::string ,Turma >t);
     void show();
+    void addToSchedule(Class c);
 };
 
 
