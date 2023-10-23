@@ -1,9 +1,3 @@
-<<<<<<< HEAD
 C:/Users/Bárbara/Desktop/2ano/AED/ProjetoAED/cmake-build-debug/CMakeFiles/P_AED.dir
 C:/Users/Bárbara/Desktop/2ano/AED/ProjetoAED/cmake-build-debug/CMakeFiles/edit_cache.dir
 C:/Users/Bárbara/Desktop/2ano/AED/ProjetoAED/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-=======
-C:/Users/User/Documents/SEGUNDO ANO/projetoaed2/cmake-build-debug/CMakeFiles/P_AED.dir
-C:/Users/User/Documents/SEGUNDO ANO/projetoaed2/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/User/Documents/SEGUNDO ANO/projetoaed2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
->>>>>>> be717d92983e7115c520b4e35c5528314b67a7d4

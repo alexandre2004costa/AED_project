@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 # Install script for directory: C:/Users/Bárbara/Desktop/2ano/AED/ProjetoAED
-=======
-# Install script for directory: C:/Users/User/Documents/SEGUNDO ANO/projetoaed2
->>>>>>> be717d92983e7115c520b4e35c5528314b67a7d4
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -38,11 +34,7 @@ endif()
 
 # Set default install directory permissions.
 if(NOT DEFINED CMAKE_OBJDUMP)
-<<<<<<< HEAD
-  set(CMAKE_OBJDUMP "C:/Users/Bárbara/Desktop/2ano/AED/CLion 2023.2.2/bin/mingw/bin/objdump.exe")
-=======
-  set(CMAKE_OBJDUMP "C:/Users/User/Documents/CLion 2022.3.2/bin/mingw/bin/objdump.exe")
->>>>>>> be717d92983e7115c520b4e35c5528314b67a7d4
+  set(CMAKE_OBJDUMP "C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/objdump.exe")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -53,9 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-<<<<<<< HEAD
 file(WRITE "C:/Users/Bárbara/Desktop/2ano/AED/ProjetoAED/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
-=======
-file(WRITE "C:/Users/User/Documents/SEGUNDO ANO/projetoaed2/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
->>>>>>> be717d92983e7115c520b4e35c5528314b67a7d4
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

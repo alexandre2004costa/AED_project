@@ -3,4 +3,5 @@ project(P_AED)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(P_AED main.cpp Student.cpp Class.cpp Schedule.cpp Turma.cpp)
+add_executable(P_AED main.cpp Student.cpp Class.cpp Schedule.cpp Turma.cpp
+        Menu.cpp)
