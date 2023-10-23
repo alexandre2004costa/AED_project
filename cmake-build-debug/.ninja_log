@@ -1,0 +1,15 @@
+# ninja log v5
+68	1504	7198001247007841	CMakeFiles/Projeto.dir/Student.cpp.obj	4c2b1f1d059cc695
+54	1593	7198001248278711	CMakeFiles/Projeto.dir/Menu.cpp.obj	d14af5105417c5b7
+106	1614	7198001248607653	CMakeFiles/Projeto.dir/Turma.cpp.obj	4e669ddd30f58167
+16	1654	7198001248896328	CMakeFiles/Projeto.dir/Class.cpp.obj	2e219186a416d979
+35	1795	7198001250436183	CMakeFiles/Projeto.dir/Schedule.cpp.obj	6eedabc3811c5f36
+2	1973	7198001252208767	CMakeFiles/Projeto.dir/main.cpp.obj	6260f7c892ef1b7d
+1974	2263	7198001255078739	Projeto.exe	55aa3dc11dcea65f
+6	1232	7198002710025991	CMakeFiles/Projeto.dir/Class.cpp.obj	2e219186a416d979
+29	1431	7198002711980817	CMakeFiles/Projeto.dir/Student.cpp.obj	4c2b1f1d059cc695
+60	1472	7198002712429824	CMakeFiles/Projeto.dir/Menu.cpp.obj	d14af5105417c5b7
+81	1496	7198002712679993	CMakeFiles/Projeto.dir/Turma.cpp.obj	4e669ddd30f58167
+44	1552	7198002713248880	CMakeFiles/Projeto.dir/Schedule.cpp.obj	6eedabc3811c5f36
+18	1754	7198002715281197	CMakeFiles/Projeto.dir/main.cpp.obj	6260f7c892ef1b7d
+1754	1969	7198002717314359	Projeto.exe	55aa3dc11dcea65f

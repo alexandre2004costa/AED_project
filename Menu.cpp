@@ -30,7 +30,7 @@ void Menu::MenuBase(){
     std::cout<<"##                                                                   ##"<<std::endl;
     std::cout<<"##      6 -> Exit                                                    ##"<<std::endl;
     std::cout<<"##                                                                   ##"<<std::endl;
-    std::cout<<"#######################################################"<<std::endl<<std::endl;
+    std::cout<<"#######################################################################"<<std::endl<<std::endl;
     bool flag = true;
     while (flag){
         char k;
@@ -70,16 +70,16 @@ void Menu::Horario(){
     std::cout<<std::endl;
     std::cout<<std::endl;
     std::cout<<"########################################"<<std::endl;
-    std::cout<<"##                                    ##"<<std::endl;
-    std::cout<<"##   Horarios :                       ##"<<std::endl;
-    std::cout<<"##                                    ##"<<std::endl;
+    std::cout<<"##                                          ##"<<std::endl;
+    std::cout<<"##   Horarios :                             ##"<<std::endl;
+    std::cout<<"##                                          ##"<<std::endl;
     std::cout<<"##      1 -> Estudante                      ##"<<std::endl;
-    std::cout<<"##                                    ##"<<std::endl;
-    std::cout<<"##      2 -> Turma                    ##"<<std::endl;
-    std::cout<<"##                                    ##"<<std::endl;
-    std::cout<<"##      3 -> Exit                     ##"<<std::endl;
-    std::cout<<"##                                    ##"<<std::endl;
-    std::cout<<"########################################"<<std::endl<<std::endl;
+    std::cout<<"##                                          ##"<<std::endl;
+    std::cout<<"##      2 -> Turma                          ##"<<std::endl;
+    std::cout<<"##                                          ##"<<std::endl;
+    std::cout<<"##      3 -> Exit                           ##"<<std::endl;
+    std::cout<<"##                                          ##"<<std::endl;
+    std::cout<<"##############################################"<<std::endl<<std::endl;
 
     bool flag = true;
     while (flag){
