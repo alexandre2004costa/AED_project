@@ -96,5 +96,12 @@ int main() {
     std::vector<Student> students;
     loadingInfoToStudents(students,turmas);
     Menu menu = Menu();
+    while (menu.running){
+        menu.menuBase();
+        char input;
+        cin<<input;
+        menu.manage(input);
+    }
+    
     return 0;
 }
