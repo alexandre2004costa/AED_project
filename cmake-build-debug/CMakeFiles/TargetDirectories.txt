@@ -1,3 +1,0 @@
-C:/Users/Bárbara/Desktop/2ano/AED/Projeto/cmake-build-debug/CMakeFiles/Projeto.dir
-C:/Users/Bárbara/Desktop/2ano/AED/Projeto/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/Bárbara/Desktop/2ano/AED/Projeto/cmake-build-debug/CMakeFiles/rebuild_cache.dir
