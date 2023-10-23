@@ -11,6 +11,7 @@ void addClassToStudent(Student &student,std::string uc,std::string classC , std:
             for (Class c : turma.getSchedule().getClasses()){
                 if (c.getUc() == uc){
                     student.addToSchedule(c);
+
                 }
             }
         }
