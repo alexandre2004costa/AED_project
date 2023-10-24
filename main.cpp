@@ -5,19 +5,21 @@
 #include "Student.h"
 #include "Menu.h"
 
-void addClassToStudent(Student &student,std::string uc,std::string classC , std::vector<Turma> turmas){
+void addClassToStudent(Student &student,std::string uc,std::string classC , std::vector<Turma> &turmas){
     for (Turma turma: turmas){
         if (classC == turma.getClassCode()){
+            turma.addClassToG(std::make_pair(student.getNumber(),uc));
+            std::cout<<turma.numberOfStudents()<<std::endl;
             for (Class c : turma.getSchedule().getClasses()){
                 if (c.getUc() == uc){
                     student.addToSchedule(c);
-
                 }
             }
         }
+
     }
 }
-void loadingInfoToStudents(std::vector<Student>& students,std::vector<Turma>turmas)  {
+void loadingInfoToStudents(std::vector<Student>& students,std::vector<Turma> & turmas)  {
     std::ifstream in ("students_classes.csv");
     if (!in.is_open()) {
         std::cout << "Erro ao abrir o arquivo." << std::endl;
@@ -37,6 +39,7 @@ void loadingInfoToStudents(std::vector<Student>& students,std::vector<Turma>turm
         int k2 = line.find_first_of(',',k+1);
         std::string ucCode = line.substr(k+1,k2-k-1);
         std::string classCode = line.substr(k2+1);
+
         if (number==lastNumber){
             addClassToStudent(student,ucCode,classCode,turmas);
         }else{
@@ -100,7 +103,10 @@ int main() {
     loadingInfoToClasses(turmas);
     std::vector<Student> students;
     loadingInfoToStudents(students,turmas);
-    Menu menu = Menu();
-    menu.MenuBase();
+    for (auto k : turmas){
+        k.studentsOfTurma();
+    }
+    //Menu menu = Menu();
+    //menu.MenuBase();
     return 0;
 }

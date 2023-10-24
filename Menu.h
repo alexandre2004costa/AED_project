@@ -3,9 +3,7 @@
 
 class Menu {
 public:
-    bool running = true;
     Menu();
-    //void draw();
     void MenuBase();
     void Horario();
         void HorarioE();
