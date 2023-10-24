@@ -28,7 +28,7 @@ void Menu::MenuBase(){
     std::cout<<"##                                                                   ##"<<std::endl;
     std::cout<<"##      5 -> UCs com maior numero de estudantes                      ##"<<std::endl;
     std::cout<<"##                                                                   ##"<<std::endl;
-    std::cout<<"##      6 -> Exit                                                    ##"<<std::endl;
+    std::cout<<"##      6 -> Sair                                                    ##"<<std::endl;
     std::cout<<"##                                                                   ##"<<std::endl;
     std::cout<<"#######################################################################"<<std::endl<<std::endl;
     bool flag = true;
@@ -59,7 +59,6 @@ void Menu::MenuBase(){
         MaiorN();
         break;
     case '6':
-        flag = false;
         break;
     }
     }
@@ -69,7 +68,7 @@ void Menu::MenuBase(){
 void Menu::Horario(){
     std::cout<<std::endl;
     std::cout<<std::endl;
-    std::cout<<"########################################"<<std::endl;
+    std::cout<<"##############################################"<<std::endl;
     std::cout<<"##                                          ##"<<std::endl;
     std::cout<<"##   Horarios :                             ##"<<std::endl;
     std::cout<<"##                                          ##"<<std::endl;
@@ -77,7 +76,7 @@ void Menu::Horario(){
     std::cout<<"##                                          ##"<<std::endl;
     std::cout<<"##      2 -> Turma                          ##"<<std::endl;
     std::cout<<"##                                          ##"<<std::endl;
-    std::cout<<"##      3 -> Exit                           ##"<<std::endl;
+    std::cout<<"##      3 -> Voltar                         ##"<<std::endl;
     std::cout<<"##                                          ##"<<std::endl;
     std::cout<<"##############################################"<<std::endl<<std::endl;
 
@@ -112,7 +111,7 @@ void Menu::HorarioE(){
     std::cout<<"##                                               ##"<<std::endl;
     std::cout<<"##      Inserir numero Estudante:________        ##"<<std::endl;
     std::cout<<"##                                               ##"<<std::endl;
-    std::cout<<"##      1 -> Exit                                ##"<<std::endl;
+    std::cout<<"##      1 -> Voltar                              ##"<<std::endl;
     std::cout<<"##                                               ##"<<std::endl;
     std::cout<<"###################################################"<<std::endl<<std::endl;
 
@@ -139,7 +138,7 @@ void Menu::HorarioT(){
     std::cout<<"##                                         ##"<<std::endl;
     std::cout<<"##      Inserir Turma:______               ##"<<std::endl;
     std::cout<<"##                                         ##"<<std::endl;
-    std::cout<<"##      1 -> Exit                          ##"<<std::endl;
+    std::cout<<"##      1 -> Voltar                        ##"<<std::endl;
     std::cout<<"##                                         ##"<<std::endl;
     std::cout<<"#############################################"<<std::endl<<std::endl;
 
@@ -170,7 +169,7 @@ void Menu::Estudante(){
     std::cout<<"##                                       ##"<<std::endl;
     std::cout<<"##      3 -> Ano                         ##"<<std::endl;
     std::cout<<"##                                       ##"<<std::endl;
-    std::cout<<"##      4 -> Exit                        ##"<<std::endl;
+    std::cout<<"##      4 -> Voltar                      ##"<<std::endl;
     std::cout<<"##                                       ##"<<std::endl;
     std::cout<<"###########################################"<<std::endl<<std::endl;
 
@@ -208,7 +207,7 @@ void Menu::EstudanteT(){
     std::cout<<"##                                         ##"<<std::endl;
     std::cout<<"##      Inserir Turma:______               ##"<<std::endl;
     std::cout<<"##                                         ##"<<std::endl;
-    std::cout<<"##      1 -> Exit                          ##"<<std::endl;
+    std::cout<<"##      1 -> Voltar                        ##"<<std::endl;
     std::cout<<"##                                         ##"<<std::endl;
     std::cout<<"#############################################"<<std::endl<<std::endl;
 
@@ -234,7 +233,7 @@ void Menu::EstudanteC(){
     std::cout<<"##                                         ##"<<std::endl;
     std::cout<<"##      Inserir Curso:______               ##"<<std::endl;
     std::cout<<"##                                         ##"<<std::endl;
-    std::cout<<"##      1 -> Exit                          ##"<<std::endl;
+    std::cout<<"##      1 -> Voltar                        ##"<<std::endl;
     std::cout<<"##                                         ##"<<std::endl;
     std::cout<<"#############################################"<<std::endl;
 
@@ -262,7 +261,7 @@ void Menu::EstudanteA(){
     std::cout<<"##                                       ##"<<std::endl;
     std::cout<<"##      Inserir Ano:______               ##"<<std::endl;
     std::cout<<"##                                       ##"<<std::endl;
-    std::cout<<"##      1 -> Exit                        ##"<<std::endl;
+    std::cout<<"##      1 -> Voltar                      ##"<<std::endl;
     std::cout<<"##                                       ##"<<std::endl;
     std::cout<<"###########################################"<<std::endl<<std::endl;
 
@@ -293,7 +292,7 @@ void Menu::NEstudantes(){
     std::cout<<"##                                                 ##"<<std::endl;
     std::cout<<"##      Inserir UCs:______                         ##"<<std::endl;
     std::cout<<"##                                                 ##"<<std::endl;
-    std::cout<<"##      1 -> Exit                                  ##"<<std::endl;
+    std::cout<<"##      1 -> Voltar                                ##"<<std::endl;
     std::cout<<"##                                                 ##"<<std::endl;
     std::cout<<"#####################################################"<<std::endl;
 
@@ -326,7 +325,7 @@ void Menu::Ocupacao() {
     std::cout<<"##                                         ##"<<std::endl;
     std::cout<<"##      Inserir UC:______                  ##"<<std::endl;
     std::cout<<"##                                         ##"<<std::endl;
-    std::cout<<"##      1 -> Exit                          ##"<<std::endl;
+    std::cout<<"##      1 -> Voltar                        ##"<<std::endl;
     std::cout<<"##                                         ##"<<std::endl;
     std::cout<<"#############################################"<<std::endl;
 
@@ -352,7 +351,7 @@ void Menu::MaiorN(){
     std::cout<<"##                                                             ##"<<std::endl;
     std::cout<<"##   UCs com maior numero de estudantes:                       ##"<<std::endl;
     std::cout<<"##                                                             ##"<<std::endl;
-    std::cout<<"##      1 -> Exit                                              ##"<<std::endl;
+    std::cout<<"##      1 -> Voltar                                            ##"<<std::endl;
     std::cout<<"##                                                             ##"<<std::endl;
     std::cout<<"#################################################################"<<std::endl;
 
