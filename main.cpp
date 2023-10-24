@@ -19,7 +19,7 @@ void addClassToStudent(Student &student,std::string uc,std::string classC , std:
 }
 void loadingInfoToStudents(std::vector<Student>& students,std::vector<Turma>turmas)  {
     std::ifstream in ("students_classes.csv");
-    if (!in.is_open()) {  // Verifique se o arquivo foi aberto com sucesso
+    if (!in.is_open()) {
         std::cout << "Erro ao abrir o arquivo." << std::endl;
         return;
     }
@@ -51,6 +51,10 @@ void loadingInfoToStudents(std::vector<Student>& students,std::vector<Turma>turm
 }
 void loadingInfoToClasses(std::vector<Turma>& turmas){
     std::ifstream in ("classes.csv");
+    if (!in.is_open()) {
+        std::cout << "Erro ao abrir o arquivo." << std::endl;
+        return;
+    }
     std::string line;
     int i = 0;
     Turma t;
