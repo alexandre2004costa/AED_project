@@ -69,7 +69,7 @@ void Menu::MenuBase(){
 void Menu::Horario(){
     std::cout<<std::endl;
     std::cout<<std::endl;
-    std::cout<<"########################################"<<std::endl;
+    std::cout<<"##############################################"<<std::endl;
     std::cout<<"##                                          ##"<<std::endl;
     std::cout<<"##   Horarios :                             ##"<<std::endl;
     std::cout<<"##                                          ##"<<std::endl;
