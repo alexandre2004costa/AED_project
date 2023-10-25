@@ -4,6 +4,7 @@
 #include <fstream>
 #include "Student.h"
 #include "Menu.h"
+#include <unordered_map>
 
 void addClassToStudent(Student &student,std::string uc,std::string classC , std::vector<Turma> &turmas){
     for (Turma &turma: turmas){
@@ -18,7 +19,7 @@ void addClassToStudent(Student &student,std::string uc,std::string classC , std:
 
     }
 }
-void loadingInfoToStudents(std::vector<Student>& students,std::vector<Turma> & turmas)  {
+void loadingInfoToStudents(std::unordered_map<int,Student>& students,std::vector<Turma> & turmas)  {
     std::ifstream in ("students_classes.csv");
     if (!in.is_open()) {
         std::cout << "Erro ao abrir o arquivo." << std::endl;
@@ -42,13 +43,13 @@ void loadingInfoToStudents(std::vector<Student>& students,std::vector<Turma> & t
         if (number==lastNumber){
             addClassToStudent(student,ucCode,classCode,turmas);
         }else{
-            if(student.getName()!=" "){students.push_back(student);}
+            if(student.getName()!=" ")students.insert({number,student});
             student = Student(name,number);
             addClassToStudent(student,ucCode,classCode,turmas);
         }
         lastNumber = number;
     }
-    students.push_back(student);
+    students.insert({student.getNumber(),student});
     in.close();
 }
 void loadingInfoToClasses(std::vector<Turma>& turmas){
@@ -100,13 +101,9 @@ void loadingInfoToClasses(std::vector<Turma>& turmas){
 int main() {
     std::vector<Turma> turmas;
     loadingInfoToClasses(turmas);
-    std::vector<Student> students;
+    std::unordered_map<int,Student> students;
     loadingInfoToStudents(students,turmas);
-    for (auto k : turmas){
-        k.studentsOfTurma();
-        std::cout<<"with "
-    }
-    //Menu menu = Menu();
-    //menu.MenuBase();
+    Menu menu = Menu(turmas,students);
+    menu.MenuBase();
     return 0;
 }

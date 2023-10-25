@@ -18,6 +18,7 @@ public:
     int getNumber();
     void show();
     void addToSchedule(Class c);
+    void showSchedule();
 };
 
 

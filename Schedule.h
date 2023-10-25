@@ -3,6 +3,7 @@
 //
 #include "Class.h"
 #include "vector"
+#include <set>
 #ifndef AED_PROJECT_SCHEDULE_H
 #define AED_PROJECT_SCHEDULE_H
 

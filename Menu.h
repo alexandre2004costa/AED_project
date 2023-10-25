@@ -1,9 +1,13 @@
 #include "Student.h"
+#include <unordered_map>
 
 
 class Menu {
+private:
+    std::vector<Turma> turmas;
+    std::unordered_map<int,Student> students;
 public:
-    Menu();
+    Menu(std::vector<Turma> t,std::unordered_map<int,Student> s);
     void MenuBase();
     void Horario();
         void HorarioE();

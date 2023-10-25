@@ -24,4 +24,6 @@ void Student::show(){
 void Student::addToSchedule(Class c) {
     schedule.addClasses(c);
 }
-
+void Student::showSchedule(){
+    schedule.show();
+}

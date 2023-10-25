@@ -1,7 +1,10 @@
 #include "Menu.h"
 
 
-Menu::Menu(){}
+Menu::Menu(std::vector<Turma> t,std::unordered_map<int,Student> s){
+    turmas = t;
+    students = s;
+}
 void Menu::MenuBase(){
     std::cout<<std::endl;
     std::cout<<std::endl;
@@ -108,15 +111,25 @@ void Menu::HorarioE(){
 
     bool flag = true;
     while (flag){
-        char k;
+        int k;
         std::cout<<"  Option:";
         std::cin>>k;
         switch (k)
         {
-            case '1':
+            case 1:
                 flag = false;
                 Horario();
                 break;
+            default:
+                auto it = students.find((k));
+                if (it != students.end()) {
+                    Student student = it->second;
+                    student.showSchedule();
+                } else {
+                    std::cout << "Number not found "<< std::endl;
+                }
+                flag = false;
+                HorarioE();
         }}
 
 }
