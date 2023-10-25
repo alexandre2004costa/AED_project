@@ -28,8 +28,17 @@ int Turma::numberOfStudents(){
     }
     return c;
 }
-void Turma::studentsOfTurma(){
+std::set<int> Turma::studentsOfTurma(){
+    std::set<int> numbers;
     for (auto k : nEstudanteCadeira){
-        std::cout<<k.first<<" : "<<k.second<<" of class "<<classCode<<std::endl;
+        numbers.insert(k.first);
     }
+    return numbers;
+}
+
+bool Turma::operator==(Turma turma) {
+    return turma.getClassCode() == classCode;
+}
+void Turma::showSchedule() {
+    schedule.show();
 }

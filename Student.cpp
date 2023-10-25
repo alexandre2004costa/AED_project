@@ -16,9 +16,6 @@ int Student::getNumber(){return number;}
 
 void Student::show(){
     std::cout<<name<<" and number : "<<number<<std::endl;
-    for(auto k : schedule.getClasses()){
-        k.show();
-    }
 }
 
 void Student::addToSchedule(Class c) {

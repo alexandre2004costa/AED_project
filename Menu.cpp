@@ -148,16 +148,25 @@ void Menu::HorarioT(){
 
     bool flag = true;
     while (flag){
-        char k;
+        std::string k;
         std::cout<<"  Option:";
         std::cin>>k;
-        switch (k)
-        {
-            case '1':
-                flag = false;
-                Horario();
-                break;
-        }}
+
+        if (k == "1") {
+            flag = false;
+            Estudante();
+            break;
+        }
+        else {
+            for (auto t : turmas) {
+                if (t.getClassCode() == k) {
+                    t.showSchedule();
+                }
+            }
+            flag = false;
+            Estudante();
+        }
+    }
 }
 
 void Menu::Estudante(){
@@ -217,16 +226,31 @@ void Menu::EstudanteT(){
 
     bool flag = true;
     while (flag){
-        char k;
+        std::string k;
         std::cout<<"  Option:";
         std::cin>>k;
-        switch (k)
-        {
-            case '1':
+
+            if (k == "1") {
                 flag = false;
                 Estudante();
                 break;
-        }}
+            }
+            else {
+                for (auto t : turmas) {
+                    if (t.getClassCode() == k) {
+                        std::set<int> numbers = t.studentsOfTurma();
+                        for (int n : numbers) {
+                            auto it = students.find(n);
+                            Student student = it->second;
+                            student.show();
+                        }
+
+                    }
+                }
+                flag = false;
+                Estudante();
+        }
+    }
 }
 void Menu::EstudanteC(){
     std::cout<<std::endl;

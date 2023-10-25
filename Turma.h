@@ -18,12 +18,14 @@ public:
     Turma();
     Turma(std::string classCode);
     void show();
+    void showSchedule();
     std::string getClassCode();
     void addClassToS(Class c);
     Schedule getSchedule();
     void addClassToG(std::pair< int , std::string>);
     int numberOfStudents();
-    void studentsOfTurma();
+    std::set<int> studentsOfTurma();
+    bool operator==(Turma turma);
 };
 
 
