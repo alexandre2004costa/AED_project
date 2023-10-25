@@ -6,10 +6,9 @@
 #include "Menu.h"
 
 void addClassToStudent(Student &student,std::string uc,std::string classC , std::vector<Turma> &turmas){
-    for (Turma turma: turmas){
+    for (Turma &turma: turmas){
         if (classC == turma.getClassCode()){
             turma.addClassToG(std::make_pair(student.getNumber(),uc));
-            std::cout<<turma.numberOfStudents()<<std::endl;
             for (Class c : turma.getSchedule().getClasses()){
                 if (c.getUc() == uc){
                     student.addToSchedule(c);
@@ -105,6 +104,7 @@ int main() {
     loadingInfoToStudents(students,turmas);
     for (auto k : turmas){
         k.studentsOfTurma();
+        std::cout<<"with "
     }
     //Menu menu = Menu();
     //menu.MenuBase();
