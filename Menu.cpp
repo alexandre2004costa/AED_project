@@ -65,19 +65,19 @@ void Menu::Horario(){
     std::cout<<"##############################################"<<std::endl<<std::endl;
 
 
-        int k;
-        std::cout<<"  Option:";
-        std::cin>>k;
-        switch (k)
-        {
-            case 1:
-                HorarioE();
+    int k;
+    std::cout<<"  Option:";
+    std::cin>>k;
+    switch (k)
+    {
+        case 1:
+            HorarioE();
             case 2:
                 HorarioT();
             case 0:
                 MenuBase();
-        }
-        Horario();
+    }
+    Horario();
 
 }
 void Menu::HorarioE(){
@@ -123,18 +123,18 @@ void Menu::HorarioT(){
     std::cout<<"##                                         ##"<<std::endl;
     std::cout<<"#############################################"<<std::endl<<std::endl;
 
-        std::string k;
-        std::cout<<"  Option:";
-        std::cin>>k;
+    std::string k;
+    std::cout<<"  Option:";
+    std::cin>>k;
 
-        if (k == "0") Horario();
+    if (k == "0") Horario();
 
-        for (auto t : turmas) {
-            if (t.getClassCode() == k) {
-                t.showSchedule();
-            }
+    for (auto t : turmas) {
+        if (t.getClassCode() == k) {
+            t.showSchedule();
         }
-        Horario();
+    }
+    Horario();
 }
 
 void Menu::Estudante(){
@@ -154,21 +154,21 @@ void Menu::Estudante(){
     std::cout<<"##                                       ##"<<std::endl;
     std::cout<<"###########################################"<<std::endl<<std::endl;
 
-        int k;
-        std::cout<<"  Option:";
-        std::cin>>k;
-        switch (k)
-        {
-            case 1:
-                EstudanteT();
+    int k;
+    std::cout<<"  Option:";
+    std::cin>>k;
+    switch (k)
+    {
+        case 1:
+            EstudanteT();
             case 2:
                 EstudanteC();
             case 3:
                 EstudanteA();
             case 0:
                 MenuBase();
-        }
-        Estudante();
+    }
+    Estudante();
 
 }
 void Menu::EstudanteT(){
@@ -218,12 +218,12 @@ void Menu::EstudanteC(){
 
 
 
-        int k;
-        std::cout<<"  Option:";
-        std::cin>>k;
-        if (k == 0) Estudante();
+    int k;
+    std::cout<<"  Option:";
+    std::cin>>k;
+    if (k == 0) Estudante();
 
-        EstudanteC();
+    EstudanteC();
 }
 void Menu::EstudanteA(){
     std::cout<<std::endl;
@@ -238,28 +238,28 @@ void Menu::EstudanteA(){
     std::cout<<"##                                       ##"<<std::endl;
     std::cout<<"###########################################"<<std::endl<<std::endl;
 
-        int k;
-        std::cout<<"  Value:";
-        std::cin>>k;
+    int k;
+    std::cout<<"  Value:";
+    std::cin>>k;
 
-        if (k == 0) Estudante();
-        if (k > 3 || k < 1) EstudanteA();
+    if (k == 0) Estudante();
+    if (k > 3 || k < 1) EstudanteA();
 
-        std::set<int> numbers;
-        for (auto turma : turmas) {
-            if (turma.getClassCode()[0] == k + '0') {
-                std::set<int> temp = turma.studentsOfTurma();
-                for (int n : temp) {
-                    numbers.insert(n);
-                }
+    std::set<int> numbers;
+    for (auto turma : turmas) {
+        if (turma.getClassCode()[0] == k + '0') {
+            std::set<int> temp = turma.studentsOfTurma();
+            for (int n : temp) {
+                numbers.insert(n);
             }
         }
-        for (int n : numbers) {
-            auto it = students.find(n);
-            Student student = it->second;
-            student.show();
-        }
-        EstudanteA();
+    }
+    for (int n : numbers) {
+        auto it = students.find(n);
+        Student student = it->second;
+        student.show();
+    }
+    EstudanteA();
 
 }
 
@@ -329,7 +329,8 @@ void Menu::Ocupacao() {
                 MenuBase();
                 break;
 
-        }}
+        }
+    }
 
 }
 bool compare(std::pair<std::string, int> a, std::pair<std::string, int> b) {
