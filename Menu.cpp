@@ -1,3 +1,4 @@
+#include <algorithm>
 #include "Menu.h"
 
 
@@ -224,17 +225,11 @@ void Menu::EstudanteT(){
     std::cout<<"##                                         ##"<<std::endl;
     std::cout<<"#############################################"<<std::endl<<std::endl;
 
-    bool flag = true;
-    while (flag){
         std::string k;
         std::cout<<"  Option:";
         std::cin>>k;
 
-            if (k == "1") {
-                flag = false;
-                Estudante();
-                break;
-            }
+            if (k == "1") Estudante();
             else {
                 for (auto t : turmas) {
                     if (t.getClassCode() == k) {
@@ -247,10 +242,8 @@ void Menu::EstudanteT(){
 
                     }
                 }
-                flag = false;
-                Estudante();
+                EstudanteT();
         }
-    }
 }
 void Menu::EstudanteC(){
     std::cout<<std::endl;
@@ -278,7 +271,8 @@ void Menu::EstudanteC(){
                 Estudante();
                 break;
 
-        }}
+        }
+    }
 }
 void Menu::EstudanteA(){
     std::cout<<std::endl;
@@ -289,23 +283,31 @@ void Menu::EstudanteA(){
     std::cout<<"##                                       ##"<<std::endl;
     std::cout<<"##      Inserir Ano:______               ##"<<std::endl;
     std::cout<<"##                                       ##"<<std::endl;
-    std::cout<<"##      1 -> Voltar                      ##"<<std::endl;
+    std::cout<<"##      0 -> Voltar                      ##"<<std::endl;
     std::cout<<"##                                       ##"<<std::endl;
     std::cout<<"###########################################"<<std::endl<<std::endl;
 
-    bool flag = true;
-    while (flag){
-        char k;
-        std::cout<<"  Option:";
+        int k;
+        std::cout<<"  Value:";
         std::cin>>k;
-        switch (k)
-        {
-            case '1':
-                flag = false;
-                Estudante();
-                break;
+        if (k == 0) Estudante();
+        if (k > 3 || k < 1) EstudanteA();
+        std::set<int> numbers;
+        for (auto turma : turmas) {
+            if (turma.getClassCode()[0] == k + '0') {
+                std::set<int> temp = turma.studentsOfTurma();
+                for (int n : temp) {
+                    numbers.insert(n);
+                }
+            }
+        }
+        for (int n : numbers) {
+            auto it = students.find(n);
+            Student student = it->second;
+            student.show();
+        }
+        EstudanteA();
 
-        }}
 }
 
 // Número de estudantes em pelo menos n UCs
@@ -318,27 +320,32 @@ void Menu::NEstudantes(){
     std::cout<<"##                                                 ##"<<std::endl;
     std::cout<<"##      Inserir numero de UCs:______               ##"<<std::endl;
     std::cout<<"##                                                 ##"<<std::endl;
-    std::cout<<"##      Inserir UCs:______                         ##"<<std::endl;
-    std::cout<<"##                                                 ##"<<std::endl;
-    std::cout<<"##      1 -> Voltar                                ##"<<std::endl;
+    std::cout<<"##      0 -> Voltar                                ##"<<std::endl;
     std::cout<<"##                                                 ##"<<std::endl;
     std::cout<<"#####################################################"<<std::endl;
 
+    int k;
+    std::cout<<"  Value:";
+    std::cin>>k;
+    int count = 0;
 
-    bool flag = true;
-    while (flag){
-        char k;
-        std::cout<<"  Option:";
-        std::cin>>k;
-        switch (k)
-        {
-            case '1':
-                flag = false;
-                MenuBase();
-                break;
+    if (k == 0) Estudante();
 
-        }}
-
+    for (auto pair : students) {
+        int count2 = 0;
+        std::string lastUc = "";
+        for (auto c : pair.second.getSchedule().getClasses()) {
+            if (c.getUc() != lastUc) {
+                count2++;
+            }
+            lastUc = c.getUc();
+        }
+        if (count2 >= k) {
+            count++;
+        }
+    }
+    std::cout << "O numero de estudantes e: " << count << std::endl;
+    NEstudantes();
 }
 void Menu::Ocupacao() {
     std::cout<<std::endl;
@@ -372,6 +379,9 @@ void Menu::Ocupacao() {
         }}
 
 }
+bool compare(std::pair<std::string, int> a, std::pair<std::string, int> b) {
+    return a.second > b.second;
+}
 void Menu::MaiorN(){
     std::cout<<std::endl;
     std::cout<<std::endl;
@@ -379,21 +389,36 @@ void Menu::MaiorN(){
     std::cout<<"##                                                             ##"<<std::endl;
     std::cout<<"##   UCs com maior numero de estudantes:                       ##"<<std::endl;
     std::cout<<"##                                                             ##"<<std::endl;
-    std::cout<<"##      1 -> Voltar                                            ##"<<std::endl;
+    std::cout<<"##      Inserir numero de UCs:______                           ##"<<std::endl;
+    std::cout<<"##                                                             ##"<<std::endl;
+    std::cout<<"##      0 -> Voltar                                            ##"<<std::endl;
     std::cout<<"##                                                             ##"<<std::endl;
     std::cout<<"#################################################################"<<std::endl;
 
-    bool flag = true;
-    while (flag){
-        char k;
-        std::cout<<"  Option:";
-        std::cin>>k;
-        switch (k)
-        {
-            case '1':
-                flag = false;
-                MenuBase();
-                break;
+    int k;
+    std::cout<<"  Option:";
+    std::cin>>k;
 
-        }}
+    std::map<std::string, int> ucCount;
+
+    if (k == 0) MenuBase();
+    if (k < 1) MaiorN();
+
+    for (auto pair : students) {
+        std::string lastUc = "";
+        for (auto c : pair.second.getSchedule().getClasses()) {
+            if (c.getUc() != lastUc) {
+                ucCount[c.getUc()]++;
+            }
+            lastUc = c.getUc();
+        }
+    }
+    std::vector<std::pair<std::string, int>> vetor(ucCount.begin(), ucCount.end());
+    std::sort(vetor.begin(), vetor.end(), compare);
+
+
+    for (int i = 0; i < std::min(k, (int)vetor.size()); i++) {
+        std::cout << vetor[i].first << " tem " << vetor[i].second << " estudantes" << std::endl;
+    }
+    MaiorN();
 }

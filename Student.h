@@ -19,6 +19,7 @@ public:
     void show();
     void addToSchedule(Class c);
     void showSchedule();
+    Schedule getSchedule();
 };
 
 

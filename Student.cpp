@@ -24,3 +24,6 @@ void Student::addToSchedule(Class c) {
 void Student::showSchedule(){
     schedule.show();
 }
+Schedule Student::getSchedule() {
+    return schedule;
+}
