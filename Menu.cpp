@@ -23,40 +23,29 @@ void Menu::MenuBase(){
     std::cout<<"##                                                                   ##"<<std::endl;
     std::cout<<"##      5 -> UCs com maior numero de estudantes                      ##"<<std::endl;
     std::cout<<"##                                                                   ##"<<std::endl;
-    std::cout<<"##      6 -> Sair                                                    ##"<<std::endl;
+    std::cout<<"##      0 -> Sair                                                    ##"<<std::endl;
     std::cout<<"##                                                                   ##"<<std::endl;
     std::cout<<"#######################################################################"<<std::endl<<std::endl;
-    bool flag = true;
-    while (flag){
-        char k;
-        std::cout<<"  Option:";
-        std::cin>>k;
 
-        switch (k){
-            case '1':
-                flag = false;
-                Horario();
-                break;
-            case '2':
-                flag = false;
-                Estudante();
-                break;
-            case '3':
-                flag = false;
-                NEstudantes();
-                break;
-            case '4':
-                flag = false;
-                Ocupacao();
-                break;
-            case '5':
-                flag = false;
-                MaiorN();
-                break;
-            case '6':
-                break;
-        }
+    int k;
+    std::cout<<"  Option:";
+    std::cin>>k;
+
+    switch (k){
+        case 1:
+            Horario();
+        case 2:
+            Estudante();
+        case 3:
+            NEstudantes();
+        case 4:
+            Ocupacao();
+        case 5:
+            MaiorN();
+        case 0:
+            break;
     }
+    MenuBase();
 
 }
 
@@ -71,30 +60,24 @@ void Menu::Horario(){
     std::cout<<"##                                          ##"<<std::endl;
     std::cout<<"##      2 -> Turma                          ##"<<std::endl;
     std::cout<<"##                                          ##"<<std::endl;
-    std::cout<<"##      3 -> Voltar                         ##"<<std::endl;
+    std::cout<<"##      0 -> Voltar                         ##"<<std::endl;
     std::cout<<"##                                          ##"<<std::endl;
     std::cout<<"##############################################"<<std::endl<<std::endl;
 
-    bool flag = true;
-    while (flag){
-        char k;
+
+        int k;
         std::cout<<"  Option:";
         std::cin>>k;
         switch (k)
         {
-            case '1':
-                flag = false;
+            case 1:
                 HorarioE();
-                break;
-            case '2':
-                flag = false;
+            case 2:
                 HorarioT();
-                break;
-            case '3':
-                flag = false;
+            case 0:
                 MenuBase();
-                break;
-        }}
+        }
+        Horario();
 
 }
 void Menu::HorarioE(){
@@ -106,32 +89,25 @@ void Menu::HorarioE(){
     std::cout<<"##                                               ##"<<std::endl;
     std::cout<<"##      Inserir numero Estudante:________        ##"<<std::endl;
     std::cout<<"##                                               ##"<<std::endl;
-    std::cout<<"##      1 -> Voltar                              ##"<<std::endl;
+    std::cout<<"##      0 -> Voltar                              ##"<<std::endl;
     std::cout<<"##                                               ##"<<std::endl;
     std::cout<<"###################################################"<<std::endl<<std::endl;
 
-    bool flag = true;
-    while (flag){
-        int k;
-        std::cout<<"  Option:";
-        std::cin>>k;
-        switch (k)
-        {
-            case 1:
-                flag = false;
-                Horario();
-                break;
-            default:
-                auto it = students.find((k));
-                if (it != students.end()) {
-                    Student student = it->second;
-                    student.showSchedule();
-                } else {
-                    std::cout << "Number not found "<< std::endl;
-                }
-                flag = false;
-                HorarioE();
-        }}
+    int k;
+    std::cout<<"  Option:";
+    std::cin>>k;
+
+    if (k == 0) Horario();
+
+    auto it = students.find((k));
+    if (it != students.end()) {
+        Student student = it->second;
+        student.showSchedule();
+    } else {
+        std::cout << "Number not found "<< std::endl;
+    }
+
+    HorarioE();
 
 }
 void Menu::HorarioT(){
@@ -143,31 +119,22 @@ void Menu::HorarioT(){
     std::cout<<"##                                         ##"<<std::endl;
     std::cout<<"##      Inserir Turma:______               ##"<<std::endl;
     std::cout<<"##                                         ##"<<std::endl;
-    std::cout<<"##      1 -> Voltar                        ##"<<std::endl;
+    std::cout<<"##      0 -> Voltar                        ##"<<std::endl;
     std::cout<<"##                                         ##"<<std::endl;
     std::cout<<"#############################################"<<std::endl<<std::endl;
 
-    bool flag = true;
-    while (flag){
         std::string k;
         std::cout<<"  Option:";
         std::cin>>k;
 
-        if (k == "1") {
-            flag = false;
-            Estudante();
-            break;
-        }
-        else {
-            for (auto t : turmas) {
-                if (t.getClassCode() == k) {
-                    t.showSchedule();
-                }
+        if (k == "0") Horario();
+
+        for (auto t : turmas) {
+            if (t.getClassCode() == k) {
+                t.showSchedule();
             }
-            flag = false;
-            Estudante();
         }
-    }
+        Horario();
 }
 
 void Menu::Estudante(){
@@ -183,33 +150,25 @@ void Menu::Estudante(){
     std::cout<<"##                                       ##"<<std::endl;
     std::cout<<"##      3 -> Ano                         ##"<<std::endl;
     std::cout<<"##                                       ##"<<std::endl;
-    std::cout<<"##      4 -> Voltar                      ##"<<std::endl;
+    std::cout<<"##      0 -> Voltar                      ##"<<std::endl;
     std::cout<<"##                                       ##"<<std::endl;
     std::cout<<"###########################################"<<std::endl<<std::endl;
 
-    bool flag = true;
-    while (flag){
-        char k;
+        int k;
         std::cout<<"  Option:";
         std::cin>>k;
         switch (k)
         {
-            case '1':
-                flag = false;
+            case 1:
                 EstudanteT();
-                break;
-                flag = false;
-            case '2':
+            case 2:
                 EstudanteC();
-                break;
-            case '3':
+            case 3:
                 EstudanteA();
-                break;
-            case '4':
-                flag = false;
+            case 0:
                 MenuBase();
-                break;
-        }}
+        }
+        Estudante();
 
 }
 void Menu::EstudanteT(){
@@ -221,29 +180,28 @@ void Menu::EstudanteT(){
     std::cout<<"##                                         ##"<<std::endl;
     std::cout<<"##      Inserir Turma:______               ##"<<std::endl;
     std::cout<<"##                                         ##"<<std::endl;
-    std::cout<<"##      1 -> Voltar                        ##"<<std::endl;
+    std::cout<<"##      0 -> Voltar                        ##"<<std::endl;
     std::cout<<"##                                         ##"<<std::endl;
     std::cout<<"#############################################"<<std::endl<<std::endl;
 
-        std::string k;
-        std::cout<<"  Option:";
-        std::cin>>k;
+    std::string k;
+    std::cout<<"  Option:";
+    std::cin>>k;
 
-            if (k == "1") Estudante();
-            else {
-                for (auto t : turmas) {
-                    if (t.getClassCode() == k) {
-                        std::set<int> numbers = t.studentsOfTurma();
-                        for (int n : numbers) {
-                            auto it = students.find(n);
-                            Student student = it->second;
-                            student.show();
-                        }
+    if (k == "0") Estudante();
 
-                    }
-                }
-                EstudanteT();
+    for (auto t : turmas) {
+        if (t.getClassCode() == k) {
+            std::set<int> numbers = t.studentsOfTurma();
+            for (int n : numbers) {
+                auto it = students.find(n);
+                Student student = it->second;
+                student.show();
+            }
         }
+    }
+    EstudanteT();
+
 }
 void Menu::EstudanteC(){
     std::cout<<std::endl;
@@ -254,25 +212,18 @@ void Menu::EstudanteC(){
     std::cout<<"##                                         ##"<<std::endl;
     std::cout<<"##      Inserir Curso:______               ##"<<std::endl;
     std::cout<<"##                                         ##"<<std::endl;
-    std::cout<<"##      1 -> Voltar                        ##"<<std::endl;
+    std::cout<<"##      0 -> Voltar                        ##"<<std::endl;
     std::cout<<"##                                         ##"<<std::endl;
     std::cout<<"#############################################"<<std::endl;
 
 
-    bool flag = true;
-    while (flag){
-        char k;
+
+        int k;
         std::cout<<"  Option:";
         std::cin>>k;
-        switch (k)
-        {
-            case '1':
-                flag = false;
-                Estudante();
-                break;
+        if (k == 0) Estudante();
 
-        }
-    }
+        EstudanteC();
 }
 void Menu::EstudanteA(){
     std::cout<<std::endl;
@@ -290,8 +241,10 @@ void Menu::EstudanteA(){
         int k;
         std::cout<<"  Value:";
         std::cin>>k;
+
         if (k == 0) Estudante();
         if (k > 3 || k < 1) EstudanteA();
+
         std::set<int> numbers;
         for (auto turma : turmas) {
             if (turma.getClassCode()[0] == k + '0') {
