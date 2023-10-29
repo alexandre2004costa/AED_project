@@ -19,6 +19,7 @@ public:
     Class(std::string uc,std::string wd,std::string tp,double st,int dur, std::string cC);
     void show();
     std::string getUc();
+    std::string getClassCode();
 };
 
 

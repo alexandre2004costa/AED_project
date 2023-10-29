@@ -19,5 +19,8 @@ public:
     void NEstudantes();
     void MaiorN();
     void Ocupacao();
+        void OcupacaoA();
+        void OcupacaoT();
+        void OcupacaoC();
 
 };

@@ -43,13 +43,17 @@ void loadingInfoToStudents(std::unordered_map<int,Student>& students,std::vector
         if (number==lastNumber){
             addClassToStudent(student,ucCode,classCode,turmas);
         }else{
-            if(student.getName()!=" ")students.insert({number,student});
-            student = Student(name,number);
-            addClassToStudent(student,ucCode,classCode,turmas);
+            if(student.getName()!=" ") {
+                students.insert({number,student});
+                student = Student(name,number);
+                addClassToStudent(student,ucCode,classCode,turmas);
+            }
         }
         lastNumber = number;
     }
+
     students.insert({student.getNumber(),student});
+    students[202030247].show();
     in.close();
 }
 void loadingInfoToClasses(std::vector<Turma>& turmas){

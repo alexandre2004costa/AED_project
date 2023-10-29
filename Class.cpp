@@ -16,4 +16,8 @@ void Class::show(){
 }
 std::string Class::getUc(){return UC;}
 
+std::string Class::getClassCode() {
+    return classCode;
+}
+
 
