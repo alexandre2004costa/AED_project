@@ -14,12 +14,13 @@ private:
     std::string type;
     std::string classCode;
     double startTime;
-    int duration;
+    double duration;
 public:
-    Class(std::string uc,std::string wd,std::string tp,double st,int dur, std::string cC);
+    Class(std::string uc,std::string wd,std::string tp,double st,double dur, std::string cC);
     void show();
     std::string getUc();
     std::string getClassCode();
+    bool overlaps(Class c);
 };
 
 

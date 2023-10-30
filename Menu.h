@@ -22,5 +22,10 @@ public:
         void OcupacaoA();
         void OcupacaoT();
         void OcupacaoC();
+    bool addUC(std::string uc, Student student);
+    void addClass();
+    void removeUC();
+    void removeClass();
+    void switchClass();
 
 };

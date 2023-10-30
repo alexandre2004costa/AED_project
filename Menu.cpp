@@ -455,3 +455,38 @@ void Menu::MaiorN(){
     }
     MaiorN();
 }
+
+bool Menu::addUC(std::string uc, Student student) {
+   if (student.getSchedule().numberOfUCs() >= 7) return false;
+
+   int n = stoi(uc.substr(uc.length() - 2, 2));
+   int year;
+
+   if (n >= 1 && n <= 5) year = 1;
+   else if (n >= 11 && n <= 15) year = 2;
+   else if (n >= 21 && n<= 25) year = 3;
+
+
+    for (Turma turma : turmas) {
+        if (turma.getClassCode()[0] == year && turma.studentsOfUC(uc) < 30) {
+            std::vector<Class> classes = turma.classesOfUC(uc);
+            bool c = true;
+
+            for (auto c1 : classes) {
+                for (auto c2 : student.getSchedule().getClasses()) {
+                    if (c1.overlaps(c2)) c = false;
+                }
+            }
+            if (c) {
+                turma.addClassToG({student.getNumber(), uc});
+                for (auto cl : classes) student.addToSchedule(cl);
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+
+
+

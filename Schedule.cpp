@@ -14,3 +14,13 @@ void Schedule::show(){
 }
 std::vector<Class>Schedule:: getClasses(){return classes;}
 
+int Schedule::numberOfUCs() {
+    int count = 0;
+    std::string lastUC;
+    for (auto c : classes) {
+        if (c.getUc() != lastUC) count++;
+        lastUC = c.getUc();
+    }
+    return count;
+}
+

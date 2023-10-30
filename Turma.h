@@ -26,6 +26,8 @@ public:
     int numberOfStudents();
     std::set<int> studentsOfTurma();
     bool operator==(Turma turma);
+    int studentsOfUC(std::string uc);
+    std::vector<Class> classesOfUC(std::string uc);
 };
 
 

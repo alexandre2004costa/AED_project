@@ -42,3 +42,19 @@ bool Turma::operator==(Turma turma) {
 void Turma::showSchedule() {
     schedule.show();
 }
+
+int Turma::studentsOfUC(std::string uc) {
+    int count = 0;
+    for (auto pair : nEstudanteCadeira) {
+        if (pair.second == uc) count++;
+    }
+    return count;
+}
+
+std::vector<Class> Turma::classesOfUC(std::string uc) {
+    std::vector<Class> classes;
+    for (auto c : schedule.getClasses()) {
+        if (c.getUc() == uc) classes.push_back(c);
+    }
+    return classes;
+}

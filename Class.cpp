@@ -3,7 +3,7 @@
 //
 
 #include "Class.h"
-Class::Class(std::string uc,std::string wd,std::string tp,double st,int dur, std::string cC){
+Class::Class(std::string uc,std::string wd,std::string tp,double st,double dur, std::string cC){
     UC = uc;
     weekDay = wd;
     type = tp;
@@ -19,5 +19,16 @@ std::string Class::getUc(){return UC;}
 std::string Class::getClassCode() {
     return classCode;
 }
+
+bool Class::overlaps(Class c) {
+    if (weekDay == c.weekDay) {
+        double end1 = startTime + duration;
+        double end2 = c.startTime + c.duration;
+
+        if ((startTime <= end2 && end1 >= c.startTime) || (c.startTime <= end1 && end2 >= startTime)) return true;
+    }
+    return false;
+}
+
 
 
