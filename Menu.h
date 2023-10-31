@@ -24,10 +24,16 @@ public:
         void OcupacaoA();
         void OcupacaoT();
         void OcupacaoC();
+    void entrar();
+    void entrarTurma();
+    void entrarUC();
+    void sair();
+    void sairTurma();
+    void sairUC();
     bool addUC(std::string uc, Student& student);
     void removeUC(std::string uc, Student& student);
-    void addClass();
-    void removeClass();
+    bool addClass(Turma turma, Student& student, std::string uc);
+    void removeClass(Turma turma, Student& student, std::string uc);
     void switchClass();
 
 };

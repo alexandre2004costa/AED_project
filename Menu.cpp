@@ -29,6 +29,10 @@ void Menu::MenuBase(){
     std::cout<<"##                                                                   ##"<<std::endl;
     std::cout<<"##      5 -> UCs com maior numero de estudantes                      ##"<<std::endl;
     std::cout<<"##                                                                   ##"<<std::endl;
+    std::cout<<"##      6 -> Adicionar                                               ##"<<std::endl;
+    std::cout<<"##                                                                   ##"<<std::endl;
+    std::cout<<"##      7 -> Remover                                                 ##"<<std::endl;
+    std::cout<<"##                                                                   ##"<<std::endl;
     std::cout<<"##      0 -> Sair                                                    ##"<<std::endl;
     std::cout<<"##                                                                   ##"<<std::endl;
     std::cout<<"#######################################################################"<<std::endl<<std::endl;
@@ -48,6 +52,10 @@ void Menu::MenuBase(){
             Ocupacao();
         case 5:
             MaiorN();
+        case 6:
+            entrar();
+        case 7:
+            sair();
         case 0:
             break;
     }
@@ -472,7 +480,6 @@ bool Menu::addUC(std::string uc, Student& student) {
     for (Turma &turma : turmas) {
         if (turma.getClassCode()[0]-'0' == year && turma.studentsOfUC(uc) < 30) {
             std::vector<Class> classes = turma.classesOfUC(uc);
-            for (auto k : classes)k.show();
             bool c = true;
             for (auto c1 : classes) {
                 for (auto c2 : student.getSchedule().getClasses()) {
@@ -509,6 +516,255 @@ void Menu::removeUC(std::string uc, Student& student){
     //Remover as aulas da uc do horário do estudante
     student.setSchedule(student.getSchedule().removeUcClasses(uc));
 }
+
+bool Menu::addClass(Turma turma, Student& student, std::string uc) {
+    for (Turma &t : turmas) {
+        if (turma.getClassCode() == t.getClassCode() && turma.studentsOfUC(uc) < 30) {
+            std::vector<Class> classes = turma.classesOfUC(uc);
+            if (classes.size() == 0) return false;
+            bool c = true;
+            for (auto c1 : classes) {
+                for (auto c2 : student.getSchedule().getClasses()) {
+                    if (c1.overlaps(c2)) c = false;
+                }
+            }
+            if (c) {
+                turma.addClassToG({student.getNumber(), uc});
+                for (auto cl : classes) student.addToSchedule(cl);
+                turma.addClassToG({student.getNumber(),uc});
+                student.showSchedule();
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+void Menu::removeClass(Turma turma, Student& student, std::string uc) {
+    for (Turma &t : turmas){
+        if (turma.getClassCode() == t.getClassCode()){
+            turma.removeStudent(student.getNumber(),uc);
+            break;
+        }
+    }
+    //Remover as aulas da uc do horário do estudante
+    student.setSchedule(student.getSchedule().removeUcClasses(uc));
+}
+
+void Menu::entrar() {
+    std::cout<<std::endl;
+    std::cout<<std::endl;
+    std::cout<<"###########################################"<<std::endl;
+    std::cout<<"##                                       ##"<<std::endl;
+    std::cout<<"##   Adicionar a :                       ##"<<std::endl;
+    std::cout<<"##                                       ##"<<std::endl;
+    std::cout<<"##      1 -> Turma                       ##"<<std::endl;
+    std::cout<<"##                                       ##"<<std::endl;
+    std::cout<<"##      2 -> UC                          ##"<<std::endl;
+    std::cout<<"##                                       ##"<<std::endl;
+    std::cout<<"##      0 -> Voltar                      ##"<<std::endl;
+    std::cout<<"##                                       ##"<<std::endl;
+    std::cout<<"###########################################"<<std::endl<<std::endl;
+
+    int k;
+    std::cin >> k;
+
+    switch (k) {
+        case 1:
+            entrarTurma();
+        case 2:
+            entrarUC();
+        case 0:
+            MenuBase();
+    }
+    entrar();
+}
+
+void Menu::entrarTurma() {
+    std::cout<<std::endl;
+    std::cout<<std::endl;
+    std::cout<<"#################################################################"<<std::endl;
+    std::cout<<"##                                                             ##"<<std::endl;
+    std::cout<<"##      Inserir Turma:______                                   ##"<<std::endl;
+    std::cout<<"##                                                             ##"<<std::endl;
+    std::cout<<"##      Inserir numero de estudante:______                     ##"<<std::endl;
+    std::cout<<"##                                                             ##"<<std::endl;
+    std::cout<<"##      Inserir UCs (separadas por virgulas):______            ##"<<std::endl;
+    std::cout<<"##                                                             ##"<<std::endl;
+    std::cout<<"##      0 -> Voltar                                            ##"<<std::endl;
+    std::cout<<"##                                                             ##"<<std::endl;
+    std::cout<<"#################################################################"<<std::endl;
+
+    std::string turma;
+    std::cin >> turma;
+    if (turma == "0") entrar();
+    int numero;
+    std::cin >> numero;
+
+    std::string conjunto;
+    std::cin >> conjunto;
+    std::set<std::string> ucs;
+    int lastPos = -1;
+    for (int i = 0; i < conjunto.length(); i++) {
+        if (conjunto[i] == ',') {
+            ucs.insert(conjunto.substr(lastPos + 1, i - lastPos - 1));
+            lastPos = i;
+        }
+    }
+    ucs.insert(conjunto.substr(lastPos + 1));
+    auto it = students.find(numero);
+    for (std::string uc : ucs) {
+        if (addClass(turma, it -> second, uc)) std::cout << "Foi adicionado com sucesso." << std::endl;
+        else std::cout << "Nao foi possivel adicionar." << std::endl;
+    }
+
+    entrarTurma();
+}
+
+void Menu::entrarUC() {
+    std::cout<<std::endl;
+    std::cout<<std::endl;
+    std::cout<<"#################################################################"<<std::endl;
+    std::cout<<"##                                                             ##"<<std::endl;
+    std::cout<<"##      Inserir numero de estudante:______                     ##"<<std::endl;
+    std::cout<<"##                                                             ##"<<std::endl;
+    std::cout<<"##      Inserir UCs (separadas por virgulas):______            ##"<<std::endl;
+    std::cout<<"##                                                             ##"<<std::endl;
+    std::cout<<"##      0 -> Voltar                                            ##"<<std::endl;
+    std::cout<<"##                                                             ##"<<std::endl;
+    std::cout<<"#################################################################"<<std::endl;
+
+    int numero;
+    std::cin >> numero;
+    if (numero == 0) entrar();
+    std::string conjunto;
+    std::cin >> conjunto;
+    std::set<std::string> ucs;
+    int lastPos = -1;
+    for (int i = 0; i < conjunto.length(); i++) {
+        if (conjunto[i] == ',') {
+            ucs.insert(conjunto.substr(lastPos + 1, i - lastPos - 1));
+            lastPos = i;
+        }
+    }
+    ucs.insert(conjunto.substr(lastPos + 1));
+    auto it = students.find(numero);
+    for (std::string uc : ucs) {
+        std::cout << uc;
+        if (addUC(uc, it -> second)) std::cout << "Foi adicionado com sucesso." << std::endl;
+        else std::cout << "Nao foi possivel adicionar." << std::endl;
+    }
+
+    entrarUC();
+}
+
+void Menu::sair() {
+    std::cout<<std::endl;
+    std::cout<<std::endl;
+    std::cout<<"###########################################"<<std::endl;
+    std::cout<<"##                                       ##"<<std::endl;
+    std::cout<<"##   Remover de :                       ##"<<std::endl;
+    std::cout<<"##                                       ##"<<std::endl;
+    std::cout<<"##      1 -> Turma                       ##"<<std::endl;
+    std::cout<<"##                                       ##"<<std::endl;
+    std::cout<<"##      2 -> UC                          ##"<<std::endl;
+    std::cout<<"##                                       ##"<<std::endl;
+    std::cout<<"##      0 -> Voltar                      ##"<<std::endl;
+    std::cout<<"##                                       ##"<<std::endl;
+    std::cout<<"###########################################"<<std::endl<<std::endl;
+
+    int k;
+    std::cin >> k;
+
+    switch (k) {
+        case 1:
+            sairTurma();
+        case 2:
+            sairUC();
+        case 0:
+            MenuBase();
+    }
+    sair();
+}
+
+void Menu::sairTurma() {
+    std::cout<<std::endl;
+    std::cout<<std::endl;
+    std::cout<<"#################################################################"<<std::endl;
+    std::cout<<"##                                                             ##"<<std::endl;
+    std::cout<<"##      Inserir Turma:______                                   ##"<<std::endl;
+    std::cout<<"##                                                             ##"<<std::endl;
+    std::cout<<"##      Inserir numero de estudante:______                     ##"<<std::endl;
+    std::cout<<"##                                                             ##"<<std::endl;
+    std::cout<<"##      Inserir UCs (separadas por virgulas):______            ##"<<std::endl;
+    std::cout<<"##                                                             ##"<<std::endl;
+    std::cout<<"##      0 -> Voltar                                            ##"<<std::endl;
+    std::cout<<"##                                                             ##"<<std::endl;
+    std::cout<<"#################################################################"<<std::endl;
+
+    std::string turma;
+    std::cin >> turma;
+    if (turma == "0") entrar();
+    int numero;
+    std::cin >> numero;
+
+    std::string conjunto;
+    std::cin >> conjunto;
+    std::set<std::string> ucs;
+    int lastPos = -1;
+    for (int i = 0; i < conjunto.length(); i++) {
+        if (conjunto[i] == ',') {
+            ucs.insert(conjunto.substr(lastPos + 1, i - lastPos - 1));
+            lastPos = i;
+        }
+    }
+    ucs.insert(conjunto.substr(lastPos + 1));
+    auto it = students.find(numero);
+    for (std::string uc : ucs) {
+        removeClass(turma, it -> second, uc);
+    }
+
+    sairTurma();
+}
+
+void Menu::sairUC() {
+    std::cout<<std::endl;
+    std::cout<<std::endl;
+    std::cout<<"#################################################################"<<std::endl;
+    std::cout<<"##                                                             ##"<<std::endl;
+    std::cout<<"##      Inserir numero de estudante:______                     ##"<<std::endl;
+    std::cout<<"##                                                             ##"<<std::endl;
+    std::cout<<"##      Inserir UCs (separadas por virgulas):______            ##"<<std::endl;
+    std::cout<<"##                                                             ##"<<std::endl;
+    std::cout<<"##      0 -> Voltar                                            ##"<<std::endl;
+    std::cout<<"##                                                             ##"<<std::endl;
+    std::cout<<"#################################################################"<<std::endl;
+
+    int numero;
+    std::cin >> numero;
+    if (numero == 0) entrar();
+    std::string conjunto;
+    std::cin >> conjunto;
+    std::set<std::string> ucs;
+    int lastPos = -1;
+    for (int i = 0; i < conjunto.length(); i++) {
+        if (conjunto[i] == ',') {
+            ucs.insert(conjunto.substr(lastPos + 1, i - lastPos - 1));
+            lastPos = i;
+        }
+    }
+    ucs.insert(conjunto.substr(lastPos + 1));
+    auto it = students.find(numero);
+    for (std::string uc : ucs) {
+        removeUC(uc, it -> second);
+    }
+
+    sairUC();
+}
+
+
+
+
 
 
 

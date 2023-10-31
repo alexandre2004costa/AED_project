@@ -104,8 +104,6 @@ int main() {
     std::unordered_map<int,Student> students;
     loadingInfoToStudents(students,turmas);
     Menu menu = Menu(turmas,students);
-    //auto it = menu.getStudents().find(202025232);
-    //menu.removeUC("L.EIC002",it->second);
     menu.MenuBase();
     return 0;
 }
