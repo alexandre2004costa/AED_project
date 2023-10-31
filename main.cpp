@@ -39,14 +39,13 @@ void loadingInfoToStudents(std::unordered_map<int,Student>& students,std::vector
         int k2 = line.find_first_of(',',k+1);
         std::string ucCode = line.substr(k+1,k2-k-1);
         std::string classCode = line.substr(k2+1);
-
-        if (number==lastNumber){
-            addClassToStudent(student,ucCode,classCode,turmas);
-        }else{
-            if(student.getName()!=" ") students.insert({number,student});
-            student = Student(name,number);
-            addClassToStudent(student,ucCode,classCode,turmas);
+        if (number != lastNumber) {
+            if (student.getName() != " ") {
+                students.insert({ lastNumber, student });
+            }
+            student = Student(name, number);
         }
+        addClassToStudent(student,ucCode,classCode,turmas);
         lastNumber = number;
     }
 
@@ -105,6 +104,8 @@ int main() {
     std::unordered_map<int,Student> students;
     loadingInfoToStudents(students,turmas);
     Menu menu = Menu(turmas,students);
+    //auto it = menu.getStudents().find(202025232);
+    //menu.removeUC("L.EIC002",it->second);
     menu.MenuBase();
     return 0;
 }

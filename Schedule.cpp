@@ -2,6 +2,7 @@
 // Created by Alexandre on 08/10/2023.
 //
 
+#include <algorithm>
 #include "Schedule.h"
 void Schedule::addClasses(Class a){
     classes.push_back(a);
@@ -10,7 +11,6 @@ void Schedule::show(){
     for(auto k : classes){
         k.show();
     }
-    //std::cout<<std::endl;
 }
 std::vector<Class>Schedule:: getClasses(){return classes;}
 
@@ -22,5 +22,12 @@ int Schedule::numberOfUCs() {
         lastUC = c.getUc();
     }
     return count;
+}
+Schedule& Schedule::removeUcClasses(std::string uc){
+    std::cout<<classes.size();
+    classes.erase(std::remove_if(classes.begin(), classes.end(), [uc](Class c) {
+        return c.getUc() == uc;}), classes.end());
+    std::cout<<classes.size();
+    return *this;
 }
 

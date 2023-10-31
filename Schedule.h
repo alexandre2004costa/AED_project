@@ -16,6 +16,7 @@ public:
     void show();
     std::vector<Class> getClasses();
     int numberOfUCs();
+    Schedule& removeUcClasses(std::string uc);
 };
 
 

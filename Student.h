@@ -20,6 +20,7 @@ public:
     void addToSchedule(Class c);
     void showSchedule();
     Schedule getSchedule();
+    void setSchedule(Schedule &newSchedule);
 };
 
 

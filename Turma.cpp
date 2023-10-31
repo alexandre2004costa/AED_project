@@ -58,3 +58,13 @@ std::vector<Class> Turma::classesOfUC(std::string uc) {
     }
     return classes;
 }
+void Turma::removeStudent(int n ,std::string uc){
+    auto it = nEstudanteCadeira.begin();
+    while (it != nEstudanteCadeira.end()) {
+        if (it->first == n && it->second == uc) {
+            it = nEstudanteCadeira.erase(it);
+        } else {
+            ++it;
+        }
+    }
+}

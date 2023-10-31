@@ -27,3 +27,6 @@ void Student::showSchedule(){
 Schedule Student::getSchedule() {
     return schedule;
 }
+void Student::setSchedule(Schedule &newSchedule) {
+    schedule = newSchedule;
+}

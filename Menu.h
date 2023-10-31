@@ -8,6 +8,8 @@ private:
     std::unordered_map<int,Student> students;
 public:
     Menu(std::vector<Turma> t,std::unordered_map<int,Student> s);
+    std::vector<Turma>& getTurmas();
+    std::unordered_map<int,Student>& getStudents();
     void MenuBase();
     void Horario();
         void HorarioE();
@@ -22,9 +24,9 @@ public:
         void OcupacaoA();
         void OcupacaoT();
         void OcupacaoC();
-    bool addUC(std::string uc, Student student);
+    bool addUC(std::string uc, Student& student);
+    void removeUC(std::string uc, Student& student);
     void addClass();
-    void removeUC();
     void removeClass();
     void switchClass();
 

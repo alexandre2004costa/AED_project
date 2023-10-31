@@ -28,6 +28,7 @@ public:
     bool operator==(Turma turma);
     int studentsOfUC(std::string uc);
     std::vector<Class> classesOfUC(std::string uc);
+    void removeStudent(int n, std::string uc);
 };
 
 

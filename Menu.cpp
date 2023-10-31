@@ -6,6 +6,12 @@ Menu::Menu(std::vector<Turma> t,std::unordered_map<int,Student> s){
     turmas = t;
     students = s;
 }
+std::vector<Turma>& Menu::getTurmas(){
+    return turmas;
+}
+std::unordered_map<int,Student>& Menu::getStudents(){
+    return students;
+}
 void Menu::MenuBase(){
     std::cout<<std::endl;
     std::cout<<std::endl;
@@ -456,22 +462,18 @@ void Menu::MaiorN(){
     MaiorN();
 }
 
-bool Menu::addUC(std::string uc, Student student) {
+bool Menu::addUC(std::string uc, Student& student) {
    if (student.getSchedule().numberOfUCs() >= 7) return false;
-
    int n = stoi(uc.substr(uc.length() - 2, 2));
    int year;
-
    if (n >= 1 && n <= 5) year = 1;
    else if (n >= 11 && n <= 15) year = 2;
    else if (n >= 21 && n<= 25) year = 3;
-
-
-    for (Turma turma : turmas) {
-        if (turma.getClassCode()[0] == year && turma.studentsOfUC(uc) < 30) {
+    for (Turma &turma : turmas) {
+        if (turma.getClassCode()[0]-'0' == year && turma.studentsOfUC(uc) < 30) {
             std::vector<Class> classes = turma.classesOfUC(uc);
+            for (auto k : classes)k.show();
             bool c = true;
-
             for (auto c1 : classes) {
                 for (auto c2 : student.getSchedule().getClasses()) {
                     if (c1.overlaps(c2)) c = false;
@@ -480,11 +482,32 @@ bool Menu::addUC(std::string uc, Student student) {
             if (c) {
                 turma.addClassToG({student.getNumber(), uc});
                 for (auto cl : classes) student.addToSchedule(cl);
+                turma.addClassToG({student.getNumber(),uc});
                 return true;
             }
         }
     }
     return false;
+}
+void Menu::removeUC(std::string uc, Student& student){
+    //Descobrir em que turma tem aquela uc
+    std::string t = "";
+    for (Class k : student.getSchedule().getClasses()){
+        if (k.getUc() == uc)t = k.getClassCode();
+    }
+    if(t == ""){
+        std::cout<<"Esse estudante não tem essa Uc"<<std::endl;
+        return;
+    }
+    //Remover o estudante da turma onde tem aquela uc
+    for (Turma &turma : turmas){
+        if (turma.getClassCode() == t){
+            turma.removeStudent(student.getNumber(),uc);
+            break;
+        }
+    }
+    //Remover as aulas da uc do horário do estudante
+    student.setSchedule(student.getSchedule().removeUcClasses(uc));
 }
 
 
