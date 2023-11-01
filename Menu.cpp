@@ -33,6 +33,8 @@ void Menu::MenuBase(){
     std::cout<<"##                                                                   ##"<<std::endl;
     std::cout<<"##      7 -> Remover                                                 ##"<<std::endl;
     std::cout<<"##                                                                   ##"<<std::endl;
+    std::cout<<"##      8 -> Trocar                                                  ##"<<std::endl;
+    std::cout<<"##                                                                   ##"<<std::endl;
     std::cout<<"##      0 -> Sair                                                    ##"<<std::endl;
     std::cout<<"##                                                                   ##"<<std::endl;
     std::cout<<"#######################################################################"<<std::endl<<std::endl;
@@ -56,6 +58,8 @@ void Menu::MenuBase(){
             entrar();
         case 7:
             sair();
+        case 8:
+            trocar();
         case 0:
             break;
     }
@@ -530,7 +534,7 @@ bool Menu::addUC(std::string uc, Student& student) {
     }
     return false;
 }
-void Menu::removeUC(std::string uc, Student& student){
+bool Menu::removeUC(std::string uc, Student& student){
     //Descobrir em que turma tem aquela uc
     std::string t = "";
     for (Class k : student.getSchedule().getClasses()){
@@ -538,17 +542,21 @@ void Menu::removeUC(std::string uc, Student& student){
     }
     if(t == ""){
         std::cout<<"Esse estudante não tem essa Uc"<<std::endl;
-        return;
+        return false;
     }
     //Remover o estudante da turma onde tem aquela uc
     for (Turma &turma : turmas){
-        if (turma.getClassCode() == t && testBalance("sair",turma.getClassCode(),uc)){
-            turma.removeStudent(student.getNumber(),uc);
-            break;
+        if (turma.getClassCode() == t){
+            if(testBalance("sair",turma.getClassCode(),uc)){
+                turma.removeStudent(student.getNumber(),uc);
+                break;
+            }
+            return false;
         }
     }
     //Remover as aulas da uc do horário do estudante
     student.setSchedule(student.getSchedule().removeUcClasses(uc));
+    return true;
 }
 
 bool Menu::addClass(Turma turma, Student& student, std::string uc) {
@@ -574,15 +582,19 @@ bool Menu::addClass(Turma turma, Student& student, std::string uc) {
     return false;
 }
 
-void Menu::removeClass(Turma turma, Student& student, std::string uc) {
+bool Menu::removeClass(Turma turma, Student& student, std::string uc) {
     for (Turma &t : turmas){
-        if (turma.getClassCode() == t.getClassCode() && testBalance("sair",turma.getClassCode(),uc)){
-            turma.removeStudent(student.getNumber(),uc);
-            break;
+        if (turma.getClassCode() == t.getClassCode()){
+            if (testBalance("sair",turma.getClassCode(),uc)){
+                turma.removeStudent(student.getNumber(),uc);
+                break;
+            }
+            return false;
         }
     }
     //Remover as aulas da uc do horário do estudante
     student.setSchedule(student.getSchedule().removeUcClasses(uc));
+    return true;
 }
 
 void Menu::entrar() {
@@ -761,7 +773,11 @@ void Menu::sairTurma() {
     ucs.insert(conjunto.substr(lastPos + 1));
     auto it = students.find(numero);
     for (std::string uc : ucs) {
-        removeClass(turma, it -> second, uc);
+        if (removeClass(turma, it -> second, uc)){
+            std::cout<<"Saída da turma "<<turma<< " com sucesso"<<std::endl;
+        }else{
+            std::cout<<"Saída da turma "<<turma<< " recusada"<<std::endl;
+        }
     }
 
     sairTurma();
@@ -796,10 +812,101 @@ void Menu::sairUC() {
     ucs.insert(conjunto.substr(lastPos + 1));
     auto it = students.find(numero);
     for (std::string uc : ucs) {
-        removeUC(uc, it -> second);
+        if (removeUC(uc, it -> second)){
+            std::cout<<"Saída da Uc "<<uc<< " com sucesso"<<std::endl;
+        }else{
+            std::cout<<"Saída da Uc "<<uc<< " recusada"<<std::endl;
+        }
     }
 
     sairUC();
+}
+void Menu::trocar(){
+    std::cout<<std::endl;
+    std::cout<<std::endl;
+    std::cout<<"###########################################"<<std::endl;
+    std::cout<<"##                                       ##"<<std::endl;
+    std::cout<<"##   Trocar de :                         ##"<<std::endl;
+    std::cout<<"##                                       ##"<<std::endl;
+    std::cout<<"##      1 -> Turma                       ##"<<std::endl;
+    std::cout<<"##                                       ##"<<std::endl;
+    std::cout<<"##      2 -> UC                          ##"<<std::endl;
+    std::cout<<"##                                       ##"<<std::endl;
+    std::cout<<"##      0 -> Voltar                      ##"<<std::endl;
+    std::cout<<"##                                       ##"<<std::endl;
+    std::cout<<"###########################################"<<std::endl<<std::endl;
+    int k;
+    std::cin>>k;
+    if (k == 0)MenuBase();
+    switch (k) {
+        case 1:
+            trocarT();
+        case 2:
+            trocarU();
+    }
+    trocar();
+}
+void Menu::trocarT() {
+    std::cout<<std::endl;
+    std::cout<<std::endl;
+    std::cout<<"#################################################################"<<std::endl;
+    std::cout<<"##                                                             ##"<<std::endl;
+    std::cout<<"##      Inserir turma atual:______                             ##"<<std::endl;
+    std::cout<<"##                                                             ##"<<std::endl;
+    std::cout<<"##      Inserir numero de estudante:______                     ##"<<std::endl;
+    std::cout<<"##                                                             ##"<<std::endl;
+    std::cout<<"##      Inserir nova turma:______                              ##"<<std::endl;
+    std::cout<<"##                                                             ##"<<std::endl;
+    std::cout<<"##      Inserir UC:______                                      ##"<<std::endl;
+    std::cout<<"##                                                             ##"<<std::endl;
+    std::cout<<"##      0 -> Voltar                                            ##"<<std::endl;
+    std::cout<<"##                                                             ##"<<std::endl;
+    std::cout<<"#################################################################"<<std::endl;
+    std::string tInicial;
+    std::cin>>tInicial;
+    if (tInicial == "0")trocar();
+    int nEstudante;
+    std::cin>>nEstudante;
+    std::string tFinal;
+    std::cin>>tFinal;
+    std::string uc;
+    std::cin>>uc;
+    auto it = students.find(nEstudante);
+    if (switchClass(it->second,tInicial,tFinal,uc)){
+        std::cout<<"Troca realizada com sucesso"<<std::endl;
+    }else{
+        std::cout<<"Não foi possível realizar a troca"<<std::endl;
+    }
+    trocarT();
+}
+void Menu::trocarU() {
+    std::cout<<std::endl;
+    std::cout<<std::endl;
+    std::cout<<"#################################################################"<<std::endl;
+    std::cout<<"##                                                             ##"<<std::endl;
+    std::cout<<"##      Inserir Uc atual:______                                ##"<<std::endl;
+    std::cout<<"##                                                             ##"<<std::endl;
+    std::cout<<"##      Inserir numero de estudante:______                     ##"<<std::endl;
+    std::cout<<"##                                                             ##"<<std::endl;
+    std::cout<<"##      Inserir nova Uc:______                                 ##"<<std::endl;
+    std::cout<<"##                                                             ##"<<std::endl;
+    std::cout<<"##      0 -> Voltar                                            ##"<<std::endl;
+    std::cout<<"##                                                             ##"<<std::endl;
+    std::cout<<"#################################################################"<<std::endl;
+    std::string uInicial;
+    std::cin>>uInicial;
+    if (uInicial == "0")trocar();
+    int nEstudante;
+    std::cin>>nEstudante;
+    std::string uFinal;
+    std::cin>>uFinal;
+    auto it = students.find(nEstudante);
+    if (switchUC(it->second,uInicial,uFinal)){
+        std::cout<<"Troca realizada com sucesso"<<std::endl;
+    }else{
+        std::cout<<"Não foi possível realizar a troca"<<std::endl;
+    }
+    trocarT();
 }
 int biggestDiff(std::vector<std::pair<int,std::string>>a){
     int maxDiff = 0;
@@ -836,7 +943,34 @@ bool Menu::testBalance(std::string pedido,std::string turma,std::string uc){
     int bdiff2 = biggestDiff(alunosT);
     return (bdiff <= 4 && bdiff2 <= 4) || (bdiff > 4 && bdiff2 <= bdiff);
 }
-
+bool Menu::switchUC(Student& student,std::string ucInicial,std::string ucFinal){
+    if (removeUC(ucInicial,student)){
+        if(addUC(ucFinal,student)){
+            std::cout<<"As suas trocas foram efetuadas com sucesso"<<std::endl;
+            return true;
+        }else{
+            std::cout<<"Não foi possível entrar na Uc final"<<std::endl;
+            addUC(ucInicial,student);//Repor o estudante na uc inicial
+        }
+    }else{
+        std::cout<<"Não foi possível sair da Uc inicial"<<std::endl;
+    }
+    return false;
+}
+bool Menu::switchClass(Student& student,Turma tInicial,Turma tFinal,std::string uc){
+    if (removeClass(tInicial,student,uc)){
+        if(addClass(tFinal,student,uc)){
+            std::cout<<"As suas trocas foram efetuadas com sucesso"<<std::endl;
+            return true;
+        }else{
+            std::cout<<"Não foi possível entrar na Uc final"<<std::endl;
+            addClass(tFinal,student,uc);//Repor o estudante na turma inicial
+        }
+    }else{
+        std::cout<<"Não foi possível sair da Uc inicial"<<std::endl;
+    }
+    return false;
+}
 
 
 

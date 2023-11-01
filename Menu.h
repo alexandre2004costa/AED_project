@@ -29,16 +29,21 @@ public:
         void OcupacaoT();
         void OcupacaoC();
     void entrar();
-    void entrarTurma();
-    void entrarUC();
+        void entrarTurma();
+        void entrarUC();
     void sair();
-    void sairTurma();
-    void sairUC();
-    bool addUC(std::string uc, Student& student);
-    void removeUC(std::string uc, Student& student);
-    bool addClass(Turma turma, Student& student, std::string uc);
-    void removeClass(Turma turma, Student& student, std::string uc);
-    void switchClass();
+        void sairTurma();
+        void sairUC();
+
+    void trocar();
+        void trocarT();
+        void trocarU();
     bool testBalance(std::string pedido,std::string turma,std::string uc);
+    bool addUC(std::string uc, Student& student);
+    bool removeUC(std::string uc, Student& student);
+    bool addClass(Turma turma, Student& student, std::string uc);
+    bool removeClass(Turma turma, Student& student, std::string uc);
+    bool switchClass(Student& student,Turma tInicial,Turma tFinal,std::string uc);
+    bool switchUC(Student& student,std::string ucInicial,std::string ucFinal);
 
 };
