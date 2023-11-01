@@ -5,11 +5,12 @@
 #include "Turma.h"
 Turma::Turma(){classCode=" ";}
 Turma::Turma(std::string classCode):classCode(classCode){};
-void Turma::show(){
-    std::cout<<classCode<<" And : "<<std::endl;
-    schedule.show();
-}
 std::string Turma::getClassCode(){return classCode;}
+void Turma::showEstudanteUc(){
+    for (auto k : nEstudanteCadeira){
+        std::cout << k.first << " in "<<k.second<<std::endl;
+    }
+}
 void Turma::addClassToS(Class c){
     schedule.addClasses(c);
 }
@@ -50,6 +51,13 @@ int Turma::studentsOfUC(std::string uc) {
     }
     return count;
 }
+std::set<int> Turma::studentsOfTurmaUc(std::string uc){
+    std::set<int> numbers;
+    for (auto pair : nEstudanteCadeira) {
+        if (pair.second == uc)numbers.insert(pair.first);
+    }
+    return numbers;
+}
 
 std::vector<Class> Turma::classesOfUC(std::string uc) {
     std::vector<Class> classes;
@@ -67,4 +75,17 @@ void Turma::removeStudent(int n ,std::string uc){
             ++it;
         }
     }
+}
+bool Turma::haveUc(std::string uc){
+    int year = classCode[0] - '0';
+    int n =  stoi(uc.substr(uc.length()-2,2));
+    switch (year) {
+        case 1:
+            return n >= 1 && n <= 5;
+        case 2:
+            return n >= 11 && n <= 15;
+        case 3:
+            return n >= 21 && n<= 25;
+    }
+    return false;
 }

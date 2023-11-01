@@ -17,7 +17,7 @@ private:
 public:
     Turma();
     Turma(std::string classCode);
-    void show();
+    void showEstudanteUc();
     void showSchedule();
     std::string getClassCode();
     void addClassToS(Class c);
@@ -27,8 +27,10 @@ public:
     std::set<int> studentsOfTurma();
     bool operator==(Turma turma);
     int studentsOfUC(std::string uc);
+    std::set<int> studentsOfTurmaUc(std::string uc);
     std::vector<Class> classesOfUC(std::string uc);
     void removeStudent(int n, std::string uc);
+    bool haveUc(std::string uc);
 };
 
 

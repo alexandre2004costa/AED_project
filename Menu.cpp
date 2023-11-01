@@ -164,6 +164,8 @@ void Menu::Estudante(){
     std::cout<<"##                                       ##"<<std::endl;
     std::cout<<"##      3 -> Ano                         ##"<<std::endl;
     std::cout<<"##                                       ##"<<std::endl;
+    std::cout<<"##      4 -> Turma e Uc                  ##"<<std::endl;
+    std::cout<<"##                                       ##"<<std::endl;
     std::cout<<"##      0 -> Voltar                      ##"<<std::endl;
     std::cout<<"##                                       ##"<<std::endl;
     std::cout<<"###########################################"<<std::endl<<std::endl;
@@ -179,6 +181,8 @@ void Menu::Estudante(){
                 EstudanteC();
             case 3:
                 EstudanteA();
+            case 4:
+                EstudanteTC();
             case 0:
                 MenuBase();
     }
@@ -285,6 +289,36 @@ void Menu::EstudanteA(){
 
 }
 
+void Menu::EstudanteTC(){
+    std::cout<<std::endl;
+    std::cout<<std::endl;
+    std::cout<<"###########################################"<<std::endl;
+    std::cout<<"##                                       ##"<<std::endl;
+    std::cout<<"##   Estudantes -> Turma e Uc:           ##"<<std::endl;
+    std::cout<<"##                                       ##"<<std::endl;
+    std::cout<<"##      Inserir Turma:______             ##"<<std::endl;
+    std::cout<<"##                                       ##"<<std::endl;
+    std::cout<<"##      Inserir Uc:______                ##"<<std::endl;
+    std::cout<<"##                                       ##"<<std::endl;
+    std::cout<<"##      0 -> Voltar                      ##"<<std::endl;
+    std::cout<<"##                                       ##"<<std::endl;
+    std::cout<<"###########################################"<<std::endl<<std::endl;
+    std::string turma;
+    std::cin>>turma;
+    if (turma == "0")Estudante();
+    std::string uc;
+    std::cin>>uc;
+    for (Turma t : turmas){
+        if (t.getClassCode() == turma){
+            for (auto k : t.studentsOfTurmaUc(uc)){
+                auto it = students.find(k);
+                it->second.show();
+            }
+            break;
+        }
+    }
+    EstudanteTC();
+}
 // Número de estudantes em pelo menos n UCs
 void Menu::NEstudantes(){
     std::cout<<std::endl;
@@ -478,7 +512,7 @@ bool Menu::addUC(std::string uc, Student& student) {
    else if (n >= 11 && n <= 15) year = 2;
    else if (n >= 21 && n<= 25) year = 3;
     for (Turma &turma : turmas) {
-        if (turma.getClassCode()[0]-'0' == year && turma.studentsOfUC(uc) < 30) {
+        if (turma.getClassCode()[0]-'0' == year && turma.studentsOfUC(uc) < 30 && testBalance("entrar",turma.getClassCode(),uc)) {
             std::vector<Class> classes = turma.classesOfUC(uc);
             bool c = true;
             for (auto c1 : classes) {
@@ -508,7 +542,7 @@ void Menu::removeUC(std::string uc, Student& student){
     }
     //Remover o estudante da turma onde tem aquela uc
     for (Turma &turma : turmas){
-        if (turma.getClassCode() == t){
+        if (turma.getClassCode() == t && testBalance("sair",turma.getClassCode(),uc)){
             turma.removeStudent(student.getNumber(),uc);
             break;
         }
@@ -519,7 +553,7 @@ void Menu::removeUC(std::string uc, Student& student){
 
 bool Menu::addClass(Turma turma, Student& student, std::string uc) {
     for (Turma &t : turmas) {
-        if (turma.getClassCode() == t.getClassCode() && turma.studentsOfUC(uc) < 30) {
+        if (turma.getClassCode() == t.getClassCode() && turma.studentsOfUC(uc) < 30 && testBalance("entrar",turma.getClassCode(),uc)) {
             std::vector<Class> classes = turma.classesOfUC(uc);
             if (classes.size() == 0) return false;
             bool c = true;
@@ -542,7 +576,7 @@ bool Menu::addClass(Turma turma, Student& student, std::string uc) {
 
 void Menu::removeClass(Turma turma, Student& student, std::string uc) {
     for (Turma &t : turmas){
-        if (turma.getClassCode() == t.getClassCode()){
+        if (turma.getClassCode() == t.getClassCode() && testBalance("sair",turma.getClassCode(),uc)){
             turma.removeStudent(student.getNumber(),uc);
             break;
         }
@@ -615,7 +649,10 @@ void Menu::entrarTurma() {
     auto it = students.find(numero);
     for (std::string uc : ucs) {
         if (addClass(turma, it -> second, uc)) std::cout << "Foi adicionado com sucesso." << std::endl;
-        else std::cout << "Nao foi possivel adicionar." << std::endl;
+        else {
+            std::cout << "Nao foi possivel adicionar de momento, o seu pedido está registado." << std::endl;
+            requests.push(Request(numero,uc,turma));
+        }
     }
 
     entrarTurma();
@@ -652,7 +689,10 @@ void Menu::entrarUC() {
     for (std::string uc : ucs) {
         std::cout << uc;
         if (addUC(uc, it -> second)) std::cout << "Foi adicionado com sucesso." << std::endl;
-        else std::cout << "Nao foi possivel adicionar." << std::endl;
+        else{
+            std::cout << "Nao foi possivel adicionar de momento, o seu pedido está registado." << std::endl;
+            requests.push(Request(numero,uc));
+        }
     }
 
     entrarUC();
@@ -760,6 +800,41 @@ void Menu::sairUC() {
     }
 
     sairUC();
+}
+int biggestDiff(std::vector<std::pair<int,std::string>>a){
+    int maxDiff = 0;
+    int minValue = INT_MAX;
+    for (auto pair : a) {
+        if (pair.first < minValue) {
+            minValue = pair.first;
+        }
+        int diff = pair.first - minValue;
+        if (diff > maxDiff) {
+            maxDiff = diff;
+        }
+    }
+    return maxDiff;
+}
+bool Menu::testBalance(std::string pedido,std::string turma,std::string uc){
+    std::vector<std::pair<int,std::string>>alunosT;
+    for (Turma t : turmas){
+        if (t.haveUc(uc)){
+            if (t.studentsOfUC(uc) != 0)alunosT.push_back({t.studentsOfUC(uc),t.getClassCode()});
+        }
+    }
+    int bdiff = biggestDiff(alunosT);
+    //Alterar a contagem de alunos na turma q pretendemos entrar/sair
+    for(auto &pair : alunosT){
+        if (pair.second == turma){
+            if (pedido == "entrar"){
+                pair.first++;
+            }else{//Sair
+                pair.first--;
+            }
+        }
+    }
+    int bdiff2 = biggestDiff(alunosT);
+    return (bdiff <= 4 && bdiff2 <= 4) || (bdiff > 4 && bdiff2 <= bdiff);
 }
 
 
