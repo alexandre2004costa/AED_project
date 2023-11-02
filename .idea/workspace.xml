@@ -20,11 +20,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="799d4d66-0da8-4f6c-a0d4-e101a7a0b386" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Menu.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Menu.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Menu.h" beforeDir="false" afterPath="$PROJECT_DIR$/Menu.h" afterDir="false" />
-    </list>
+    <list default="true" id="799d4d66-0da8-4f6c-a0d4-e101a7a0b386" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -100,7 +96,7 @@
       <workItem from="1698501227977" duration="10212000" />
       <workItem from="1698589186152" duration="6378000" />
       <workItem from="1698700321723" duration="4499000" />
-      <workItem from="1698876393143" duration="3107000" />
+      <workItem from="1698876393143" duration="3173000" />
     </task>
     <servers />
   </component>

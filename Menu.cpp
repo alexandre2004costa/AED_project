@@ -6,12 +6,6 @@ Menu::Menu(std::vector<Turma> t,std::unordered_map<int,Student> s){
     turmas = t;
     students = s;
 }
-std::vector<Turma>& Menu::getTurmas(){
-    return turmas;
-}
-std::unordered_map<int,Student>& Menu::getStudents(){
-    return students;
-}
 void Menu::MenuBase(){
     std::cout<<std::endl;
     std::cout<<std::endl;
@@ -23,7 +17,7 @@ void Menu::MenuBase(){
     std::cout<<"##                                                                   ##"<<std::endl;
     std::cout<<"##      2 -> Estudantes                                              ##"<<std::endl;
     std::cout<<"##                                                                   ##"<<std::endl;
-    std::cout<<"##      3 -> Numero de estudantes nas UCs                            ##"<<std::endl;
+    std::cout<<"##      3 -> Numero de estudantes em pelo menos n UCs                ##"<<std::endl;
     std::cout<<"##                                                                   ##"<<std::endl;
     std::cout<<"##      4 -> Ocupacao da turmas                                      ##"<<std::endl;
     std::cout<<"##                                                                   ##"<<std::endl;
@@ -35,12 +29,14 @@ void Menu::MenuBase(){
     std::cout<<"##                                                                   ##"<<std::endl;
     std::cout<<"##      8 -> Trocar                                                  ##"<<std::endl;
     std::cout<<"##                                                                   ##"<<std::endl;
+    std::cout<<"##      9 -> Mostrar pedidos pendentes                               ##"<<std::endl;
+    std::cout<<"##                                                                   ##"<<std::endl;
     std::cout<<"##      0 -> Sair                                                    ##"<<std::endl;
     std::cout<<"##                                                                   ##"<<std::endl;
     std::cout<<"#######################################################################"<<std::endl<<std::endl;
 
     int k;
-    std::cout<<"  Option:";
+    std::cout<<"Opcao: ";
     std::cin>>k;
 
     switch (k){
@@ -60,7 +56,10 @@ void Menu::MenuBase(){
             sair();
         case 8:
             trocar();
+        case 9:
+            showWaitingList();
         case 0:
+            closeMenu();
             break;
     }
     MenuBase();
@@ -78,22 +77,26 @@ void Menu::Horario(){
     std::cout<<"##                                          ##"<<std::endl;
     std::cout<<"##      2 -> Turma                          ##"<<std::endl;
     std::cout<<"##                                          ##"<<std::endl;
+    std::cout<<"##      3 -> Uc duma turma                  ##"<<std::endl;
+    std::cout<<"##                                          ##"<<std::endl;
     std::cout<<"##      0 -> Voltar                         ##"<<std::endl;
     std::cout<<"##                                          ##"<<std::endl;
     std::cout<<"##############################################"<<std::endl<<std::endl;
 
 
     int k;
-    std::cout<<"  Option:";
+    std::cout<<"Opcao: ";
     std::cin>>k;
     switch (k)
     {
         case 1:
             HorarioE();
-            case 2:
-                HorarioT();
-            case 0:
-                MenuBase();
+        case 2:
+            HorarioT();
+        case 3:
+            HorarioTU();
+        case 0:
+            MenuBase();
     }
     Horario();
 
@@ -112,7 +115,7 @@ void Menu::HorarioE(){
     std::cout<<"###################################################"<<std::endl<<std::endl;
 
     int k;
-    std::cout<<"  Option:";
+    std::cout<<"Inserir numero Estudante: ";
     std::cin>>k;
 
     if (k == 0) Horario();
@@ -122,7 +125,7 @@ void Menu::HorarioE(){
         Student student = it->second;
         student.showSchedule();
     } else {
-        std::cout << "Number not found "<< std::endl;
+        std::cout << "Esse numero nao existe"<< std::endl;
     }
 
     HorarioE();
@@ -142,15 +145,59 @@ void Menu::HorarioT(){
     std::cout<<"#############################################"<<std::endl<<std::endl;
 
     std::string k;
-    std::cout<<"  Option:";
+    std::cout<<"Inserir Turma: ";
     std::cin>>k;
 
     if (k == "0") Horario();
-
+    bool flag = true;
     for (auto t : turmas) {
         if (t.getClassCode() == k) {
             t.showSchedule();
+            flag = false;
         }
+    }
+    if (flag) {
+        std::cout << "Essa turma não existe" << std::endl;
+        HorarioT();
+    }
+    Horario();
+
+}
+void Menu::HorarioTU(){
+    std::cout<<std::endl;
+    std::cout<<std::endl;
+    std::cout<<"#############################################"<<std::endl;
+    std::cout<<"##                                         ##"<<std::endl;
+    std::cout<<"##   Horario / Uc duma Turma:              ##"<<std::endl;
+    std::cout<<"##                                         ##"<<std::endl;
+    std::cout<<"##      Inserir Turma:______               ##"<<std::endl;
+    std::cout<<"##                                         ##"<<std::endl;
+    std::cout<<"##      Inserir Uc:______                  ##"<<std::endl;
+    std::cout<<"##                                         ##"<<std::endl;
+    std::cout<<"##      0 -> Voltar                        ##"<<std::endl;
+    std::cout<<"##                                         ##"<<std::endl;
+    std::cout<<"#############################################"<<std::endl<<std::endl;
+
+    std::string turma;
+    std::cout<<"Inserir Turma: ";
+    std::cin>>turma;
+    if (turma == "0") Horario();
+    std::string uc;
+    std::cout<<"Inserir Uc: ";
+    std::cin>>uc;
+
+    bool flag = true;
+    for (auto t : turmas) {
+        if (t.getClassCode() == turma) {
+            flag = false;
+            for (auto k : t.classesOfUC(uc)){
+                k.show();
+            }
+        }
+    }
+    if (flag) {
+        std::cout << "Essa turma não existe" << std::endl;
+        HorarioTU();
     }
     Horario();
 }
@@ -175,20 +222,20 @@ void Menu::Estudante(){
     std::cout<<"###########################################"<<std::endl<<std::endl;
 
     int k;
-    std::cout<<"  Option:";
+    std::cout<<"Opcao: ";
     std::cin>>k;
     switch (k)
     {
         case 1:
             EstudanteT();
-            case 2:
-                EstudanteC();
-            case 3:
-                EstudanteA();
-            case 4:
-                EstudanteTC();
-            case 0:
-                MenuBase();
+        case 2:
+            EstudanteC();
+        case 3:
+            EstudanteA();
+        case 4:
+            EstudanteTC();
+        case 0:
+            MenuBase();
     }
     Estudante();
 
@@ -207,13 +254,14 @@ void Menu::EstudanteT(){
     std::cout<<"#############################################"<<std::endl<<std::endl;
 
     std::string k;
-    std::cout<<"  Option:";
+    std::cout<<"Inserir Turma: ";
     std::cin>>k;
 
     if (k == "0") Estudante();
-
+    bool flag = true;
     for (auto t : turmas) {
         if (t.getClassCode() == k) {
+            flag = false;
             std::set<int> numbers = t.studentsOfTurma();
             for (int n : numbers) {
                 auto it = students.find(n);
@@ -222,7 +270,11 @@ void Menu::EstudanteT(){
             }
         }
     }
-    EstudanteT();
+    if (flag) {
+        std::cout << "Essa turma não existe" << std::endl;
+        EstudanteT();
+    }
+    Estudante();
 
 }
 void Menu::EstudanteC(){
@@ -240,20 +292,25 @@ void Menu::EstudanteC(){
 
 
     std::string k;
-    std::cout<<"  Option:";
+    std::cout<<"Inserir UC: ";
     std::cin>>k;
     if (k == "0") Estudante();
-
+    bool flag2 = true;
     for (auto pair : students) {
         bool flag = false;
         for (auto c : pair.second.getSchedule().getClasses()) {
             if (c.getUc() == k) flag = true;
-
         }
-        if (flag) std::cout << pair.second.getName() << std::endl;
+        if (flag){
+            flag2 = false;
+            std::cout << pair.second.getName() << std::endl;
+        }
     }
-
-    EstudanteC();
+    if (flag2) {
+        std::cout << "Essa Uc não existe" << std::endl;
+        EstudanteC();
+    }
+    Estudante();
 }
 void Menu::EstudanteA(){
     std::cout<<std::endl;
@@ -269,11 +326,14 @@ void Menu::EstudanteA(){
     std::cout<<"###########################################"<<std::endl<<std::endl;
 
     int k;
-    std::cout<<"  Value:";
+    std::cout<<"Inserir Ano: ";
     std::cin>>k;
 
     if (k == 0) Estudante();
-    if (k > 3 || k < 1) EstudanteA();
+    if (k > 3 || k < 1){
+        std::cout<<"Insere um ano entre 1 e 3"<<std::endl;
+        EstudanteA();
+    }
 
     std::set<int> numbers;
     for (auto turma : turmas) {
@@ -289,7 +349,7 @@ void Menu::EstudanteA(){
         Student student = it->second;
         student.show();
     }
-    EstudanteA();
+    Estudante();
 
 }
 
@@ -308,12 +368,16 @@ void Menu::EstudanteTC(){
     std::cout<<"##                                       ##"<<std::endl;
     std::cout<<"###########################################"<<std::endl<<std::endl;
     std::string turma;
+    std::cout<<"Inserir Turma: ";
     std::cin>>turma;
     if (turma == "0")Estudante();
     std::string uc;
+    std::cout<<"Inserir Uc: ";
     std::cin>>uc;
+    bool flag = true;
     for (Turma t : turmas){
         if (t.getClassCode() == turma){
+            if (t.studentsOfUC(uc) > 0)flag = false;
             for (auto k : t.studentsOfTurmaUc(uc)){
                 auto it = students.find(k);
                 it->second.show();
@@ -321,7 +385,11 @@ void Menu::EstudanteTC(){
             break;
         }
     }
-    EstudanteTC();
+    if (flag){
+        std::cout<<"Insere inputs válidos."<<std::endl;
+        EstudanteTC();
+    }
+    Estudante();
 }
 // Número de estudantes em pelo menos n UCs
 void Menu::NEstudantes(){
@@ -329,7 +397,7 @@ void Menu::NEstudantes(){
     std::cout<<std::endl;
     std::cout<<"#####################################################"<<std::endl;
     std::cout<<"##                                                 ##"<<std::endl;
-    std::cout<<"##   Numero de estudantes nas UCs:                 ##"<<std::endl;
+    std::cout<<"##   Numero de estudantes em pelo menos n UCs:     ##"<<std::endl;
     std::cout<<"##                                                 ##"<<std::endl;
     std::cout<<"##      Inserir numero de UCs:______               ##"<<std::endl;
     std::cout<<"##                                                 ##"<<std::endl;
@@ -338,7 +406,7 @@ void Menu::NEstudantes(){
     std::cout<<"#####################################################"<<std::endl;
 
     int k;
-    std::cout<<"  Value:";
+    std::cout<<"Inserir numero de UCs: ";
     std::cin>>k;
     int count = 0;
 
@@ -481,7 +549,7 @@ void Menu::MaiorN(){
     std::cout<<"#################################################################"<<std::endl;
 
     int k;
-    std::cout<<"  Option:";
+    std::cout<<"Inserir numero de UCs: ";
     std::cin>>k;
 
     std::map<std::string, int> ucCount;
@@ -541,7 +609,6 @@ bool Menu::removeUC(std::string uc, Student& student){
         if (k.getUc() == uc)t = k.getClassCode();
     }
     if(t == ""){
-        std::cout<<"Esse estudante não tem essa Uc"<<std::endl;
         return false;
     }
     //Remover o estudante da turma onde tem aquela uc
@@ -613,6 +680,7 @@ void Menu::entrar() {
     std::cout<<"###########################################"<<std::endl<<std::endl;
 
     int k;
+    std::cout<<"Opcao: ";
     std::cin >> k;
 
     switch (k) {
@@ -642,12 +710,14 @@ void Menu::entrarTurma() {
     std::cout<<"#################################################################"<<std::endl;
 
     std::string turma;
+    std::cout << "Inserir Turma: ";
     std::cin >> turma;
     if (turma == "0") entrar();
     int numero;
+    std::cout << "Inserir numero de estudante: ";
     std::cin >> numero;
-
     std::string conjunto;
+    std::cout << "Inserir UCs (separadas por virgulas): ";
     std::cin >> conjunto;
     std::set<std::string> ucs;
     int lastPos = -1;
@@ -660,14 +730,15 @@ void Menu::entrarTurma() {
     ucs.insert(conjunto.substr(lastPos + 1));
     auto it = students.find(numero);
     for (std::string uc : ucs) {
-        if (addClass(turma, it -> second, uc)) std::cout << "Foi adicionado com sucesso." << std::endl;
-        else {
+        if (addClass(turma, it -> second, uc)){
+            std::cout << "Foi adicionado com sucesso." << std::endl;
+            waitingList();
+        }else {
             std::cout << "Nao foi possivel adicionar de momento, o seu pedido está registado." << std::endl;
-            requests.push(Request(numero,uc,turma));
+            requests.push(Request(numero,"ac",uc,"",turma));
         }
     }
-
-    entrarTurma();
+    entrar();
 }
 
 void Menu::entrarUC() {
@@ -684,9 +755,11 @@ void Menu::entrarUC() {
     std::cout<<"#################################################################"<<std::endl;
 
     int numero;
+    std::cout<<"Inserir numero de estudante: ";
     std::cin >> numero;
     if (numero == 0) entrar();
     std::string conjunto;
+    std::cout<<"Inserir UCs (separadas por virgulas): ";
     std::cin >> conjunto;
     std::set<std::string> ucs;
     int lastPos = -1;
@@ -700,14 +773,15 @@ void Menu::entrarUC() {
     auto it = students.find(numero);
     for (std::string uc : ucs) {
         std::cout << uc;
-        if (addUC(uc, it -> second)) std::cout << "Foi adicionado com sucesso." << std::endl;
-        else{
+        if (addUC(uc, it -> second)){
+            std::cout << "Foi adicionado com sucesso." << std::endl;
+            waitingList();
+        }else{
             std::cout << "Nao foi possivel adicionar de momento, o seu pedido está registado." << std::endl;
-            requests.push(Request(numero,uc));
+            requests.push(Request(numero,"au",uc));
         }
     }
-
-    entrarUC();
+    entrar();
 }
 
 void Menu::sair() {
@@ -726,6 +800,7 @@ void Menu::sair() {
     std::cout<<"###########################################"<<std::endl<<std::endl;
 
     int k;
+    std::cout<<"Opcao: ";
     std::cin >> k;
 
     switch (k) {
@@ -755,12 +830,14 @@ void Menu::sairTurma() {
     std::cout<<"#################################################################"<<std::endl;
 
     std::string turma;
+    std::cout<<"Inserir Turma:";
     std::cin >> turma;
     if (turma == "0") entrar();
     int numero;
+    std::cout<<"Inserir numero de estudante: ";
     std::cin >> numero;
-
     std::string conjunto;
+    std::cout<<"Inserir UCs (separadas por virgulas): ";
     std::cin >> conjunto;
     std::set<std::string> ucs;
     int lastPos = -1;
@@ -774,13 +851,15 @@ void Menu::sairTurma() {
     auto it = students.find(numero);
     for (std::string uc : ucs) {
         if (removeClass(turma, it -> second, uc)){
-            std::cout<<"Saída da turma "<<turma<< " com sucesso"<<std::endl;
+            std::cout<<"Saida da turma "<<turma<< " com sucesso"<<std::endl;
+            waitingList();
         }else{
-            std::cout<<"Saída da turma "<<turma<< " recusada"<<std::endl;
+            std::cout<<"Saida da turma "<<turma<< " recusada"<<std::endl;
+            requests.push(Request(numero,"rc",uc,"",turma));
         }
     }
 
-    sairTurma();
+    sair();
 }
 
 void Menu::sairUC() {
@@ -797,9 +876,11 @@ void Menu::sairUC() {
     std::cout<<"#################################################################"<<std::endl;
 
     int numero;
+    std::cout<<"Inserir numero de estudante: ";
     std::cin >> numero;
     if (numero == 0) entrar();
     std::string conjunto;
+    std::cout<<"Inserir UCs (separadas por virgulas): ";
     std::cin >> conjunto;
     std::set<std::string> ucs;
     int lastPos = -1;
@@ -813,13 +894,15 @@ void Menu::sairUC() {
     auto it = students.find(numero);
     for (std::string uc : ucs) {
         if (removeUC(uc, it -> second)){
-            std::cout<<"Saída da Uc "<<uc<< " com sucesso"<<std::endl;
+            std::cout<<"Saida da Uc "<<uc<< " com sucesso"<<std::endl;
+            waitingList();
         }else{
-            std::cout<<"Saída da Uc "<<uc<< " recusada"<<std::endl;
+            std::cout<<"Saida da Uc "<<uc<< " recusada"<<std::endl;
+            requests.push(Request(numero,"ru",uc));
         }
     }
 
-    sairUC();
+    sair();
 }
 void Menu::trocar(){
     std::cout<<std::endl;
@@ -836,6 +919,7 @@ void Menu::trocar(){
     std::cout<<"##                                       ##"<<std::endl;
     std::cout<<"###########################################"<<std::endl<<std::endl;
     int k;
+    std::cout<<"Opcao: ";
     std::cin>>k;
     if (k == 0)MenuBase();
     switch (k) {
@@ -863,21 +947,27 @@ void Menu::trocarT() {
     std::cout<<"##                                                             ##"<<std::endl;
     std::cout<<"#################################################################"<<std::endl;
     std::string tInicial;
+    std::cout << "Inserir turma atual: ";
     std::cin>>tInicial;
     if (tInicial == "0")trocar();
-    int nEstudante;
-    std::cin>>nEstudante;
+    int numero;
+    std::cin>>numero;
+    std::cout << "Inserir numero de estudante: ";
     std::string tFinal;
     std::cin>>tFinal;
+    std::cout << "Inserir nova turma: ";
     std::string uc;
+    std::cout << "Inserir UC: ";
     std::cin>>uc;
-    auto it = students.find(nEstudante);
+    auto it = students.find(numero);
     if (switchClass(it->second,tInicial,tFinal,uc)){
         std::cout<<"Troca realizada com sucesso"<<std::endl;
+        waitingList();
     }else{
-        std::cout<<"Não foi possível realizar a troca"<<std::endl;
+        std::cout<<"Nao foi possível realizar a troca"<<std::endl;
+        requests.push(Request(numero,"sc",uc,"",tInicial,tFinal));
     }
-    trocarT();
+    trocar();
 }
 void Menu::trocarU() {
     std::cout<<std::endl;
@@ -894,19 +984,24 @@ void Menu::trocarU() {
     std::cout<<"##                                                             ##"<<std::endl;
     std::cout<<"#################################################################"<<std::endl;
     std::string uInicial;
+    std::cout << "Inserir Uc atual: ";
     std::cin>>uInicial;
     if (uInicial == "0")trocar();
-    int nEstudante;
-    std::cin>>nEstudante;
+    int numero;
+    std::cin>>numero;
+    std::cout << "Inserir numero de estudante: ";
     std::string uFinal;
+    std::cout << "Inserir nova Uc: ";
     std::cin>>uFinal;
-    auto it = students.find(nEstudante);
+    auto it = students.find(numero);
     if (switchUC(it->second,uInicial,uFinal)){
         std::cout<<"Troca realizada com sucesso"<<std::endl;
+        waitingList();
     }else{
-        std::cout<<"Não foi possível realizar a troca"<<std::endl;
+        std::cout<<"Nao foi possível realizar a troca"<<std::endl;
+        requests.push(Request(numero,"su",uInicial,uFinal));
     }
-    trocarT();
+    trocar();
 }
 int biggestDiff(std::vector<std::pair<int,std::string>>a){
     int maxDiff = 0;
@@ -949,11 +1044,11 @@ bool Menu::switchUC(Student& student,std::string ucInicial,std::string ucFinal){
             std::cout<<"As suas trocas foram efetuadas com sucesso"<<std::endl;
             return true;
         }else{
-            std::cout<<"Não foi possível entrar na Uc final"<<std::endl;
+            std::cout<<"Nao foi possivel entrar na Uc final"<<std::endl;
             addUC(ucInicial,student);//Repor o estudante na uc inicial
         }
     }else{
-        std::cout<<"Não foi possível sair da Uc inicial"<<std::endl;
+        std::cout<<"Nao foi possivel sair da Uc inicial"<<std::endl;
     }
     return false;
 }
@@ -971,6 +1066,77 @@ bool Menu::switchClass(Student& student,Turma tInicial,Turma tFinal,std::string 
     }
     return false;
 }
+void Menu::waitingList(){
+    std::queue<Request> nova;
+    bool flag = false;
+    while (requests.size() > 0){
+        Request request = requests.front();
+        requests.pop();
+        std::string rc = request.requestCode;
+        auto it = students.find(request.studentNumber);
+        if (!flag){
+            if (rc == "ac"){
+                if(addClass(request.OptionalClassI,it->second,request.Uc)){
+                    flag = true;
+                    std::cout<<"Uma vaga na lista de espera foi colocada com sucesso"<<std::endl;
+                }else{
+                    nova.push(request);
+                }
+            }else if(rc == "au"){
+                if(addUC(request.Uc,it->second)){
+                    flag = true;
+                    std::cout<<"Uma vaga na lista de espera foi colocada com sucesso"<<std::endl;
+                }else{
+                    nova.push(request);
+                }
+            }else if (rc == "rc"){
+                if(removeClass(request.OptionalClassI,it->second,request.Uc)){
+                    flag = true;
+                    std::cout<<"Uma vaga na lista de espera foi colocada com sucesso"<<std::endl;
+                }else{
+                    nova.push(request);
+                }
+            }else if (rc == "ru"){
+                if (removeUC(request.Uc,it->second)){
+                    flag = true;
+                    std::cout<<"Uma vaga na lista de espera foi colocada com sucesso"<<std::endl;
+                }else{
+                    nova.push(request);
+                }
+            }else if (rc == "sc"){
+                if(switchClass(it->second,request.OptionalClassI,request.OptionalClassF,request.Uc)){
+                    flag = true;
+                    std::cout<<"Uma vaga na lista de espera foi colocada com sucesso"<<std::endl;
+                }else{
+                    nova.push(request);
+                }
+            }else if (rc == "su"){
+                if(switchUC(it->second,request.Uc,request.UcFinal)){
+                    flag = true;
+                    std::cout<<"Uma vaga na lista de espera foi colocada com sucesso"<<std::endl;
+                }else{
+                    nova.push(request);
+                }
+            }
+        }else{
+            nova.push(request);
+        }
+    }
+    requests = nova;
+}
+void Menu::showWaitingList(){
+    std::queue<Request> nova;
+    while (!requests.empty()) {
+        std::cout << requests.front().requestCode << " ";
+        nova.push(requests.front());
+        requests.pop();
+    }
+    requests = nova;
+    MenuBase();
+}
+void Menu::closeMenu(){}
+
+
 
 
 

@@ -9,13 +9,14 @@
 #include <string>
 
 class Request {
-private:
-    int studentNumber;
-    std::string Uc;
-    std::string OptionalClass;//Turma desejada
 public:
-    Request(int studentNumber,std::string Uc);
-    Request(int studentNumber,std::string Uc, std::string OptionalClass);
+    Request(int studentNumber, std::string requestCode, std::string Uc, std::string UcFinal = "", std::string OptionalClassI = "", std::string OptionalClassF = "");
+    int studentNumber;
+    std::string requestCode;
+    std::string Uc;
+    std::string UcFinal;
+    std::string OptionalClassI;
+    std::string OptionalClassF;
 };
 
 

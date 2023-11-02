@@ -4,13 +4,5 @@
 
 #include "Request.h"
 
-Request::Request(int studentNumber, std::string Uc){
-    this->studentNumber = studentNumber;
-    this->Uc = Uc;
-    this->OptionalClass = "";
-}
-Request::Request(int studentNumber, std::string Uc, std::string OptionalClass) {
-    this->studentNumber = studentNumber;
-    this->Uc = Uc;
-    this->OptionalClass = OptionalClass;
-}
+Request::Request(int studentNumber, std::string requestCode, std::string Uc, std::string UcFinal, std::string OptionalClassI, std::string OptionalClassF)
+        : studentNumber(studentNumber), requestCode(requestCode), Uc(Uc), UcFinal(UcFinal), OptionalClassI(OptionalClassI), OptionalClassF(OptionalClassF) {}

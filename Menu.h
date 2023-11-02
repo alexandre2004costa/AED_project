@@ -11,12 +11,11 @@ private:
     std::queue<Request> requests;
 public:
     Menu(std::vector<Turma> t,std::unordered_map<int,Student> s);
-    std::vector<Turma>& getTurmas();
-    std::unordered_map<int,Student>& getStudents();
     void MenuBase();
     void Horario();
         void HorarioE();
         void HorarioT();
+        void HorarioTU();
     void Estudante();
         void EstudanteT();
         void EstudanteC();
@@ -34,10 +33,10 @@ public:
     void sair();
         void sairTurma();
         void sairUC();
-
     void trocar();
         void trocarT();
         void trocarU();
+    void closeMenu();
     bool testBalance(std::string pedido,std::string turma,std::string uc);
     bool addUC(std::string uc, Student& student);
     bool removeUC(std::string uc, Student& student);
@@ -45,5 +44,7 @@ public:
     bool removeClass(Turma turma, Student& student, std::string uc);
     bool switchClass(Student& student,Turma tInicial,Turma tFinal,std::string uc);
     bool switchUC(Student& student,std::string ucInicial,std::string ucFinal);
+    void waitingList();
+    void showWaitingList();
 
 };
