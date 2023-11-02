@@ -11,6 +11,8 @@
 class Request {
 public:
     Request(int studentNumber, std::string requestCode, std::string Uc, std::string UcFinal = "", std::string OptionalClassI = "", std::string OptionalClassF = "");
+    void show();
+    std::string ToFileFormat();
     int studentNumber;
     std::string requestCode;
     std::string Uc;

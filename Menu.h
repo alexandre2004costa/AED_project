@@ -10,7 +10,7 @@ private:
     std::unordered_map<int,Student> students;
     std::queue<Request> requests;
 public:
-    Menu(std::vector<Turma> t,std::unordered_map<int,Student> s);
+    Menu(std::vector<Turma> t,std::unordered_map<int,Student> s,std::queue<Request> r);
     void MenuBase();
     void Horario();
         void HorarioE();
@@ -40,9 +40,9 @@ public:
     bool testBalance(std::string pedido,std::string turma,std::string uc);
     bool addUC(std::string uc, Student& student);
     bool removeUC(std::string uc, Student& student);
-    bool addClass(Turma turma, Student& student, std::string uc);
-    bool removeClass(Turma turma, Student& student, std::string uc);
-    bool switchClass(Student& student,Turma tInicial,Turma tFinal,std::string uc);
+    bool addClass(std::string turma, Student& student, std::string uc);
+    bool removeClass(std::string turma, Student& student, std::string uc);
+    bool switchClass(Student& student,std::string tInicial,std::string tFinal,std::string uc);
     bool switchUC(Student& student,std::string ucInicial,std::string ucFinal);
     void waitingList();
     void showWaitingList();

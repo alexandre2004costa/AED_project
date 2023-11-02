@@ -24,10 +24,8 @@ int Schedule::numberOfUCs() {
     return count;
 }
 Schedule& Schedule::removeUcClasses(std::string uc){
-    std::cout<<classes.size();
     classes.erase(std::remove_if(classes.begin(), classes.end(), [uc](Class c) {
         return c.getUc() == uc;}), classes.end());
-    std::cout<<classes.size();
     return *this;
 }
 

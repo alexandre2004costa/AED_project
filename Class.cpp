@@ -29,6 +29,9 @@ bool Class::overlaps(Class c) {
     }
     return false;
 }
+std::string Class::transformToFileFormat(){
+    return classCode+","+UC+","+weekDay+","+ std::to_string(startTime)+","+ std::to_string(duration)+","+type;
+}
 
 
 

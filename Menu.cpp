@@ -1,10 +1,12 @@
 #include <algorithm>
+#include <fstream>
 #include "Menu.h"
 
 
-Menu::Menu(std::vector<Turma> t,std::unordered_map<int,Student> s){
+Menu::Menu(std::vector<Turma> t,std::unordered_map<int,Student> s,std::queue<Request> r){
     turmas = t;
     students = s;
+    requests = r;
 }
 void Menu::MenuBase(){
     std::cout<<std::endl;
@@ -40,6 +42,9 @@ void Menu::MenuBase(){
     std::cin>>k;
 
     switch (k){
+        case 0:
+            closeMenu();
+            exit(0);
         case 1:
             Horario();
         case 2:
@@ -58,9 +63,6 @@ void Menu::MenuBase(){
             trocar();
         case 9:
             showWaitingList();
-        case 0:
-            closeMenu();
-            break;
     }
     MenuBase();
 
@@ -626,10 +628,10 @@ bool Menu::removeUC(std::string uc, Student& student){
     return true;
 }
 
-bool Menu::addClass(Turma turma, Student& student, std::string uc) {
+bool Menu::addClass(std::string turma, Student& student, std::string uc) {
     for (Turma &t : turmas) {
-        if (turma.getClassCode() == t.getClassCode() && turma.studentsOfUC(uc) < 30 && testBalance("entrar",turma.getClassCode(),uc)) {
-            std::vector<Class> classes = turma.classesOfUC(uc);
+        if (turma == t.getClassCode() && t.studentsOfUC(uc) < 30 && testBalance("entrar",t.getClassCode(),uc)) {
+            std::vector<Class> classes = t.classesOfUC(uc);
             if (classes.size() == 0) return false;
             bool c = true;
             for (auto c1 : classes) {
@@ -638,10 +640,9 @@ bool Menu::addClass(Turma turma, Student& student, std::string uc) {
                 }
             }
             if (c) {
-                turma.addClassToG({student.getNumber(), uc});
+                t.addClassToG({student.getNumber(), uc});
                 for (auto cl : classes) student.addToSchedule(cl);
-                turma.addClassToG({student.getNumber(),uc});
-                student.showSchedule();
+                t.addClassToG({student.getNumber(),uc});
                 return true;
             }
         }
@@ -649,11 +650,11 @@ bool Menu::addClass(Turma turma, Student& student, std::string uc) {
     return false;
 }
 
-bool Menu::removeClass(Turma turma, Student& student, std::string uc) {
+bool Menu::removeClass(std::string turma, Student& student, std::string uc) {
     for (Turma &t : turmas){
-        if (turma.getClassCode() == t.getClassCode()){
-            if (testBalance("sair",turma.getClassCode(),uc)){
-                turma.removeStudent(student.getNumber(),uc);
+        if (turma == t.getClassCode()){
+            if (testBalance("sair",t.getClassCode(),uc)){
+                t.removeStudent(student.getNumber(),uc);
                 break;
             }
             return false;
@@ -734,7 +735,7 @@ void Menu::entrarTurma() {
             std::cout << "Foi adicionado com sucesso." << std::endl;
             waitingList();
         }else {
-            std::cout << "Nao foi possivel adicionar de momento, o seu pedido está registado." << std::endl;
+            std::cout << "Nao foi possivel adicionar de momento, o seu pedido esta registado." << std::endl;
             requests.push(Request(numero,"ac",uc,"",turma));
         }
     }
@@ -777,7 +778,7 @@ void Menu::entrarUC() {
             std::cout << "Foi adicionado com sucesso." << std::endl;
             waitingList();
         }else{
-            std::cout << "Nao foi possivel adicionar de momento, o seu pedido está registado." << std::endl;
+            std::cout << "Nao foi possivel adicionar de momento, o seu pedido esta registado." << std::endl;
             requests.push(Request(numero,"au",uc));
         }
     }
@@ -951,11 +952,11 @@ void Menu::trocarT() {
     std::cin>>tInicial;
     if (tInicial == "0")trocar();
     int numero;
-    std::cin>>numero;
     std::cout << "Inserir numero de estudante: ";
+    std::cin>>numero;
     std::string tFinal;
-    std::cin>>tFinal;
     std::cout << "Inserir nova turma: ";
+    std::cin>>tFinal;
     std::string uc;
     std::cout << "Inserir UC: ";
     std::cin>>uc;
@@ -964,7 +965,7 @@ void Menu::trocarT() {
         std::cout<<"Troca realizada com sucesso"<<std::endl;
         waitingList();
     }else{
-        std::cout<<"Nao foi possível realizar a troca"<<std::endl;
+        std::cout<<"Nao foi possivel realizar a troca"<<std::endl;
         requests.push(Request(numero,"sc",uc,"",tInicial,tFinal));
     }
     trocar();
@@ -988,8 +989,8 @@ void Menu::trocarU() {
     std::cin>>uInicial;
     if (uInicial == "0")trocar();
     int numero;
-    std::cin>>numero;
     std::cout << "Inserir numero de estudante: ";
+    std::cin>>numero;
     std::string uFinal;
     std::cout << "Inserir nova Uc: ";
     std::cin>>uFinal;
@@ -998,7 +999,7 @@ void Menu::trocarU() {
         std::cout<<"Troca realizada com sucesso"<<std::endl;
         waitingList();
     }else{
-        std::cout<<"Nao foi possível realizar a troca"<<std::endl;
+        std::cout<<"Nao foi possivel realizar a troca"<<std::endl;
         requests.push(Request(numero,"su",uInicial,uFinal));
     }
     trocar();
@@ -1006,14 +1007,11 @@ void Menu::trocarU() {
 int biggestDiff(std::vector<std::pair<int,std::string>>a){
     int maxDiff = 0;
     int minValue = INT_MAX;
+    int maxValue = 0;
     for (auto pair : a) {
-        if (pair.first < minValue) {
-            minValue = pair.first;
-        }
-        int diff = pair.first - minValue;
-        if (diff > maxDiff) {
-            maxDiff = diff;
-        }
+        minValue = std::min(minValue,pair.first);
+        maxValue = std::max(maxValue,pair.first);
+        maxDiff = std::max(maxValue-minValue,maxDiff);
     }
     return maxDiff;
 }
@@ -1041,29 +1039,19 @@ bool Menu::testBalance(std::string pedido,std::string turma,std::string uc){
 bool Menu::switchUC(Student& student,std::string ucInicial,std::string ucFinal){
     if (removeUC(ucInicial,student)){
         if(addUC(ucFinal,student)){
-            std::cout<<"As suas trocas foram efetuadas com sucesso"<<std::endl;
             return true;
         }else{
-            std::cout<<"Nao foi possivel entrar na Uc final"<<std::endl;
             addUC(ucInicial,student);//Repor o estudante na uc inicial
-        }
-    }else{
-        std::cout<<"Nao foi possivel sair da Uc inicial"<<std::endl;
-    }
+        }}
     return false;
 }
-bool Menu::switchClass(Student& student,Turma tInicial,Turma tFinal,std::string uc){
+bool Menu::switchClass(Student& student,std::string tInicial,std::string tFinal,std::string uc){
     if (removeClass(tInicial,student,uc)){
         if(addClass(tFinal,student,uc)){
-            std::cout<<"As suas trocas foram efetuadas com sucesso"<<std::endl;
             return true;
         }else{
-            std::cout<<"Não foi possível entrar na Uc final"<<std::endl;
             addClass(tFinal,student,uc);//Repor o estudante na turma inicial
-        }
-    }else{
-        std::cout<<"Não foi possível sair da Uc inicial"<<std::endl;
-    }
+        }}
     return false;
 }
 void Menu::waitingList(){
@@ -1127,14 +1115,45 @@ void Menu::waitingList(){
 void Menu::showWaitingList(){
     std::queue<Request> nova;
     while (!requests.empty()) {
-        std::cout << requests.front().requestCode << " ";
+        requests.front().show();
         nova.push(requests.front());
         requests.pop();
     }
     requests = nova;
     MenuBase();
 }
-void Menu::closeMenu(){}
+void Menu::closeMenu(){
+    std::ofstream out("classes.csv", std::ofstream::out | std::ofstream::trunc);
+    out << "ClassCode,UcCode,Weekday,StartHour,Duration,Type"<<std::endl;
+    for(Turma turma : turmas){
+        for(auto k : turma.getSchedule().getClasses()){
+            out << k.transformToFileFormat() << std::endl;
+        }
+    }
+    out.close();
+    std::string lastTurma = "";
+    std::string lastUc = "";
+    std::ofstream out2("students_classes.csv", std::ofstream::out | std::ofstream::trunc);
+    out2 << "StudentCode,StudentName,UcCode,ClassCode"<<std::endl;
+    for (auto pair : students){
+        for (auto k : pair.second.getSchedule().getClasses()){
+            std::string turma = k.getClassCode();
+            std::string uc = k.getUc();
+            if (lastTurma != turma || lastUc != uc){
+                out2 <<pair.first <<","<<pair.second.getName()<<","<<uc<<","<<turma<<std::endl;
+            }
+            lastUc = uc;
+            lastTurma = turma;
+        }
+    }
+    out2.close();
+    std::ofstream out3("Waiting.csv", std::ofstream::out | std::ofstream::trunc);
+    while (!requests.empty()) {
+        out3 << requests.front().ToFileFormat();
+        requests.pop();
+    }
+    out3.close();
+}
 
 
 

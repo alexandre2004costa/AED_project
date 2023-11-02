@@ -21,6 +21,7 @@ public:
     std::string getUc();
     std::string getClassCode();
     bool overlaps(Class c);
+    std::string transformToFileFormat();
 };
 
 

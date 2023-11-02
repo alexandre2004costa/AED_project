@@ -95,6 +95,9 @@ void loadingInfoToClasses(std::vector<Turma>& turmas){
         }   
     }
 }
+void loadWaitingList(std::queue<Request> &requests){
+
+}
 
 
 
@@ -103,7 +106,9 @@ int main() {
     loadingInfoToClasses(turmas);
     std::unordered_map<int,Student> students;
     loadingInfoToStudents(students,turmas);
-    Menu menu = Menu(turmas,students);
+    std::queue<Request> requests;
+    loadWaitingList(requests);
+    Menu menu = Menu(turmas,students,requests);
     menu.MenuBase();
     return 0;
 }
