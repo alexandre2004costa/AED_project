@@ -17,6 +17,7 @@ public:
         void HorarioT();
         void HorarioTU();
     void Estudante();
+        int SortingOpctionE();
         void EstudanteT();
         void EstudanteC();
         void EstudanteA();

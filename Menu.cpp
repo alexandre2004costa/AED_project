@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <fstream>
+#include <iomanip>
 #include "Menu.h"
 
 
@@ -240,6 +241,30 @@ void Menu::Estudante(){
             MenuBase();
     }
     Estudante();
+
+}
+int Menu::SortingOpctionE(){
+    std::cout<<"#############################################"<<std::endl;
+    std::cout<<"##                                         ##"<<std::endl;
+    std::cout<<"##   Tipos:                                ## "<<std::endl;
+    std::cout<<"##                                         ##"<<std::endl;
+    std::cout<<"##      1 -> Estudante                     ##"<<std::endl;
+    std::cout<<"##                                         ##"<<std::endl;
+    std::cout<<"##      2 -> Numero                        ##"<<std::endl;
+    std::cout<<"##                                         ##"<<std::endl;
+    std::cout<<"##      3 -> Estudante e numero            ##"<<std::endl;
+    std::cout<<"##                                         ##"<<std::endl;
+    std::cout<<"##      4 -> Estudante e Uc                ##"<<std::endl;
+    std::cout<<"##                                         ##"<<std::endl;
+    std::cout<<"##      5 -> Numero e Uc                   ##"<<std::endl;
+    std::cout<<"##                                         ##"<<std::endl;
+    std::cout<<"##      6 -> Estudante e turma             ##"<<std::endl;
+    std::cout<<"##                                         ##"<<std::endl;
+    std::cout<<"##      4 -> Numero e turma                ##"<<std::endl;
+    std::cout<<"##                                         ##"<<std::endl;
+    std::cout<<"##      0 -> Voltar                        ##"<<std::endl;
+    std::cout<<"##                                         ##"<<std::endl;
+    std::cout<<"#############################################"<<std::endl<<std::endl;
 
 }
 void Menu::EstudanteT(){
@@ -1119,6 +1144,7 @@ void Menu::showWaitingList(){
         nova.push(requests.front());
         requests.pop();
     }
+    std::cout<<"Temos um total de "<<nova.size()<<" pedidos pendentes"<<std::endl;
     requests = nova;
     MenuBase();
 }

@@ -8,6 +8,7 @@
 
 #include <string>
 
+
 class Request {
 public:
     Request(std::string requestCode,int studentNumber,std::string Uc,std::string OptionalClassI = "", std::string OptionalClassF = "", std::string UcFinal = "");

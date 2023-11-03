@@ -2,6 +2,7 @@
 // Created by Alexandre on 08/10/2023.
 //
 
+#include <iomanip>
 #include "Class.h"
 Class::Class(std::string uc,std::string wd,std::string tp,double st,double dur, std::string cC){
     UC = uc;
@@ -30,7 +31,10 @@ bool Class::overlaps(Class c) {
     return false;
 }
 std::string Class::transformToFileFormat(){
-    return classCode+","+UC+","+weekDay+","+ std::to_string(startTime)+","+ std::to_string(duration)+","+type;
+    std::stringstream ss;
+    ss << std::fixed << std::setprecision(1);//Número de casas decimais dos double values
+    ss << classCode << "," << UC << "," << weekDay << "," << startTime << "," << duration << "," << type;
+    return ss.str();
 }
 
 

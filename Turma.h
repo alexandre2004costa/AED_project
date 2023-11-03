@@ -12,10 +12,10 @@ class Turma {
 private:
     std::string classCode;
     Schedule schedule;
-    std::set<std::pair<int, std::string>>nEstudanteCadeira;
+    std::set<std::pair<int, std::string>>nEstudanteCadeira; // Estrutura q guarda a que Uc o Nºestudante está associado dentro desta Turma
 
 public:
-    Turma();
+    Turma(); // Construtor default
     Turma(std::string classCode);
     void showEstudanteUc();
     void showSchedule();

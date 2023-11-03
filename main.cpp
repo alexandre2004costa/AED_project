@@ -11,33 +11,28 @@ std::vector<std::string> strings(std::string input) {
     std::vector<std::string> substrings;
     std::string substring;
     for (char k : input) {
-        if (k == ',') {
-            // Encontrou uma vírgula, adicionar a substring à lista
+        if (k == ',') {// Encontrou uma vírgula, adicionar a substring à lista
             if (!substring.empty()) {
                 substrings.push_back(substring);
                 substring = "";//Reset
             }
-        } else {
-            // Não é uma vírgula, adicionar o caractere à substring
+        } else {// Não é uma vírgula, adicionar o caractere à substring
             substring += k;
         }
     }
-    // Último caso
+    // Adicionar a última ocorrência
     if (!substring.empty()) {
         substrings.push_back(substring);
     }
     return substrings;
 }
 
-
 void addClassToStudent(Student &student,std::string uc,std::string classC , std::vector<Turma> &turmas){
     for (Turma &turma: turmas){
         if (classC == turma.getClassCode()){
-            turma.addClassToG(std::make_pair(student.getNumber(),uc));
-            for (Class c : turma.getSchedule().getClasses()){
-                if (c.getUc() == uc){
-                    student.addToSchedule(c);
-                }
+            turma.addClassToG(std::make_pair(student.getNumber(),uc));// Adicionar o par Nºestudante:Uc à estrutura nEstudanteCadeira
+            for (Class c : turma.classesOfUC(uc)){
+                    student.addToSchedule(c); // Adicionar as aulas ao horário do Estudante
             }
         }
 
@@ -57,22 +52,19 @@ void loadingInfoToStudents(std::unordered_map<int,Student>& students,std::vector
     while (std::getline(in, line)) {
         i++;
         if (i==1)continue; //Ignorar a linha de descrição
-        int number = std::stoi(line.substr(0, 9));
-        int k = line.find_first_of(',',10);
-        name = line.substr(10,k-10);
-        int k2 = line.find_first_of(',',k+1);
-        std::string ucCode = line.substr(k+1,k2-k-1);
-        std::string classCode = line.substr(k2+1);
-        if (number != lastNumber) {
-            if (student.getName() != " ") {
+        std::vector<std::string> p = strings(line);
+        int number = std::stoi(p[0]);
+        name = p[1];
+        if (number != lastNumber) { // Se tivermos passado para um novo estudante
+            if (student.getName() != " ") { // Para evitar o caso inicial
                 students.insert({ lastNumber, student });
             }
             student = Student(name, number);
         }
-        addClassToStudent(student,ucCode,classCode,turmas);
+        addClassToStudent(student,p[2],p[3],turmas); // Adicionar as aulas ao horário do Estudante e alterar a estrutura "nEstudanteCadeira" nas turmas que guarda a referencia da Uc em que aquele estudante atua naquela Turma.
         lastNumber = number;
     }
-
+    //Adicionar a última ocorrência
     students.insert({student.getNumber(),student});
     in.close();
 }
@@ -87,32 +79,18 @@ void loadingInfoToClasses(std::vector<Turma>& turmas){
     Turma t;
     while (std::getline(in, line)) {
         i++;
-        if (i==1)continue; //Ignorar a linha de descrição
-        int k = line.find_first_of(',');
-        std::string classCode = line.substr(0,k);
-        int k2 = line.find_first_of(',',k+1);
-        std::string uc = line.substr(k+1,k2-k-1);
-        k = k2;
-        k2 = line.find_first_of(',',k+1);
-        std::string weekDay = line.substr(k+1,k2-k-1);
-        k = k2;
-        k2 = line.find_first_of(',',k+1);
-        std::string st = line.substr(k+1,k2-k);
-        double initialTime = std::stod(st); 
-        k = k2;
-        k2 = line.find_first_of(',',k+1);
-        std::string dur = line.substr(k+1,k2-k);
-        double duration = std::stod(dur);
-        std::string type = line.substr(k2+1);
-        Class aula = Class(uc,weekDay,type,initialTime,duration,classCode);
-        bool isIn = false;
+        if (i==1)continue; // Ignorar a linha de descrição
+        std::vector<std::string> p = strings(line);
+        Class aula = Class(p[1],p[2],p[5],std::stod(p[3]),std::stod(p[4]),p[0]);
+        std::string  classCode = p[0];
+        bool isIn = false; // Esta flag confirma se a turma da aula em que estamos já exite no vetor
         for (auto &turma : turmas){
             if (turma.getClassCode()==classCode){
-                isIn = true;
+                isIn = true; // A turma já existe no vetor
                 turma.addClassToS(aula);
                 }
             }
-        if (!isIn){
+        if (!isIn){ // Se a turma não existe no vetor nós adicionamos
             t = Turma(classCode);
             t.addClassToS(aula);
             turmas.push_back(t);    
@@ -122,7 +100,7 @@ void loadingInfoToClasses(std::vector<Turma>& turmas){
 void loadWaitingList(std::queue<Request> &requests){
     std::ifstream in ("Waiting.csv");
     if (!in.is_open()) {
-        std::cout << "Erro ao abrir o arquivo." << std::endl;
+        std::cout << "Ainda não existe um ficheiro de lista de espera." << std::endl;
         return;
     }
     std::string line;
@@ -130,10 +108,9 @@ void loadWaitingList(std::queue<Request> &requests){
     Turma t;
     while (std::getline(in, line)) {
         i++;
-        if (i == 1)continue;
+        if (i == 1)continue;//Ignorar a linha de descrição
         std::string requestCode = line.substr(0,2);
         std::vector<std::string> p = strings(line.substr(3));
-        for(auto k : p)std::cout<<" : "<<k;
         if (requestCode == "ac")requests.push(Request("ac",std::stoi(p[0]),p[1],p[2]));
         else if(requestCode == "au")requests.push(Request("au",std::stoi(p[0]),p[1]));
         else if (requestCode == "rc")requests.push(Request("rc",std::stoi(p[0]),p[1],p[2]));
@@ -147,12 +124,12 @@ void loadWaitingList(std::queue<Request> &requests){
 
 int main() {
     std::vector<Turma> turmas;
-    loadingInfoToClasses(turmas);
+    loadingInfoToClasses(turmas); // Carregar a informação que está no ficheiro classes.csv e guardar no vetor de Turmas
     std::unordered_map<int,Student> students;
-    loadingInfoToStudents(students,turmas);
+    loadingInfoToStudents(students,turmas);// Carregar a informação que está no ficheiro students_classes.csv e guardar no vetor de Estudantes, com a ajuda do vetor das Turmas também cria o horário dos Estudantes
     std::queue<Request> requests;
-    loadWaitingList(requests);
-    Menu menu = Menu(turmas,students,requests);
-    menu.MenuBase();
+    loadWaitingList(requests);// Carregar os pedidos pendentes que estão no ficheiro Waiting.csv
+    Menu menu = Menu(turmas,students,requests);//Iniciar o nosso menu passando as nossas Turmas, Estudantes e Requests
+    menu.MenuBase(); // Mostrar a interface inicial do menu
     return 0;
 }
