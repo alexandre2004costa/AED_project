@@ -6,6 +6,30 @@
 #include "Menu.h"
 #include <unordered_map>
 
+// Função para extrair substrings entre vírgulas
+std::vector<std::string> strings(std::string input) {
+    std::vector<std::string> substrings;
+    std::string substring;
+    for (char k : input) {
+        if (k == ',') {
+            // Encontrou uma vírgula, adicionar a substring à lista
+            if (!substring.empty()) {
+                substrings.push_back(substring);
+                substring = "";//Reset
+            }
+        } else {
+            // Não é uma vírgula, adicionar o caractere à substring
+            substring += k;
+        }
+    }
+    // Último caso
+    if (!substring.empty()) {
+        substrings.push_back(substring);
+    }
+    return substrings;
+}
+
+
 void addClassToStudent(Student &student,std::string uc,std::string classC , std::vector<Turma> &turmas){
     for (Turma &turma: turmas){
         if (classC == turma.getClassCode()){
@@ -96,7 +120,27 @@ void loadingInfoToClasses(std::vector<Turma>& turmas){
     }
 }
 void loadWaitingList(std::queue<Request> &requests){
-
+    std::ifstream in ("Waiting.csv");
+    if (!in.is_open()) {
+        std::cout << "Erro ao abrir o arquivo." << std::endl;
+        return;
+    }
+    std::string line;
+    int i = 0;
+    Turma t;
+    while (std::getline(in, line)) {
+        i++;
+        if (i == 1)continue;
+        std::string requestCode = line.substr(0,2);
+        std::vector<std::string> p = strings(line.substr(3));
+        for(auto k : p)std::cout<<" : "<<k;
+        if (requestCode == "ac")requests.push(Request("ac",std::stoi(p[0]),p[1],p[2]));
+        else if(requestCode == "au")requests.push(Request("au",std::stoi(p[0]),p[1]));
+        else if (requestCode == "rc")requests.push(Request("rc",std::stoi(p[0]),p[1],p[2]));
+        else if (requestCode == "ru")requests.push(Request("ru",std::stoi(p[0]),p[1]));
+        else if (requestCode == "sc")requests.push(Request("sc",std::stoi(p[0]),p[1],p[2],p[3]));
+        else if (requestCode == "su")requests.push(Request("su",std::stoi(p[0]),p[1],"","",p[2]));
+    }
 }
 
 

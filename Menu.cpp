@@ -736,7 +736,7 @@ void Menu::entrarTurma() {
             waitingList();
         }else {
             std::cout << "Nao foi possivel adicionar de momento, o seu pedido esta registado." << std::endl;
-            requests.push(Request(numero,"ac",uc,"",turma));
+            requests.push(Request("ac",numero,uc,turma));
         }
     }
     entrar();
@@ -779,7 +779,7 @@ void Menu::entrarUC() {
             waitingList();
         }else{
             std::cout << "Nao foi possivel adicionar de momento, o seu pedido esta registado." << std::endl;
-            requests.push(Request(numero,"au",uc));
+            requests.push(Request("au",numero,uc));
         }
     }
     entrar();
@@ -856,7 +856,7 @@ void Menu::sairTurma() {
             waitingList();
         }else{
             std::cout<<"Saida da turma "<<turma<< " recusada"<<std::endl;
-            requests.push(Request(numero,"rc",uc,"",turma));
+            requests.push(Request("rc",numero,uc,turma));
         }
     }
 
@@ -899,7 +899,7 @@ void Menu::sairUC() {
             waitingList();
         }else{
             std::cout<<"Saida da Uc "<<uc<< " recusada"<<std::endl;
-            requests.push(Request(numero,"ru",uc));
+            requests.push(Request("ru",numero,uc));
         }
     }
 
@@ -966,7 +966,7 @@ void Menu::trocarT() {
         waitingList();
     }else{
         std::cout<<"Nao foi possivel realizar a troca"<<std::endl;
-        requests.push(Request(numero,"sc",uc,"",tInicial,tFinal));
+        requests.push(Request("sc",numero,uc,tInicial,tFinal));
     }
     trocar();
 }
@@ -1000,7 +1000,7 @@ void Menu::trocarU() {
         waitingList();
     }else{
         std::cout<<"Nao foi possivel realizar a troca"<<std::endl;
-        requests.push(Request(numero,"su",uInicial,uFinal));
+        requests.push(Request("su",numero,uInicial,"","",uFinal));
     }
     trocar();
 }
@@ -1148,8 +1148,9 @@ void Menu::closeMenu(){
     }
     out2.close();
     std::ofstream out3("Waiting.csv", std::ofstream::out | std::ofstream::trunc);
+    out3 <<"RequestCode,StudentNumber,Uc1,Turma1,Turma2,Uc2"<<std::endl;
     while (!requests.empty()) {
-        out3 << requests.front().ToFileFormat();
+        out3 << requests.front().ToFileFormat() <<std::endl;
         requests.pop();
     }
     out3.close();

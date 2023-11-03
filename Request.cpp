@@ -5,8 +5,13 @@
 #include <iostream>
 #include "Request.h"
 
-Request::Request(int studentNumber, std::string requestCode, std::string Uc, std::string UcFinal, std::string OptionalClassI, std::string OptionalClassF)
-        : studentNumber(studentNumber), requestCode(requestCode), Uc(Uc), UcFinal(UcFinal), OptionalClassI(OptionalClassI), OptionalClassF(OptionalClassF){}
+Request::Request(std::string requestCode, int studentNumber, std::string Uc, std::string OptionalClassI, std::string OptionalClassF, std::string UcFinal)
+        : requestCode(requestCode),
+          studentNumber(studentNumber),
+          Uc(Uc),
+          OptionalClassI(OptionalClassI),
+          OptionalClassF(OptionalClassF),
+          UcFinal(UcFinal) {}
 
 void Request::show(){
     if (requestCode == "ac")std::cout << "O aluno numero "<<studentNumber<<" quer entrar na turma "<<OptionalClassI<<" na cadeira "<<Uc<<std::endl;
@@ -17,10 +22,10 @@ void Request::show(){
     else if (requestCode == "su")std::cout << "O aluno numero "<<studentNumber<<" quer trocar da Uc "<<OptionalClassI<<" para a "<<OptionalClassF<<std::endl;
 }
 std::string Request::ToFileFormat(){
-    if (requestCode == "ac")return "O aluno numero "+ std::to_string(studentNumber) +" quer entrar na turma "+OptionalClassI+" na cadeira "+Uc;
-    else if(requestCode == "au")return "O aluno numero "+std::to_string(studentNumber)+" quer entrar na cadeira "+Uc;
-    else if (requestCode == "rc")return "O aluno numero "+std::to_string(studentNumber)+" quer sair da turma "+OptionalClassI+" na cadeira "+Uc;
-    else if (requestCode == "ru")return "O aluno numero "+std::to_string(studentNumber)+" quer sair da cadeira "+Uc;
-    else if (requestCode == "sc")return "O aluno numero "+std::to_string(studentNumber)+" quer trocar da turma "+OptionalClassI+" para a "+OptionalClassF;
-    else if (requestCode == "su")return "O aluno numero "+std::to_string(studentNumber)+" quer trocar da Uc "+OptionalClassI+" para a "+OptionalClassF;
+    if (requestCode == "ac")return requestCode + ","+std::to_string(studentNumber) +","+Uc+","+OptionalClassI;
+    else if(requestCode == "au")return requestCode + ","+std::to_string(studentNumber) +","+Uc;
+    else if (requestCode == "rc")return requestCode + ","+std::to_string(studentNumber) +","+Uc+","+OptionalClassI;
+    else if (requestCode == "ru")return requestCode + ","+std::to_string(studentNumber) +","+Uc;
+    else if (requestCode == "sc")return requestCode + ","+std::to_string(studentNumber) +","+Uc+","+OptionalClassI+","+OptionalClassF;
+    else if (requestCode == "su")return requestCode + ","+std::to_string(studentNumber) +","+Uc+","+OptionalClassI+","+OptionalClassF+","+UcFinal;
 }

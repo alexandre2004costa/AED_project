@@ -10,7 +10,7 @@
 
 class Request {
 public:
-    Request(int studentNumber, std::string requestCode, std::string Uc, std::string UcFinal = "", std::string OptionalClassI = "", std::string OptionalClassF = "");
+    Request(std::string requestCode,int studentNumber,std::string Uc,std::string OptionalClassI = "", std::string OptionalClassF = "", std::string UcFinal = "");
     void show();
     std::string ToFileFormat();
     int studentNumber;
