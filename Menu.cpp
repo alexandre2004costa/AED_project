@@ -34,6 +34,8 @@ void Menu::MenuBase(){
     std::cout<<"##                                                                   ##"<<std::endl;
     std::cout<<"##      9 -> Mostrar pedidos pendentes                               ##"<<std::endl;
     std::cout<<"##                                                                   ##"<<std::endl;
+    std::cout<<"##      10 -> Eliminar pedidos pendentes                             ##"<<std::endl;
+    std::cout<<"##                                                                   ##"<<std::endl;
     std::cout<<"##      0 -> Sair                                                    ##"<<std::endl;
     std::cout<<"##                                                                   ##"<<std::endl;
     std::cout<<"#######################################################################"<<std::endl<<std::endl;
@@ -64,6 +66,8 @@ void Menu::MenuBase(){
             trocar();
         case 9:
             showWaitingList();
+        case 10:
+            removeFWaitingList();
     }
     MenuBase();
 
@@ -243,10 +247,10 @@ void Menu::Estudante(){
     Estudante();
 
 }
-int Menu::SortingOpctionE(){
+void Menu::ShowOptionE(std::vector<std::pair<int,std::string>> infos){
     std::cout<<"#############################################"<<std::endl;
     std::cout<<"##                                         ##"<<std::endl;
-    std::cout<<"##   Tipos:                                ## "<<std::endl;
+    std::cout<<"##   O que quer printar:                   ## "<<std::endl;
     std::cout<<"##                                         ##"<<std::endl;
     std::cout<<"##      1 -> Estudante                     ##"<<std::endl;
     std::cout<<"##                                         ##"<<std::endl;
@@ -254,18 +258,103 @@ int Menu::SortingOpctionE(){
     std::cout<<"##                                         ##"<<std::endl;
     std::cout<<"##      3 -> Estudante e numero            ##"<<std::endl;
     std::cout<<"##                                         ##"<<std::endl;
-    std::cout<<"##      4 -> Estudante e Uc                ##"<<std::endl;
+    std::cout<<"##      0 -> Voltar                        ##"<<std::endl;
     std::cout<<"##                                         ##"<<std::endl;
-    std::cout<<"##      5 -> Numero e Uc                   ##"<<std::endl;
+    std::cout<<"#############################################"<<std::endl<<std::endl;
+    int k;
+    std::cout <<" Opcao: ";
+    std::cin >> k;
+    switch (k) {
+        case 0:
+            EstudanteT();
+        case 1:
+            SortingE(infos,false);
+        case 2:
+            SortingN(infos,false);
+        case 3:
+            SortingOptionE(infos);
+    }
+    ShowOptionE(infos);
+}
+void Menu::SortingOptionE(std::vector<std::pair<int,std::string>> infos){ // Apenas usado em estudante e número.
+    std::cout<<"#############################################"<<std::endl;
     std::cout<<"##                                         ##"<<std::endl;
-    std::cout<<"##      6 -> Estudante e turma             ##"<<std::endl;
+    std::cout<<"##   Por que parametro quer ordenar:       ## "<<std::endl;
     std::cout<<"##                                         ##"<<std::endl;
-    std::cout<<"##      4 -> Numero e turma                ##"<<std::endl;
+    std::cout<<"##      1 -> Estudante                     ##"<<std::endl;
+    std::cout<<"##                                         ##"<<std::endl;
+    std::cout<<"##      2 -> Numero                        ##"<<std::endl;
     std::cout<<"##                                         ##"<<std::endl;
     std::cout<<"##      0 -> Voltar                        ##"<<std::endl;
     std::cout<<"##                                         ##"<<std::endl;
     std::cout<<"#############################################"<<std::endl<<std::endl;
+    int k;
+    std::cout <<" Opcao: ";
+    std::cin >> k;
+    switch (k) {
+        case 0:
+            SortingOptionE(infos);
+        case 1:
+            SortingE(infos,true);
+        case 2:
+            SortingN(infos,true);
+    }
+    SortingOptionE(infos);
+}
+int partition(std::vector<std::pair<int, std::string>> &infos, int low, int high) {
+    std::string pivot = infos[high].second;
+    int i = low - 1;
+    for (int j = low; j < high; j++) {
+        if (infos[j].second < pivot) {
+            i++;
+            std::swap(infos[i], infos[j]);
+        }
+    }
+    std::swap(infos[i + 1], infos[high]);
+    return i + 1;
+}
 
+void quicksort(std::vector<std::pair<int, std::string>> &infos, int low, int high) { // Quick sorting algoritmo
+    if (low < high) {
+        int pivot = partition(infos, low, high);
+        quicksort(infos, low, pivot - 1);
+        quicksort(infos, pivot + 1, high);
+    }
+}
+void Menu::SortingE(std::vector<std::pair<int,std::string>> infos,bool both){
+    quicksort(infos,0,infos.size()-1);
+    if (both){
+        for (auto k : infos){
+            std::cout<< k.first << " : "<<k.second<<std::endl;
+        }
+    }else{
+        for (auto k : infos){
+            std::cout<< k.first << std::endl;
+        }
+    }
+    Estudante();
+}
+void selectionSort(std::vector<std::pair<int,std::string>> &infos) {
+    for (unsigned i = 0; i < infos.size()-1; i++) {
+        unsigned k = i;
+        for (unsigned j = i+1; j < infos.size(); j++)
+            if (infos[j].first < infos[k].first)
+                k = j;
+        swap(infos[i], infos[k]);
+    }
+}
+void Menu::SortingN(std::vector<std::pair<int,std::string>> infos,bool both){
+    selectionSort(infos);
+    if (both){
+        for (auto k : infos){
+            std::cout<< k.first << " : "<<k.second<<std::endl;
+        }
+    }else{
+        for (auto k : infos){
+            std::cout<< k.first << std::endl;
+        }
+    }
+    Estudante();
 }
 void Menu::EstudanteT(){
     std::cout<<std::endl;
@@ -284,6 +373,7 @@ void Menu::EstudanteT(){
     std::cout<<"Inserir Turma: ";
     std::cin>>k;
 
+    std::vector<std::pair<int,std::string>> infos;
     if (k == "0") Estudante();
     bool flag = true;
     for (auto t : turmas) {
@@ -292,8 +382,7 @@ void Menu::EstudanteT(){
             std::set<int> numbers = t.studentsOfTurma();
             for (int n : numbers) {
                 auto it = students.find(n);
-                Student student = it->second;
-                student.show();
+                infos.push_back({it->second.getNumber(),it->second.getName()});
             }
         }
     }
@@ -301,8 +390,7 @@ void Menu::EstudanteT(){
         std::cout << "Essa turma não existe" << std::endl;
         EstudanteT();
     }
-    Estudante();
-
+    ShowOptionE(infos);
 }
 void Menu::EstudanteC(){
     std::cout<<std::endl;
@@ -321,6 +409,7 @@ void Menu::EstudanteC(){
     std::string k;
     std::cout<<"Inserir UC: ";
     std::cin>>k;
+    std::vector<std::pair<int,std::string>> infos;
     if (k == "0") Estudante();
     bool flag2 = true;
     for (auto pair : students) {
@@ -330,14 +419,14 @@ void Menu::EstudanteC(){
         }
         if (flag){
             flag2 = false;
-            std::cout << pair.second.getName() << std::endl;
+            infos.push_back({pair.second.getNumber(),pair.second.getName()});
         }
     }
     if (flag2) {
         std::cout << "Essa Uc não existe" << std::endl;
         EstudanteC();
     }
-    Estudante();
+    ShowOptionE(infos);
 }
 void Menu::EstudanteA(){
     std::cout<<std::endl;
@@ -361,7 +450,7 @@ void Menu::EstudanteA(){
         std::cout<<"Insere um ano entre 1 e 3"<<std::endl;
         EstudanteA();
     }
-
+    std::vector<std::pair<int,std::string>> infos;
     std::set<int> numbers;
     for (auto turma : turmas) {
         if (turma.getClassCode()[0] == k + '0') {
@@ -373,11 +462,9 @@ void Menu::EstudanteA(){
     }
     for (int n : numbers) {
         auto it = students.find(n);
-        Student student = it->second;
-        student.show();
+        infos.push_back({it->second.getNumber(),it->second.getName()});
     }
-    Estudante();
-
+    ShowOptionE(infos);
 }
 
 void Menu::EstudanteTC(){
@@ -401,13 +488,14 @@ void Menu::EstudanteTC(){
     std::string uc;
     std::cout<<"Inserir Uc: ";
     std::cin>>uc;
+    std::vector<std::pair<int,std::string>> infos;
     bool flag = true;
     for (Turma t : turmas){
         if (t.getClassCode() == turma){
             if (t.studentsOfUC(uc) > 0)flag = false;
             for (auto k : t.studentsOfTurmaUc(uc)){
                 auto it = students.find(k);
-                it->second.show();
+                infos.push_back({it->second.getNumber(),it->second.getName()});
             }
             break;
         }
@@ -416,7 +504,7 @@ void Menu::EstudanteTC(){
         std::cout<<"Insere inputs válidos."<<std::endl;
         EstudanteTC();
     }
-    Estudante();
+    ShowOptionE(infos);
 }
 // Número de estudantes em pelo menos n UCs
 void Menu::NEstudantes(){
@@ -438,7 +526,6 @@ void Menu::NEstudantes(){
     int count = 0;
 
     if (k == 0) Estudante();
-
     for (auto pair : students) {
         int count2 = 0;
         std::string lastUc = "";
@@ -453,15 +540,9 @@ void Menu::NEstudantes(){
         }
     }
     std::cout << "O numero de estudantes e: " << count << std::endl;
-    NEstudantes();
+    MenuBase();
 }
 
-bool compareInts(std::pair<int, int> a, std::pair<int, int> b) {
-    return a.second > b.second;
-}
-bool compare(std::pair<std::string, int> a, std::pair<std::string, int> b) {
-    return a.second > b.second;
-}
 void Menu::Ocupacao() {
     std::cout<<std::endl;
     std::cout<<std::endl;
@@ -500,7 +581,42 @@ void Menu::Ocupacao() {
         Ocupacao();
 
 }
-
+void bubbleSort(std::vector<std::pair<int,int>> &v) {
+    for(unsigned int j = v.size()-1; j > 0; j--) {
+        bool troca = false;
+        for(unsigned int i = 0; i < j; i++)
+            if(v[i+1].second < v[i].second) {
+                swap(v[i],v[i+1]);
+                troca = true;
+            }
+        if (!troca) return;
+    }
+}
+void countingSort(std::vector<std::pair<std::string, int>> &v) {
+    if (v.empty())
+        return;
+    int min = v[0].second;
+    int max = v[0].second;
+    for (const auto &pair : v) {
+        if (pair.second < min) {
+            min = pair.second;
+        }
+        if (pair.second > max) {
+            max = pair.second;
+        }
+    }
+    std::vector<int> count(max - min + 1, 0);
+    for (const auto &pair : v) {
+        count[pair.second - min]++;
+    }
+    unsigned i = 0;
+    for (int c = 0; c < count.size(); c++) {
+        for (int j = 0; j < count[c]; j++) {
+            v[i].second = c + min;
+            i++;
+        }
+    }
+}
 void Menu::OcupacaoA() {
     std::unordered_map<int, int> anos;
 
@@ -518,8 +634,7 @@ void Menu::OcupacaoA() {
         if (flag3) anos[3]++;
     }
     std::vector<std::pair<int, int>> vetor(anos.begin(), anos.end());
-    std::sort(vetor.begin(), vetor.end(), compareInts);
-
+    bubbleSort(vetor);
 
     for (int i = 0; i < (int)vetor.size(); i++) {
         std::cout << "0 ano " << vetor[i].first << " tem " << vetor[i].second << " estudantes" << std::endl;
@@ -528,14 +643,11 @@ void Menu::OcupacaoA() {
 
 void Menu::OcupacaoT() {
     std::unordered_map<std::string, int> t;
-
     for (Turma turma : turmas) {
         t[turma.getClassCode()] = turma.numberOfStudents();
     }
     std::vector<std::pair<std::string, int>> v(t.begin(), t.end());
-    std::sort(v.begin(), v.end(), compare);
-
-
+    countingSort(v);
     for (int i = 0; i < (int)v.size(); i++) {
         std::cout << "A turma " << v[i].first << " tem " << v[i].second << " estudantes" << std::endl;
     }
@@ -554,9 +666,7 @@ void Menu::OcupacaoC() {
         }
     }
     std::vector<std::pair<std::string, int>> vetor(ucs.begin(), ucs.end());
-    std::sort(vetor.begin(), vetor.end(), compare);
-
-
+    countingSort(vetor);
     for (int i = 0; i < (int)vetor.size(); i++) {
         std::cout << vetor[i].first << " tem " << vetor[i].second << " estudantes" << std::endl;
     }
@@ -594,7 +704,7 @@ void Menu::MaiorN(){
         }
     }
     std::vector<std::pair<std::string, int>> vetor(ucCount.begin(), ucCount.end());
-    std::sort(vetor.begin(), vetor.end(), compare);
+    countingSort(vetor);
 
 
     for (int i = 0; i < std::min(k, (int)vetor.size()); i++) {
@@ -1139,10 +1249,13 @@ void Menu::waitingList(){
 }
 void Menu::showWaitingList(){
     std::queue<Request> nova;
+    int i = 1;
     while (!requests.empty()) {
+        std::cout << i <<" -> ";
         requests.front().show();
         nova.push(requests.front());
         requests.pop();
+        i++;
     }
     std::cout<<"Temos um total de "<<nova.size()<<" pedidos pendentes"<<std::endl;
     requests = nova;
@@ -1180,6 +1293,33 @@ void Menu::closeMenu(){
         requests.pop();
     }
     out3.close();
+}
+void Menu::removeFWaitingList(){
+    std::queue<Request> nova;
+    int i = 1;
+    while (!requests.empty()) {
+        std::cout << i <<" -> ";
+        requests.front().show();
+        nova.push(requests.front());
+        requests.pop();
+        i++;
+    }
+    requests = nova;
+    int k;
+    std::cout<<std::endl;
+    std::cout <<" Qual o pedido que pretende remover? ";
+    std::cin >> k;
+    std::queue<Request> nova2;
+    i = 1;
+    while (!requests.empty()) {
+        if (i != k)nova2.push(requests.front());
+        requests.pop();
+        i++;
+    }
+    requests = nova2;
+    std::cout<<std::endl;
+    std::cout <<"O seu pedido foi removido."<<std::endl;
+    MenuBase();
 }
 
 

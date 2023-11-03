@@ -17,7 +17,10 @@ public:
         void HorarioT();
         void HorarioTU();
     void Estudante();
-        int SortingOpctionE();
+        void ShowOptionE(std::vector<std::pair<int,std::string>> infos);
+        void SortingOptionE(std::vector<std::pair<int,std::string>> infos);
+        void SortingE(std::vector<std::pair<int,std::string>> infos,bool both);
+        void SortingN(std::vector<std::pair<int,std::string>> infos,bool both);
         void EstudanteT();
         void EstudanteC();
         void EstudanteA();
@@ -47,5 +50,6 @@ public:
     bool switchUC(Student& student,std::string ucInicial,std::string ucFinal);
     void waitingList();
     void showWaitingList();
+    void removeFWaitingList();
 
 };
