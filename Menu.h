@@ -31,6 +31,7 @@ public:
         void OcupacaoA();
         void OcupacaoT();
         void OcupacaoC();
+        void OcupationTC();
     void entrar();
         void entrarTurma();
         void entrarUC();

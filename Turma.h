@@ -4,6 +4,7 @@
 #include "Schedule.h"
 #include <map>
 #include <set>
+#include <list>
 #ifndef AED_PROJECT_TURMA_H
 #define AED_PROJECT_TURMA_H
 
@@ -12,7 +13,7 @@ class Turma {
 private:
     std::string classCode;
     Schedule schedule;
-    std::set<std::pair<int, std::string>>nEstudanteCadeira; // Estrutura q guarda a que Uc o Nºestudante está associado dentro desta Turma
+    std::list<std::pair<int, std::string>>nEstudanteCadeira; // Estrutura q guarda a que Uc o Nºestudante está associado dentro desta Turma
 
 public:
     Turma(); // Construtor default

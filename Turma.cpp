@@ -19,7 +19,7 @@ Schedule Turma::getSchedule(){
     return schedule;
 }
 void Turma::addClassToG(std::pair<int, std::string> par){
-    nEstudanteCadeira.insert(par);
+    nEstudanteCadeira.push_back(par);
 }
 int Turma::numberOfStudents(){
     int c = 0;
@@ -68,14 +68,7 @@ std::vector<Class> Turma::classesOfUC(std::string uc) {
     return classes;
 }
 void Turma::removeStudent(int n ,std::string uc){
-    auto it = nEstudanteCadeira.begin();
-    while (it != nEstudanteCadeira.end()) {
-        if (it->first == n && it->second == uc) {
-            it = nEstudanteCadeira.erase(it);
-        } else {
-            ++it;
-        }
-    }
+    nEstudanteCadeira.remove({n,uc});
 }
 bool Turma::haveUc(std::string uc){
     int year = classCode[0] - '0';

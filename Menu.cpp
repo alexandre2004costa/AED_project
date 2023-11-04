@@ -325,11 +325,11 @@ void Menu::SortingE(std::vector<std::pair<int,std::string>> infos,bool both){
     quicksort(infos,0,infos.size()-1);
     if (both){
         for (auto k : infos){
-            std::cout<< k.first << " : "<<k.second<<std::endl;
+            std::cout<< k.second << " : "<<k.first<<std::endl;
         }
     }else{
         for (auto k : infos){
-            std::cout<< k.first << std::endl;
+            std::cout<< k.second << std::endl;
         }
     }
     Estudante();
@@ -347,11 +347,11 @@ void Menu::SortingN(std::vector<std::pair<int,std::string>> infos,bool both){
     selectionSort(infos);
     if (both){
         for (auto k : infos){
-            std::cout<< k.first << " : "<<k.second<<std::endl;
+            std::cout<< k.second << " : "<<k.first<<std::endl;
         }
     }else{
         for (auto k : infos){
-            std::cout<< k.first << std::endl;
+            std::cout<< k.second << std::endl;
         }
     }
     Estudante();
@@ -525,7 +525,7 @@ void Menu::NEstudantes(){
     std::cin>>k;
     int count = 0;
 
-    if (k == 0) Estudante();
+    if (k == 0) MenuBase();
     for (auto pair : students) {
         int count2 = 0;
         std::string lastUc = "";
@@ -548,13 +548,15 @@ void Menu::Ocupacao() {
     std::cout<<std::endl;
     std::cout<<"#############################################"<<std::endl;
     std::cout<<"##                                         ##"<<std::endl;
-    std::cout<<"##   Ocupacao da turmas:                   ## "<<std::endl;
+    std::cout<<"##   Ocupacao do/a:                        ## "<<std::endl;
     std::cout<<"##                                         ##"<<std::endl;
     std::cout<<"##      1 -> Ano                           ##"<<std::endl;
     std::cout<<"##                                         ##"<<std::endl;
     std::cout<<"##      2 -> Turma                         ##"<<std::endl;
     std::cout<<"##                                         ##"<<std::endl;
     std::cout<<"##      3 -> UC                            ##"<<std::endl;
+    std::cout<<"##                                         ##"<<std::endl;
+    std::cout<<"##      4 -> Turma e Uc                    ##"<<std::endl;
     std::cout<<"##                                         ##"<<std::endl;
     std::cout<<"##      0 -> Voltar                        ##"<<std::endl;
     std::cout<<"##                                         ##"<<std::endl;
@@ -577,6 +579,8 @@ void Menu::Ocupacao() {
             case 3:
                 OcupacaoC();
                 break;
+            case 4:
+                OcupationTC();
         }
         Ocupacao();
 
@@ -592,31 +596,33 @@ void bubbleSort(std::vector<std::pair<int,int>> &v) {
         if (!troca) return;
     }
 }
-void countingSort(std::vector<std::pair<std::string, int>> &v) {
-    if (v.empty())
-        return;
-    int min = v[0].second;
-    int max = v[0].second;
-    for (const auto &pair : v) {
-        if (pair.second < min) {
-            min = pair.second;
-        }
-        if (pair.second > max) {
-            max = pair.second;
-        }
+void heapify(std::vector<std::pair<std::string, int>> &v, int n, int i) {
+    int largest = i;
+    int left = 2 * i + 1;
+    int right = 2 * i + 2;
+    if (left < n && v[left].second > v[largest].second) {
+        largest = left;
     }
-    std::vector<int> count(max - min + 1, 0);
-    for (const auto &pair : v) {
-        count[pair.second - min]++;
+    if (right < n && v[right].second > v[largest].second) {
+        largest = right;
     }
-    unsigned i = 0;
-    for (int c = 0; c < count.size(); c++) {
-        for (int j = 0; j < count[c]; j++) {
-            v[i].second = c + min;
-            i++;
-        }
+    if (largest != i) {
+        std::swap(v[i], v[largest]);
+        heapify(v, n, largest);
     }
 }
+void heapSort(std::vector<std::pair<std::string, int>> &v) {
+    int n = v.size();
+    for (int i = n / 2 - 1; i >= 0; i--) {
+        heapify(v, n, i);
+    }
+    for (int i = n - 1; i > 0; i--) {
+        std::swap(v[0], v[i]);
+        heapify(v, i, 0);
+    }
+}
+
+
 void Menu::OcupacaoA() {
     std::unordered_map<int, int> anos;
 
@@ -647,7 +653,7 @@ void Menu::OcupacaoT() {
         t[turma.getClassCode()] = turma.numberOfStudents();
     }
     std::vector<std::pair<std::string, int>> v(t.begin(), t.end());
-    countingSort(v);
+    heapSort(v);
     for (int i = 0; i < (int)v.size(); i++) {
         std::cout << "A turma " << v[i].first << " tem " << v[i].second << " estudantes" << std::endl;
     }
@@ -655,7 +661,6 @@ void Menu::OcupacaoT() {
 
 void Menu::OcupacaoC() {
     std::unordered_map<std::string, int> ucs;
-
     for (auto pair : students) {
         std::string lastUc = "";
         for (auto c : pair.second.getSchedule().getClasses()) {
@@ -666,9 +671,23 @@ void Menu::OcupacaoC() {
         }
     }
     std::vector<std::pair<std::string, int>> vetor(ucs.begin(), ucs.end());
-    countingSort(vetor);
+    heapSort(vetor);
     for (int i = 0; i < (int)vetor.size(); i++) {
         std::cout << vetor[i].first << " tem " << vetor[i].second << " estudantes" << std::endl;
+    }
+}
+void Menu::OcupationTC(){
+    std::unordered_map<std::string, int> t;
+    for (Turma turma : turmas) {
+        for (auto k : turma.getSchedule().getClasses()){
+            t[turma.getClassCode()+","+k.getUc()] = turma.studentsOfUC(k.getUc());
+        }
+    }
+    //for (auto k : t)std::cout << "A turma/Uc " << k.first << " tem " << k.second << " estudantes" << std::endl;
+    std::vector<std::pair<std::string, int>> v(t.begin(), t.end());
+    heapSort(v);
+    for (int i = 0; i < (int)v.size(); i++) {
+        std::cout << "A turma/Uc " << v[i].first << " tem " << v[i].second << " estudantes" << std::endl;
     }
 }
 
@@ -704,7 +723,7 @@ void Menu::MaiorN(){
         }
     }
     std::vector<std::pair<std::string, int>> vetor(ucCount.begin(), ucCount.end());
-    countingSort(vetor);
+    heapSort(vetor);
 
 
     for (int i = 0; i < std::min(k, (int)vetor.size()); i++) {
@@ -1182,6 +1201,7 @@ bool Menu::switchUC(Student& student,std::string ucInicial,std::string ucFinal){
 }
 bool Menu::switchClass(Student& student,std::string tInicial,std::string tFinal,std::string uc){
     if (removeClass(tInicial,student,uc)){
+
         if(addClass(tFinal,student,uc)){
             return true;
         }else{

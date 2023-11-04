@@ -22,6 +22,11 @@
   <component name="ChangeListManager">
     <list default="true" id="799d4d66-0da8-4f6c-a0d4-e101a7a0b386" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menu.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Menu.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menu.h" beforeDir="false" afterPath="$PROJECT_DIR$/Menu.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Turma.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Turma.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Turma.h" beforeDir="false" afterPath="$PROJECT_DIR$/Turma.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/students_classes.csv" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/students_classes.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,6 +102,9 @@
       <workItem from="1698916885512" duration="8869000" />
       <workItem from="1698945460009" duration="7449000" />
       <workItem from="1699003512202" duration="8268000" />
+      <workItem from="1699035297604" duration="5892000" />
+      <workItem from="1699096551892" duration="803000" />
+      <workItem from="1699109040595" duration="4566000" />
     </task>
     <servers />
   </component>
