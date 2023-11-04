@@ -103,7 +103,7 @@ void Menu::MenuBase(){
     std::cout<<"##                                                                   ##"<<std::endl;
     std::cout<<"##      11 -> Mostrar historico                                      ##"<<std::endl;
     std::cout<<"##                                                                   ##"<<std::endl;
-    std::cout<<"##      0 -> Sair                                                    ##"<<std::endl;
+    std::cout<<"##      0 -> Fechar Menu                                             ##"<<std::endl;
     std::cout<<"##                                                                   ##"<<std::endl;
     std::cout<<"#######################################################################"<<std::endl<<std::endl;
 
@@ -755,7 +755,7 @@ void Menu::MaiorN(){
     for (int i = 0; i < std::min(k, (int)vetor.size()); i++) {
         std::cout << vetor[i].first << " tem " << vetor[i].second << " estudantes" << std::endl;
     }
-    registers.push(k+" UCs com maior numero de estudantes visualizadas");
+    registers.push(std::to_string(k)+" UCs com maior numero de estudantes visualizadas");
     MaiorN();
 }
 
