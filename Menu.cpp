@@ -67,8 +67,8 @@ Menu::Menu(std::vector<Turma> t,std::unordered_map<int,Student> s,std::queue<Req
     students = s;
     requests = r;
     for (Turma &turma : turmas){
-        std::list<std::pair<int, std::string>> temp = turma.getnEstudanteCadeira();
-        temp.sort([](const std::pair<int, std::string>& a, const std::pair<int, std::string>& b) {return a.second < b.second;});
+        std::vector<std::pair<int, std::string>> temp = turma.getnEstudanteCadeira();
+        quicksort(temp,0,temp.size()-1);
         turma.setnEstudanteCadeira(temp);
     }
 }

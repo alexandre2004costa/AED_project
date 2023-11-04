@@ -22,8 +22,8 @@ int binarySearch(std::vector<std::pair<int, std::string>> temp, std::string targ
 Turma::Turma(){classCode=" ";}
 Turma::Turma(std::string classCode):classCode(classCode){};
 std::string Turma::getClassCode(){return classCode;}
-std::list<std::pair<int, std::string>> Turma::getnEstudanteCadeira(){return nEstudanteCadeira;}
-void Turma::setnEstudanteCadeira(std::list<std::pair<int, std::string>> a){
+std::vector<std::pair<int, std::string>> Turma::getnEstudanteCadeira(){return nEstudanteCadeira;}
+void Turma::setnEstudanteCadeira(std::vector<std::pair<int, std::string>> a){
     nEstudanteCadeira = a;
 }
 void Turma::showEstudanteUc(){
@@ -73,17 +73,16 @@ int Turma::studentsOfUC(std::string uc) {
 }
 std::set<int> Turma::studentsOfTurmaUc(std::string uc){
     std::set<int> res;
-    std::vector<std::pair<int, std::string>> vetor(nEstudanteCadeira.begin(), nEstudanteCadeira.end());
-    int k = binarySearch(vetor,uc);
-    res.insert(vetor[k].first);
+    int k = binarySearch(nEstudanteCadeira,uc);
+    res.insert(nEstudanteCadeira[k].first);
     int i = 0;
-    while(vetor[k-i].second == uc){
-        res.insert(vetor[k-i].first);
+    while(nEstudanteCadeira[k-i].second == uc){
+        res.insert(nEstudanteCadeira[k-i].first);
         i++;
     }
     i = 0;
-    while(vetor[k-i].second == uc){
-        res.insert(vetor[k-i].first);
+    while(nEstudanteCadeira[k-i].second == uc){
+        res.insert(nEstudanteCadeira[k-i].first);
         i++;
     }
     return res;
@@ -97,7 +96,12 @@ std::vector<Class> Turma::classesOfUC(std::string uc) {
     return classes;
 }
 void Turma::removeStudent(int n ,std::string uc){
-    nEstudanteCadeira.remove({n,uc});
+    for (auto it = nEstudanteCadeira.begin(); it != nEstudanteCadeira.end(); ++it) {
+        if (it->first == n && it->second == uc) {
+            nEstudanteCadeira.erase(it);
+            break;
+        }
+    }
 }
 bool Turma::haveUc(std::string uc){
     int year = classCode[0] - '0';

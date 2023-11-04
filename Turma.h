@@ -13,7 +13,7 @@ class Turma {
 private:
     std::string classCode;
     Schedule schedule;
-    std::list<std::pair<int, std::string>>nEstudanteCadeira; // Estrutura q guarda a que Uc o Nºestudante está associado dentro desta Turma
+    std::vector<std::pair<int, std::string>>nEstudanteCadeira; // Estrutura q guarda a que Uc o Nºestudante está associado dentro desta Turma
 
 public:
     Turma(); // Construtor default
@@ -23,8 +23,8 @@ public:
 
     std::string getClassCode();
     Schedule getSchedule();
-    std::list<std::pair<int, std::string>> getnEstudanteCadeira();
-    void setnEstudanteCadeira(std::list<std::pair<int, std::string>> a);
+    std::vector<std::pair<int, std::string>> getnEstudanteCadeira();
+    void setnEstudanteCadeira(std::vector<std::pair<int, std::string>> a);
 
     void addClassToS(Class c);
     void addClassToG(std::pair< int , std::string>);
