@@ -3,10 +3,29 @@
 //
 
 #include "Turma.h"
+
+int binarySearch(std::vector<std::pair<int, std::string>> temp, std::string target) {
+    int low = 0;
+    int high = temp.size() - 1;
+    while (low <= high) {
+        int mid = low + (high - low) / 2;
+        if (temp[mid].second == target) {
+            return mid;
+        } else if (temp[mid].second < target) {
+            low = mid + 1;
+        } else {
+            high = mid - 1;
+        }
+    }
+    return -1;
+}
 Turma::Turma(){classCode=" ";}
 Turma::Turma(std::string classCode):classCode(classCode){};
 std::string Turma::getClassCode(){return classCode;}
-
+std::list<std::pair<int, std::string>> Turma::getnEstudanteCadeira(){return nEstudanteCadeira;}
+void Turma::setnEstudanteCadeira(std::list<std::pair<int, std::string>> a){
+    nEstudanteCadeira = a;
+}
 void Turma::showEstudanteUc(){
     for (auto k : nEstudanteCadeira){
         std::cout << k.first << " in "<<k.second<<std::endl;
@@ -53,11 +72,21 @@ int Turma::studentsOfUC(std::string uc) {
     return count;
 }
 std::set<int> Turma::studentsOfTurmaUc(std::string uc){
-    std::set<int> numbers;
-    for (auto pair : nEstudanteCadeira) {
-        if (pair.second == uc)numbers.insert(pair.first);
+    std::set<int> res;
+    std::vector<std::pair<int, std::string>> vetor(nEstudanteCadeira.begin(), nEstudanteCadeira.end());
+    int k = binarySearch(vetor,uc);
+    res.insert(vetor[k].first);
+    int i = 0;
+    while(vetor[k-i].second == uc){
+        res.insert(vetor[k-i].first);
+        i++;
     }
-    return numbers;
+    i = 0;
+    while(vetor[k-i].second == uc){
+        res.insert(vetor[k-i].first);
+        i++;
+    }
+    return res;
 }
 
 std::vector<Class> Turma::classesOfUC(std::string uc) {

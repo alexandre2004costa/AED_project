@@ -2,12 +2,12 @@
 // Created by Alexandre on 08/10/2023.
 //
 #include "Schedule.h"
+
 #include <map>
 #include <set>
 #include <list>
 #ifndef AED_PROJECT_TURMA_H
 #define AED_PROJECT_TURMA_H
-
 
 class Turma {
 private:
@@ -20,10 +20,15 @@ public:
     Turma(std::string classCode);
     void showEstudanteUc();
     void showSchedule();
+
     std::string getClassCode();
-    void addClassToS(Class c);
     Schedule getSchedule();
+    std::list<std::pair<int, std::string>> getnEstudanteCadeira();
+    void setnEstudanteCadeira(std::list<std::pair<int, std::string>> a);
+
+    void addClassToS(Class c);
     void addClassToG(std::pair< int , std::string>);
+
     int numberOfStudents();
     std::set<int> studentsOfTurma();
     bool operator==(Turma turma);

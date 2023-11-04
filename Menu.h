@@ -2,6 +2,7 @@
 #include "Request.h"
 #include <unordered_map>
 #include <queue>
+#include "stack"
 
 
 class Menu {
@@ -9,6 +10,7 @@ private:
     std::vector<Turma> turmas;
     std::unordered_map<int,Student> students;
     std::queue<Request> requests;
+    std::stack<std::string> registers;
 public:
     Menu(std::vector<Turma> t,std::unordered_map<int,Student> s,std::queue<Request> r);
     void MenuBase();
@@ -52,5 +54,6 @@ public:
     void waitingList();
     void showWaitingList();
     void removeFWaitingList();
+    void showRegisters();
 
 };

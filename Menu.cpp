@@ -4,11 +4,76 @@
 #include "Menu.h"
 
 
+// Search e sorting algoritmos
+int partition(std::vector<std::pair<int, std::string>> &infos, int low, int high) {
+    std::string pivot = infos[high].second;
+    int i = low - 1;
+    for (int j = low; j < high; j++) {
+        if (infos[j].second < pivot) {
+            i++;
+            std::swap(infos[i], infos[j]);
+        }
+    }
+    std::swap(infos[i + 1], infos[high]);
+    return i + 1;
+}
+
+void quicksort(std::vector<std::pair<int, std::string>> &infos, int low, int high) { // Quick sorting algoritmo
+    if (low < high) {
+        int pivot = partition(infos, low, high);
+        quicksort(infos, low, pivot - 1);
+        quicksort(infos, pivot + 1, high);
+    }
+}
+void bubbleSort(std::vector<std::pair<int,int>> &v) {
+    for(unsigned int j = v.size()-1; j > 0; j--) {
+        bool troca = false;
+        for(unsigned int i = 0; i < j; i++)
+            if(v[i+1].second < v[i].second) {
+                swap(v[i],v[i+1]);
+                troca = true;
+            }
+        if (!troca) return;
+    }
+}
+void heapify(std::vector<std::pair<std::string, int>> &v, int n, int i) {
+    int largest = i;
+    int left = 2 * i + 1;
+    int right = 2 * i + 2;
+    if (left < n && v[left].second > v[largest].second) {
+        largest = left;
+    }
+    if (right < n && v[right].second > v[largest].second) {
+        largest = right;
+    }
+    if (largest != i) {
+        std::swap(v[i], v[largest]);
+        heapify(v, n, largest);
+    }
+}
+void heapSort(std::vector<std::pair<std::string, int>> &v) {
+    int n = v.size();
+    for (int i = n / 2 - 1; i >= 0; i--) {
+        heapify(v, n, i);
+    }
+    for (int i = n - 1; i > 0; i--) {
+        std::swap(v[0], v[i]);
+        heapify(v, i, 0);
+    }
+}
+
 Menu::Menu(std::vector<Turma> t,std::unordered_map<int,Student> s,std::queue<Request> r){
     turmas = t;
     students = s;
     requests = r;
+    for (Turma &turma : turmas){
+        std::list<std::pair<int, std::string>> temp = turma.getnEstudanteCadeira();
+        temp.sort([](const std::pair<int, std::string>& a, const std::pair<int, std::string>& b) {return a.second < b.second;});
+        turma.setnEstudanteCadeira(temp);
+    }
 }
+
+// Métodos do Menu
 void Menu::MenuBase(){
     std::cout<<std::endl;
     std::cout<<std::endl;
@@ -22,7 +87,7 @@ void Menu::MenuBase(){
     std::cout<<"##                                                                   ##"<<std::endl;
     std::cout<<"##      3 -> Numero de estudantes em pelo menos n UCs                ##"<<std::endl;
     std::cout<<"##                                                                   ##"<<std::endl;
-    std::cout<<"##      4 -> Ocupacao da turmas                                      ##"<<std::endl;
+    std::cout<<"##      4 -> Ocupacao                                                ##"<<std::endl;
     std::cout<<"##                                                                   ##"<<std::endl;
     std::cout<<"##      5 -> UCs com maior numero de estudantes                      ##"<<std::endl;
     std::cout<<"##                                                                   ##"<<std::endl;
@@ -35,6 +100,8 @@ void Menu::MenuBase(){
     std::cout<<"##      9 -> Mostrar pedidos pendentes                               ##"<<std::endl;
     std::cout<<"##                                                                   ##"<<std::endl;
     std::cout<<"##      10 -> Eliminar pedidos pendentes                             ##"<<std::endl;
+    std::cout<<"##                                                                   ##"<<std::endl;
+    std::cout<<"##      11 -> Mostrar historico                                      ##"<<std::endl;
     std::cout<<"##                                                                   ##"<<std::endl;
     std::cout<<"##      0 -> Sair                                                    ##"<<std::endl;
     std::cout<<"##                                                                   ##"<<std::endl;
@@ -68,6 +135,8 @@ void Menu::MenuBase(){
             showWaitingList();
         case 10:
             removeFWaitingList();
+        case 11:
+            showRegisters();
     }
     MenuBase();
 
@@ -131,6 +200,7 @@ void Menu::HorarioE(){
     if (it != students.end()) {
         Student student = it->second;
         student.showSchedule();
+        registers.push("Horario do estudante "+student.getName()+ " visualizado.");
     } else {
         std::cout << "Esse numero nao existe"<< std::endl;
     }
@@ -166,7 +236,8 @@ void Menu::HorarioT(){
     if (flag) {
         std::cout << "Essa turma não existe" << std::endl;
         HorarioT();
-    }
+    }else registers.push("Horario da turma "+k+ " visualizado.");
+
     Horario();
 
 }
@@ -205,7 +276,7 @@ void Menu::HorarioTU(){
     if (flag) {
         std::cout << "Essa turma não existe" << std::endl;
         HorarioTU();
-    }
+    }else registers.push("Horario da turma "+turma+"e Uc "+uc +" visualizado.");
     Horario();
 }
 
@@ -235,12 +306,16 @@ void Menu::Estudante(){
     {
         case 1:
             EstudanteT();
+            registers.push("Ocupacao das turmas visualizada");
         case 2:
             EstudanteC();
+            registers.push("Ocupacao das UCs visualizada");
         case 3:
             EstudanteA();
+            registers.push("Ocupacao dos anos visualizada");
         case 4:
             EstudanteTC();
+            registers.push("Ocupacao das turmas/Ucs visualizada");
         case 0:
             MenuBase();
     }
@@ -301,26 +376,7 @@ void Menu::SortingOptionE(std::vector<std::pair<int,std::string>> infos){ // Ape
     }
     SortingOptionE(infos);
 }
-int partition(std::vector<std::pair<int, std::string>> &infos, int low, int high) {
-    std::string pivot = infos[high].second;
-    int i = low - 1;
-    for (int j = low; j < high; j++) {
-        if (infos[j].second < pivot) {
-            i++;
-            std::swap(infos[i], infos[j]);
-        }
-    }
-    std::swap(infos[i + 1], infos[high]);
-    return i + 1;
-}
 
-void quicksort(std::vector<std::pair<int, std::string>> &infos, int low, int high) { // Quick sorting algoritmo
-    if (low < high) {
-        int pivot = partition(infos, low, high);
-        quicksort(infos, low, pivot - 1);
-        quicksort(infos, pivot + 1, high);
-    }
-}
 void Menu::SortingE(std::vector<std::pair<int,std::string>> infos,bool both){
     quicksort(infos,0,infos.size()-1);
     if (both){
@@ -332,6 +388,7 @@ void Menu::SortingE(std::vector<std::pair<int,std::string>> infos,bool both){
             std::cout<< k.second << std::endl;
         }
     }
+
     Estudante();
 }
 void selectionSort(std::vector<std::pair<int,std::string>> &infos) {
@@ -540,6 +597,7 @@ void Menu::NEstudantes(){
         }
     }
     std::cout << "O numero de estudantes e: " << count << std::endl;
+    registers.push("Numero de estudantes em pelo menos k UCs visualizado");
     MenuBase();
 }
 
@@ -548,7 +606,7 @@ void Menu::Ocupacao() {
     std::cout<<std::endl;
     std::cout<<"#############################################"<<std::endl;
     std::cout<<"##                                         ##"<<std::endl;
-    std::cout<<"##   Ocupacao do/a:                        ## "<<std::endl;
+    std::cout<<"##   Ocupacao do/a:                        ##"<<std::endl;
     std::cout<<"##                                         ##"<<std::endl;
     std::cout<<"##      1 -> Ano                           ##"<<std::endl;
     std::cout<<"##                                         ##"<<std::endl;
@@ -572,55 +630,24 @@ void Menu::Ocupacao() {
                 break;
             case 1:
                 OcupacaoA();
+                registers.push("Ocupação de cada ano visualizada");
                 break;
             case 2:
                 OcupacaoT();
+                registers.push("Ocupação de cada turma visualizada");
                 break;
             case 3:
                 OcupacaoC();
+                registers.push("Ocupação de cada Uc visualizada");
                 break;
             case 4:
                 OcupationTC();
+                registers.push("Ocupação de cada Turma/Uc visualizada");
         }
         Ocupacao();
 
 }
-void bubbleSort(std::vector<std::pair<int,int>> &v) {
-    for(unsigned int j = v.size()-1; j > 0; j--) {
-        bool troca = false;
-        for(unsigned int i = 0; i < j; i++)
-            if(v[i+1].second < v[i].second) {
-                swap(v[i],v[i+1]);
-                troca = true;
-            }
-        if (!troca) return;
-    }
-}
-void heapify(std::vector<std::pair<std::string, int>> &v, int n, int i) {
-    int largest = i;
-    int left = 2 * i + 1;
-    int right = 2 * i + 2;
-    if (left < n && v[left].second > v[largest].second) {
-        largest = left;
-    }
-    if (right < n && v[right].second > v[largest].second) {
-        largest = right;
-    }
-    if (largest != i) {
-        std::swap(v[i], v[largest]);
-        heapify(v, n, largest);
-    }
-}
-void heapSort(std::vector<std::pair<std::string, int>> &v) {
-    int n = v.size();
-    for (int i = n / 2 - 1; i >= 0; i--) {
-        heapify(v, n, i);
-    }
-    for (int i = n - 1; i > 0; i--) {
-        std::swap(v[0], v[i]);
-        heapify(v, i, 0);
-    }
-}
+
 
 
 void Menu::OcupacaoA() {
@@ -683,7 +710,6 @@ void Menu::OcupationTC(){
             t[turma.getClassCode()+","+k.getUc()] = turma.studentsOfUC(k.getUc());
         }
     }
-    //for (auto k : t)std::cout << "A turma/Uc " << k.first << " tem " << k.second << " estudantes" << std::endl;
     std::vector<std::pair<std::string, int>> v(t.begin(), t.end());
     heapSort(v);
     for (int i = 0; i < (int)v.size(); i++) {
@@ -729,6 +755,7 @@ void Menu::MaiorN(){
     for (int i = 0; i < std::min(k, (int)vetor.size()); i++) {
         std::cout << vetor[i].first << " tem " << vetor[i].second << " estudantes" << std::endl;
     }
+    registers.push(k+" UCs com maior numero de estudantes visualizadas");
     MaiorN();
 }
 
@@ -887,6 +914,7 @@ void Menu::entrarTurma() {
     for (std::string uc : ucs) {
         if (addClass(turma, it -> second, uc)){
             std::cout << "Foi adicionado com sucesso." << std::endl;
+            registers.push(it->second.getName()+" foi adicionado à turma "+turma+" na Uc "+uc);
             waitingList();
         }else {
             std::cout << "Nao foi possivel adicionar de momento, o seu pedido esta registado." << std::endl;
@@ -930,6 +958,7 @@ void Menu::entrarUC() {
         std::cout << uc;
         if (addUC(uc, it -> second)){
             std::cout << "Foi adicionado com sucesso." << std::endl;
+            registers.push(it->second.getName()+" entrou na Uc "+uc);
             waitingList();
         }else{
             std::cout << "Nao foi possivel adicionar de momento, o seu pedido esta registado." << std::endl;
@@ -1007,6 +1036,7 @@ void Menu::sairTurma() {
     for (std::string uc : ucs) {
         if (removeClass(turma, it -> second, uc)){
             std::cout<<"Saida da turma "<<turma<< " com sucesso"<<std::endl;
+            registers.push(it->second.getName()+" saiu da turma "+turma);
             waitingList();
         }else{
             std::cout<<"Saida da turma "<<turma<< " recusada"<<std::endl;
@@ -1050,6 +1080,7 @@ void Menu::sairUC() {
     for (std::string uc : ucs) {
         if (removeUC(uc, it -> second)){
             std::cout<<"Saida da Uc "<<uc<< " com sucesso"<<std::endl;
+            registers.push(it->second.getName()+" saiu da Uc "+uc);
             waitingList();
         }else{
             std::cout<<"Saida da Uc "<<uc<< " recusada"<<std::endl;
@@ -1117,6 +1148,7 @@ void Menu::trocarT() {
     auto it = students.find(numero);
     if (switchClass(it->second,tInicial,tFinal,uc)){
         std::cout<<"Troca realizada com sucesso"<<std::endl;
+        registers.push(it->second.getName()+" trocou da turma "+tInicial+" para a turma "+tFinal+" na Uc "+uc);
         waitingList();
     }else{
         std::cout<<"Nao foi possivel realizar a troca"<<std::endl;
@@ -1151,6 +1183,7 @@ void Menu::trocarU() {
     auto it = students.find(numero);
     if (switchUC(it->second,uInicial,uFinal)){
         std::cout<<"Troca realizada com sucesso"<<std::endl;
+        registers.push(it->second.getName()+" trocou da Uc "+uInicial+" para a Uc "+uFinal);
         waitingList();
     }else{
         std::cout<<"Nao foi possivel realizar a troca"<<std::endl;
@@ -1340,6 +1373,15 @@ void Menu::removeFWaitingList(){
     std::cout<<std::endl;
     std::cout <<"O seu pedido foi removido."<<std::endl;
     MenuBase();
+}
+void Menu::showRegisters(){
+    std::stack<std::string> novo;
+    while(!registers.empty()){
+        std::cout<<registers.top()<<std::endl;
+        novo.push(registers.top());
+        registers.pop();
+    }
+    novo = registers;
 }
 
 
