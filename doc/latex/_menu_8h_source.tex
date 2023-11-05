@@ -1,0 +1,78 @@
+\doxysection{Menu.\+h}
+\hypertarget{_menu_8h_source}{}\label{_menu_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}Student.h"{}}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}Request.h"{}}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <queue>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}stack"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_menu}{Menu}}\ \{}
+\DoxyCodeLine{00009\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00010\ \ \ \ \ std::vector<Turma>\ turmas;}
+\DoxyCodeLine{00011\ \ \ \ \ std::unordered\_map<int,Student>\ students;}
+\DoxyCodeLine{00012\ \ \ \ \ std::queue<Request>\ requests;}
+\DoxyCodeLine{00013\ \ \ \ \ std::stack<std::string>\ registers;}
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{class_menu}{Menu}}(std::vector<Turma>\ t,std::unordered\_map<int,Student>\ s,std::queue<Request>\ r);}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{void}\ MenuBase();}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{void}\ schedule();}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{void}\ scheduleE();}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{void}\ scheduleT();}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ scheduleTU();}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ student();}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ showOptionE(std::vector<std::pair<int,std::string>>\ infos);}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ sortingOptionE(std::vector<std::pair<int,std::string>>\ infos);}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{void}\ sortingE(std::vector<std::pair<int,std::string>>\ infos,\textcolor{keywordtype}{bool}\ both);}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ sortingN(std::vector<std::pair<int,std::string>>\ infos,\textcolor{keywordtype}{bool}\ both);}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ studentT();}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ studentC();}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ studentA();}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ studentTC();}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ nStudents();}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ maiorN();}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ capacity();}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ capacityA();}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ capacityT();}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ capacityC();}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{void}\ capacityTC();}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ getIn();}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ getInT();}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ getInUC();}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ getOut();}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ getOutT();}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ getOutUC();}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{void}\ replace();}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ replaceT();}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{void}\ replaceU();}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{void}\ closeMenu();}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{bool}\ testBalance(std::string\ pedido,std::string\ turma,std::string\ uc);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{bool}\ addUC(std::string\ uc,\ \mbox{\hyperlink{class_student}{Student}}\&\ student);}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{bool}\ removeUC(std::string\ uc,\ \mbox{\hyperlink{class_student}{Student}}\&\ student);}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{bool}\ addClass(std::string\ turma,\ \mbox{\hyperlink{class_student}{Student}}\&\ student,\ std::string\ uc);}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{bool}\ removeClass(std::string\ turma,\ \mbox{\hyperlink{class_student}{Student}}\&\ student,\ std::string\ uc);}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{bool}\ switchClass(\mbox{\hyperlink{class_student}{Student}}\&\ student,std::string\ tInicial,std::string\ tFinal,std::string\ uc);}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{bool}\ switchUC(\mbox{\hyperlink{class_student}{Student}}\&\ student,std::string\ ucInicial,std::string\ ucFinal);}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{void}\ waitingList();}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{void}\ showWaitingList();}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{void}\ removeFWaitingList();}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{void}\ showRegisters();}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \};}
+
+\end{DoxyCode}

@@ -1,0 +1,99 @@
+\doxysection{Request Class Reference}
+\hypertarget{class_request}{}\label{class_request}\index{Request@{Request}}
+
+
+{\ttfamily \#include $<$Request.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_request_a76f0dd628fcc33ca306c65d94915ce2f}{Request}} (std\+::string request\+Code, int student\+Number, std\+::string Uc, std\+::string Optional\+ClassI="{}"{}, std\+::string Optional\+ClassF="{}"{}, std\+::string Uc\+Final="{}"{})
+\item 
+\Hypertarget{class_request_a90e273aa2de551b6b6c32c425f30f99a}\label{class_request_a90e273aa2de551b6b6c32c425f30f99a} 
+void {\bfseries show} ()
+\begin{DoxyCompactList}\small\item\em Mostra o contéudo do pedido. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_request_a70c6e9c586d274f18e5293d506b791ff}{to\+File\+Format}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_request_a24d7429aedd00d9527137aa560b6213d}\label{class_request_a24d7429aedd00d9527137aa560b6213d} 
+int {\bfseries student\+Number}
+\item 
+\Hypertarget{class_request_a7c464120a503b7eb7658ecef65d0d6eb}\label{class_request_a7c464120a503b7eb7658ecef65d0d6eb} 
+std\+::string {\bfseries request\+Code}
+\item 
+\Hypertarget{class_request_a210b1b303b8146ac9f4b0805db1637b9}\label{class_request_a210b1b303b8146ac9f4b0805db1637b9} 
+std\+::string {\bfseries Uc}
+\item 
+\Hypertarget{class_request_a5a87ac9fa25358b2f0100a56b2f532aa}\label{class_request_a5a87ac9fa25358b2f0100a56b2f532aa} 
+std\+::string {\bfseries Uc\+Final}
+\item 
+\Hypertarget{class_request_add2c6817ebb7440784eccbd2397e4f39}\label{class_request_add2c6817ebb7440784eccbd2397e4f39} 
+std\+::string {\bfseries Optional\+ClassI}
+\item 
+\Hypertarget{class_request_a170cc6a5c310c31621cdcfdbb0ae9691}\label{class_request_a170cc6a5c310c31621cdcfdbb0ae9691} 
+std\+::string {\bfseries Optional\+ClassF}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe que declara um pedido, este guarda informação de pedidos que não foram aceites à primeira tentativa e esperam aprovação
+
+É a classe usada para declarar, mostrar e transformar em formato ficheiro um pedido. 
+\begin{DoxyParams}{Parameters}
+{\em student\+Number} & \+: Número do estudante que efetuou o pedido \\
+\hline
+{\em request\+Code} & \+: Tipo de pedido efetuado \\
+\hline
+{\em Uc} & \+: Uc a que foi efetuado o pedido, ou Uc da qual o estudante pretende sair \\
+\hline
+{\em Uc\+Final} & \+: Uc em que o estudante pretende entrar (parâmetro pode ser opcional dependendo do tipo de pedido) \\
+\hline
+{\em Optional\+ClassI} & \+: \doxylink{class_turma}{Turma} a que foi efetuado o pedido, ou \doxylink{class_turma}{Turma} da qual o estudante pretende sair \\
+\hline
+{\em Optional\+ClassF} & \+: \doxylink{class_turma}{Turma} em que o estudante pretende entrar (parâmetro pode ser opcional dependendo do tipo de pedido) \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_request_a76f0dd628fcc33ca306c65d94915ce2f}\label{class_request_a76f0dd628fcc33ca306c65d94915ce2f} 
+\index{Request@{Request}!Request@{Request}}
+\index{Request@{Request}!Request@{Request}}
+\doxysubsubsection{\texorpdfstring{Request()}{Request()}}
+{\footnotesize\ttfamily Request\+::\+Request (\begin{DoxyParamCaption}\item[{std\+::string}]{request\+Code,  }\item[{int}]{student\+Number,  }\item[{std\+::string}]{Uc,  }\item[{std\+::string}]{Optional\+ClassI = {\ttfamily "{}"{}},  }\item[{std\+::string}]{Optional\+ClassF = {\ttfamily "{}"{}},  }\item[{std\+::string}]{Uc\+Final = {\ttfamily "{}"{}} }\end{DoxyParamCaption})}
+
+Cria um pedido com request\+Code, número de estudante, uc, e parâmetros opcionais \+: turma inicial, turma final e uc final 
+\begin{DoxyParams}{Parameters}
+{\em student\+Number} & \+: Número do estudante que efetuou o pedido \\
+\hline
+{\em request\+Code} & \+: Tipo de pedido efetuado \\
+\hline
+{\em Uc} & \+: Uc a que foi efetuado o pedido, ou Uc da qual o estudante pretende sair \\
+\hline
+{\em Uc\+Final} & \+: Uc em que o estudante pretende entrar (parâmetro pode ser opcional dependendo do tipo de pedido) \\
+\hline
+{\em Optional\+ClassI} & \+: \doxylink{class_turma}{Turma} a que foi efetuado o pedido, ou \doxylink{class_turma}{Turma} da qual o estudante pretende sair \\
+\hline
+{\em Optional\+ClassF} & \+: \doxylink{class_turma}{Turma} em que o estudante pretende entrar (parâmetro pode ser opcional dependendo do tipo de pedido) \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_request_a70c6e9c586d274f18e5293d506b791ff}\label{class_request_a70c6e9c586d274f18e5293d506b791ff} 
+\index{Request@{Request}!toFileFormat@{toFileFormat}}
+\index{toFileFormat@{toFileFormat}!Request@{Request}}
+\doxysubsubsection{\texorpdfstring{toFileFormat()}{toFileFormat()}}
+{\footnotesize\ttfamily std\+::string Request\+::to\+File\+Format (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Transforma o pedido em formato ficheiro, formato ficheiro \+: request\+Code, student\+Number, Uc, Optional\+ClassI, Optional\+ClassF, Uc\+Final; \begin{DoxyReturn}{Returns}
+parâmetros no formato ficheiro 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Request.\+h\item 
+Request.\+cpp\end{DoxyCompactItemize}

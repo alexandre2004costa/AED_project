@@ -1,0 +1,130 @@
+\doxysection{Student Class Reference}
+\hypertarget{class_student}{}\label{class_student}\index{Student@{Student}}
+
+
+{\ttfamily \#include $<$Student.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_student_af9168cedbfa5565cf0b20c1a9d3f5c9d}\label{class_student_af9168cedbfa5565cf0b20c1a9d3f5c9d} 
+{\bfseries Student} ()
+\begin{DoxyCompactList}\small\item\em Cria um estudante com atributos nulos. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_student_a969e403c636ed0dc7d0dc1d472f9179f}{Student}} (std\+::string name, int number)
+\item 
+std\+::string \mbox{\hyperlink{class_student_a729c900a0e95c46f90668f527a72ad34}{get\+Name}} ()
+\item 
+int \mbox{\hyperlink{class_student_af8d21f8c74d945a61354a3956c96b3d4}{get\+Number}} ()
+\item 
+\mbox{\hyperlink{class_schedule}{Schedule}} \mbox{\hyperlink{class_student_aaaaf2bdb2f1b79dd00e99b5a4ceea895}{get\+Schedule}} ()
+\item 
+void \mbox{\hyperlink{class_student_a085b6e1ffbf2e744505f8aae21d8b034}{set\+Schedule}} (\mbox{\hyperlink{class_schedule}{Schedule}} \&new\+Schedule)
+\item 
+void \mbox{\hyperlink{class_student_adff9948edc59f312889a137940096023}{add\+To\+Schedule}} (\mbox{\hyperlink{class_class}{Class}} c)
+\item 
+void \mbox{\hyperlink{class_student_a356e5562dd84e3002b1360a1ac92dd94}{show\+Schedule}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe que declara um estudante
+
+É a classe usada para declarar um estudante, e realizar alterações no seu horário 
+\begin{DoxyParams}{Parameters}
+{\em name} & \+: Nome do estudante \\
+\hline
+{\em schedule} & \+: Horário do estudante \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_schedule}{Schedule()} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em number} & \+: Número de estudante do aluno \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_student_a969e403c636ed0dc7d0dc1d472f9179f}\label{class_student_a969e403c636ed0dc7d0dc1d472f9179f} 
+\index{Student@{Student}!Student@{Student}}
+\index{Student@{Student}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{Student()}{Student()}}
+{\footnotesize\ttfamily Student\+::\+Student (\begin{DoxyParamCaption}\item[{std\+::string}]{name,  }\item[{int}]{number }\end{DoxyParamCaption})}
+
+Cria um estudante com nome e número 
+\begin{DoxyParams}{Parameters}
+{\em name} & \+: Nome do estudante \\
+\hline
+{\em number} & \+: Número de estudante do aluno \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_student_adff9948edc59f312889a137940096023}\label{class_student_adff9948edc59f312889a137940096023} 
+\index{Student@{Student}!addToSchedule@{addToSchedule}}
+\index{addToSchedule@{addToSchedule}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{addToSchedule()}{addToSchedule()}}
+{\footnotesize\ttfamily void Student\+::add\+To\+Schedule (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_class}{Class}}}]{c }\end{DoxyParamCaption})}
+
+Adiciona uma aula ao horário do estudante 
+\begin{DoxyParams}{Parameters}
+{\em c} & \+: aula a adicionar ao horário \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_student_a729c900a0e95c46f90668f527a72ad34}\label{class_student_a729c900a0e95c46f90668f527a72ad34} 
+\index{Student@{Student}!getName@{getName}}
+\index{getName@{getName}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily std\+::string Student\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Obter o nome do estudante \begin{DoxyReturn}{Returns}
+nome 
+\end{DoxyReturn}
+\Hypertarget{class_student_af8d21f8c74d945a61354a3956c96b3d4}\label{class_student_af8d21f8c74d945a61354a3956c96b3d4} 
+\index{Student@{Student}!getNumber@{getNumber}}
+\index{getNumber@{getNumber}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{getNumber()}{getNumber()}}
+{\footnotesize\ttfamily int Student\+::get\+Number (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Obter o número do estudante \begin{DoxyReturn}{Returns}
+número 
+\end{DoxyReturn}
+\Hypertarget{class_student_aaaaf2bdb2f1b79dd00e99b5a4ceea895}\label{class_student_aaaaf2bdb2f1b79dd00e99b5a4ceea895} 
+\index{Student@{Student}!getSchedule@{getSchedule}}
+\index{getSchedule@{getSchedule}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{getSchedule()}{getSchedule()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_schedule}{Schedule}} Student\+::get\+Schedule (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Obter o horário do estudante \begin{DoxyReturn}{Returns}
+horário 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_schedule}{Schedule()} 
+\end{DoxySeeAlso}
+\Hypertarget{class_student_a085b6e1ffbf2e744505f8aae21d8b034}\label{class_student_a085b6e1ffbf2e744505f8aae21d8b034} 
+\index{Student@{Student}!setSchedule@{setSchedule}}
+\index{setSchedule@{setSchedule}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{setSchedule()}{setSchedule()}}
+{\footnotesize\ttfamily void Student\+::set\+Schedule (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_schedule}{Schedule}} \&}]{new\+Schedule }\end{DoxyParamCaption})}
+
+Altera o horário atual por um novo \begin{DoxySeeAlso}{See also}
+\doxylink{class_schedule}{Schedule()} 
+\end{DoxySeeAlso}
+\Hypertarget{class_student_a356e5562dd84e3002b1360a1ac92dd94}\label{class_student_a356e5562dd84e3002b1360a1ac92dd94} 
+\index{Student@{Student}!showSchedule@{showSchedule}}
+\index{showSchedule@{showSchedule}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{showSchedule()}{showSchedule()}}
+{\footnotesize\ttfamily void Student\+::show\+Schedule (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Mostra as aulas do horário \begin{DoxySeeAlso}{See also}
+\doxylink{class_class}{Class()} 
+\end{DoxySeeAlso}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Student.\+h\item 
+Student.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,41 @@
+\doxysection{Student.\+h}
+\hypertarget{_student_8h_source}{}\label{_student_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ Created\ by\ Alexandre\ on\ 08/10/2023.}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}Turma.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ AED\_PROJECT\_STUDENT\_H}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ AED\_PROJECT\_STUDENT\_H}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_student}{Student}}\ \{}
+\DoxyCodeLine{00016\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00017\ \ \ \ \ std::string\ name;\ \textcolor{comment}{//\ Nome}}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{class_schedule}{Schedule}}\ schedule;\ \textcolor{comment}{//\ Horário\ do\ estudante}}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{int}\ number;\ \textcolor{comment}{//\ Nº\ de\ estudante}}
+\DoxyCodeLine{00020\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{class_student_af9168cedbfa5565cf0b20c1a9d3f5c9d}{Student}}();\ \textcolor{comment}{//\ Construtor\ default}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{class_student_af9168cedbfa5565cf0b20c1a9d3f5c9d}{Student}}(std::string\ name,\textcolor{keywordtype}{int}\ number);\ \textcolor{comment}{//\ Construtor\ com\ nome\ e\ nº}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//Gets}}
+\DoxyCodeLine{00032\ \ \ \ \ std::string\ \mbox{\hyperlink{class_student_a729c900a0e95c46f90668f527a72ad34}{getName}}();}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_student_af8d21f8c74d945a61354a3956c96b3d4}{getNumber}}();}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{class_schedule}{Schedule}}\ \mbox{\hyperlink{class_student_aaaaf2bdb2f1b79dd00e99b5a4ceea895}{getSchedule}}();}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{comment}{//Set}}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_student_a085b6e1ffbf2e744505f8aae21d8b034}{setSchedule}}(\mbox{\hyperlink{class_schedule}{Schedule}}\ \&newSchedule);}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_student_adff9948edc59f312889a137940096023}{addToSchedule}}(\mbox{\hyperlink{class_class}{Class}}\ c);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_student_a356e5562dd84e3002b1360a1ac92dd94}{showSchedule}}();\ \textcolor{comment}{//\ Mostra\ o\ horário\ do\ estudante}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//AED\_PROJECT\_STUDENT\_H}}
+
+\end{DoxyCode}

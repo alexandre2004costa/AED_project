@@ -1,0 +1,80 @@
+\doxysection{Schedule Class Reference}
+\hypertarget{class_schedule}{}\label{class_schedule}\index{Schedule@{Schedule}}
+
+
+{\ttfamily \#include $<$Schedule.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_schedule_a55d20291b828afc809b39d00b4fa7970}\label{class_schedule_a55d20291b828afc809b39d00b4fa7970} 
+void {\bfseries show} ()
+\begin{DoxyCompactList}\small\item\em Mostra as aulas do horário. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_class}{Class}} $>$ \mbox{\hyperlink{class_schedule_a455724a64731d8af352e2daa37e271f8}{get\+Classes}} ()
+\item 
+void \mbox{\hyperlink{class_schedule_a5142e4b2609f0f2207c4685ebc0d4fa0}{add\+Classes}} (\mbox{\hyperlink{class_class}{Class}} a)
+\item 
+int \mbox{\hyperlink{class_schedule_a65c3ddcb1601d0cef0a29f4a8cbd29fe}{number\+Of\+UCs}} ()
+\item 
+\mbox{\hyperlink{class_schedule}{Schedule}} \& \mbox{\hyperlink{class_schedule_a99ffdd6adbb9bb6aea96725173584265}{remove\+Uc\+Classes}} (std\+::string uc)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe que declara um horário
+
+É a classe usada para declarar um horário, realizar alterações e ver atributos do mesmo 
+\begin{DoxyParams}{Parameters}
+{\em classes} & \+: Conjunto de aulas \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_class}{Class()} 
+\end{DoxySeeAlso}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_schedule_a5142e4b2609f0f2207c4685ebc0d4fa0}\label{class_schedule_a5142e4b2609f0f2207c4685ebc0d4fa0} 
+\index{Schedule@{Schedule}!addClasses@{addClasses}}
+\index{addClasses@{addClasses}!Schedule@{Schedule}}
+\doxysubsubsection{\texorpdfstring{addClasses()}{addClasses()}}
+{\footnotesize\ttfamily void Schedule\+::add\+Classes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_class}{Class}}}]{a }\end{DoxyParamCaption})}
+
+Adiciona uma aula ao horário 
+\begin{DoxyParams}{Parameters}
+{\em a} & \+: aula a adicionar ao horário \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_schedule_a455724a64731d8af352e2daa37e271f8}\label{class_schedule_a455724a64731d8af352e2daa37e271f8} 
+\index{Schedule@{Schedule}!getClasses@{getClasses}}
+\index{getClasses@{getClasses}!Schedule@{Schedule}}
+\doxysubsubsection{\texorpdfstring{getClasses()}{getClasses()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{class_class}{Class}} $>$ Schedule\+::get\+Classes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Obter as aulas do horário \begin{DoxyReturn}{Returns}
+conjunto de aulas 
+\end{DoxyReturn}
+\Hypertarget{class_schedule_a65c3ddcb1601d0cef0a29f4a8cbd29fe}\label{class_schedule_a65c3ddcb1601d0cef0a29f4a8cbd29fe} 
+\index{Schedule@{Schedule}!numberOfUCs@{numberOfUCs}}
+\index{numberOfUCs@{numberOfUCs}!Schedule@{Schedule}}
+\doxysubsubsection{\texorpdfstring{numberOfUCs()}{numberOfUCs()}}
+{\footnotesize\ttfamily int Schedule\+::number\+Of\+UCs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Retorna o nºde ucs no horário \begin{DoxyReturn}{Returns}
+número de ucs 
+\end{DoxyReturn}
+\Hypertarget{class_schedule_a99ffdd6adbb9bb6aea96725173584265}\label{class_schedule_a99ffdd6adbb9bb6aea96725173584265} 
+\index{Schedule@{Schedule}!removeUcClasses@{removeUcClasses}}
+\index{removeUcClasses@{removeUcClasses}!Schedule@{Schedule}}
+\doxysubsubsection{\texorpdfstring{removeUcClasses()}{removeUcClasses()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_schedule}{Schedule}} \& Schedule\+::remove\+Uc\+Classes (\begin{DoxyParamCaption}\item[{std\+::string}]{uc }\end{DoxyParamCaption})}
+
+Retorna uma referência de um horário sem as aulas de uma certa uc \begin{DoxyReturn}{Returns}
+referência de um horário 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Schedule.\+h\item 
+Schedule.\+cpp\end{DoxyCompactItemize}

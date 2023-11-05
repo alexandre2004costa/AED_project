@@ -6,7 +6,7 @@
 #include "Menu.h"
 #include <unordered_map>
 
-// Função para extrair substrings entre vírgulas
+//Separa os diferentes parâmetros de cada linha dos ficheiros
 std::vector<std::string> strings(std::string input) {
     std::vector<std::string> substrings;
     std::string substring;

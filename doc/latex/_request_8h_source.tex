@@ -1,0 +1,34 @@
+\doxysection{Request.\+h}
+\hypertarget{_request_8h_source}{}\label{_request_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ Created\ by\ Alexandre\ on\ 01/11/2023.}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ P\_AED\_REQUEST\_H}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ P\_AED\_REQUEST\_H}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_request}{Request}}\ \{}
+\DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{class_request}{Request}}(std::string\ requestCode,\textcolor{keywordtype}{int}\ studentNumber,std::string\ Uc,std::string\ OptionalClassI\ =\ \textcolor{stringliteral}{"{}"{}},\ std::string\ OptionalClassF\ =\ \textcolor{stringliteral}{"{}"{}},\ std::string\ UcFinal\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_request_a90e273aa2de551b6b6c32c425f30f99a}{show}}();\ \textcolor{comment}{//\ Mostra\ o\ pedido\ e\ os\ seus\ parâmetros}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00037\ \ \ \ \ std::string\ \mbox{\hyperlink{class_request_a70c6e9c586d274f18e5293d506b791ff}{toFileFormat}}();}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{comment}{//\ Parâmetros\ públicos\ da\ classe}}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{int}\ studentNumber;}
+\DoxyCodeLine{00041\ \ \ \ \ std::string\ requestCode;}
+\DoxyCodeLine{00042\ \ \ \ \ std::string\ Uc;}
+\DoxyCodeLine{00043\ \ \ \ \ std::string\ UcFinal;}
+\DoxyCodeLine{00044\ \ \ \ \ std::string\ OptionalClassI;}
+\DoxyCodeLine{00045\ \ \ \ \ std::string\ OptionalClassF;}
+\DoxyCodeLine{00046\ \};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//P\_AED\_REQUEST\_H}}
+
+\end{DoxyCode}

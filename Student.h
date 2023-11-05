@@ -5,26 +5,53 @@
 #ifndef AED_PROJECT_STUDENT_H
 #define AED_PROJECT_STUDENT_H
 
-
+/// Classe que declara um estudante
+///
+/// É a classe usada para declarar um estudante, e realizar alterações no seu horário
+///@param name : Nome do estudante
+///@param schedule : Horário do estudante
+///@see Schedule()
+///@param number : Número de estudante do aluno
 class Student {
 private:
     std::string name; // Nome
     Schedule schedule; // Horário do estudante
     int number; // Nº de estudante
 public:
-    Student(); // Construtor default
-    Student(std::string name,int number); // Construtor com nome e nº
+    /// Cria um estudante com atributos nulos
+    Student();
+
+    /// Cria um estudante com nome e número
+    ///@param name : Nome do estudante
+    ///@param number : Número de estudante do aluno
+    Student(std::string name,int number);
 
     //Gets
+    /// Obter o nome do estudante
+    /// @return nome
     std::string getName();
+
+    /// Obter o número do estudante
+    /// @return número
     int getNumber();
+
+    /// Obter o horário do estudante
+    /// @return horário
+    ///@see Schedule()
     Schedule getSchedule();
 
     //Set
+    /// Altera o horário atual por um novo
+    ///@see Schedule()
     void setSchedule(Schedule &newSchedule);
 
-    void addToSchedule(Class c); // Adiciona uma aula ao horário do estudante
-    void showSchedule(); // Mostra o horário do estudante
+    /// Adiciona uma aula ao horário do estudante
+    /// @param c : aula a adicionar ao horário
+    void addToSchedule(Class c);
+
+    ///Mostra as aulas do horário
+    ///@see Class()
+    void showSchedule();
 
 
 };

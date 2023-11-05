@@ -1,0 +1,116 @@
+\doxysection{Class Class Reference}
+\hypertarget{class_class}{}\label{class_class}\index{Class@{Class}}
+
+
+{\ttfamily \#include $<$Class.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_class_a633e002e9b344ae1621089f1c8cac8fe}{Class}} (std\+::string uc, std\+::string wd, std\+::string tp, double st, double dur, std\+::string cC)
+\item 
+\Hypertarget{class_class_ab1ffe32cdbbbd14b0640ea7dd1ffb6ba}\label{class_class_ab1ffe32cdbbbd14b0640ea7dd1ffb6ba} 
+void {\bfseries show} ()
+\begin{DoxyCompactList}\small\item\em Mostra os diferentes atríbutos da aula. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_class_a4676e5bfb3159507236ba6b022ee7fd3}{get\+Uc}} ()
+\item 
+std\+::string \mbox{\hyperlink{class_class_ac5775873f0af33ad84b322b215d10187}{get\+Class\+Code}} ()
+\item 
+bool \mbox{\hyperlink{class_class_a486925dd4ad3cebfa4b16d9df2fadf8f}{overlaps}} (\mbox{\hyperlink{class_class}{Class}} c)
+\item 
+std\+::string \mbox{\hyperlink{class_class_aac656151a37572f502cc4245b22d9beb}{transform\+To\+File\+Format}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe que declara uma aula
+
+É a classe usada para declarar as aulas e mostrar os seus atributos, bem como confirmar se existe sobreposição entre aulas 
+\begin{DoxyParams}{Parameters}
+{\em uc} & \+: Refere a uc que está a ser lecionada na aula \\
+\hline
+{\em week\+Day} & \+: Dia da semana da aula \\
+\hline
+{\em type} & \+: Distingue a aula entre prática, teórico-\/prática e teórica \\
+\hline
+{\em class\+Code} & \+: Class\+Code da turma da aula \\
+\hline
+{\em start\+Time} & \+: Hora de início da aula \\
+\hline
+{\em duration} & \+: Tempo de duração da aula \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_class_a633e002e9b344ae1621089f1c8cac8fe}\label{class_class_a633e002e9b344ae1621089f1c8cac8fe} 
+\index{Class@{Class}!Class@{Class}}
+\index{Class@{Class}!Class@{Class}}
+\doxysubsubsection{\texorpdfstring{Class()}{Class()}}
+{\footnotesize\ttfamily Class\+::\+Class (\begin{DoxyParamCaption}\item[{std\+::string}]{uc,  }\item[{std\+::string}]{wd,  }\item[{std\+::string}]{tp,  }\item[{double}]{st,  }\item[{double}]{dur,  }\item[{std\+::string}]{cC }\end{DoxyParamCaption})}
+
+Cria uma aula dado uma uc, dia da semana, tipo de aula, hora de início, duração e uma turma 
+\begin{DoxyParams}{Parameters}
+{\em uc} & \+: Unidade curricular que está a ser lecionada na aula \\
+\hline
+{\em wd} & \+: Dia da semana da aula \\
+\hline
+{\em tp} & \+: Distingue a aula entre prática, teórico-\/prática e teórica \\
+\hline
+{\em cC} & \+: Class\+Code da turma da aula \\
+\hline
+{\em st} & \+: Hora de início da aula \\
+\hline
+{\em dur} & \+: Tempo de duração da aula \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_class_ac5775873f0af33ad84b322b215d10187}\label{class_class_ac5775873f0af33ad84b322b215d10187} 
+\index{Class@{Class}!getClassCode@{getClassCode}}
+\index{getClassCode@{getClassCode}!Class@{Class}}
+\doxysubsubsection{\texorpdfstring{getClassCode()}{getClassCode()}}
+{\footnotesize\ttfamily std\+::string Class\+::get\+Class\+Code (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Obter o classcode da turma da aula \begin{DoxyReturn}{Returns}
+classcode 
+\end{DoxyReturn}
+\Hypertarget{class_class_a4676e5bfb3159507236ba6b022ee7fd3}\label{class_class_a4676e5bfb3159507236ba6b022ee7fd3} 
+\index{Class@{Class}!getUc@{getUc}}
+\index{getUc@{getUc}!Class@{Class}}
+\doxysubsubsection{\texorpdfstring{getUc()}{getUc()}}
+{\footnotesize\ttfamily std\+::string Class\+::get\+Uc (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Obter a uc da aula \begin{DoxyReturn}{Returns}
+uc 
+\end{DoxyReturn}
+\Hypertarget{class_class_a486925dd4ad3cebfa4b16d9df2fadf8f}\label{class_class_a486925dd4ad3cebfa4b16d9df2fadf8f} 
+\index{Class@{Class}!overlaps@{overlaps}}
+\index{overlaps@{overlaps}!Class@{Class}}
+\doxysubsubsection{\texorpdfstring{overlaps()}{overlaps()}}
+{\footnotesize\ttfamily bool Class\+::overlaps (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_class}{Class}}}]{c }\end{DoxyParamCaption})}
+
+Verifica se existe sobreposição no horário de duas aulas 
+\begin{DoxyParams}{Parameters}
+{\em c} & \+: aula com que queremos fazer a comparação \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool \+: indica se existe ou não sobreposição 
+\end{DoxyReturn}
+\Hypertarget{class_class_aac656151a37572f502cc4245b22d9beb}\label{class_class_aac656151a37572f502cc4245b22d9beb} 
+\index{Class@{Class}!transformToFileFormat@{transformToFileFormat}}
+\index{transformToFileFormat@{transformToFileFormat}!Class@{Class}}
+\doxysubsubsection{\texorpdfstring{transformToFileFormat()}{transformToFileFormat()}}
+{\footnotesize\ttfamily std\+::string Class\+::transform\+To\+File\+Format (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Transforma a aula em formato ficheiro, formato ficheiro \+: class\+Code, uc, week\+Day, start\+Time, duration, type; \begin{DoxyReturn}{Returns}
+parâmetros no formato ficheiro 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Class.\+h\item 
+Class.\+cpp\end{DoxyCompactItemize}

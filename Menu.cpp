@@ -4,7 +4,7 @@
 #include "Menu.h"
 
 
-// Search e sorting algoritmos
+// Sorting algoritmos
 
 // Função que particiona o vetor para o algoritmo Quick Sort
 int partition(std::vector<std::pair<int, std::string>> &infos, int low, int high) {
@@ -429,7 +429,7 @@ void Menu::sortingOptionE(std::vector<std::pair<int,std::string>> infos){ // Ape
     switch (k) {
         // Chamar funções de ordenação necessárias
         case 0:
-            sortingOptionE(infos);
+            showOptionE(infos);
         case 1:
             sortingE(infos,true);
         case 2:
