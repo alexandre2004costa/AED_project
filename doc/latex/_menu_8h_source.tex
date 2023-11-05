@@ -7,72 +7,100 @@
 \DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <queue>}}
 \DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}stack"{}}}
 \DoxyCodeLine{00006\ }
-\DoxyCodeLine{00007\ }
-\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_menu}{Menu}}\ \{}
-\DoxyCodeLine{00009\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00010\ \ \ \ \ std::vector<Turma>\ turmas;}
-\DoxyCodeLine{00011\ \ \ \ \ std::unordered\_map<int,Student>\ students;}
-\DoxyCodeLine{00012\ \ \ \ \ std::queue<Request>\ requests;}
-\DoxyCodeLine{00013\ \ \ \ \ std::stack<std::string>\ registers;}
-\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{class_menu}{Menu}}(std::vector<Turma>\ t,std::unordered\_map<int,Student>\ s,std::queue<Request>\ r);}
-\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{void}\ MenuBase();}
-\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{void}\ schedule();}
-\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{void}\ scheduleE();}
-\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{void}\ scheduleT();}
-\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ scheduleTU();}
-\DoxyCodeLine{00021\ }
-\DoxyCodeLine{00022\ }
-\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ student();}
-\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ showOptionE(std::vector<std::pair<int,std::string>>\ infos);}
-\DoxyCodeLine{00025\ }
-\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ sortingOptionE(std::vector<std::pair<int,std::string>>\ infos);}
-\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{void}\ sortingE(std::vector<std::pair<int,std::string>>\ infos,\textcolor{keywordtype}{bool}\ both);}
-\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ sortingN(std::vector<std::pair<int,std::string>>\ infos,\textcolor{keywordtype}{bool}\ both);}
-\DoxyCodeLine{00029\ }
-\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ studentT();}
-\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ studentC();}
-\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ studentA();}
-\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ studentTC();}
-\DoxyCodeLine{00034\ }
-\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ nStudents();}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_menu}{Menu}}\ \{}
+\DoxyCodeLine{00016\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00017\ \ \ \ \ std::vector<Turma>\ turmas;}
+\DoxyCodeLine{00018\ \ \ \ \ std::unordered\_map<int,Student>\ students;}
+\DoxyCodeLine{00019\ \ \ \ \ std::queue<Request>\ requests;}
+\DoxyCodeLine{00020\ \ \ \ \ std::stack<std::string>\ registers;}
+\DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{class_menu}{Menu}}(std::vector<Turma>\ t,std::unordered\_map<int,Student>\ s,std::queue<Request>\ r);}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_a053af16333358d5bd265a682c5387822}{MenuBase}}();}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_a57f6b895a7df2db55b0268769e113040}{schedule}}();}
 \DoxyCodeLine{00036\ }
-\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ maiorN();}
-\DoxyCodeLine{00038\ }
-\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ capacity();}
-\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ capacityA();}
-\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ capacityT();}
-\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ capacityC();}
-\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{void}\ capacityTC();}
-\DoxyCodeLine{00044\ }
-\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ getIn();}
-\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ getInT();}
-\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ getInUC();}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_ac8e831a33fb4a9987a1312ce5ab986ee}{scheduleE}}();}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_ac33ba5e13b6d1f649a0014d617c44910}{scheduleT}}();}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_ac1a7580efbe6865ceeba83e5294b9099}{scheduleTU}}();}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_a7da10ae63d84c96176a0029ea0e50aec}{student}}();}
 \DoxyCodeLine{00048\ }
-\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ getOut();}
-\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ getOutT();}
-\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ getOutUC();}
-\DoxyCodeLine{00052\ }
-\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{void}\ replace();}
-\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ replaceT();}
-\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{void}\ replaceU();}
-\DoxyCodeLine{00056\ }
-\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{void}\ closeMenu();}
-\DoxyCodeLine{00058\ }
-\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{bool}\ testBalance(std::string\ pedido,std::string\ turma,std::string\ uc);}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_afd0b5222cdeedbcaf7ac247b01b6c583}{studentT}}();}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_a52a64cc12eab9d4eb918f24ae7ed492c}{studentC}}();}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_a852fdcfba69d85700e2e7eb2cc20bcda}{studentA}}();}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_af96478acf78bc9eb84a48b0098392616}{studentTC}}();}
 \DoxyCodeLine{00060\ }
-\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{bool}\ addUC(std::string\ uc,\ \mbox{\hyperlink{class_student}{Student}}\&\ student);}
-\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{bool}\ removeUC(std::string\ uc,\ \mbox{\hyperlink{class_student}{Student}}\&\ student);}
-\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{bool}\ addClass(std::string\ turma,\ \mbox{\hyperlink{class_student}{Student}}\&\ student,\ std::string\ uc);}
-\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{bool}\ removeClass(std::string\ turma,\ \mbox{\hyperlink{class_student}{Student}}\&\ student,\ std::string\ uc);}
-\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{bool}\ switchClass(\mbox{\hyperlink{class_student}{Student}}\&\ student,std::string\ tInicial,std::string\ tFinal,std::string\ uc);}
-\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{bool}\ switchUC(\mbox{\hyperlink{class_student}{Student}}\&\ student,std::string\ ucInicial,std::string\ ucFinal);}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_ab0aeb369a58b58dc0b8daa0bc7a418df}{showOptionE}}(std::vector<std::pair<int,std::string>>\ infos);}
 \DoxyCodeLine{00067\ }
-\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{void}\ waitingList();}
-\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{void}\ showWaitingList();}
-\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{void}\ removeFWaitingList();}
-\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{void}\ showRegisters();}
-\DoxyCodeLine{00072\ }
-\DoxyCodeLine{00073\ \};}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_a875897547ce57422147ff335897e109d}{sortingOptionE}}(std::vector<std::pair<int,std::string>>\ infos);}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_ad99477f03a8d257b17030dd3dc99d8da}{sortingE}}(std::vector<std::pair<int,std::string>>\ infos,\textcolor{keywordtype}{bool}\ both);}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_a44ee55b1aad7b9455717a26a3fdcf0d3}{sortingN}}(std::vector<std::pair<int,std::string>>\ infos,\textcolor{keywordtype}{bool}\ both);}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_a1cc8619340fc5d6935691fafe36ea958}{nStudents}}();}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_a71af12c9156e1d959ed2a9bbc6942770}{maiorN}}();}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_aa4a3594b2e49755c68e7500da196c8d4}{capacity}}();}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_acd38c3b97efa0630addede7efa52f2fc}{capacityA}}();}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_a59c4cc0358939951b3bb3bea304009d7}{capacityT}}();}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_a4d548506b17c45f6b12be88b19bfde93}{capacityC}}();}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_af4f0549ddb5e6dd28cef160c6f4a1b51}{capacityTC}}();}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_a04f10eba042ce9aba578f9c78fca7cd5}{getIn}}();}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_a5f1853a1c45dde69e828386d2e149377}{getInT}}();}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_ab51702349c16bf752b4764f336836ab3}{getInUC}}();}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_a62f23b66557f24f8c436b933acbdc24a}{getOut}}();}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_a0365e3c4d9d4ada4f1efab381ea0b520}{getOutT}}();}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_a74712948150f0df142631ac571520322}{getOutUC}}();}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_addbc2447e372b1d8e37d515a4248d209}{replace}}();}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00134\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_a77a1e34ee7b17d83c9e200aab4e67433}{replaceT}}();}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_a36e3d10bcfde59d8ab412117e8ddaace}{replaceU}}();}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_a027ae67027e123f15e38d654c762d4db}{closeMenu}}();}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_menu_a05d75ec397dab51779bfc14a1ae68fea}{testBalance}}(std::string\ pedido,std::string\ turma,std::string\ uc);}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00151\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_menu_a683f518d5598db8d9be6813b12a4a64c}{addUC}}(std::string\ uc,\ \mbox{\hyperlink{class_student}{Student}}\&\ \mbox{\hyperlink{class_menu_a7da10ae63d84c96176a0029ea0e50aec}{student}});}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00156\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_menu_ae986a0bb607085286834eeb5aa117417}{removeUC}}(std::string\ uc,\ \mbox{\hyperlink{class_student}{Student}}\&\ \mbox{\hyperlink{class_menu_a7da10ae63d84c96176a0029ea0e50aec}{student}});}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00161\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_menu_ad1b0081e8820fdd2bb4db9e25e34b216}{addClass}}(std::string\ turma,\ \mbox{\hyperlink{class_student}{Student}}\&\ \mbox{\hyperlink{class_menu_a7da10ae63d84c96176a0029ea0e50aec}{student}},\ std::string\ uc);}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00166\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_menu_a67e7be64277e621832dc5474b6bb4959}{removeClass}}(std::string\ turma,\ \mbox{\hyperlink{class_student}{Student}}\&\ \mbox{\hyperlink{class_menu_a7da10ae63d84c96176a0029ea0e50aec}{student}},\ std::string\ uc);}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00171\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_menu_aadf9a7e63e490b8c19c10edad3ed053a}{switchClass}}(\mbox{\hyperlink{class_student}{Student}}\&\ \mbox{\hyperlink{class_menu_a7da10ae63d84c96176a0029ea0e50aec}{student}},std::string\ tInicial,std::string\ tFinal,std::string\ uc);}
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00176\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_menu_a55a6bff6acb45e66c6d0f725e0086d4e}{switchUC}}(\mbox{\hyperlink{class_student}{Student}}\&\ \mbox{\hyperlink{class_menu_a7da10ae63d84c96176a0029ea0e50aec}{student}},std::string\ ucInicial,std::string\ ucFinal);}
+\DoxyCodeLine{00177\ }
+\DoxyCodeLine{00179\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_a819413644b591f9752883a953aba8301}{waitingList}}();}
+\DoxyCodeLine{00180\ }
+\DoxyCodeLine{00182\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_a90f8f740ba82d90daf0fbe7b972055ef}{showWaitingList}}();}
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00185\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_a3b1fa8ed0fed0977751f9e8a434f8bf8}{removeFWaitingList}}();}
+\DoxyCodeLine{00186\ }
+\DoxyCodeLine{00188\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_a7d30a1882987a88955ff8925fefa9d68}{showRegisters}}();}
+\DoxyCodeLine{00189\ }
+\DoxyCodeLine{00190\ \};}
 
 \end{DoxyCode}

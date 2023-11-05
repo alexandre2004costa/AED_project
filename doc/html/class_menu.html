@@ -76,139 +76,715 @@ $(function() {
   <div class="headertitle"><div class="title">Menu Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_menu_8h_source.html">Menu.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a32f94338fa6e38b3ac0b65ae38f7e58d" id="r_a32f94338fa6e38b3ac0b65ae38f7e58d"><td class="memItemLeft" align="right" valign="top"><a id="a32f94338fa6e38b3ac0b65ae38f7e58d" name="a32f94338fa6e38b3ac0b65ae38f7e58d"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Menu</b> (std::vector&lt; <a class="el" href="class_turma.html">Turma</a> &gt; t, std::unordered_map&lt; int, <a class="el" href="class_student.html">Student</a> &gt; s, std::queue&lt; <a class="el" href="class_request.html">Request</a> &gt; r)</td></tr>
+<tr class="memitem:a32f94338fa6e38b3ac0b65ae38f7e58d" id="r_a32f94338fa6e38b3ac0b65ae38f7e58d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_menu.html#a32f94338fa6e38b3ac0b65ae38f7e58d">Menu</a> (std::vector&lt; <a class="el" href="class_turma.html">Turma</a> &gt; t, std::unordered_map&lt; int, <a class="el" href="class_student.html">Student</a> &gt; s, std::queue&lt; <a class="el" href="class_request.html">Request</a> &gt; r)</td></tr>
 <tr class="separator:a32f94338fa6e38b3ac0b65ae38f7e58d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a053af16333358d5bd265a682c5387822" id="r_a053af16333358d5bd265a682c5387822"><td class="memItemLeft" align="right" valign="top"><a id="a053af16333358d5bd265a682c5387822" name="a053af16333358d5bd265a682c5387822"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>MenuBase</b> ()</td></tr>
+<tr class="memdesc:a053af16333358d5bd265a682c5387822"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface inicial do menu onde podemos escolher que ação queremos realizar. <br /></td></tr>
 <tr class="separator:a053af16333358d5bd265a682c5387822"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a57f6b895a7df2db55b0268769e113040" id="r_a57f6b895a7df2db55b0268769e113040"><td class="memItemLeft" align="right" valign="top"><a id="a57f6b895a7df2db55b0268769e113040" name="a57f6b895a7df2db55b0268769e113040"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>schedule</b> ()</td></tr>
+<tr class="memdesc:a57f6b895a7df2db55b0268769e113040"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface do horário onde podemos escolher entre ver o horário do estudante, turma ou turma/uc. <br /></td></tr>
 <tr class="separator:a57f6b895a7df2db55b0268769e113040"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac8e831a33fb4a9987a1312ce5ab986ee" id="r_ac8e831a33fb4a9987a1312ce5ab986ee"><td class="memItemLeft" align="right" valign="top"><a id="ac8e831a33fb4a9987a1312ce5ab986ee" name="ac8e831a33fb4a9987a1312ce5ab986ee"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>scheduleE</b> ()</td></tr>
+<tr class="memdesc:ac8e831a33fb4a9987a1312ce5ab986ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface para ver o horário de um estudante ao receber o número deste por input. <br /></td></tr>
 <tr class="separator:ac8e831a33fb4a9987a1312ce5ab986ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac33ba5e13b6d1f649a0014d617c44910" id="r_ac33ba5e13b6d1f649a0014d617c44910"><td class="memItemLeft" align="right" valign="top"><a id="ac33ba5e13b6d1f649a0014d617c44910" name="ac33ba5e13b6d1f649a0014d617c44910"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>scheduleT</b> ()</td></tr>
+<tr class="memdesc:ac33ba5e13b6d1f649a0014d617c44910"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface para ver o horário de uma turma ao receber o classcode desta por input. <br /></td></tr>
 <tr class="separator:ac33ba5e13b6d1f649a0014d617c44910"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac1a7580efbe6865ceeba83e5294b9099" id="r_ac1a7580efbe6865ceeba83e5294b9099"><td class="memItemLeft" align="right" valign="top"><a id="ac1a7580efbe6865ceeba83e5294b9099" name="ac1a7580efbe6865ceeba83e5294b9099"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>scheduleTU</b> ()</td></tr>
+<tr class="memdesc:ac1a7580efbe6865ceeba83e5294b9099"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface para ver o horário de uma turma/uc ao receber o classcode e a uc por input. <br /></td></tr>
 <tr class="separator:ac1a7580efbe6865ceeba83e5294b9099"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7da10ae63d84c96176a0029ea0e50aec" id="r_a7da10ae63d84c96176a0029ea0e50aec"><td class="memItemLeft" align="right" valign="top"><a id="a7da10ae63d84c96176a0029ea0e50aec" name="a7da10ae63d84c96176a0029ea0e50aec"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>student</b> ()</td></tr>
+<tr class="memdesc:a7da10ae63d84c96176a0029ea0e50aec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface de estudantes onde podemos escolher entre ver os estudantes duma turma, uc, ano ou turma/uc. <br /></td></tr>
 <tr class="separator:a7da10ae63d84c96176a0029ea0e50aec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab0aeb369a58b58dc0b8daa0bc7a418df" id="r_ab0aeb369a58b58dc0b8daa0bc7a418df"><td class="memItemLeft" align="right" valign="top"><a id="ab0aeb369a58b58dc0b8daa0bc7a418df" name="ab0aeb369a58b58dc0b8daa0bc7a418df"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>showOptionE</b> (std::vector&lt; std::pair&lt; int, std::string &gt; &gt; infos)</td></tr>
-<tr class="separator:ab0aeb369a58b58dc0b8daa0bc7a418df"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a875897547ce57422147ff335897e109d" id="r_a875897547ce57422147ff335897e109d"><td class="memItemLeft" align="right" valign="top"><a id="a875897547ce57422147ff335897e109d" name="a875897547ce57422147ff335897e109d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>sortingOptionE</b> (std::vector&lt; std::pair&lt; int, std::string &gt; &gt; infos)</td></tr>
-<tr class="separator:a875897547ce57422147ff335897e109d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad99477f03a8d257b17030dd3dc99d8da" id="r_ad99477f03a8d257b17030dd3dc99d8da"><td class="memItemLeft" align="right" valign="top"><a id="ad99477f03a8d257b17030dd3dc99d8da" name="ad99477f03a8d257b17030dd3dc99d8da"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>sortingE</b> (std::vector&lt; std::pair&lt; int, std::string &gt; &gt; infos, bool both)</td></tr>
-<tr class="separator:ad99477f03a8d257b17030dd3dc99d8da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a44ee55b1aad7b9455717a26a3fdcf0d3" id="r_a44ee55b1aad7b9455717a26a3fdcf0d3"><td class="memItemLeft" align="right" valign="top"><a id="a44ee55b1aad7b9455717a26a3fdcf0d3" name="a44ee55b1aad7b9455717a26a3fdcf0d3"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>sortingN</b> (std::vector&lt; std::pair&lt; int, std::string &gt; &gt; infos, bool both)</td></tr>
-<tr class="separator:a44ee55b1aad7b9455717a26a3fdcf0d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afd0b5222cdeedbcaf7ac247b01b6c583" id="r_afd0b5222cdeedbcaf7ac247b01b6c583"><td class="memItemLeft" align="right" valign="top"><a id="afd0b5222cdeedbcaf7ac247b01b6c583" name="afd0b5222cdeedbcaf7ac247b01b6c583"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>studentT</b> ()</td></tr>
+<tr class="memdesc:afd0b5222cdeedbcaf7ac247b01b6c583"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface para ver os estudantes de uma turma ao receber o classcode desta por input. <br /></td></tr>
 <tr class="separator:afd0b5222cdeedbcaf7ac247b01b6c583"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a52a64cc12eab9d4eb918f24ae7ed492c" id="r_a52a64cc12eab9d4eb918f24ae7ed492c"><td class="memItemLeft" align="right" valign="top"><a id="a52a64cc12eab9d4eb918f24ae7ed492c" name="a52a64cc12eab9d4eb918f24ae7ed492c"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>studentC</b> ()</td></tr>
+<tr class="memdesc:a52a64cc12eab9d4eb918f24ae7ed492c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface para ver os estudantes de uma uc ao receber a uc por input. <br /></td></tr>
 <tr class="separator:a52a64cc12eab9d4eb918f24ae7ed492c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a852fdcfba69d85700e2e7eb2cc20bcda" id="r_a852fdcfba69d85700e2e7eb2cc20bcda"><td class="memItemLeft" align="right" valign="top"><a id="a852fdcfba69d85700e2e7eb2cc20bcda" name="a852fdcfba69d85700e2e7eb2cc20bcda"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>studentA</b> ()</td></tr>
+<tr class="memdesc:a852fdcfba69d85700e2e7eb2cc20bcda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface para ver os estudantes de um ano ao receber o ano por input. <br /></td></tr>
 <tr class="separator:a852fdcfba69d85700e2e7eb2cc20bcda"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af96478acf78bc9eb84a48b0098392616" id="r_af96478acf78bc9eb84a48b0098392616"><td class="memItemLeft" align="right" valign="top"><a id="af96478acf78bc9eb84a48b0098392616" name="af96478acf78bc9eb84a48b0098392616"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>studentTC</b> ()</td></tr>
+<tr class="memdesc:af96478acf78bc9eb84a48b0098392616"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface para ver os estudantes de uma turma/uc ao receber o classcode desta e a uc por input. <br /></td></tr>
 <tr class="separator:af96478acf78bc9eb84a48b0098392616"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0aeb369a58b58dc0b8daa0bc7a418df" id="r_ab0aeb369a58b58dc0b8daa0bc7a418df"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_menu.html#ab0aeb369a58b58dc0b8daa0bc7a418df">showOptionE</a> (std::vector&lt; std::pair&lt; int, std::string &gt; &gt; infos)</td></tr>
+<tr class="separator:ab0aeb369a58b58dc0b8daa0bc7a418df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a875897547ce57422147ff335897e109d" id="r_a875897547ce57422147ff335897e109d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_menu.html#a875897547ce57422147ff335897e109d">sortingOptionE</a> (std::vector&lt; std::pair&lt; int, std::string &gt; &gt; infos)</td></tr>
+<tr class="separator:a875897547ce57422147ff335897e109d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad99477f03a8d257b17030dd3dc99d8da" id="r_ad99477f03a8d257b17030dd3dc99d8da"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_menu.html#ad99477f03a8d257b17030dd3dc99d8da">sortingE</a> (std::vector&lt; std::pair&lt; int, std::string &gt; &gt; infos, bool both)</td></tr>
+<tr class="separator:ad99477f03a8d257b17030dd3dc99d8da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44ee55b1aad7b9455717a26a3fdcf0d3" id="r_a44ee55b1aad7b9455717a26a3fdcf0d3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_menu.html#a44ee55b1aad7b9455717a26a3fdcf0d3">sortingN</a> (std::vector&lt; std::pair&lt; int, std::string &gt; &gt; infos, bool both)</td></tr>
+<tr class="separator:a44ee55b1aad7b9455717a26a3fdcf0d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1cc8619340fc5d6935691fafe36ea958" id="r_a1cc8619340fc5d6935691fafe36ea958"><td class="memItemLeft" align="right" valign="top"><a id="a1cc8619340fc5d6935691fafe36ea958" name="a1cc8619340fc5d6935691fafe36ea958"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>nStudents</b> ()</td></tr>
+<tr class="memdesc:a1cc8619340fc5d6935691fafe36ea958"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface para ver o número de estudantes num número mínimo n de UCs passadas por input. <br /></td></tr>
 <tr class="separator:a1cc8619340fc5d6935691fafe36ea958"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a71af12c9156e1d959ed2a9bbc6942770" id="r_a71af12c9156e1d959ed2a9bbc6942770"><td class="memItemLeft" align="right" valign="top"><a id="a71af12c9156e1d959ed2a9bbc6942770" name="a71af12c9156e1d959ed2a9bbc6942770"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>maiorN</b> ()</td></tr>
+<tr class="memdesc:a71af12c9156e1d959ed2a9bbc6942770"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface que mostra as n UCs com o maior número de estudantes, esse n é um valor passado por input. <br /></td></tr>
 <tr class="separator:a71af12c9156e1d959ed2a9bbc6942770"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa4a3594b2e49755c68e7500da196c8d4" id="r_aa4a3594b2e49755c68e7500da196c8d4"><td class="memItemLeft" align="right" valign="top"><a id="aa4a3594b2e49755c68e7500da196c8d4" name="aa4a3594b2e49755c68e7500da196c8d4"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>capacity</b> ()</td></tr>
+<tr class="memdesc:aa4a3594b2e49755c68e7500da196c8d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface da ocupação onde podemos escolher entre ver a ocupação dos anos, turmas, ucs ou turmas/ucs. <br /></td></tr>
 <tr class="separator:aa4a3594b2e49755c68e7500da196c8d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd38c3b97efa0630addede7efa52f2fc" id="r_acd38c3b97efa0630addede7efa52f2fc"><td class="memItemLeft" align="right" valign="top"><a id="acd38c3b97efa0630addede7efa52f2fc" name="acd38c3b97efa0630addede7efa52f2fc"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>capacityA</b> ()</td></tr>
+<tr class="memdesc:acd38c3b97efa0630addede7efa52f2fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Printa a ocupação de todos os anos por ordem crescente. <br /></td></tr>
 <tr class="separator:acd38c3b97efa0630addede7efa52f2fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a59c4cc0358939951b3bb3bea304009d7" id="r_a59c4cc0358939951b3bb3bea304009d7"><td class="memItemLeft" align="right" valign="top"><a id="a59c4cc0358939951b3bb3bea304009d7" name="a59c4cc0358939951b3bb3bea304009d7"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>capacityT</b> ()</td></tr>
+<tr class="memdesc:a59c4cc0358939951b3bb3bea304009d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Printa a ocupação de todas as turmas por ordem crescente. <br /></td></tr>
 <tr class="separator:a59c4cc0358939951b3bb3bea304009d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4d548506b17c45f6b12be88b19bfde93" id="r_a4d548506b17c45f6b12be88b19bfde93"><td class="memItemLeft" align="right" valign="top"><a id="a4d548506b17c45f6b12be88b19bfde93" name="a4d548506b17c45f6b12be88b19bfde93"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>capacityC</b> ()</td></tr>
+<tr class="memdesc:a4d548506b17c45f6b12be88b19bfde93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Printa a ocupação de todas as ucs por ordem crescente. <br /></td></tr>
 <tr class="separator:a4d548506b17c45f6b12be88b19bfde93"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af4f0549ddb5e6dd28cef160c6f4a1b51" id="r_af4f0549ddb5e6dd28cef160c6f4a1b51"><td class="memItemLeft" align="right" valign="top"><a id="af4f0549ddb5e6dd28cef160c6f4a1b51" name="af4f0549ddb5e6dd28cef160c6f4a1b51"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>capacityTC</b> ()</td></tr>
+<tr class="memdesc:af4f0549ddb5e6dd28cef160c6f4a1b51"><td class="mdescLeft">&#160;</td><td class="mdescRight">Printa a ocupação de todas as turmas/ucs por ordem crescente. <br /></td></tr>
 <tr class="separator:af4f0549ddb5e6dd28cef160c6f4a1b51"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a04f10eba042ce9aba578f9c78fca7cd5" id="r_a04f10eba042ce9aba578f9c78fca7cd5"><td class="memItemLeft" align="right" valign="top"><a id="a04f10eba042ce9aba578f9c78fca7cd5" name="a04f10eba042ce9aba578f9c78fca7cd5"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>getIn</b> ()</td></tr>
+<tr class="memdesc:a04f10eba042ce9aba578f9c78fca7cd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface para efetuar adições de estudantes a turmas e ucs. <br /></td></tr>
 <tr class="separator:a04f10eba042ce9aba578f9c78fca7cd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5f1853a1c45dde69e828386d2e149377" id="r_a5f1853a1c45dde69e828386d2e149377"><td class="memItemLeft" align="right" valign="top"><a id="a5f1853a1c45dde69e828386d2e149377" name="a5f1853a1c45dde69e828386d2e149377"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>getInT</b> ()</td></tr>
+<tr class="memitem:a5f1853a1c45dde69e828386d2e149377" id="r_a5f1853a1c45dde69e828386d2e149377"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_menu.html#a5f1853a1c45dde69e828386d2e149377">getInT</a> ()</td></tr>
 <tr class="separator:a5f1853a1c45dde69e828386d2e149377"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab51702349c16bf752b4764f336836ab3" id="r_ab51702349c16bf752b4764f336836ab3"><td class="memItemLeft" align="right" valign="top"><a id="ab51702349c16bf752b4764f336836ab3" name="ab51702349c16bf752b4764f336836ab3"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>getInUC</b> ()</td></tr>
+<tr class="memitem:ab51702349c16bf752b4764f336836ab3" id="r_ab51702349c16bf752b4764f336836ab3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_menu.html#ab51702349c16bf752b4764f336836ab3">getInUC</a> ()</td></tr>
 <tr class="separator:ab51702349c16bf752b4764f336836ab3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a62f23b66557f24f8c436b933acbdc24a" id="r_a62f23b66557f24f8c436b933acbdc24a"><td class="memItemLeft" align="right" valign="top"><a id="a62f23b66557f24f8c436b933acbdc24a" name="a62f23b66557f24f8c436b933acbdc24a"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>getOut</b> ()</td></tr>
+<tr class="memdesc:a62f23b66557f24f8c436b933acbdc24a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface para efetuar remoções de estudantes de turmas e ucs. <br /></td></tr>
 <tr class="separator:a62f23b66557f24f8c436b933acbdc24a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0365e3c4d9d4ada4f1efab381ea0b520" id="r_a0365e3c4d9d4ada4f1efab381ea0b520"><td class="memItemLeft" align="right" valign="top"><a id="a0365e3c4d9d4ada4f1efab381ea0b520" name="a0365e3c4d9d4ada4f1efab381ea0b520"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>getOutT</b> ()</td></tr>
+<tr class="memitem:a0365e3c4d9d4ada4f1efab381ea0b520" id="r_a0365e3c4d9d4ada4f1efab381ea0b520"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_menu.html#a0365e3c4d9d4ada4f1efab381ea0b520">getOutT</a> ()</td></tr>
 <tr class="separator:a0365e3c4d9d4ada4f1efab381ea0b520"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a74712948150f0df142631ac571520322" id="r_a74712948150f0df142631ac571520322"><td class="memItemLeft" align="right" valign="top"><a id="a74712948150f0df142631ac571520322" name="a74712948150f0df142631ac571520322"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>getOutUC</b> ()</td></tr>
+<tr class="memitem:a74712948150f0df142631ac571520322" id="r_a74712948150f0df142631ac571520322"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_menu.html#a74712948150f0df142631ac571520322">getOutUC</a> ()</td></tr>
 <tr class="separator:a74712948150f0df142631ac571520322"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:addbc2447e372b1d8e37d515a4248d209" id="r_addbc2447e372b1d8e37d515a4248d209"><td class="memItemLeft" align="right" valign="top"><a id="addbc2447e372b1d8e37d515a4248d209" name="addbc2447e372b1d8e37d515a4248d209"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>replace</b> ()</td></tr>
+<tr class="memdesc:addbc2447e372b1d8e37d515a4248d209"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface para efetuar trocas de estudantes entre turmas e ucs. <br /></td></tr>
 <tr class="separator:addbc2447e372b1d8e37d515a4248d209"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a77a1e34ee7b17d83c9e200aab4e67433" id="r_a77a1e34ee7b17d83c9e200aab4e67433"><td class="memItemLeft" align="right" valign="top"><a id="a77a1e34ee7b17d83c9e200aab4e67433" name="a77a1e34ee7b17d83c9e200aab4e67433"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>replaceT</b> ()</td></tr>
+<tr class="memitem:a77a1e34ee7b17d83c9e200aab4e67433" id="r_a77a1e34ee7b17d83c9e200aab4e67433"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_menu.html#a77a1e34ee7b17d83c9e200aab4e67433">replaceT</a> ()</td></tr>
 <tr class="separator:a77a1e34ee7b17d83c9e200aab4e67433"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a36e3d10bcfde59d8ab412117e8ddaace" id="r_a36e3d10bcfde59d8ab412117e8ddaace"><td class="memItemLeft" align="right" valign="top"><a id="a36e3d10bcfde59d8ab412117e8ddaace" name="a36e3d10bcfde59d8ab412117e8ddaace"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>replaceU</b> ()</td></tr>
+<tr class="memitem:a36e3d10bcfde59d8ab412117e8ddaace" id="r_a36e3d10bcfde59d8ab412117e8ddaace"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_menu.html#a36e3d10bcfde59d8ab412117e8ddaace">replaceU</a> ()</td></tr>
 <tr class="separator:a36e3d10bcfde59d8ab412117e8ddaace"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a027ae67027e123f15e38d654c762d4db" id="r_a027ae67027e123f15e38d654c762d4db"><td class="memItemLeft" align="right" valign="top"><a id="a027ae67027e123f15e38d654c762d4db" name="a027ae67027e123f15e38d654c762d4db"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>closeMenu</b> ()</td></tr>
+<tr class="memdesc:a027ae67027e123f15e38d654c762d4db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transferir informação das estruturas para os ficheiros. <br /></td></tr>
 <tr class="separator:a027ae67027e123f15e38d654c762d4db"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a05d75ec397dab51779bfc14a1ae68fea" id="r_a05d75ec397dab51779bfc14a1ae68fea"><td class="memItemLeft" align="right" valign="top"><a id="a05d75ec397dab51779bfc14a1ae68fea" name="a05d75ec397dab51779bfc14a1ae68fea"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>testBalance</b> (std::string pedido, std::string turma, std::string uc)</td></tr>
+<tr class="memitem:a05d75ec397dab51779bfc14a1ae68fea" id="r_a05d75ec397dab51779bfc14a1ae68fea"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_menu.html#a05d75ec397dab51779bfc14a1ae68fea">testBalance</a> (std::string pedido, std::string turma, std::string uc)</td></tr>
 <tr class="separator:a05d75ec397dab51779bfc14a1ae68fea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a683f518d5598db8d9be6813b12a4a64c" id="r_a683f518d5598db8d9be6813b12a4a64c"><td class="memItemLeft" align="right" valign="top"><a id="a683f518d5598db8d9be6813b12a4a64c" name="a683f518d5598db8d9be6813b12a4a64c"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>addUC</b> (std::string uc, <a class="el" href="class_student.html">Student</a> &amp;student)</td></tr>
+<tr class="memitem:a683f518d5598db8d9be6813b12a4a64c" id="r_a683f518d5598db8d9be6813b12a4a64c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_menu.html#a683f518d5598db8d9be6813b12a4a64c">addUC</a> (std::string uc, <a class="el" href="class_student.html">Student</a> &amp;<a class="el" href="class_menu.html#a7da10ae63d84c96176a0029ea0e50aec">student</a>)</td></tr>
 <tr class="separator:a683f518d5598db8d9be6813b12a4a64c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae986a0bb607085286834eeb5aa117417" id="r_ae986a0bb607085286834eeb5aa117417"><td class="memItemLeft" align="right" valign="top"><a id="ae986a0bb607085286834eeb5aa117417" name="ae986a0bb607085286834eeb5aa117417"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>removeUC</b> (std::string uc, <a class="el" href="class_student.html">Student</a> &amp;student)</td></tr>
+<tr class="memitem:ae986a0bb607085286834eeb5aa117417" id="r_ae986a0bb607085286834eeb5aa117417"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_menu.html#ae986a0bb607085286834eeb5aa117417">removeUC</a> (std::string uc, <a class="el" href="class_student.html">Student</a> &amp;<a class="el" href="class_menu.html#a7da10ae63d84c96176a0029ea0e50aec">student</a>)</td></tr>
 <tr class="separator:ae986a0bb607085286834eeb5aa117417"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad1b0081e8820fdd2bb4db9e25e34b216" id="r_ad1b0081e8820fdd2bb4db9e25e34b216"><td class="memItemLeft" align="right" valign="top"><a id="ad1b0081e8820fdd2bb4db9e25e34b216" name="ad1b0081e8820fdd2bb4db9e25e34b216"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>addClass</b> (std::string turma, <a class="el" href="class_student.html">Student</a> &amp;student, std::string uc)</td></tr>
+<tr class="memitem:ad1b0081e8820fdd2bb4db9e25e34b216" id="r_ad1b0081e8820fdd2bb4db9e25e34b216"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_menu.html#ad1b0081e8820fdd2bb4db9e25e34b216">addClass</a> (std::string turma, <a class="el" href="class_student.html">Student</a> &amp;<a class="el" href="class_menu.html#a7da10ae63d84c96176a0029ea0e50aec">student</a>, std::string uc)</td></tr>
 <tr class="separator:ad1b0081e8820fdd2bb4db9e25e34b216"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a67e7be64277e621832dc5474b6bb4959" id="r_a67e7be64277e621832dc5474b6bb4959"><td class="memItemLeft" align="right" valign="top"><a id="a67e7be64277e621832dc5474b6bb4959" name="a67e7be64277e621832dc5474b6bb4959"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>removeClass</b> (std::string turma, <a class="el" href="class_student.html">Student</a> &amp;student, std::string uc)</td></tr>
+<tr class="memitem:a67e7be64277e621832dc5474b6bb4959" id="r_a67e7be64277e621832dc5474b6bb4959"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_menu.html#a67e7be64277e621832dc5474b6bb4959">removeClass</a> (std::string turma, <a class="el" href="class_student.html">Student</a> &amp;<a class="el" href="class_menu.html#a7da10ae63d84c96176a0029ea0e50aec">student</a>, std::string uc)</td></tr>
 <tr class="separator:a67e7be64277e621832dc5474b6bb4959"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aadf9a7e63e490b8c19c10edad3ed053a" id="r_aadf9a7e63e490b8c19c10edad3ed053a"><td class="memItemLeft" align="right" valign="top"><a id="aadf9a7e63e490b8c19c10edad3ed053a" name="aadf9a7e63e490b8c19c10edad3ed053a"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>switchClass</b> (<a class="el" href="class_student.html">Student</a> &amp;student, std::string tInicial, std::string tFinal, std::string uc)</td></tr>
+<tr class="memitem:aadf9a7e63e490b8c19c10edad3ed053a" id="r_aadf9a7e63e490b8c19c10edad3ed053a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_menu.html#aadf9a7e63e490b8c19c10edad3ed053a">switchClass</a> (<a class="el" href="class_student.html">Student</a> &amp;<a class="el" href="class_menu.html#a7da10ae63d84c96176a0029ea0e50aec">student</a>, std::string tInicial, std::string tFinal, std::string uc)</td></tr>
 <tr class="separator:aadf9a7e63e490b8c19c10edad3ed053a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a55a6bff6acb45e66c6d0f725e0086d4e" id="r_a55a6bff6acb45e66c6d0f725e0086d4e"><td class="memItemLeft" align="right" valign="top"><a id="a55a6bff6acb45e66c6d0f725e0086d4e" name="a55a6bff6acb45e66c6d0f725e0086d4e"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>switchUC</b> (<a class="el" href="class_student.html">Student</a> &amp;student, std::string ucInicial, std::string ucFinal)</td></tr>
+<tr class="memitem:a55a6bff6acb45e66c6d0f725e0086d4e" id="r_a55a6bff6acb45e66c6d0f725e0086d4e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_menu.html#a55a6bff6acb45e66c6d0f725e0086d4e">switchUC</a> (<a class="el" href="class_student.html">Student</a> &amp;<a class="el" href="class_menu.html#a7da10ae63d84c96176a0029ea0e50aec">student</a>, std::string ucInicial, std::string ucFinal)</td></tr>
 <tr class="separator:a55a6bff6acb45e66c6d0f725e0086d4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a819413644b591f9752883a953aba8301" id="r_a819413644b591f9752883a953aba8301"><td class="memItemLeft" align="right" valign="top"><a id="a819413644b591f9752883a953aba8301" name="a819413644b591f9752883a953aba8301"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>waitingList</b> ()</td></tr>
+<tr class="memdesc:a819413644b591f9752883a953aba8301"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tratar dos pedidos na lista de espera. <br /></td></tr>
 <tr class="separator:a819413644b591f9752883a953aba8301"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a90f8f740ba82d90daf0fbe7b972055ef" id="r_a90f8f740ba82d90daf0fbe7b972055ef"><td class="memItemLeft" align="right" valign="top"><a id="a90f8f740ba82d90daf0fbe7b972055ef" name="a90f8f740ba82d90daf0fbe7b972055ef"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>showWaitingList</b> ()</td></tr>
+<tr class="memdesc:a90f8f740ba82d90daf0fbe7b972055ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mostrar lista de espera. <br /></td></tr>
 <tr class="separator:a90f8f740ba82d90daf0fbe7b972055ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3b1fa8ed0fed0977751f9e8a434f8bf8" id="r_a3b1fa8ed0fed0977751f9e8a434f8bf8"><td class="memItemLeft" align="right" valign="top"><a id="a3b1fa8ed0fed0977751f9e8a434f8bf8" name="a3b1fa8ed0fed0977751f9e8a434f8bf8"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>removeFWaitingList</b> ()</td></tr>
+<tr class="memdesc:a3b1fa8ed0fed0977751f9e8a434f8bf8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remover pedidos da lista de espera. <br /></td></tr>
 <tr class="separator:a3b1fa8ed0fed0977751f9e8a434f8bf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7d30a1882987a88955ff8925fefa9d68" id="r_a7d30a1882987a88955ff8925fefa9d68"><td class="memItemLeft" align="right" valign="top"><a id="a7d30a1882987a88955ff8925fefa9d68" name="a7d30a1882987a88955ff8925fefa9d68"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>showRegisters</b> ()</td></tr>
+<tr class="memdesc:a7d30a1882987a88955ff8925fefa9d68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mostrar o histórico de ações efetuadas. <br /></td></tr>
 <tr class="separator:a7d30a1882987a88955ff8925fefa9d68"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Classe que declara um menu</p>
+<p>É a classe usada para criar uma interface onde podemos visualizar e modificar informações acerca dos estudantes, turmas e pedidos. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">turmas</td><td>: Conjunto de todas as turmas </td></tr>
+    <tr><td class="paramname">students</td><td>: Conjunto de todos os estudantes </td></tr>
+    <tr><td class="paramname">requests</td><td>: Conjunto dos pedidos pendentes </td></tr>
+    <tr><td class="paramname">registers</td><td>: Conjunto de registos de ações neste mesmo menu </td></tr>
+  </table>
+  </dd>
+</dl>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a32f94338fa6e38b3ac0b65ae38f7e58d" name="a32f94338fa6e38b3ac0b65ae38f7e58d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32f94338fa6e38b3ac0b65ae38f7e58d">&#9670;&#160;</a></span>Menu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Menu::Menu </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="class_turma.html">Turma</a> &gt;&#160;</td>
+          <td class="paramname"><em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::unordered_map&lt; int, <a class="el" href="class_student.html">Student</a> &gt;&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::queue&lt; <a class="el" href="class_request.html">Request</a> &gt;&#160;</td>
+          <td class="paramname"><em>r</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Cria um menu tendo em conta as turmas, os estudantes e os pedidos </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">t</td><td>: Conjunto de todas as turmas </td></tr>
+    <tr><td class="paramname">s</td><td>: Conjunto de todos os estudantes </td></tr>
+    <tr><td class="paramname">r</td><td>: Conjunto dos pedidos pendentes </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="class_turma.html">Turma()</a> </dd>
+<dd>
+<a class="el" href="class_student.html">Student()</a> </dd>
+<dd>
+<a class="el" href="class_request.html">Request()</a> </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ad1b0081e8820fdd2bb4db9e25e34b216" name="ad1b0081e8820fdd2bb4db9e25e34b216"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1b0081e8820fdd2bb4db9e25e34b216">&#9670;&#160;</a></span>addClass()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Menu::addClass </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>turma</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_student.html">Student</a> &amp;&#160;</td>
+          <td class="paramname"><em>student</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>uc</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Adicionar um estudante a uma turma numa determinada uc </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">turma,student,uc</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true caso seja possível </dd></dl>
+
+</div>
+</div>
+<a id="a683f518d5598db8d9be6813b12a4a64c" name="a683f518d5598db8d9be6813b12a4a64c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a683f518d5598db8d9be6813b12a4a64c">&#9670;&#160;</a></span>addUC()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Menu::addUC </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>uc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_student.html">Student</a> &amp;&#160;</td>
+          <td class="paramname"><em>student</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Adicionar um estudante a uma uc </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">uc,student</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true caso seja possível </dd></dl>
+
+</div>
+</div>
+<a id="a5f1853a1c45dde69e828386d2e149377" name="a5f1853a1c45dde69e828386d2e149377"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f1853a1c45dde69e828386d2e149377">&#9670;&#160;</a></span>getInT()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Menu::getInT </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Interface que verifica se é possível adicionar um estudante a uma turma numa dada uc Essa confirmação é feita em <a class="el" href="class_menu.html#ad1b0081e8820fdd2bb4db9e25e34b216">addClass()</a> </p>
+
+</div>
+</div>
+<a id="ab51702349c16bf752b4764f336836ab3" name="ab51702349c16bf752b4764f336836ab3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab51702349c16bf752b4764f336836ab3">&#9670;&#160;</a></span>getInUC()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Menu::getInUC </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Interface que verifica se é possível adicionar um estudante a uma uc Essa confirmação é feita em <a class="el" href="class_menu.html#a683f518d5598db8d9be6813b12a4a64c">addUC()</a> </p>
+
+</div>
+</div>
+<a id="a0365e3c4d9d4ada4f1efab381ea0b520" name="a0365e3c4d9d4ada4f1efab381ea0b520"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0365e3c4d9d4ada4f1efab381ea0b520">&#9670;&#160;</a></span>getOutT()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Menu::getOutT </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Interface que verifica se é possível remover um estudante de uma turma numa dada uc Essa confirmação é feita em <a class="el" href="class_menu.html#a67e7be64277e621832dc5474b6bb4959">removeClass()</a> </p>
+
+</div>
+</div>
+<a id="a74712948150f0df142631ac571520322" name="a74712948150f0df142631ac571520322"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74712948150f0df142631ac571520322">&#9670;&#160;</a></span>getOutUC()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Menu::getOutUC </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Interface que verifica se é possível remover um estudante de uma uc Essa confirmação é feita em <a class="el" href="class_menu.html#ae986a0bb607085286834eeb5aa117417">removeUC()</a> </p>
+
+</div>
+</div>
+<a id="a67e7be64277e621832dc5474b6bb4959" name="a67e7be64277e621832dc5474b6bb4959"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67e7be64277e621832dc5474b6bb4959">&#9670;&#160;</a></span>removeClass()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Menu::removeClass </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>turma</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_student.html">Student</a> &amp;&#160;</td>
+          <td class="paramname"><em>student</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>uc</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Remover um estudante de uma turma numa determinada uc </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">turma,student,uc</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true caso seja possível </dd></dl>
+
+</div>
+</div>
+<a id="ae986a0bb607085286834eeb5aa117417" name="ae986a0bb607085286834eeb5aa117417"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae986a0bb607085286834eeb5aa117417">&#9670;&#160;</a></span>removeUC()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Menu::removeUC </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>uc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_student.html">Student</a> &amp;&#160;</td>
+          <td class="paramname"><em>student</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Remover um estudante de uma uc </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">uc,student</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true caso seja possível </dd></dl>
+
+</div>
+</div>
+<a id="a77a1e34ee7b17d83c9e200aab4e67433" name="a77a1e34ee7b17d83c9e200aab4e67433"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77a1e34ee7b17d83c9e200aab4e67433">&#9670;&#160;</a></span>replaceT()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Menu::replaceT </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Interface que verifica se é possível trocar um estudante de turma numa dada uc Essa confirmação é feita em <a class="el" href="class_menu.html#aadf9a7e63e490b8c19c10edad3ed053a">switchClass()</a> </p>
+
+</div>
+</div>
+<a id="a36e3d10bcfde59d8ab412117e8ddaace" name="a36e3d10bcfde59d8ab412117e8ddaace"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36e3d10bcfde59d8ab412117e8ddaace">&#9670;&#160;</a></span>replaceU()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Menu::replaceU </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Interface que verifica se é possível trocar um estudante de uc Essa confirmação é feita em <a class="el" href="class_menu.html#a55a6bff6acb45e66c6d0f725e0086d4e">switchUC()</a> </p>
+
+</div>
+</div>
+<a id="ab0aeb369a58b58dc0b8daa0bc7a418df" name="ab0aeb369a58b58dc0b8daa0bc7a418df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0aeb369a58b58dc0b8daa0bc7a418df">&#9670;&#160;</a></span>showOptionE()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Menu::showOptionE </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; std::pair&lt; int, std::string &gt; &gt;&#160;</td>
+          <td class="paramname"><em>infos</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Interface que apresenta diferentes opções de print do vetor que recebe, o utilizador pode escolher entre printar : Estudante, Número, Estudante e número. Este método é chamado depois dos métodos <a class="el" href="class_menu.html#afd0b5222cdeedbcaf7ac247b01b6c583" title="Interface para ver os estudantes de uma turma ao receber o classcode desta por input.">studentT()</a>, <a class="el" href="class_menu.html#a52a64cc12eab9d4eb918f24ae7ed492c" title="Interface para ver os estudantes de uma uc ao receber a uc por input.">studentC()</a>, <a class="el" href="class_menu.html#a852fdcfba69d85700e2e7eb2cc20bcda" title="Interface para ver os estudantes de um ano ao receber o ano por input.">studentA()</a> e <a class="el" href="class_menu.html#af96478acf78bc9eb84a48b0098392616" title="Interface para ver os estudantes de uma turma/uc ao receber o classcode desta e a uc por input.">studentTC()</a>; O objetivo deste método é dar a opção ao utilizador de escolher o que quer ver na tela, Tendo em conta as escolhas do utilizador este método vai chamar <a class="el" href="class_menu.html#a875897547ce57422147ff335897e109d">sortingOptionE()</a> ou <a class="el" href="class_menu.html#ad99477f03a8d257b17030dd3dc99d8da">sortingE()</a> ou <a class="el" href="class_menu.html#a44ee55b1aad7b9455717a26a3fdcf0d3">sortingN()</a> </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">infos</td><td>: conjunto de pares (nºde estudante, nome de estudante) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad99477f03a8d257b17030dd3dc99d8da" name="ad99477f03a8d257b17030dd3dc99d8da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad99477f03a8d257b17030dd3dc99d8da">&#9670;&#160;</a></span>sortingE()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Menu::sortingE </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; std::pair&lt; int, std::string &gt; &gt;&#160;</td>
+          <td class="paramname"><em>infos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>both</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Printa de forma oredenada os estudantes ou os estudantes:números tendo em conta o parâmetro both, para ordenar de forma alfabética (pelo nome do estudante) é usado o algoritmo de sort quicksort </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">infos</td><td>: conjunto de pares (nºde estudante, nome de estudante) </td></tr>
+    <tr><td class="paramname">both</td><td>: booleano que indica se é para printar apenas o estudante ou o estudante e o número </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a44ee55b1aad7b9455717a26a3fdcf0d3" name="a44ee55b1aad7b9455717a26a3fdcf0d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44ee55b1aad7b9455717a26a3fdcf0d3">&#9670;&#160;</a></span>sortingN()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Menu::sortingN </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; std::pair&lt; int, std::string &gt; &gt;&#160;</td>
+          <td class="paramname"><em>infos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>both</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Printa de forma oredenada os números ou os estudantes:números tendo em conta o parâmetro both, para ordenar de forma numérica (pelo número do estudante) é usado o algoritmo de sort selectionsort </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">infos</td><td>: conjunto de pares (nºde estudante, nome de estudante) </td></tr>
+    <tr><td class="paramname">both</td><td>: booleano que indica se é para printar apenas o número ou o estudante e o número </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a875897547ce57422147ff335897e109d" name="a875897547ce57422147ff335897e109d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a875897547ce57422147ff335897e109d">&#9670;&#160;</a></span>sortingOptionE()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Menu::sortingOptionE </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; std::pair&lt; int, std::string &gt; &gt;&#160;</td>
+          <td class="paramname"><em>infos</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Interface que apresenta diferentes opções de ordenação para as informações do vetor recebido, este método é chamado depois do utilizador ter escolhido printar o estudante e o número juntamente em <a class="el" href="class_menu.html#ab0aeb369a58b58dc0b8daa0bc7a418df">showOptionE()</a>, este método chama ainda <a class="el" href="class_menu.html#ad99477f03a8d257b17030dd3dc99d8da">sortingE()</a> ou <a class="el" href="class_menu.html#a44ee55b1aad7b9455717a26a3fdcf0d3">sortingN()</a> tendo em conta o input do utilizador </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">infos</td><td>: conjunto de pares (nºde estudante, nome de estudante) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aadf9a7e63e490b8c19c10edad3ed053a" name="aadf9a7e63e490b8c19c10edad3ed053a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aadf9a7e63e490b8c19c10edad3ed053a">&#9670;&#160;</a></span>switchClass()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Menu::switchClass </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_student.html">Student</a> &amp;&#160;</td>
+          <td class="paramname"><em>student</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>tInicial</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>tFinal</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>uc</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Trocar um estudante de turma numa determinada uc </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">student,tInicial,tFinal,uc</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true caso seja possível </dd></dl>
+
+</div>
+</div>
+<a id="a55a6bff6acb45e66c6d0f725e0086d4e" name="a55a6bff6acb45e66c6d0f725e0086d4e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55a6bff6acb45e66c6d0f725e0086d4e">&#9670;&#160;</a></span>switchUC()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Menu::switchUC </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_student.html">Student</a> &amp;&#160;</td>
+          <td class="paramname"><em>student</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>ucInicial</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>ucFinal</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Trocar um estudante de uc </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">student,ucInicial,ucFinal</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true caso seja possível </dd></dl>
+
+</div>
+</div>
+<a id="a05d75ec397dab51779bfc14a1ae68fea" name="a05d75ec397dab51779bfc14a1ae68fea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05d75ec397dab51779bfc14a1ae68fea">&#9670;&#160;</a></span>testBalance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Menu::testBalance </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>pedido</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>turma</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>uc</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Verificar se os desiquilíbrios entre número de estudantes de cada turma não pioram </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pedido,turma,uc</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true caso seja possível </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="_menu_8h_source.html">Menu.h</a></li>
 <li><b>Menu.cpp</b></li>

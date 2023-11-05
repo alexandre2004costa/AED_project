@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['numberofucs_0',['numberOfUCs',['../class_schedule.html#a65c3ddcb1601d0cef0a29f4a8cbd29fe',1,'Schedule']]]
+  ['haveuc_0',['haveUc',['../class_turma.html#a1663863e3557a8a14c98043ad4f1b19c',1,'Turma']]]
 ];

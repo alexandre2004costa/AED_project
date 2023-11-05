@@ -12,43 +12,50 @@
 \DoxyCodeLine{00009\ \textcolor{preprocessor}{\#ifndef\ AED\_PROJECT\_TURMA\_H}}
 \DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ AED\_PROJECT\_TURMA\_H}}
 \DoxyCodeLine{00011\ }
-\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_turma}{Turma}}\ \{}
-\DoxyCodeLine{00013\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00014\ \ \ \ \ std::string\ classCode;}
-\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{class_schedule}{Schedule}}\ schedule;}
-\DoxyCodeLine{00016\ \ \ \ \ std::vector<std::pair<int,\ std::string>>EstudanteCadeira;\ \textcolor{comment}{//\ Estrutura\ q\ guarda\ a\ que\ Uc\ o\ Nºestudante\ está\ associado\ dentro\ desta\ Turma}}
-\DoxyCodeLine{00017\ }
-\DoxyCodeLine{00018\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{class_turma}{Turma}}();\ \textcolor{comment}{//\ Construtor\ default}}
-\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{class_turma}{Turma}}(std::string\ classCode);\ \textcolor{comment}{//\ Construtor\ com\ o\ classCode}}
-\DoxyCodeLine{00021\ }
-\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ showSchedule();\ \textcolor{comment}{//\ Mostra\ o\ horário}}
-\DoxyCodeLine{00023\ }
-\DoxyCodeLine{00024\ \ \ \ \ \textcolor{comment}{//Gets}}
-\DoxyCodeLine{00025\ \ \ \ \ std::string\ getClassCode();}
-\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{class_schedule}{Schedule}}\ getSchedule();}
-\DoxyCodeLine{00027\ \ \ \ \ std::vector<std::pair<int,\ std::string>>\ getEstudanteCadeira();}
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_turma}{Turma}}\ \{}
+\DoxyCodeLine{00020\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00021\ \ \ \ \ std::string\ classCode;}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{class_schedule}{Schedule}}\ schedule;}
+\DoxyCodeLine{00023\ \ \ \ \ std::vector<std::pair<int,\ std::string>>EstudanteCadeira;}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{class_turma_a8ad1feec07b4c0ff5d4ec51c8b4a61fd}{Turma}}();\ \textcolor{comment}{//\ Construtor\ default}}
 \DoxyCodeLine{00028\ }
-\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//Sets}}
-\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ setnEstudanteCadeira(std::vector<std::pair<int,\ std::string>>\ a);}
-\DoxyCodeLine{00031\ }
-\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ addClassToS(\mbox{\hyperlink{class_class}{Class}}\ c);\ \textcolor{comment}{//\ Adiciona\ uma\ aula\ ao\ schedule}}
-\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ addClassToG(std::pair<\ int\ ,\ std::string>);\ \textcolor{comment}{//\ //\ Adiciona\ um\ aluno\ à\ turma\ numa\ determinada\ uc}}
-\DoxyCodeLine{00034\ }
-\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{int}\ numberOfStudents();\ \textcolor{comment}{//\ Retorna\ o\ nº\ total\ de\ estudantes\ na\ turma}}
-\DoxyCodeLine{00036\ \ \ \ \ std::set<int>\ studentsOfTurma();\ \textcolor{comment}{//\ Retorna\ um\ set\ com\ todos\ os\ nº\ de\ estudantes\ da\ turma}}
-\DoxyCodeLine{00037\ }
-\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{int}\ studentsOfUC(std::string\ uc);\ \textcolor{comment}{//\ Retorna\ o\ nº\ total\ de\ estudantes\ da\ turma\ naquela\ uc}}
-\DoxyCodeLine{00039\ \ \ \ \ std::set<int>\ studentsOfTurmaUc(std::string\ uc);\ \textcolor{comment}{//\ Retorna\ um\ set\ com\ todos\ os\ nº\ de\ estudantes\ da\ turma\ naquela\ uc}}
-\DoxyCodeLine{00040\ }
-\DoxyCodeLine{00041\ \ \ \ \ std::vector<Class>\ classesOfUC(std::string\ uc);\ \textcolor{comment}{//\ Retorna\ um\ vetor\ com\ as\ aulas\ daquela\ uc\ nesta\ turma}}
-\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ removeStudent(\textcolor{keywordtype}{int}\ n,\ std::string\ uc);\ \textcolor{comment}{//\ Retira\ um\ estudante\ da\ turma\ a\ uma\ certa\ uc}}
-\DoxyCodeLine{00043\ }
-\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{bool}\ haveUc(std::string\ uc);\ \textcolor{comment}{//\ Confirma\ se\ existe\ uma\ certa\ uc\ na\ turma}}
-\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{bool}\ operator==(\mbox{\hyperlink{class_turma}{Turma}}\ turma);\ \textcolor{comment}{//\ Operador\ que\ confirma\ a\ igualdade\ entre\ turmas\ tendo\ em\ conta\ o\ classCode}}
-\DoxyCodeLine{00046\ \};}
-\DoxyCodeLine{00047\ }
-\DoxyCodeLine{00048\ }
-\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//AED\_PROJECT\_TURMA\_H}}
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{class_turma_a8ad1feec07b4c0ff5d4ec51c8b4a61fd}{Turma}}(std::string\ classCode);}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_turma_a5f0f9b22fc1f7c54a122bbb586f35d2a}{showSchedule}}();}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{comment}{//Gets}}
+\DoxyCodeLine{00040\ \ \ \ \ std::string\ \mbox{\hyperlink{class_turma_ae947a04a3abc0d72f201d921086fc072}{getClassCode}}();}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00044\ \ \ \ \ \mbox{\hyperlink{class_schedule}{Schedule}}\ \mbox{\hyperlink{class_turma_a87d93965683bdd53e040bb12d2a59ef9}{getSchedule}}();}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00048\ \ \ \ \ std::vector<std::pair<int,\ std::string>>\ \mbox{\hyperlink{class_turma_a9296b720f4244ec2f872527603c0aabe}{getEstudanteCadeira}}();}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{comment}{//Set}}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_turma_ae2acc2624b9de40da8edc627d5172d4c}{setnEstudanteCadeira}}(std::vector<std::pair<int,\ std::string>>\ a);}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_turma_a6390b29a9542d26784e9e0c2b7251238}{addClassToS}}(\mbox{\hyperlink{class_class}{Class}}\ c);\ \textcolor{comment}{//\ Adiciona\ uma\ aula\ ao\ schedule}}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_turma_a85dbb378ec2f6037f7130f5b3c76142d}{addClassToG}}(std::pair<\ int\ ,\ std::string>\ par);\ \textcolor{comment}{//\ //\ Adiciona\ um\ aluno\ à\ turma\ numa\ determinada\ uc}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_turma_a9797acea724b9baee6abb19758baffdf}{numberOfStudents}}();\ \textcolor{comment}{//\ Retorna\ o\ nº\ total\ de\ estudantes\ na\ turma}}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00069\ \ \ \ \ std::set<int>\ \mbox{\hyperlink{class_turma_ae579fc861ae34d7b2f2cd61ec2f67e58}{studentsOfTurma}}();\ \textcolor{comment}{//\ Retorna\ um\ set\ com\ todos\ os\ nº\ de\ estudantes\ da\ turma}}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_turma_a3e98b8de061b80f3a45c7757a9252f12}{studentsOfUC}}(std::string\ uc);\ \textcolor{comment}{//\ Retorna\ o\ nº\ total\ de\ estudantes\ da\ turma\ numa\ determinada\ uc}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00077\ \ \ \ \ std::set<int>\ \mbox{\hyperlink{class_turma_a5c607a66ad93c16bfe45233e794c55e1}{studentsOfTurmaUc}}(std::string\ uc);\ \textcolor{comment}{//\ Retorna\ um\ set\ com\ todos\ os\ nº\ de\ estudantes\ da\ turma\ naquela\ uc}}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00081\ \ \ \ \ std::vector<Class>\ \mbox{\hyperlink{class_turma_acda1123390bdbae4d1686170c74165f1}{classesOfUC}}(std::string\ uc);\ \textcolor{comment}{//\ Retorna\ um\ vetor\ com\ as\ aulas\ numa\ determinada\ uc\ na\ turma}}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_turma_ae6df61ab29b860e297f1a223e7cd3c22}{removeStudent}}(\textcolor{keywordtype}{int}\ n,\ std::string\ uc);\ \textcolor{comment}{//\ Retira\ um\ estudante\ da\ turma\ a\ uma\ certa\ uc}}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_turma_a1663863e3557a8a14c98043ad4f1b19c}{haveUc}}(std::string\ uc);\ \textcolor{comment}{//\ Confirma\ se\ existe\ uma\ determminada\ uc\ na\ turma}}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_turma_ac6e747d1d05772bb2cb160fae44793e5}{operator==}}(\mbox{\hyperlink{class_turma}{Turma}}\ turma);\ \textcolor{comment}{//\ Operador\ que\ confirma\ a\ igualdade\ entre\ turmas\ tendo\ em\ conta\ o\ classCode}}
+\DoxyCodeLine{00093\ \};}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//AED\_PROJECT\_TURMA\_H}}
 
 \end{DoxyCode}

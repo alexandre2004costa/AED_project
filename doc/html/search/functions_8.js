@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['schedule_0',['schedule',['../class_schedule.html',1,'Schedule'],['../class_menu.html#a57f6b895a7df2db55b0268769e113040',1,'Menu::schedule()']]],
+  ['schedule_0',['schedule',['../class_menu.html#a57f6b895a7df2db55b0268769e113040',1,'Menu']]],
   ['schedulee_1',['scheduleE',['../class_menu.html#ac8e831a33fb4a9987a1312ce5ab986ee',1,'Menu']]],
   ['schedulet_2',['scheduleT',['../class_menu.html#ac33ba5e13b6d1f649a0014d617c44910',1,'Menu']]],
   ['scheduletu_3',['scheduleTU',['../class_menu.html#ac1a7580efbe6865ceeba83e5294b9099',1,'Menu']]],
@@ -14,7 +14,7 @@ var searchData=
   ['sortinge_11',['sortingE',['../class_menu.html#ad99477f03a8d257b17030dd3dc99d8da',1,'Menu']]],
   ['sortingn_12',['sortingN',['../class_menu.html#a44ee55b1aad7b9455717a26a3fdcf0d3',1,'Menu']]],
   ['sortingoptione_13',['sortingOptionE',['../class_menu.html#a875897547ce57422147ff335897e109d',1,'Menu']]],
-  ['student_14',['student',['../class_student.html',1,'Student'],['../class_student.html#af9168cedbfa5565cf0b20c1a9d3f5c9d',1,'Student::Student()'],['../class_student.html#a969e403c636ed0dc7d0dc1d472f9179f',1,'Student::Student(std::string name, int number)'],['../class_menu.html#a7da10ae63d84c96176a0029ea0e50aec',1,'Menu::student()']]],
+  ['student_14',['student',['../class_student.html#af9168cedbfa5565cf0b20c1a9d3f5c9d',1,'Student::Student()'],['../class_student.html#a969e403c636ed0dc7d0dc1d472f9179f',1,'Student::Student(std::string name, int number)'],['../class_menu.html#a7da10ae63d84c96176a0029ea0e50aec',1,'Menu::student()']]],
   ['studenta_15',['studentA',['../class_menu.html#a852fdcfba69d85700e2e7eb2cc20bcda',1,'Menu']]],
   ['studentc_16',['studentC',['../class_menu.html#a52a64cc12eab9d4eb918f24ae7ed492c',1,'Menu']]],
   ['studentsofturma_17',['studentsOfTurma',['../class_turma.html#ae579fc861ae34d7b2f2cd61ec2f67e58',1,'Turma']]],

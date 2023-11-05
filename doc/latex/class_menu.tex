@@ -1,137 +1,349 @@
 \doxysection{Menu Class Reference}
 \hypertarget{class_menu}{}\label{class_menu}\index{Menu@{Menu}}
+
+
+{\ttfamily \#include $<$Menu.\+h$>$}
+
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_menu_a32f94338fa6e38b3ac0b65ae38f7e58d}\label{class_menu_a32f94338fa6e38b3ac0b65ae38f7e58d} 
-{\bfseries Menu} (std\+::vector$<$ \mbox{\hyperlink{class_turma}{Turma}} $>$ t, std\+::unordered\+\_\+map$<$ int, \mbox{\hyperlink{class_student}{Student}} $>$ s, std\+::queue$<$ \mbox{\hyperlink{class_request}{Request}} $>$ r)
+\mbox{\hyperlink{class_menu_a32f94338fa6e38b3ac0b65ae38f7e58d}{Menu}} (std\+::vector$<$ \mbox{\hyperlink{class_turma}{Turma}} $>$ t, std\+::unordered\+\_\+map$<$ int, \mbox{\hyperlink{class_student}{Student}} $>$ s, std\+::queue$<$ \mbox{\hyperlink{class_request}{Request}} $>$ r)
 \item 
 \Hypertarget{class_menu_a053af16333358d5bd265a682c5387822}\label{class_menu_a053af16333358d5bd265a682c5387822} 
 void {\bfseries Menu\+Base} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Interface inicial do menu onde podemos escolher que ação queremos realizar. \end{DoxyCompactList}\item 
 \Hypertarget{class_menu_a57f6b895a7df2db55b0268769e113040}\label{class_menu_a57f6b895a7df2db55b0268769e113040} 
 void {\bfseries schedule} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Interface do horário onde podemos escolher entre ver o horário do estudante, turma ou turma/uc. \end{DoxyCompactList}\item 
 \Hypertarget{class_menu_ac8e831a33fb4a9987a1312ce5ab986ee}\label{class_menu_ac8e831a33fb4a9987a1312ce5ab986ee} 
 void {\bfseries scheduleE} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Interface para ver o horário de um estudante ao receber o número deste por input. \end{DoxyCompactList}\item 
 \Hypertarget{class_menu_ac33ba5e13b6d1f649a0014d617c44910}\label{class_menu_ac33ba5e13b6d1f649a0014d617c44910} 
 void {\bfseries scheduleT} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Interface para ver o horário de uma turma ao receber o classcode desta por input. \end{DoxyCompactList}\item 
 \Hypertarget{class_menu_ac1a7580efbe6865ceeba83e5294b9099}\label{class_menu_ac1a7580efbe6865ceeba83e5294b9099} 
 void {\bfseries schedule\+TU} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Interface para ver o horário de uma turma/uc ao receber o classcode e a uc por input. \end{DoxyCompactList}\item 
 \Hypertarget{class_menu_a7da10ae63d84c96176a0029ea0e50aec}\label{class_menu_a7da10ae63d84c96176a0029ea0e50aec} 
 void {\bfseries student} ()
-\item 
-\Hypertarget{class_menu_ab0aeb369a58b58dc0b8daa0bc7a418df}\label{class_menu_ab0aeb369a58b58dc0b8daa0bc7a418df} 
-void {\bfseries show\+OptionE} (std\+::vector$<$ std\+::pair$<$ int, std\+::string $>$ $>$ infos)
-\item 
-\Hypertarget{class_menu_a875897547ce57422147ff335897e109d}\label{class_menu_a875897547ce57422147ff335897e109d} 
-void {\bfseries sorting\+OptionE} (std\+::vector$<$ std\+::pair$<$ int, std\+::string $>$ $>$ infos)
-\item 
-\Hypertarget{class_menu_ad99477f03a8d257b17030dd3dc99d8da}\label{class_menu_ad99477f03a8d257b17030dd3dc99d8da} 
-void {\bfseries sortingE} (std\+::vector$<$ std\+::pair$<$ int, std\+::string $>$ $>$ infos, bool both)
-\item 
-\Hypertarget{class_menu_a44ee55b1aad7b9455717a26a3fdcf0d3}\label{class_menu_a44ee55b1aad7b9455717a26a3fdcf0d3} 
-void {\bfseries sortingN} (std\+::vector$<$ std\+::pair$<$ int, std\+::string $>$ $>$ infos, bool both)
-\item 
+\begin{DoxyCompactList}\small\item\em Interface de estudantes onde podemos escolher entre ver os estudantes duma turma, uc, ano ou turma/uc. \end{DoxyCompactList}\item 
 \Hypertarget{class_menu_afd0b5222cdeedbcaf7ac247b01b6c583}\label{class_menu_afd0b5222cdeedbcaf7ac247b01b6c583} 
 void {\bfseries studentT} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Interface para ver os estudantes de uma turma ao receber o classcode desta por input. \end{DoxyCompactList}\item 
 \Hypertarget{class_menu_a52a64cc12eab9d4eb918f24ae7ed492c}\label{class_menu_a52a64cc12eab9d4eb918f24ae7ed492c} 
 void {\bfseries studentC} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Interface para ver os estudantes de uma uc ao receber a uc por input. \end{DoxyCompactList}\item 
 \Hypertarget{class_menu_a852fdcfba69d85700e2e7eb2cc20bcda}\label{class_menu_a852fdcfba69d85700e2e7eb2cc20bcda} 
 void {\bfseries studentA} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Interface para ver os estudantes de um ano ao receber o ano por input. \end{DoxyCompactList}\item 
 \Hypertarget{class_menu_af96478acf78bc9eb84a48b0098392616}\label{class_menu_af96478acf78bc9eb84a48b0098392616} 
 void {\bfseries student\+TC} ()
+\begin{DoxyCompactList}\small\item\em Interface para ver os estudantes de uma turma/uc ao receber o classcode desta e a uc por input. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_menu_ab0aeb369a58b58dc0b8daa0bc7a418df}{show\+OptionE}} (std\+::vector$<$ std\+::pair$<$ int, std\+::string $>$ $>$ infos)
+\item 
+void \mbox{\hyperlink{class_menu_a875897547ce57422147ff335897e109d}{sorting\+OptionE}} (std\+::vector$<$ std\+::pair$<$ int, std\+::string $>$ $>$ infos)
+\item 
+void \mbox{\hyperlink{class_menu_ad99477f03a8d257b17030dd3dc99d8da}{sortingE}} (std\+::vector$<$ std\+::pair$<$ int, std\+::string $>$ $>$ infos, bool both)
+\item 
+void \mbox{\hyperlink{class_menu_a44ee55b1aad7b9455717a26a3fdcf0d3}{sortingN}} (std\+::vector$<$ std\+::pair$<$ int, std\+::string $>$ $>$ infos, bool both)
 \item 
 \Hypertarget{class_menu_a1cc8619340fc5d6935691fafe36ea958}\label{class_menu_a1cc8619340fc5d6935691fafe36ea958} 
 void {\bfseries n\+Students} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Interface para ver o número de estudantes num número mínimo n de UCs passadas por input. \end{DoxyCompactList}\item 
 \Hypertarget{class_menu_a71af12c9156e1d959ed2a9bbc6942770}\label{class_menu_a71af12c9156e1d959ed2a9bbc6942770} 
 void {\bfseries maiorN} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Interface que mostra as n UCs com o maior número de estudantes, esse n é um valor passado por input. \end{DoxyCompactList}\item 
 \Hypertarget{class_menu_aa4a3594b2e49755c68e7500da196c8d4}\label{class_menu_aa4a3594b2e49755c68e7500da196c8d4} 
 void {\bfseries capacity} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Interface da ocupação onde podemos escolher entre ver a ocupação dos anos, turmas, ucs ou turmas/ucs. \end{DoxyCompactList}\item 
 \Hypertarget{class_menu_acd38c3b97efa0630addede7efa52f2fc}\label{class_menu_acd38c3b97efa0630addede7efa52f2fc} 
 void {\bfseries capacityA} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Printa a ocupação de todos os anos por ordem crescente. \end{DoxyCompactList}\item 
 \Hypertarget{class_menu_a59c4cc0358939951b3bb3bea304009d7}\label{class_menu_a59c4cc0358939951b3bb3bea304009d7} 
 void {\bfseries capacityT} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Printa a ocupação de todas as turmas por ordem crescente. \end{DoxyCompactList}\item 
 \Hypertarget{class_menu_a4d548506b17c45f6b12be88b19bfde93}\label{class_menu_a4d548506b17c45f6b12be88b19bfde93} 
 void {\bfseries capacityC} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Printa a ocupação de todas as ucs por ordem crescente. \end{DoxyCompactList}\item 
 \Hypertarget{class_menu_af4f0549ddb5e6dd28cef160c6f4a1b51}\label{class_menu_af4f0549ddb5e6dd28cef160c6f4a1b51} 
 void {\bfseries capacity\+TC} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Printa a ocupação de todas as turmas/ucs por ordem crescente. \end{DoxyCompactList}\item 
 \Hypertarget{class_menu_a04f10eba042ce9aba578f9c78fca7cd5}\label{class_menu_a04f10eba042ce9aba578f9c78fca7cd5} 
 void {\bfseries get\+In} ()
+\begin{DoxyCompactList}\small\item\em Interface para efetuar adições de estudantes a turmas e ucs. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_menu_a5f1853a1c45dde69e828386d2e149377}{get\+InT}} ()
 \item 
-\Hypertarget{class_menu_a5f1853a1c45dde69e828386d2e149377}\label{class_menu_a5f1853a1c45dde69e828386d2e149377} 
-void {\bfseries get\+InT} ()
-\item 
-\Hypertarget{class_menu_ab51702349c16bf752b4764f336836ab3}\label{class_menu_ab51702349c16bf752b4764f336836ab3} 
-void {\bfseries get\+In\+UC} ()
+void \mbox{\hyperlink{class_menu_ab51702349c16bf752b4764f336836ab3}{get\+In\+UC}} ()
 \item 
 \Hypertarget{class_menu_a62f23b66557f24f8c436b933acbdc24a}\label{class_menu_a62f23b66557f24f8c436b933acbdc24a} 
 void {\bfseries get\+Out} ()
+\begin{DoxyCompactList}\small\item\em Interface para efetuar remoções de estudantes de turmas e ucs. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_menu_a0365e3c4d9d4ada4f1efab381ea0b520}{get\+OutT}} ()
 \item 
-\Hypertarget{class_menu_a0365e3c4d9d4ada4f1efab381ea0b520}\label{class_menu_a0365e3c4d9d4ada4f1efab381ea0b520} 
-void {\bfseries get\+OutT} ()
-\item 
-\Hypertarget{class_menu_a74712948150f0df142631ac571520322}\label{class_menu_a74712948150f0df142631ac571520322} 
-void {\bfseries get\+Out\+UC} ()
+void \mbox{\hyperlink{class_menu_a74712948150f0df142631ac571520322}{get\+Out\+UC}} ()
 \item 
 \Hypertarget{class_menu_addbc2447e372b1d8e37d515a4248d209}\label{class_menu_addbc2447e372b1d8e37d515a4248d209} 
 void {\bfseries replace} ()
+\begin{DoxyCompactList}\small\item\em Interface para efetuar trocas de estudantes entre turmas e ucs. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_menu_a77a1e34ee7b17d83c9e200aab4e67433}{replaceT}} ()
 \item 
-\Hypertarget{class_menu_a77a1e34ee7b17d83c9e200aab4e67433}\label{class_menu_a77a1e34ee7b17d83c9e200aab4e67433} 
-void {\bfseries replaceT} ()
-\item 
-\Hypertarget{class_menu_a36e3d10bcfde59d8ab412117e8ddaace}\label{class_menu_a36e3d10bcfde59d8ab412117e8ddaace} 
-void {\bfseries replaceU} ()
+void \mbox{\hyperlink{class_menu_a36e3d10bcfde59d8ab412117e8ddaace}{replaceU}} ()
 \item 
 \Hypertarget{class_menu_a027ae67027e123f15e38d654c762d4db}\label{class_menu_a027ae67027e123f15e38d654c762d4db} 
 void {\bfseries close\+Menu} ()
+\begin{DoxyCompactList}\small\item\em Transferir informação das estruturas para os ficheiros. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_menu_a05d75ec397dab51779bfc14a1ae68fea}{test\+Balance}} (std\+::string pedido, std\+::string turma, std\+::string uc)
 \item 
-\Hypertarget{class_menu_a05d75ec397dab51779bfc14a1ae68fea}\label{class_menu_a05d75ec397dab51779bfc14a1ae68fea} 
-bool {\bfseries test\+Balance} (std\+::string pedido, std\+::string turma, std\+::string uc)
+bool \mbox{\hyperlink{class_menu_a683f518d5598db8d9be6813b12a4a64c}{add\+UC}} (std\+::string uc, \mbox{\hyperlink{class_student}{Student}} \&\mbox{\hyperlink{class_menu_a7da10ae63d84c96176a0029ea0e50aec}{student}})
 \item 
-\Hypertarget{class_menu_a683f518d5598db8d9be6813b12a4a64c}\label{class_menu_a683f518d5598db8d9be6813b12a4a64c} 
-bool {\bfseries add\+UC} (std\+::string uc, \mbox{\hyperlink{class_student}{Student}} \&student)
+bool \mbox{\hyperlink{class_menu_ae986a0bb607085286834eeb5aa117417}{remove\+UC}} (std\+::string uc, \mbox{\hyperlink{class_student}{Student}} \&\mbox{\hyperlink{class_menu_a7da10ae63d84c96176a0029ea0e50aec}{student}})
 \item 
-\Hypertarget{class_menu_ae986a0bb607085286834eeb5aa117417}\label{class_menu_ae986a0bb607085286834eeb5aa117417} 
-bool {\bfseries remove\+UC} (std\+::string uc, \mbox{\hyperlink{class_student}{Student}} \&student)
+bool \mbox{\hyperlink{class_menu_ad1b0081e8820fdd2bb4db9e25e34b216}{add\+Class}} (std\+::string turma, \mbox{\hyperlink{class_student}{Student}} \&\mbox{\hyperlink{class_menu_a7da10ae63d84c96176a0029ea0e50aec}{student}}, std\+::string uc)
 \item 
-\Hypertarget{class_menu_ad1b0081e8820fdd2bb4db9e25e34b216}\label{class_menu_ad1b0081e8820fdd2bb4db9e25e34b216} 
-bool {\bfseries add\+Class} (std\+::string turma, \mbox{\hyperlink{class_student}{Student}} \&student, std\+::string uc)
+bool \mbox{\hyperlink{class_menu_a67e7be64277e621832dc5474b6bb4959}{remove\+Class}} (std\+::string turma, \mbox{\hyperlink{class_student}{Student}} \&\mbox{\hyperlink{class_menu_a7da10ae63d84c96176a0029ea0e50aec}{student}}, std\+::string uc)
 \item 
-\Hypertarget{class_menu_a67e7be64277e621832dc5474b6bb4959}\label{class_menu_a67e7be64277e621832dc5474b6bb4959} 
-bool {\bfseries remove\+Class} (std\+::string turma, \mbox{\hyperlink{class_student}{Student}} \&student, std\+::string uc)
+bool \mbox{\hyperlink{class_menu_aadf9a7e63e490b8c19c10edad3ed053a}{switch\+Class}} (\mbox{\hyperlink{class_student}{Student}} \&\mbox{\hyperlink{class_menu_a7da10ae63d84c96176a0029ea0e50aec}{student}}, std\+::string t\+Inicial, std\+::string t\+Final, std\+::string uc)
 \item 
-\Hypertarget{class_menu_aadf9a7e63e490b8c19c10edad3ed053a}\label{class_menu_aadf9a7e63e490b8c19c10edad3ed053a} 
-bool {\bfseries switch\+Class} (\mbox{\hyperlink{class_student}{Student}} \&student, std\+::string t\+Inicial, std\+::string t\+Final, std\+::string uc)
-\item 
-\Hypertarget{class_menu_a55a6bff6acb45e66c6d0f725e0086d4e}\label{class_menu_a55a6bff6acb45e66c6d0f725e0086d4e} 
-bool {\bfseries switch\+UC} (\mbox{\hyperlink{class_student}{Student}} \&student, std\+::string uc\+Inicial, std\+::string uc\+Final)
+bool \mbox{\hyperlink{class_menu_a55a6bff6acb45e66c6d0f725e0086d4e}{switch\+UC}} (\mbox{\hyperlink{class_student}{Student}} \&\mbox{\hyperlink{class_menu_a7da10ae63d84c96176a0029ea0e50aec}{student}}, std\+::string uc\+Inicial, std\+::string uc\+Final)
 \item 
 \Hypertarget{class_menu_a819413644b591f9752883a953aba8301}\label{class_menu_a819413644b591f9752883a953aba8301} 
 void {\bfseries waiting\+List} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Tratar dos pedidos na lista de espera. \end{DoxyCompactList}\item 
 \Hypertarget{class_menu_a90f8f740ba82d90daf0fbe7b972055ef}\label{class_menu_a90f8f740ba82d90daf0fbe7b972055ef} 
 void {\bfseries show\+Waiting\+List} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Mostrar lista de espera. \end{DoxyCompactList}\item 
 \Hypertarget{class_menu_a3b1fa8ed0fed0977751f9e8a434f8bf8}\label{class_menu_a3b1fa8ed0fed0977751f9e8a434f8bf8} 
 void {\bfseries remove\+FWaiting\+List} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Remover pedidos da lista de espera. \end{DoxyCompactList}\item 
 \Hypertarget{class_menu_a7d30a1882987a88955ff8925fefa9d68}\label{class_menu_a7d30a1882987a88955ff8925fefa9d68} 
 void {\bfseries show\+Registers} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Mostrar o histórico de ações efetuadas. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe que declara um menu
+
+É a classe usada para criar uma interface onde podemos visualizar e modificar informações acerca dos estudantes, turmas e pedidos. 
+\begin{DoxyParams}{Parameters}
+{\em turmas} & \+: Conjunto de todas as turmas \\
+\hline
+{\em students} & \+: Conjunto de todos os estudantes \\
+\hline
+{\em requests} & \+: Conjunto dos pedidos pendentes \\
+\hline
+{\em registers} & \+: Conjunto de registos de ações neste mesmo menu \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_menu_a32f94338fa6e38b3ac0b65ae38f7e58d}\label{class_menu_a32f94338fa6e38b3ac0b65ae38f7e58d} 
+\index{Menu@{Menu}!Menu@{Menu}}
+\index{Menu@{Menu}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{Menu()}{Menu()}}
+{\footnotesize\ttfamily Menu\+::\+Menu (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{class_turma}{Turma}} $>$}]{t,  }\item[{std\+::unordered\+\_\+map$<$ int, \mbox{\hyperlink{class_student}{Student}} $>$}]{s,  }\item[{std\+::queue$<$ \mbox{\hyperlink{class_request}{Request}} $>$}]{r }\end{DoxyParamCaption})}
+
+Cria um menu tendo em conta as turmas, os estudantes e os pedidos 
+\begin{DoxyParams}{Parameters}
+{\em t} & \+: Conjunto de todas as turmas \\
+\hline
+{\em s} & \+: Conjunto de todos os estudantes \\
+\hline
+{\em r} & \+: Conjunto dos pedidos pendentes \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\doxylink{class_turma}{Turma()} 
+
+\doxylink{class_student}{Student()} 
+
+\doxylink{class_request}{Request()} 
+\end{DoxySeeAlso}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_menu_ad1b0081e8820fdd2bb4db9e25e34b216}\label{class_menu_ad1b0081e8820fdd2bb4db9e25e34b216} 
+\index{Menu@{Menu}!addClass@{addClass}}
+\index{addClass@{addClass}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{addClass()}{addClass()}}
+{\footnotesize\ttfamily bool Menu\+::add\+Class (\begin{DoxyParamCaption}\item[{std\+::string}]{turma,  }\item[{\mbox{\hyperlink{class_student}{Student}} \&}]{student,  }\item[{std\+::string}]{uc }\end{DoxyParamCaption})}
+
+Adicionar um estudante a uma turma numa determinada uc 
+\begin{DoxyParams}{Parameters}
+{\em turma,student,uc} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true caso seja possível 
+\end{DoxyReturn}
+\Hypertarget{class_menu_a683f518d5598db8d9be6813b12a4a64c}\label{class_menu_a683f518d5598db8d9be6813b12a4a64c} 
+\index{Menu@{Menu}!addUC@{addUC}}
+\index{addUC@{addUC}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{addUC()}{addUC()}}
+{\footnotesize\ttfamily bool Menu\+::add\+UC (\begin{DoxyParamCaption}\item[{std\+::string}]{uc,  }\item[{\mbox{\hyperlink{class_student}{Student}} \&}]{student }\end{DoxyParamCaption})}
+
+Adicionar um estudante a uma uc 
+\begin{DoxyParams}{Parameters}
+{\em uc,student} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true caso seja possível 
+\end{DoxyReturn}
+\Hypertarget{class_menu_a5f1853a1c45dde69e828386d2e149377}\label{class_menu_a5f1853a1c45dde69e828386d2e149377} 
+\index{Menu@{Menu}!getInT@{getInT}}
+\index{getInT@{getInT}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{getInT()}{getInT()}}
+{\footnotesize\ttfamily void Menu\+::get\+InT (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Interface que verifica se é possível adicionar um estudante a uma turma numa dada uc Essa confirmação é feita em \doxylink{class_menu_ad1b0081e8820fdd2bb4db9e25e34b216}{add\+Class()} \Hypertarget{class_menu_ab51702349c16bf752b4764f336836ab3}\label{class_menu_ab51702349c16bf752b4764f336836ab3} 
+\index{Menu@{Menu}!getInUC@{getInUC}}
+\index{getInUC@{getInUC}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{getInUC()}{getInUC()}}
+{\footnotesize\ttfamily void Menu\+::get\+In\+UC (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Interface que verifica se é possível adicionar um estudante a uma uc Essa confirmação é feita em \doxylink{class_menu_a683f518d5598db8d9be6813b12a4a64c}{add\+UC()} \Hypertarget{class_menu_a0365e3c4d9d4ada4f1efab381ea0b520}\label{class_menu_a0365e3c4d9d4ada4f1efab381ea0b520} 
+\index{Menu@{Menu}!getOutT@{getOutT}}
+\index{getOutT@{getOutT}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{getOutT()}{getOutT()}}
+{\footnotesize\ttfamily void Menu\+::get\+OutT (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Interface que verifica se é possível remover um estudante de uma turma numa dada uc Essa confirmação é feita em \doxylink{class_menu_a67e7be64277e621832dc5474b6bb4959}{remove\+Class()} \Hypertarget{class_menu_a74712948150f0df142631ac571520322}\label{class_menu_a74712948150f0df142631ac571520322} 
+\index{Menu@{Menu}!getOutUC@{getOutUC}}
+\index{getOutUC@{getOutUC}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{getOutUC()}{getOutUC()}}
+{\footnotesize\ttfamily void Menu\+::get\+Out\+UC (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Interface que verifica se é possível remover um estudante de uma uc Essa confirmação é feita em \doxylink{class_menu_ae986a0bb607085286834eeb5aa117417}{remove\+UC()} \Hypertarget{class_menu_a67e7be64277e621832dc5474b6bb4959}\label{class_menu_a67e7be64277e621832dc5474b6bb4959} 
+\index{Menu@{Menu}!removeClass@{removeClass}}
+\index{removeClass@{removeClass}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{removeClass()}{removeClass()}}
+{\footnotesize\ttfamily bool Menu\+::remove\+Class (\begin{DoxyParamCaption}\item[{std\+::string}]{turma,  }\item[{\mbox{\hyperlink{class_student}{Student}} \&}]{student,  }\item[{std\+::string}]{uc }\end{DoxyParamCaption})}
+
+Remover um estudante de uma turma numa determinada uc 
+\begin{DoxyParams}{Parameters}
+{\em turma,student,uc} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true caso seja possível 
+\end{DoxyReturn}
+\Hypertarget{class_menu_ae986a0bb607085286834eeb5aa117417}\label{class_menu_ae986a0bb607085286834eeb5aa117417} 
+\index{Menu@{Menu}!removeUC@{removeUC}}
+\index{removeUC@{removeUC}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{removeUC()}{removeUC()}}
+{\footnotesize\ttfamily bool Menu\+::remove\+UC (\begin{DoxyParamCaption}\item[{std\+::string}]{uc,  }\item[{\mbox{\hyperlink{class_student}{Student}} \&}]{student }\end{DoxyParamCaption})}
+
+Remover um estudante de uma uc 
+\begin{DoxyParams}{Parameters}
+{\em uc,student} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true caso seja possível 
+\end{DoxyReturn}
+\Hypertarget{class_menu_a77a1e34ee7b17d83c9e200aab4e67433}\label{class_menu_a77a1e34ee7b17d83c9e200aab4e67433} 
+\index{Menu@{Menu}!replaceT@{replaceT}}
+\index{replaceT@{replaceT}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{replaceT()}{replaceT()}}
+{\footnotesize\ttfamily void Menu\+::replaceT (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Interface que verifica se é possível trocar um estudante de turma numa dada uc Essa confirmação é feita em \doxylink{class_menu_aadf9a7e63e490b8c19c10edad3ed053a}{switch\+Class()} \Hypertarget{class_menu_a36e3d10bcfde59d8ab412117e8ddaace}\label{class_menu_a36e3d10bcfde59d8ab412117e8ddaace} 
+\index{Menu@{Menu}!replaceU@{replaceU}}
+\index{replaceU@{replaceU}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{replaceU()}{replaceU()}}
+{\footnotesize\ttfamily void Menu\+::replaceU (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Interface que verifica se é possível trocar um estudante de uc Essa confirmação é feita em \doxylink{class_menu_a55a6bff6acb45e66c6d0f725e0086d4e}{switch\+UC()} \Hypertarget{class_menu_ab0aeb369a58b58dc0b8daa0bc7a418df}\label{class_menu_ab0aeb369a58b58dc0b8daa0bc7a418df} 
+\index{Menu@{Menu}!showOptionE@{showOptionE}}
+\index{showOptionE@{showOptionE}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{showOptionE()}{showOptionE()}}
+{\footnotesize\ttfamily void Menu\+::show\+OptionE (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::pair$<$ int, std\+::string $>$ $>$}]{infos }\end{DoxyParamCaption})}
+
+Interface que apresenta diferentes opções de print do vetor que recebe, o utilizador pode escolher entre printar \+: Estudante, Número, Estudante e número. Este método é chamado depois dos métodos \doxylink{class_menu_afd0b5222cdeedbcaf7ac247b01b6c583}{student\+T()}, \doxylink{class_menu_a52a64cc12eab9d4eb918f24ae7ed492c}{student\+C()}, \doxylink{class_menu_a852fdcfba69d85700e2e7eb2cc20bcda}{student\+A()} e \doxylink{class_menu_af96478acf78bc9eb84a48b0098392616}{student\+TC()}; O objetivo deste método é dar a opção ao utilizador de escolher o que quer ver na tela, Tendo em conta as escolhas do utilizador este método vai chamar \doxylink{class_menu_a875897547ce57422147ff335897e109d}{sorting\+Option\+E()} ou \doxylink{class_menu_ad99477f03a8d257b17030dd3dc99d8da}{sorting\+E()} ou \doxylink{class_menu_a44ee55b1aad7b9455717a26a3fdcf0d3}{sorting\+N()} 
+\begin{DoxyParams}{Parameters}
+{\em infos} & \+: conjunto de pares (nºde estudante, nome de estudante) \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_menu_ad99477f03a8d257b17030dd3dc99d8da}\label{class_menu_ad99477f03a8d257b17030dd3dc99d8da} 
+\index{Menu@{Menu}!sortingE@{sortingE}}
+\index{sortingE@{sortingE}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{sortingE()}{sortingE()}}
+{\footnotesize\ttfamily void Menu\+::sortingE (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::pair$<$ int, std\+::string $>$ $>$}]{infos,  }\item[{bool}]{both }\end{DoxyParamCaption})}
+
+Printa de forma oredenada os estudantes ou os estudantes\+:números tendo em conta o parâmetro both, para ordenar de forma alfabética (pelo nome do estudante) é usado o algoritmo de sort quicksort 
+\begin{DoxyParams}{Parameters}
+{\em infos} & \+: conjunto de pares (nºde estudante, nome de estudante) \\
+\hline
+{\em both} & \+: booleano que indica se é para printar apenas o estudante ou o estudante e o número \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_menu_a44ee55b1aad7b9455717a26a3fdcf0d3}\label{class_menu_a44ee55b1aad7b9455717a26a3fdcf0d3} 
+\index{Menu@{Menu}!sortingN@{sortingN}}
+\index{sortingN@{sortingN}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{sortingN()}{sortingN()}}
+{\footnotesize\ttfamily void Menu\+::sortingN (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::pair$<$ int, std\+::string $>$ $>$}]{infos,  }\item[{bool}]{both }\end{DoxyParamCaption})}
+
+Printa de forma oredenada os números ou os estudantes\+:números tendo em conta o parâmetro both, para ordenar de forma numérica (pelo número do estudante) é usado o algoritmo de sort selectionsort 
+\begin{DoxyParams}{Parameters}
+{\em infos} & \+: conjunto de pares (nºde estudante, nome de estudante) \\
+\hline
+{\em both} & \+: booleano que indica se é para printar apenas o número ou o estudante e o número \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_menu_a875897547ce57422147ff335897e109d}\label{class_menu_a875897547ce57422147ff335897e109d} 
+\index{Menu@{Menu}!sortingOptionE@{sortingOptionE}}
+\index{sortingOptionE@{sortingOptionE}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{sortingOptionE()}{sortingOptionE()}}
+{\footnotesize\ttfamily void Menu\+::sorting\+OptionE (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::pair$<$ int, std\+::string $>$ $>$}]{infos }\end{DoxyParamCaption})}
+
+Interface que apresenta diferentes opções de ordenação para as informações do vetor recebido, este método é chamado depois do utilizador ter escolhido printar o estudante e o número juntamente em \doxylink{class_menu_ab0aeb369a58b58dc0b8daa0bc7a418df}{show\+Option\+E()}, este método chama ainda \doxylink{class_menu_ad99477f03a8d257b17030dd3dc99d8da}{sorting\+E()} ou \doxylink{class_menu_a44ee55b1aad7b9455717a26a3fdcf0d3}{sorting\+N()} tendo em conta o input do utilizador 
+\begin{DoxyParams}{Parameters}
+{\em infos} & \+: conjunto de pares (nºde estudante, nome de estudante) \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_menu_aadf9a7e63e490b8c19c10edad3ed053a}\label{class_menu_aadf9a7e63e490b8c19c10edad3ed053a} 
+\index{Menu@{Menu}!switchClass@{switchClass}}
+\index{switchClass@{switchClass}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{switchClass()}{switchClass()}}
+{\footnotesize\ttfamily bool Menu\+::switch\+Class (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_student}{Student}} \&}]{student,  }\item[{std\+::string}]{t\+Inicial,  }\item[{std\+::string}]{t\+Final,  }\item[{std\+::string}]{uc }\end{DoxyParamCaption})}
+
+Trocar um estudante de turma numa determinada uc 
+\begin{DoxyParams}{Parameters}
+{\em student,t\+Inicial,t\+Final,uc} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true caso seja possível 
+\end{DoxyReturn}
+\Hypertarget{class_menu_a55a6bff6acb45e66c6d0f725e0086d4e}\label{class_menu_a55a6bff6acb45e66c6d0f725e0086d4e} 
+\index{Menu@{Menu}!switchUC@{switchUC}}
+\index{switchUC@{switchUC}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{switchUC()}{switchUC()}}
+{\footnotesize\ttfamily bool Menu\+::switch\+UC (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_student}{Student}} \&}]{student,  }\item[{std\+::string}]{uc\+Inicial,  }\item[{std\+::string}]{uc\+Final }\end{DoxyParamCaption})}
+
+Trocar um estudante de uc 
+\begin{DoxyParams}{Parameters}
+{\em student,uc\+Inicial,uc\+Final} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true caso seja possível 
+\end{DoxyReturn}
+\Hypertarget{class_menu_a05d75ec397dab51779bfc14a1ae68fea}\label{class_menu_a05d75ec397dab51779bfc14a1ae68fea} 
+\index{Menu@{Menu}!testBalance@{testBalance}}
+\index{testBalance@{testBalance}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{testBalance()}{testBalance()}}
+{\footnotesize\ttfamily bool Menu\+::test\+Balance (\begin{DoxyParamCaption}\item[{std\+::string}]{pedido,  }\item[{std\+::string}]{turma,  }\item[{std\+::string}]{uc }\end{DoxyParamCaption})}
+
+Verificar se os desiquilíbrios entre número de estudantes de cada turma não pioram 
+\begin{DoxyParams}{Parameters}
+{\em pedido,turma,uc} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true caso seja possível 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

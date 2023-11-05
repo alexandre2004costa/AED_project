@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['setschedule_0',['setSchedule',['../class_student.html#a085b6e1ffbf2e744505f8aae21d8b034',1,'Student']]],
-  ['show_1',['show',['../class_class.html#ab1ffe32cdbbbd14b0640ea7dd1ffb6ba',1,'Class::show()'],['../class_request.html#a90e273aa2de551b6b6c32c425f30f99a',1,'Request::show()'],['../class_schedule.html#a55d20291b828afc809b39d00b4fa7970',1,'Schedule::show()']]],
-  ['showschedule_2',['showSchedule',['../class_student.html#a356e5562dd84e3002b1360a1ac92dd94',1,'Student']]],
-  ['student_3',['student',['../class_student.html#af9168cedbfa5565cf0b20c1a9d3f5c9d',1,'Student::Student()'],['../class_student.html#a969e403c636ed0dc7d0dc1d472f9179f',1,'Student::Student(std::string name, int number)']]]
+  ['operator_3d_3d_0',['operator==',['../class_turma.html#ac6e747d1d05772bb2cb160fae44793e5',1,'Turma']]],
+  ['overlaps_1',['overlaps',['../class_class.html#a486925dd4ad3cebfa4b16d9df2fadf8f',1,'Class']]]
 ];

@@ -1,8 +1,12 @@
 var searchData=
 [
-  ['schedule_0',['Schedule',['../class_schedule.html',1,'']]],
-  ['setschedule_1',['setSchedule',['../class_student.html#a085b6e1ffbf2e744505f8aae21d8b034',1,'Student']]],
-  ['show_2',['show',['../class_class.html#ab1ffe32cdbbbd14b0640ea7dd1ffb6ba',1,'Class::show()'],['../class_request.html#a90e273aa2de551b6b6c32c425f30f99a',1,'Request::show()'],['../class_schedule.html#a55d20291b828afc809b39d00b4fa7970',1,'Schedule::show()']]],
-  ['showschedule_3',['showSchedule',['../class_student.html#a356e5562dd84e3002b1360a1ac92dd94',1,'Student']]],
-  ['student_4',['student',['../class_student.html',1,'Student'],['../class_student.html#af9168cedbfa5565cf0b20c1a9d3f5c9d',1,'Student::Student()'],['../class_student.html#a969e403c636ed0dc7d0dc1d472f9179f',1,'Student::Student(std::string name, int number)']]]
+  ['removeclass_0',['removeClass',['../class_menu.html#a67e7be64277e621832dc5474b6bb4959',1,'Menu']]],
+  ['removefwaitinglist_1',['removeFWaitingList',['../class_menu.html#a3b1fa8ed0fed0977751f9e8a434f8bf8',1,'Menu']]],
+  ['removestudent_2',['removeStudent',['../class_turma.html#ae6df61ab29b860e297f1a223e7cd3c22',1,'Turma']]],
+  ['removeuc_3',['removeUC',['../class_menu.html#ae986a0bb607085286834eeb5aa117417',1,'Menu']]],
+  ['removeucclasses_4',['removeUcClasses',['../class_schedule.html#a99ffdd6adbb9bb6aea96725173584265',1,'Schedule']]],
+  ['replace_5',['replace',['../class_menu.html#addbc2447e372b1d8e37d515a4248d209',1,'Menu']]],
+  ['replacet_6',['replaceT',['../class_menu.html#a77a1e34ee7b17d83c9e200aab4e67433',1,'Menu']]],
+  ['replaceu_7',['replaceU',['../class_menu.html#a36e3d10bcfde59d8ab412117e8ddaace',1,'Menu']]],
+  ['request_8',['request',['../class_request.html',1,'Request'],['../class_request.html#a76f0dd628fcc33ca306c65d94915ce2f',1,'Request::Request()']]]
 ];
