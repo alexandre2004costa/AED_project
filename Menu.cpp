@@ -5,69 +5,111 @@
 
 
 // Search e sorting algoritmos
+
+// Função que particiona o vetor para o algoritmo Quick Sort
 int partition(std::vector<std::pair<int, std::string>> &infos, int low, int high) {
+    // Escolhe o último elemento como pivô
     std::string pivot = infos[high].second;
-    int i = low - 1;
+    int i = low - 1;  // Índice do menor elemento
+
+    // Percorre os elementos do vetor
     for (int j = low; j < high; j++) {
+        // Se o elemento atual for menor ou igual ao pivô
         if (infos[j].second < pivot) {
             i++;
+            // Troca os elementos com a posição do índice do menor elemento
             std::swap(infos[i], infos[j]);
         }
     }
+
+    // Troca o pivô com o elemento após os menores
     std::swap(infos[i + 1], infos[high]);
-    return i + 1;
+    return i + 1;  // Retorna o índice do pivô
 }
 
-void quicksort(std::vector<std::pair<int, std::string>> &infos, int low, int high) { // Quick sorting algoritmo
+// Função de ordenação Quick Sort
+void quicksort(std::vector<std::pair<int, std::string>> &infos, int low, int high) {
     if (low < high) {
+        // Encontra o índice do pivô
         int pivot = partition(infos, low, high);
+
+        // Ordena os elementos antes e depois do pivô
         quicksort(infos, low, pivot - 1);
         quicksort(infos, pivot + 1, high);
     }
 }
-void bubbleSort(std::vector<std::pair<int,int>> &v) {
-    for(unsigned int j = v.size()-1; j > 0; j--) {
-        bool troca = false;
-        for(unsigned int i = 0; i < j; i++)
-            if(v[i+1].second < v[i].second) {
-                swap(v[i],v[i+1]);
+
+// Função de ordenação Bubble Sort
+void bubbleSort(std::vector<std::pair<int, int>> &v) {
+    // Percorre o vetor de trás para frente
+    for (unsigned int j = v.size() - 1; j > 0; j--) {
+        bool troca = false; // Indica se houve trocas
+
+        // Percorre o vetor
+        for (unsigned int i = 0; i < j; i++) {
+            // Compara o elemento atual com o próximo
+            if (v[i + 1].second < v[i].second) {
+                // Troca os elementos se estiverem fora de ordem
+                swap(v[i], v[i + 1]);
                 troca = true;
             }
-        if (!troca) return;
+        }
+
+        // Se nenhuma troca ocorreu, o vetor está ordenado e podemos sair do loop
+        if (!troca) {
+            return;
+        }
     }
 }
+
+// Função para transformar uma árvore em heap com raiz em i
 void heapify(std::vector<std::pair<std::string, int>> &v, int n, int i) {
-    int largest = i;
-    int left = 2 * i + 1;
-    int right = 2 * i + 2;
+    int largest = i; // Inicializa o maior como o nó raiz
+    int left = 2 * i + 1; // Índice do filho da esquerda
+    int right = 2 * i + 2; // Índice do filho da direita
+
+    // Se o filho da esquerda é maior que a raiz
     if (left < n && v[left].second > v[largest].second) {
         largest = left;
     }
+
+    // Se o filho da direita é maior que o maior até agora
     if (right < n && v[right].second > v[largest].second) {
         largest = right;
     }
+
+    // Se o maior não é mais a raiz
     if (largest != i) {
-        std::swap(v[i], v[largest]);
-        heapify(v, n, largest);
+        std::swap(v[i], v[largest]); // Troca a raiz com o maior
+        heapify(v, n, largest); // Chama recursivamente a função para o subárvore afetada
     }
 }
+
+// Função de ordenação Heap Sort
 void heapSort(std::vector<std::pair<std::string, int>> &v) {
     int n = v.size();
+
+    // Constrói uma heap máxima (max heap)
     for (int i = n / 2 - 1; i >= 0; i--) {
         heapify(v, n, i);
     }
+
+    // Extrai elementos da heap um por um
     for (int i = n - 1; i > 0; i--) {
+        // Move a raiz (maior elemento) para o fim do vetor
         std::swap(v[0], v[i]);
+        // Chama heapify na heap reduzida
         heapify(v, i, 0);
     }
 }
+
 
 Menu::Menu(std::vector<Turma> t,std::unordered_map<int,Student> s,std::queue<Request> r){
     turmas = t;
     students = s;
     requests = r;
     for (Turma &turma : turmas){
-        std::vector<std::pair<int, std::string>> temp = turma.getnEstudanteCadeira();
+        std::vector<std::pair<int, std::string>> temp = turma.getEstudanteCadeira();
         quicksort(temp,0,temp.size()-1);
         turma.setnEstudanteCadeira(temp);
     }
@@ -116,21 +158,21 @@ void Menu::MenuBase(){
             closeMenu();
             exit(0);
         case 1:
-            Horario();
+            schedule();
         case 2:
-            Estudante();
+            student();
         case 3:
-            NEstudantes();
+            nStudents();
         case 4:
-            Ocupacao();
+            capacity();
         case 5:
-            MaiorN();
+            maiorN();
         case 6:
-            entrar();
+            getIn();
         case 7:
-            sair();
+            getOut();
         case 8:
-            trocar();
+            replace();
         case 9:
             showWaitingList();
         case 10:
@@ -142,7 +184,9 @@ void Menu::MenuBase(){
 
 }
 
-void Menu::Horario(){
+
+// Mostrar opções de horário
+void Menu::schedule(){
     std::cout<<std::endl;
     std::cout<<std::endl;
     std::cout<<"##############################################"<<std::endl;
@@ -166,18 +210,20 @@ void Menu::Horario(){
     switch (k)
     {
         case 1:
-            HorarioE();
+            scheduleE();
         case 2:
-            HorarioT();
+            scheduleT();
         case 3:
-            HorarioTU();
+            scheduleTU();
         case 0:
             MenuBase();
     }
-    Horario();
+    schedule();
 
 }
-void Menu::HorarioE(){
+
+// Mostrar horário de um estudante
+void Menu::scheduleE(){
     std::cout<<std::endl;
     std::cout<<std::endl;
     std::cout<<"###################################################"<<std::endl;
@@ -194,21 +240,23 @@ void Menu::HorarioE(){
     std::cout<<"Inserir numero Estudante: ";
     std::cin>>k;
 
-    if (k == 0) Horario();
+    if (k == 0) schedule();
 
     auto it = students.find((k));
     if (it != students.end()) {
         Student student = it->second;
         student.showSchedule();
-        registers.push("Horario do estudante "+student.getName()+ " visualizado.");
+        registers.push("Horario do estudante "+student.getName()+ " visualizado.");  // a ação é adicionada ao histórico
     } else {
         std::cout << "Esse numero nao existe"<< std::endl;
     }
-
-    HorarioE();
+    // Chama a interface anterior
+    schedule();
 
 }
-void Menu::HorarioT(){
+
+// Mostrar horário de uma turma
+void Menu::scheduleT(){
     std::cout<<std::endl;
     std::cout<<std::endl;
     std::cout<<"#############################################"<<std::endl;
@@ -225,23 +273,27 @@ void Menu::HorarioT(){
     std::cout<<"Inserir Turma: ";
     std::cin>>k;
 
-    if (k == "0") Horario();
+    if (k == "0") schedule();
     bool flag = true;
     for (auto t : turmas) {
-        if (t.getClassCode() == k) {
-            t.showSchedule();
+        if (t.getClassCode() == k) {  // Quando for a turma desejada
+            t.showSchedule();         // Mostra o horário
             flag = false;
         }
     }
     if (flag) {
         std::cout << "Essa turma não existe" << std::endl;
-        HorarioT();
-    }else registers.push("Horario da turma "+k+ " visualizado.");
+        // Se a turma não existe, pede uma nova turma
+        scheduleT();
+    }else registers.push("Horario da turma "+k+ " visualizado.");   // a ação é adicionada ao histórico
 
-    Horario();
+    // Chama a interface anterior
+    schedule();
 
 }
-void Menu::HorarioTU(){
+
+// Mostrar o horário de uma turma numa UC
+void Menu::scheduleTU(){
     std::cout<<std::endl;
     std::cout<<std::endl;
     std::cout<<"#############################################"<<std::endl;
@@ -259,28 +311,30 @@ void Menu::HorarioTU(){
     std::string turma;
     std::cout<<"Inserir Turma: ";
     std::cin>>turma;
-    if (turma == "0") Horario();
+    if (turma == "0") schedule();
     std::string uc;
     std::cout<<"Inserir Uc: ";
     std::cin>>uc;
 
     bool flag = true;
     for (auto t : turmas) {
-        if (t.getClassCode() == turma) {
+        if (t.getClassCode() == turma) {              // Quando for a turma desejada
             flag = false;
             for (auto k : t.classesOfUC(uc)){
-                k.show();
+                k.show();                             // Mostra as aulas desse horário
             }
         }
     }
     if (flag) {
         std::cout << "Essa turma não existe" << std::endl;
-        HorarioTU();
-    }else registers.push("Horario da turma "+turma+"e Uc "+uc +" visualizado.");
-    Horario();
+        // Se a turma não existe, pede uma nova turma
+        scheduleTU();
+    }else registers.push("Horario da turma "+turma+"e Uc "+uc +" visualizado.");  // a ação é adicionada ao histórico
+    schedule();
 }
 
-void Menu::Estudante(){
+// Interface do estudante
+void Menu::student(){
     std::cout<<std::endl;
     std::cout<<std::endl;
     std::cout<<"###########################################"<<std::endl;
@@ -304,25 +358,28 @@ void Menu::Estudante(){
     std::cin>>k;
     switch (k)
     {
+        // Adicionar ao histórico o que foi visualizado:
         case 1:
-            EstudanteT();
+            studentT();
             registers.push("Ocupacao das turmas visualizada");
         case 2:
-            EstudanteC();
+            studentC();
             registers.push("Ocupacao das UCs visualizada");
         case 3:
-            EstudanteA();
+            studentA();
             registers.push("Ocupacao dos anos visualizada");
         case 4:
-            EstudanteTC();
+            studentC();
             registers.push("Ocupacao das turmas/Ucs visualizada");
         case 0:
             MenuBase();
     }
-    Estudante();
+    student();
 
 }
-void Menu::ShowOptionE(std::vector<std::pair<int,std::string>> infos){
+
+// Mostrar opções de visualização
+void Menu::showOptionE(std::vector<std::pair<int,std::string>> infos){
     std::cout<<"#############################################"<<std::endl;
     std::cout<<"##                                         ##"<<std::endl;
     std::cout<<"##   O que quer printar:                   ## "<<std::endl;
@@ -340,18 +397,21 @@ void Menu::ShowOptionE(std::vector<std::pair<int,std::string>> infos){
     std::cout <<" Opcao: ";
     std::cin >> k;
     switch (k) {
+        // Chamar funções necessárias:
         case 0:
-            EstudanteT();
+            studentT();
         case 1:
-            SortingE(infos,false);
+            sortingE(infos,false);
         case 2:
-            SortingN(infos,false);
+            sortingN(infos,false);
         case 3:
-            SortingOptionE(infos);
+            sortingOptionE(infos);
     }
-    ShowOptionE(infos);
+    showOptionE(infos);
 }
-void Menu::SortingOptionE(std::vector<std::pair<int,std::string>> infos){ // Apenas usado em estudante e número.
+
+// Mostrar opções de ordenação
+void Menu::sortingOptionE(std::vector<std::pair<int,std::string>> infos){ // Apenas usado em estudante e número
     std::cout<<"#############################################"<<std::endl;
     std::cout<<"##                                         ##"<<std::endl;
     std::cout<<"##   Por que parametro quer ordenar:       ## "<<std::endl;
@@ -367,30 +427,34 @@ void Menu::SortingOptionE(std::vector<std::pair<int,std::string>> infos){ // Ape
     std::cout <<" Opcao: ";
     std::cin >> k;
     switch (k) {
+        // Chamar funções de ordenação necessárias
         case 0:
-            SortingOptionE(infos);
+            sortingOptionE(infos);
         case 1:
-            SortingE(infos,true);
+            sortingE(infos,true);
         case 2:
-            SortingN(infos,true);
+            sortingN(infos,true);
     }
-    SortingOptionE(infos);
+    sortingOptionE(infos);
 }
 
-void Menu::SortingE(std::vector<std::pair<int,std::string>> infos,bool both){
-    quicksort(infos,0,infos.size()-1);
-    if (both){
+// Ordenar por ordem alfabética
+void Menu::sortingE(std::vector<std::pair<int,std::string>> infos,bool both){
+    quicksort(infos,0,infos.size()-1);  // função de ordenação
+    if (both){   // Caso se queira mostrar o objeto Estudante e o número correspondente
         for (auto k : infos){
             std::cout<< k.second << " : "<<k.first<<std::endl;
         }
-    }else{
+    }else{  // Caso contrário, apenas o objeto é mostrado
         for (auto k : infos){
             std::cout<< k.second << std::endl;
         }
     }
-
-    Estudante();
+    // Voltar para a interface geral do estudante
+    student();
 }
+
+// Algoritmo de ordenação
 void selectionSort(std::vector<std::pair<int,std::string>> &infos) {
     for (unsigned i = 0; i < infos.size()-1; i++) {
         unsigned k = i;
@@ -400,20 +464,24 @@ void selectionSort(std::vector<std::pair<int,std::string>> &infos) {
         swap(infos[i], infos[k]);
     }
 }
-void Menu::SortingN(std::vector<std::pair<int,std::string>> infos,bool both){
+
+// Ordenar por ordem crescente dos números de estudante
+void Menu::sortingN(std::vector<std::pair<int,std::string>> infos,bool both){
     selectionSort(infos);
-    if (both){
+    if (both){   // Caso se queira mostrar o objeto Estudante e o número correspondente
         for (auto k : infos){
             std::cout<< k.second << " : "<<k.first<<std::endl;
         }
-    }else{
+    }else{       // Caso contrário, apenas o objeto é mostrado
         for (auto k : infos){
             std::cout<< k.second << std::endl;
         }
     }
-    Estudante();
+    student();
 }
-void Menu::EstudanteT(){
+
+// Interface de estudantes numa turma
+void Menu::studentT(){
     std::cout<<std::endl;
     std::cout<<std::endl;
     std::cout<<"#############################################"<<std::endl;
@@ -431,25 +499,29 @@ void Menu::EstudanteT(){
     std::cin>>k;
 
     std::vector<std::pair<int,std::string>> infos;
-    if (k == "0") Estudante();
+    if (k == "0") student();
     bool flag = true;
     for (auto t : turmas) {
-        if (t.getClassCode() == k) {
+        if (t.getClassCode() == k) {                                                  // Quando for a turma desejada
             flag = false;
             std::set<int> numbers = t.studentsOfTurma();
             for (int n : numbers) {
-                auto it = students.find(n);
-                infos.push_back({it->second.getNumber(),it->second.getName()});
-            }
+                auto it = students.find(n);                              // Encontrar o estudante
+                infos.push_back({it->second.getNumber(),it->second.getName()}); // Mostrar os estudantes segundo uma certa ordem
+            }                                                                         // (o vetor "infos" será usado nas ordenações)
         }
     }
     if (flag) {
         std::cout << "Essa turma não existe" << std::endl;
-        EstudanteT();
+        // Se a turma não existe, pede uma de novo
+        studentT();
     }
-    ShowOptionE(infos);
+    // Redireciona para as opções de visualização
+    showOptionE(infos);
 }
-void Menu::EstudanteC(){
+
+// Interface de estudantes numa UC
+void Menu::studentC(){
     std::cout<<std::endl;
     std::cout<<std::endl;
     std::cout<<"#############################################"<<std::endl;
@@ -467,25 +539,29 @@ void Menu::EstudanteC(){
     std::cout<<"Inserir UC: ";
     std::cin>>k;
     std::vector<std::pair<int,std::string>> infos;
-    if (k == "0") Estudante();
+    if (k == "0") student();
     bool flag2 = true;
     for (auto pair : students) {
         bool flag = false;
-        for (auto c : pair.second.getSchedule().getClasses()) {
-            if (c.getUc() == k) flag = true;
+        for (auto c : pair.second.getSchedule().getClasses()) {   // Por cada aula nas aulas no horário desse estudante
+            if (c.getUc() == k) flag = true;                            // Quando for a UC desejada
         }
         if (flag){
             flag2 = false;
-            infos.push_back({pair.second.getNumber(),pair.second.getName()});
-        }
+            infos.push_back({pair.second.getNumber(),pair.second.getName()});  // Mostrar os estudantes segundo uma certa ordem
+        }                                                                            // (o vetor "infos" será usado nas ordenações)
     }
     if (flag2) {
         std::cout << "Essa Uc não existe" << std::endl;
-        EstudanteC();
+        // Se a UC não existe, pede uma de novo
+        studentC();
     }
-    ShowOptionE(infos);
+    // Redireciona para as opções de visualização
+    showOptionE(infos);
 }
-void Menu::EstudanteA(){
+
+// Interface de estudantes num ano letivo
+void Menu::studentA(){
     std::cout<<std::endl;
     std::cout<<std::endl;
     std::cout<<"###########################################"<<std::endl;
@@ -502,29 +578,32 @@ void Menu::EstudanteA(){
     std::cout<<"Inserir Ano: ";
     std::cin>>k;
 
-    if (k == 0) Estudante();
+    if (k == 0) student();
     if (k > 3 || k < 1){
         std::cout<<"Insere um ano entre 1 e 3"<<std::endl;
-        EstudanteA();
+        studentA();   // O ano tem de estar entre 1 e 3, caso contrário é pedido de novo
     }
     std::vector<std::pair<int,std::string>> infos;
     std::set<int> numbers;
     for (auto turma : turmas) {
-        if (turma.getClassCode()[0] == k + '0') {
+        if (turma.getClassCode()[0] == k + '0') {            // Quando o primeiro caracter da turma corresponder ao ano desejado
             std::set<int> temp = turma.studentsOfTurma();
             for (int n : temp) {
                 numbers.insert(n);
             }
         }
     }
+    // São usados dois sets para prevenir a repetição de elementos
     for (int n : numbers) {
         auto it = students.find(n);
-        infos.push_back({it->second.getNumber(),it->second.getName()});
-    }
-    ShowOptionE(infos);
+        infos.push_back({it->second.getNumber(),it->second.getName()});   // Mostrar os estudantes segundo uma certa ordem
+    }                                                                           // (o vetor "infos" será usado nas ordenações)
+    // Redireciona para as opções de visualização
+    showOptionE(infos);
 }
 
-void Menu::EstudanteTC(){
+// Interface de estudantes numa turma e numa UC
+void Menu::studentTC(){
     std::cout<<std::endl;
     std::cout<<std::endl;
     std::cout<<"###########################################"<<std::endl;
@@ -541,30 +620,32 @@ void Menu::EstudanteTC(){
     std::string turma;
     std::cout<<"Inserir Turma: ";
     std::cin>>turma;
-    if (turma == "0")Estudante();
+    if (turma == "0")student();
     std::string uc;
     std::cout<<"Inserir Uc: ";
     std::cin>>uc;
     std::vector<std::pair<int,std::string>> infos;
     bool flag = true;
     for (Turma t : turmas){
-        if (t.getClassCode() == turma){
-            if (t.studentsOfUC(uc) > 0)flag = false;
-            for (auto k : t.studentsOfTurmaUc(uc)){
+        if (t.getClassCode() == turma){                                               // Turma desejada
+            if (t.studentsOfUC(uc) > 0)flag = false;                                  // Não pode estar vazia
+            for (auto k : t.studentsOfTurmaUc(uc)){                               // Percorrer o número dos estudantes nessa turma na UC pretendida
                 auto it = students.find(k);
-                infos.push_back({it->second.getNumber(),it->second.getName()});
-            }
+                infos.push_back({it->second.getNumber(),it->second.getName()});  // Mostrar os estudantes segundo uma certa ordem
+            }                                                                          // (o vetor "infos" será usado nas ordenações)
             break;
         }
     }
     if (flag){
         std::cout<<"Insere inputs válidos."<<std::endl;
-        EstudanteTC();
+        // No caso de entradas inexistentes, novas serão pedidas
+        studentTC();
     }
-    ShowOptionE(infos);
+    // Redireciona para as opções de visualização
+    showOptionE(infos);
 }
-// Número de estudantes em pelo menos n UCs
-void Menu::NEstudantes(){
+// Número de estudantes num número mínimo de UCs
+void Menu::nStudents(){
     std::cout<<std::endl;
     std::cout<<std::endl;
     std::cout<<"#####################################################"<<std::endl;
@@ -586,22 +667,24 @@ void Menu::NEstudantes(){
     for (auto pair : students) {
         int count2 = 0;
         std::string lastUc = "";
-        for (auto c : pair.second.getSchedule().getClasses()) {
-            if (c.getUc() != lastUc) {
-                count2++;
+        for (auto c : pair.second.getSchedule().getClasses()) {    // Por cada aula nas aulas no horário desse estudante
+            if (c.getUc() != lastUc) {                                   // Se for diferente da UC anterior
+                count2++;                                                // Um contador é aumentado
             }
             lastUc = c.getUc();
         }
-        if (count2 >= k) {
-            count++;
+        if (count2 >= k) {                                               // Caso seja no mínimo igual ao valor inserido
+            count++;                                                     // A contagem pretendida é aumentada
         }
     }
     std::cout << "O numero de estudantes e: " << count << std::endl;
-    registers.push("Numero de estudantes em pelo menos k UCs visualizado");
+    registers.push("Numero de estudantes em pelo menos k UCs visualizado");  // a ação é adicionada ao histórico
+    // Volta ao início
     MenuBase();
 }
 
-void Menu::Ocupacao() {
+// Mostrar lotação
+void Menu::capacity() {
     std::cout<<std::endl;
     std::cout<<std::endl;
     std::cout<<"#############################################"<<std::endl;
@@ -621,103 +704,113 @@ void Menu::Ocupacao() {
     std::cout<<"#############################################"<<std::endl;
 
 
-        int k;
-        std::cout<<"  Option:";
-        std::cin>>k;
-        switch (k) {
-            case 0:
-                MenuBase();
-                break;
-            case 1:
-                OcupacaoA();
-                registers.push("Ocupação de cada ano visualizada");
-                break;
-            case 2:
-                OcupacaoT();
-                registers.push("Ocupação de cada turma visualizada");
-                break;
-            case 3:
-                OcupacaoC();
-                registers.push("Ocupação de cada Uc visualizada");
-                break;
-            case 4:
-                OcupationTC();
-                registers.push("Ocupação de cada Turma/Uc visualizada");
-        }
-        Ocupacao();
+    int k;
+    std::cout<<"  Option:";
+    std::cin>>k;
+    switch (k) {
+        // Adicionar ao histórico as ações realizadas
+        case 0:
+            MenuBase();
+            break;
+        case 1:
+            capacityA();
+            registers.push("Ocupação de cada ano visualizada");
+            break;
+        case 2:
+            capacityT();
+            registers.push("Ocupação de cada turma visualizada");
+            break;
+        case 3:
+            capacityC();
+            registers.push("Ocupação de cada Uc visualizada");
+            break;
+        case 4:
+            capacityTC();
+            registers.push("Ocupação de cada Turma/Uc visualizada");
+    }
+    capacity();
 
 }
 
 
-
-void Menu::OcupacaoA() {
+// Lotação de um ano letivo
+void Menu::capacityA() {
+    // Para armazenar a lotação de cada ano
     std::unordered_map<int, int> anos;
 
     for (auto pair : students) {
         bool flag1 = false;
         bool flag2 = false;
         bool flag3 = false;
-        for (auto c : pair.second.getSchedule().getClasses()) {
+        for (auto c : pair.second.getSchedule().getClasses()) {   // Por cada aula nas aulas no horário desse estudante
+            // Para saber em qual ano aumentar contagem:
             if (c.getClassCode()[0] == '1') flag1 = true;
             else if (c.getClassCode()[0] == '2') flag2 = true;
             else if (c.getClassCode()[0] == '3') flag3 = true;
         }
+        // Incrementar contagens:
         if (flag1) anos[1]++;
         if (flag2) anos[2]++;
         if (flag3) anos[3]++;
     }
-    std::vector<std::pair<int, int>> vetor(anos.begin(), anos.end());
-    bubbleSort(vetor);
+    std::vector<std::pair<int, int>> vetor(anos.begin(), anos.end());  // Transformar em vetor
+    bubbleSort(vetor);                                                       // Ordenar
 
     for (int i = 0; i < (int)vetor.size(); i++) {
         std::cout << "0 ano " << vetor[i].first << " tem " << vetor[i].second << " estudantes" << std::endl;
     }
 }
 
-void Menu::OcupacaoT() {
+// Lotação de uma turma
+void Menu::capacityT() {
     std::unordered_map<std::string, int> t;
     for (Turma turma : turmas) {
-        t[turma.getClassCode()] = turma.numberOfStudents();
+        t[turma.getClassCode()] = turma.numberOfStudents();   // Armazenar quantos alunos tem cada turma
     }
-    std::vector<std::pair<std::string, int>> v(t.begin(), t.end());
-    heapSort(v);
+    std::vector<std::pair<std::string, int>> v(t.begin(), t.end());  // Transformar em vetor
+    heapSort(v);                                                           // Ordenar
+
     for (int i = 0; i < (int)v.size(); i++) {
         std::cout << "A turma " << v[i].first << " tem " << v[i].second << " estudantes" << std::endl;
     }
 }
 
-void Menu::OcupacaoC() {
+void Menu::capacityC() {
     std::unordered_map<std::string, int> ucs;
     for (auto pair : students) {
         std::string lastUc = "";
-        for (auto c : pair.second.getSchedule().getClasses()) {
+        for (auto c : pair.second.getSchedule().getClasses()) {  // Por cada aula nas aulas no horário desse estudante
             if (c.getUc() != lastUc) {
+                // Se a UC for diferente da última, aumentar a sua contagem
                 ucs[c.getUc()]++;
             }
             lastUc = c.getUc();
         }
     }
-    std::vector<std::pair<std::string, int>> vetor(ucs.begin(), ucs.end());
-    heapSort(vetor);
+    std::vector<std::pair<std::string, int>> vetor(ucs.begin(), ucs.end());  // Transformar em vetor
+    heapSort(vetor);                                                               // Ordenar
+
     for (int i = 0; i < (int)vetor.size(); i++) {
         std::cout << vetor[i].first << " tem " << vetor[i].second << " estudantes" << std::endl;
     }
 }
-void Menu::OcupationTC(){
+void Menu::capacityTC(){
     std::unordered_map<std::string, int> t;
     for (Turma turma : turmas) {
-        for (auto k : turma.getSchedule().getClasses()){
-            t[turma.getClassCode()+","+k.getUc()] = turma.studentsOfUC(k.getUc());
+        for (auto k : turma.getSchedule().getClasses()){                         // Por cada aula nas aulas do horário de cada turma
+            t[turma.getClassCode()+","+k.getUc()] = turma.studentsOfUC(k.getUc()); // Armazenar esse número
         }
     }
-    std::vector<std::pair<std::string, int>> v(t.begin(), t.end());
-    heapSort(v);
+    std::vector<std::pair<std::string, int>> v(t.begin(), t.end());   // Transformar em vetor
+    heapSort(v);                                                            // Ordenar
+
     for (int i = 0; i < (int)v.size(); i++) {
         std::cout << "A turma/Uc " << v[i].first << " tem " << v[i].second << " estudantes" << std::endl;
     }
 }
 
-void Menu::MaiorN(){
+// Mostrar as UCs com o maior número de estudantes
+void Menu::maiorN(){
     std::cout<<std::endl;
     std::cout<<std::endl;
     std::cout<<"#################################################################"<<std::endl;
@@ -737,54 +830,61 @@ void Menu::MaiorN(){
     std::map<std::string, int> ucCount;
 
     if (k == 0) MenuBase();
-    if (k < 1) MaiorN();
+    if (k < 1) maiorN();
 
     for (auto pair : students) {
         std::string lastUc = "";
-        for (auto c : pair.second.getSchedule().getClasses()) {
+        for (auto c : pair.second.getSchedule().getClasses()) {   // Por cada aula nas aulas no horário desse estudante
             if (c.getUc() != lastUc) {
+                // Incrementar a contagem de estudantes
                 ucCount[c.getUc()]++;
             }
             lastUc = c.getUc();
         }
     }
-    std::vector<std::pair<std::string, int>> vetor(ucCount.begin(), ucCount.end());
-    heapSort(vetor);
+    std::vector<std::pair<std::string, int>> vetor(ucCount.begin(), ucCount.end());  // Transformar em vetor
+    heapSort(vetor);                                                                       // Ordenar
 
 
     for (int i = 0; i < std::min(k, (int)vetor.size()); i++) {
         std::cout << vetor[i].first << " tem " << vetor[i].second << " estudantes" << std::endl;
     }
-    registers.push(std::to_string(k)+" UCs com maior numero de estudantes visualizadas");
-    MaiorN();
+    registers.push(std::to_string(k)+" UCs com maior numero de estudantes visualizadas");  // guardar ação no histórico
+    // Voltar ao início
+    MenuBase();
 }
 
+// Adicionar um estudante a uma UC
 bool Menu::addUC(std::string uc, Student& student) {
-   if (student.getSchedule().numberOfUCs() >= 7) return false;
-   int n = stoi(uc.substr(uc.length() - 2, 2));
-   int year;
-   if (n >= 1 && n <= 5) year = 1;
-   else if (n >= 11 && n <= 15) year = 2;
-   else if (n >= 21 && n<= 25) year = 3;
+    if (student.getSchedule().numberOfUCs() >= 7) return false;
+    int n = stoi(uc.substr(uc.length() - 2, 2));
+    int year;
+    // Descobrir o ano sabendo a UC
+    if (n >= 1 && n <= 5) year = 1;
+    else if (n >= 11 && n <= 15) year = 2;
+    else if (n >= 21 && n<= 25) year = 3;
+
     for (Turma &turma : turmas) {
         if (turma.getClassCode()[0]-'0' == year && turma.studentsOfUC(uc) < 30 && testBalance("entrar",turma.getClassCode(),uc)) {
+            // Se a turma for do ano pretendido, tiver menos de 30 estudantes e a troca não provocar mais desiquilíbrios:
             std::vector<Class> classes = turma.classesOfUC(uc);
             bool c = true;
             for (auto c1 : classes) {
                 for (auto c2 : student.getSchedule().getClasses()) {
-                    if (c1.overlaps(c2)) c = false;
+                    if (c1.overlaps(c2)) c = false;                       // Comparar todas as aulas e verificar se se sobrepõem
                 }
             }
             if (c) {
-                turma.addClassToG({student.getNumber(), uc});
-                for (auto cl : classes) student.addToSchedule(cl);
-                turma.addClassToG({student.getNumber(),uc});
+                turma.addClassToG({student.getNumber(), uc});          // Adiciona estudante à turma
+                for (auto cl : classes) student.addToSchedule(cl);  // Adicionar as aulas ao horário do aluno
                 return true;
             }
         }
     }
     return false;
 }
+
+// Remover um estudante de uma UC
 bool Menu::removeUC(std::string uc, Student& student){
     //Descobrir em que turma tem aquela uc
     std::string t = "";
@@ -809,21 +909,22 @@ bool Menu::removeUC(std::string uc, Student& student){
     return true;
 }
 
+// Adicionar estudante a uma turma numa dada UC
 bool Menu::addClass(std::string turma, Student& student, std::string uc) {
     for (Turma &t : turmas) {
         if (turma == t.getClassCode() && t.studentsOfUC(uc) < 30 && testBalance("entrar",t.getClassCode(),uc)) {
+            // Se for a turma pretendida, tiver menos de 30 estudantes e a troca não provocar mais desiquilíbrios:
             std::vector<Class> classes = t.classesOfUC(uc);
-            if (classes.size() == 0) return false;
+            if (classes.size() == 0) return false;  // Turma está vazia
             bool c = true;
             for (auto c1 : classes) {
                 for (auto c2 : student.getSchedule().getClasses()) {
-                    if (c1.overlaps(c2)) c = false;
+                    if (c1.overlaps(c2)) c = false;                     // Comparar todas as aulas e verificar se se sobrepõem
                 }
             }
             if (c) {
-                t.addClassToG({student.getNumber(), uc});
-                for (auto cl : classes) student.addToSchedule(cl);
-                t.addClassToG({student.getNumber(),uc});
+                t.addClassToG({student.getNumber(), uc});             // Adiciona estudante à turma
+                for (auto cl : classes) student.addToSchedule(cl); // Adicionar as aulas ao horário do aluno
                 return true;
             }
         }
@@ -831,10 +932,11 @@ bool Menu::addClass(std::string turma, Student& student, std::string uc) {
     return false;
 }
 
+// Remover um estudante de uma turma numa dada UC
 bool Menu::removeClass(std::string turma, Student& student, std::string uc) {
     for (Turma &t : turmas){
         if (turma == t.getClassCode()){
-            if (testBalance("sair",t.getClassCode(),uc)){
+            if (testBalance("sair",t.getClassCode(),uc)){  // Se não provocar mais desiquilíbrios
                 t.removeStudent(student.getNumber(),uc);
                 break;
             }
@@ -846,7 +948,8 @@ bool Menu::removeClass(std::string turma, Student& student, std::string uc) {
     return true;
 }
 
-void Menu::entrar() {
+// Interface para adições
+void Menu::getIn() {
     std::cout<<std::endl;
     std::cout<<std::endl;
     std::cout<<"###########################################"<<std::endl;
@@ -867,16 +970,17 @@ void Menu::entrar() {
 
     switch (k) {
         case 1:
-            entrarTurma();
+            getInT();
         case 2:
-            entrarUC();
+            getInUC();
         case 0:
             MenuBase();
     }
-    entrar();
+    getIn();
 }
 
-void Menu::entrarTurma() {
+// Adicionar a turma
+void Menu::getInT() {
     std::cout<<std::endl;
     std::cout<<std::endl;
     std::cout<<"#################################################################"<<std::endl;
@@ -894,7 +998,7 @@ void Menu::entrarTurma() {
     std::string turma;
     std::cout << "Inserir Turma: ";
     std::cin >> turma;
-    if (turma == "0") entrar();
+    if (turma == "0") getIn();
     int numero;
     std::cout << "Inserir numero de estudante: ";
     std::cin >> numero;
@@ -904,27 +1008,30 @@ void Menu::entrarTurma() {
     std::set<std::string> ucs;
     int lastPos = -1;
     for (int i = 0; i < conjunto.length(); i++) {
+        // Separar cada palavra:
         if (conjunto[i] == ',') {
             ucs.insert(conjunto.substr(lastPos + 1, i - lastPos - 1));
             lastPos = i;
         }
     }
     ucs.insert(conjunto.substr(lastPos + 1));
+
     auto it = students.find(numero);
     for (std::string uc : ucs) {
         if (addClass(turma, it -> second, uc)){
-            std::cout << "Foi adicionado com sucesso." << std::endl;
-            registers.push(it->second.getName()+" foi adicionado à turma "+turma+" na Uc "+uc);
-            waitingList();
+            std::cout << "Foi adicionado com sucesso." << std::endl;  // Adição bem sucedida
+            registers.push(it->second.getName()+" foi adicionado à turma "+turma+" na Uc "+uc); // Ação guardada no histórico
+            waitingList();  // Função dos pedidos pendentes
         }else {
-            std::cout << "Nao foi possivel adicionar de momento, o seu pedido esta registado." << std::endl;
-            requests.push(Request("ac",numero,uc,turma));
+            std::cout << "Nao foi possivel adicionar de momento, o seu pedido esta registado." << std::endl; // Adição não realizada
+            requests.push(Request("ac",numero,uc,turma));           // Pedido registado
         }
     }
-    entrar();
+    getIn();
 }
 
-void Menu::entrarUC() {
+// Adicionar a UC
+void Menu::getInUC() {
     std::cout<<std::endl;
     std::cout<<std::endl;
     std::cout<<"#################################################################"<<std::endl;
@@ -940,35 +1047,38 @@ void Menu::entrarUC() {
     int numero;
     std::cout<<"Inserir numero de estudante: ";
     std::cin >> numero;
-    if (numero == 0) entrar();
+    if (numero == 0) getIn();
     std::string conjunto;
     std::cout<<"Inserir UCs (separadas por virgulas): ";
     std::cin >> conjunto;
     std::set<std::string> ucs;
     int lastPos = -1;
     for (int i = 0; i < conjunto.length(); i++) {
+        // Separar cada palavra:
         if (conjunto[i] == ',') {
             ucs.insert(conjunto.substr(lastPos + 1, i - lastPos - 1));
             lastPos = i;
         }
     }
     ucs.insert(conjunto.substr(lastPos + 1));
+
     auto it = students.find(numero);
     for (std::string uc : ucs) {
         std::cout << uc;
         if (addUC(uc, it -> second)){
-            std::cout << "Foi adicionado com sucesso." << std::endl;
-            registers.push(it->second.getName()+" entrou na Uc "+uc);
-            waitingList();
+            std::cout << "Foi adicionado com sucesso." << std::endl;     // Adição bem sucedida
+            registers.push(it->second.getName()+" entrou na Uc "+uc); // Ação guardada no histórico
+            waitingList();  // Função dos pedidos pendentes
         }else{
-            std::cout << "Nao foi possivel adicionar de momento, o seu pedido esta registado." << std::endl;
-            requests.push(Request("au",numero,uc));
+            std::cout << "Nao foi possivel adicionar de momento, o seu pedido esta registado." << std::endl; // Adição não realizada
+            requests.push(Request("au",numero,uc));                             // Pedido registado
         }
     }
-    entrar();
+    getIn();
 }
 
-void Menu::sair() {
+// Remover
+void Menu::getOut() {
     std::cout<<std::endl;
     std::cout<<std::endl;
     std::cout<<"###########################################"<<std::endl;
@@ -989,16 +1099,17 @@ void Menu::sair() {
 
     switch (k) {
         case 1:
-            sairTurma();
+            getOutT();
         case 2:
-            sairUC();
+            getOutUC();
         case 0:
             MenuBase();
     }
-    sair();
+    getOut();
 }
 
-void Menu::sairTurma() {
+// Remover de turma
+void Menu::getOutT() {
     std::cout<<std::endl;
     std::cout<<std::endl;
     std::cout<<"#################################################################"<<std::endl;
@@ -1016,7 +1127,7 @@ void Menu::sairTurma() {
     std::string turma;
     std::cout<<"Inserir Turma:";
     std::cin >> turma;
-    if (turma == "0") entrar();
+    if (turma == "0") getIn();
     int numero;
     std::cout<<"Inserir numero de estudante: ";
     std::cin >> numero;
@@ -1026,28 +1137,31 @@ void Menu::sairTurma() {
     std::set<std::string> ucs;
     int lastPos = -1;
     for (int i = 0; i < conjunto.length(); i++) {
+        // Separar cada UC
         if (conjunto[i] == ',') {
             ucs.insert(conjunto.substr(lastPos + 1, i - lastPos - 1));
             lastPos = i;
         }
     }
     ucs.insert(conjunto.substr(lastPos + 1));
+
     auto it = students.find(numero);
     for (std::string uc : ucs) {
         if (removeClass(turma, it -> second, uc)){
-            std::cout<<"Saida da turma "<<turma<< " com sucesso"<<std::endl;
-            registers.push(it->second.getName()+" saiu da turma "+turma);
-            waitingList();
+            std::cout<<"Saida da turma "<<turma<< " com sucesso"<<std::endl;  // Remoção bem sucedida
+            registers.push(it->second.getName()+" saiu da turma "+turma);  // Ação guardada no histórico
+            waitingList();  // Função dos pedidos pendentes
         }else{
-            std::cout<<"Saida da turma "<<turma<< " recusada"<<std::endl;
-            requests.push(Request("rc",numero,uc,turma));
+            std::cout<<"Saida da turma "<<turma<< " recusada"<<std::endl;                          //Remoção não realizada
+            requests.push(Request("rc",numero,uc,turma)); // Pedido registado
         }
     }
 
-    sair();
+    getOut();
 }
 
-void Menu::sairUC() {
+// Remover de UC
+void Menu::getOutUC() {
     std::cout<<std::endl;
     std::cout<<std::endl;
     std::cout<<"#################################################################"<<std::endl;
@@ -1063,34 +1177,38 @@ void Menu::sairUC() {
     int numero;
     std::cout<<"Inserir numero de estudante: ";
     std::cin >> numero;
-    if (numero == 0) entrar();
+    if (numero == 0) getIn();
     std::string conjunto;
     std::cout<<"Inserir UCs (separadas por virgulas): ";
     std::cin >> conjunto;
     std::set<std::string> ucs;
     int lastPos = -1;
     for (int i = 0; i < conjunto.length(); i++) {
+        // Separar cada UC
         if (conjunto[i] == ',') {
             ucs.insert(conjunto.substr(lastPos + 1, i - lastPos - 1));
             lastPos = i;
         }
     }
     ucs.insert(conjunto.substr(lastPos + 1));
+
     auto it = students.find(numero);
     for (std::string uc : ucs) {
         if (removeUC(uc, it -> second)){
-            std::cout<<"Saida da Uc "<<uc<< " com sucesso"<<std::endl;
-            registers.push(it->second.getName()+" saiu da Uc "+uc);
-            waitingList();
+            std::cout<<"Saida da Uc "<<uc<< " com sucesso"<<std::endl;   // Remoção bem sucedida
+            registers.push(it->second.getName()+" saiu da Uc "+uc);   // Ação guardada no histórico
+            waitingList();  // Função dos pedidos pendentes
         }else{
-            std::cout<<"Saida da Uc "<<uc<< " recusada"<<std::endl;
-            requests.push(Request("ru",numero,uc));
+            std::cout<<"Saida da Uc "<<uc<< " recusada"<<std::endl;               // Remoção não realizada
+            requests.push(Request("ru",numero,uc));  // Pedido registado
         }
     }
 
-    sair();
+    getOut();
 }
-void Menu::trocar(){
+
+// Trocas
+void Menu::replace(){
     std::cout<<std::endl;
     std::cout<<std::endl;
     std::cout<<"###########################################"<<std::endl;
@@ -1110,13 +1228,15 @@ void Menu::trocar(){
     if (k == 0)MenuBase();
     switch (k) {
         case 1:
-            trocarT();
+            replaceT();
         case 2:
-            trocarU();
+            replaceU();
     }
-    trocar();
+    replace();
 }
-void Menu::trocarT() {
+
+// Trocar de turma numa UC
+void Menu::replaceT() {
     std::cout<<std::endl;
     std::cout<<std::endl;
     std::cout<<"#################################################################"<<std::endl;
@@ -1135,7 +1255,7 @@ void Menu::trocarT() {
     std::string tInicial;
     std::cout << "Inserir turma atual: ";
     std::cin>>tInicial;
-    if (tInicial == "0")trocar();
+    if (tInicial == "0")replace();
     int numero;
     std::cout << "Inserir numero de estudante: ";
     std::cin>>numero;
@@ -1145,18 +1265,21 @@ void Menu::trocarT() {
     std::string uc;
     std::cout << "Inserir UC: ";
     std::cin>>uc;
+
     auto it = students.find(numero);
     if (switchClass(it->second,tInicial,tFinal,uc)){
-        std::cout<<"Troca realizada com sucesso"<<std::endl;
-        registers.push(it->second.getName()+" trocou da turma "+tInicial+" para a turma "+tFinal+" na Uc "+uc);
-        waitingList();
+        std::cout<<"Troca realizada com sucesso"<<std::endl;   // Troca bem sucedida
+        registers.push(it->second.getName()+" trocou da turma "+tInicial+" para a turma "+tFinal+" na Uc "+uc);  // Ação guardada no histórico
+        waitingList();  // Função dos pedidos pendentes
     }else{
-        std::cout<<"Nao foi possivel realizar a troca"<<std::endl;
-        requests.push(Request("sc",numero,uc,tInicial,tFinal));
+        std::cout<<"Nao foi possivel realizar a troca"<<std::endl;   // Troca não realizada
+        requests.push(Request("sc",numero,uc,tInicial,tFinal)); // Pedido registado
     }
-    trocar();
+    replace();
 }
-void Menu::trocarU() {
+
+// Trocar de UC
+void Menu::replaceU() {
     std::cout<<std::endl;
     std::cout<<std::endl;
     std::cout<<"#################################################################"<<std::endl;
@@ -1173,7 +1296,7 @@ void Menu::trocarU() {
     std::string uInicial;
     std::cout << "Inserir Uc atual: ";
     std::cin>>uInicial;
-    if (uInicial == "0")trocar();
+    if (uInicial == "0")replace();
     int numero;
     std::cout << "Inserir numero de estudante: ";
     std::cin>>numero;
@@ -1182,30 +1305,34 @@ void Menu::trocarU() {
     std::cin>>uFinal;
     auto it = students.find(numero);
     if (switchUC(it->second,uInicial,uFinal)){
-        std::cout<<"Troca realizada com sucesso"<<std::endl;
-        registers.push(it->second.getName()+" trocou da Uc "+uInicial+" para a Uc "+uFinal);
-        waitingList();
+        std::cout<<"Troca realizada com sucesso"<<std::endl;   // Troca bem sucedida
+        registers.push(it->second.getName()+" trocou da Uc "+uInicial+" para a Uc "+uFinal);  // Ação guardada no histórico
+        waitingList();   // Função dos pedidos pendentes
     }else{
-        std::cout<<"Nao foi possivel realizar a troca"<<std::endl;
-        requests.push(Request("su",numero,uInicial,"","",uFinal));
+        std::cout<<"Nao foi possivel realizar a troca"<<std::endl;  // Troca não realizada
+        requests.push(Request("su",numero,uInicial,"","",uFinal)); // Pedido registado
     }
-    trocar();
+    replace();
 }
+
 int biggestDiff(std::vector<std::pair<int,std::string>>a){
     int maxDiff = 0;
     int minValue = INT_MAX;
     int maxValue = 0;
     for (auto pair : a) {
-        minValue = std::min(minValue,pair.first);
-        maxValue = std::max(maxValue,pair.first);
-        maxDiff = std::max(maxValue-minValue,maxDiff);
+        minValue = std::min(minValue,pair.first);      // Valor mínimo atual
+        maxValue = std::max(maxValue,pair.first);      // Valor máximo atual
+        maxDiff = std::max(maxValue-minValue,maxDiff); // Maior diferença atual
     }
     return maxDiff;
 }
+
+
 bool Menu::testBalance(std::string pedido,std::string turma,std::string uc){
     std::vector<std::pair<int,std::string>>alunosT;
     for (Turma t : turmas){
-        if (t.haveUc(uc)){
+        if (t.haveUc(uc)){  // Se a turma tiver a UC pretendida
+            // Se a turma não estiver vazia, armazena o número de alunos nessa turma dessa UC
             if (t.studentsOfUC(uc) != 0)alunosT.push_back({t.studentsOfUC(uc),t.getClassCode()});
         }
     }
@@ -1223,31 +1350,38 @@ bool Menu::testBalance(std::string pedido,std::string turma,std::string uc){
     int bdiff2 = biggestDiff(alunosT);
     return (bdiff <= 4 && bdiff2 <= 4) || (bdiff > 4 && bdiff2 <= bdiff);
 }
-bool Menu::switchUC(Student& student,std::string ucInicial,std::string ucFinal){
-    if (removeUC(ucInicial,student)){
-        if(addUC(ucFinal,student)){
-            return true;
-        }else{
-            addUC(ucInicial,student);//Repor o estudante na uc inicial
-        }}
-    return false;
-}
-bool Menu::switchClass(Student& student,std::string tInicial,std::string tFinal,std::string uc){
-    if (removeClass(tInicial,student,uc)){
 
-        if(addClass(tFinal,student,uc)){
+// Trocar um estudante de UC
+bool Menu::switchUC(Student& student,std::string ucInicial,std::string ucFinal){
+    if (removeUC(ucInicial,student)){  // Remover da UC inicial
+        if(addUC(ucFinal,student)){    // Adicionar à UC pretendida
             return true;
         }else{
-            addClass(tFinal,student,uc);//Repor o estudante na turma inicial
-        }}
+            addUC(ucInicial,student);  //Repor o estudante na uc inicial
+        }
+    }
     return false;
 }
+
+// Trocar um estudante de turma
+bool Menu::switchClass(Student& student,std::string tInicial,std::string tFinal,std::string uc){
+    if (removeClass(tInicial,student,uc)){   // Remover da turma inicial
+        if(addClass(tFinal,student,uc)){     // Adicionar à turma pretendida
+            return true;
+        }else{
+            addClass(tFinal,student,uc);     //Repor o estudante na turma inicial
+        }
+    }
+    return false;
+}
+
+// Lista de pedidos
 void Menu::waitingList(){
-    std::queue<Request> nova;
-    bool flag = false;
+    std::queue<Request> nova; // Fila temporária para guardar pedidos não aceites
+    bool flag = false;        // Controla se algum pedido foi aceite
     while (requests.size() > 0){
-        Request request = requests.front();
-        requests.pop();
+        Request request = requests.front();   // Pedido mais antigo
+        requests.pop();                       // É removido da fila
         std::string rc = request.requestCode;
         auto it = students.find(request.studentNumber);
         if (!flag){
@@ -1298,10 +1432,12 @@ void Menu::waitingList(){
             nova.push(request);
         }
     }
-    requests = nova;
+    requests = nova;  // Pedidos não aceites são colocados de novo na fila
 }
+
+// Mostrar pedidos na lista de espera
 void Menu::showWaitingList(){
-    std::queue<Request> nova;
+    std::queue<Request> nova;  // Fila temporária para guardar pedidos
     int i = 1;
     while (!requests.empty()) {
         std::cout << i <<" -> ";
@@ -1314,41 +1450,45 @@ void Menu::showWaitingList(){
     requests = nova;
     MenuBase();
 }
+
+// Guardar alterações nos ficheiros
 void Menu::closeMenu(){
-    std::ofstream out("classes.csv", std::ofstream::out | std::ofstream::trunc);
+    std::ofstream out("classes.csv", std::ofstream::out | std::ofstream::trunc); // ficheiro agora vazio
     out << "ClassCode,UcCode,Weekday,StartHour,Duration,Type"<<std::endl;
     for(Turma turma : turmas){
         for(auto k : turma.getSchedule().getClasses()){
-            out << k.transformToFileFormat() << std::endl;
+            out << k.transformToFileFormat() << std::endl;     // Colocar informações no ficheiro
         }
     }
     out.close();
     std::string lastTurma = "";
     std::string lastUc = "";
-    std::ofstream out2("students_classes.csv", std::ofstream::out | std::ofstream::trunc);
+    std::ofstream out2("students_classes.csv", std::ofstream::out | std::ofstream::trunc); // ficheiro agora vazio
     out2 << "StudentCode,StudentName,UcCode,ClassCode"<<std::endl;
     for (auto pair : students){
         for (auto k : pair.second.getSchedule().getClasses()){
             std::string turma = k.getClassCode();
             std::string uc = k.getUc();
             if (lastTurma != turma || lastUc != uc){
-                out2 <<pair.first <<","<<pair.second.getName()<<","<<uc<<","<<turma<<std::endl;
+                out2 <<pair.first <<","<<pair.second.getName()<<","<<uc<<","<<turma<<std::endl; // Colocar informações no ficheiro
             }
             lastUc = uc;
             lastTurma = turma;
         }
     }
     out2.close();
-    std::ofstream out3("Waiting.csv", std::ofstream::out | std::ofstream::trunc);
+    std::ofstream out3("Waiting.csv", std::ofstream::out | std::ofstream::trunc);  // ficheiro agora vazio
     out3 <<"RequestCode,StudentNumber,Uc1,Turma1,Turma2,Uc2"<<std::endl;
     while (!requests.empty()) {
-        out3 << requests.front().ToFileFormat() <<std::endl;
+        out3 << requests.front().toFileFormat() <<std::endl; // Colocar informações no ficheiro
         requests.pop();
     }
     out3.close();
 }
+
+// Remover pedidos pendentes
 void Menu::removeFWaitingList(){
-    std::queue<Request> nova;
+    std::queue<Request> nova;  // Fila temporária para guardar pedidos
     int i = 1;
     while (!requests.empty()) {
         std::cout << i <<" -> ";
@@ -1365,7 +1505,7 @@ void Menu::removeFWaitingList(){
     std::queue<Request> nova2;
     i = 1;
     while (!requests.empty()) {
-        if (i != k)nova2.push(requests.front());
+        if (i != k)nova2.push(requests.front()); // Se não for o pedido por eliminar
         requests.pop();
         i++;
     }
@@ -1374,6 +1514,8 @@ void Menu::removeFWaitingList(){
     std::cout <<"O seu pedido foi removido."<<std::endl;
     MenuBase();
 }
+
+// Mostrar histórico
 void Menu::showRegisters(){
     std::stack<std::string> novo;
     while(!registers.empty()){

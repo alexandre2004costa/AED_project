@@ -21,7 +21,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="799d4d66-0da8-4f6c-a0d4-e101a7a0b386" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Class.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Class.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Class.h" beforeDir="false" afterPath="$PROJECT_DIR$/Class.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Menu.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Menu.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menu.h" beforeDir="false" afterPath="$PROJECT_DIR$/Menu.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Request.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Request.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Request.h" beforeDir="false" afterPath="$PROJECT_DIR$/Request.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Schedule.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Schedule.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Schedule.h" beforeDir="false" afterPath="$PROJECT_DIR$/Schedule.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Student.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Student.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Student.h" beforeDir="false" afterPath="$PROJECT_DIR$/Student.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Turma.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Turma.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Turma.h" beforeDir="false" afterPath="$PROJECT_DIR$/Turma.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/students_classes.csv" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/students_classes.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -101,7 +113,8 @@
       <workItem from="1699035297604" duration="5892000" />
       <workItem from="1699096551892" duration="803000" />
       <workItem from="1699109040595" duration="4934000" />
-      <workItem from="1699131353272" duration="6511000" />
+      <workItem from="1699131353272" duration="6695000" />
+      <workItem from="1699178529999" duration="7655000" />
     </task>
     <servers />
   </component>

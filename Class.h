@@ -17,11 +17,16 @@ private:
     double duration;
 public:
     Class(std::string uc,std::string wd,std::string tp,double st,double dur, std::string cC);
-    void show();
+
+    void show();// Mostar a aula
+
+    //Gets
     std::string getUc();
     std::string getClassCode();
-    bool overlaps(Class c);
-    std::string transformToFileFormat();
+
+    bool overlaps(Class c); // Verifica se existe sobreposição entre duas aulas
+
+    std::string transformToFileFormat();//Retorna a aula em formato ficheiro a aula
 };
 
 

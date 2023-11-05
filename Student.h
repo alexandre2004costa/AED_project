@@ -8,19 +8,25 @@
 
 class Student {
 private:
-    std::string name;
-    Schedule schedule;
-    int number;
+    std::string name; // Nome
+    Schedule schedule; // Horário do estudante
+    int number; // Nº de estudante
 public:
-    Student();
-    Student(std::string name,int number);
+    Student(); // Construtor default
+    Student(std::string name,int number); // Construtor com nome e nº
+
+    //Gets
     std::string getName();
     int getNumber();
-    void show();
-    void addToSchedule(Class c);
-    void showSchedule();
     Schedule getSchedule();
+
+    //Set
     void setSchedule(Schedule &newSchedule);
+
+    void addToSchedule(Class c); // Adiciona uma aula ao horário do estudante
+    void showSchedule(); // Mostra o horário do estudante
+
+
 };
 
 
