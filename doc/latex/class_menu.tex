@@ -47,9 +47,8 @@ void \mbox{\hyperlink{class_menu_ad99477f03a8d257b17030dd3dc99d8da}{sortingE}} (
 \item 
 void \mbox{\hyperlink{class_menu_a44ee55b1aad7b9455717a26a3fdcf0d3}{sortingN}} (std\+::vector$<$ std\+::pair$<$ int, std\+::string $>$ $>$ infos, bool both)
 \item 
-\Hypertarget{class_menu_a1cc8619340fc5d6935691fafe36ea958}\label{class_menu_a1cc8619340fc5d6935691fafe36ea958} 
-void {\bfseries n\+Students} ()
-\begin{DoxyCompactList}\small\item\em Interface para ver o número de estudantes num número mínimo n de UCs passadas por input. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_menu_a1cc8619340fc5d6935691fafe36ea958}{n\+Students}} ()
+\item 
 \Hypertarget{class_menu_a71af12c9156e1d959ed2a9bbc6942770}\label{class_menu_a71af12c9156e1d959ed2a9bbc6942770} 
 void {\bfseries maiorN} ()
 \begin{DoxyCompactList}\small\item\em Interface que mostra as n UCs com o maior número de estudantes, esse n é um valor passado por input. \end{DoxyCompactList}\item 
@@ -59,9 +58,8 @@ void {\bfseries capacity} ()
 \Hypertarget{class_menu_acd38c3b97efa0630addede7efa52f2fc}\label{class_menu_acd38c3b97efa0630addede7efa52f2fc} 
 void {\bfseries capacityA} ()
 \begin{DoxyCompactList}\small\item\em Printa a ocupação de todos os anos por ordem crescente. \end{DoxyCompactList}\item 
-\Hypertarget{class_menu_a59c4cc0358939951b3bb3bea304009d7}\label{class_menu_a59c4cc0358939951b3bb3bea304009d7} 
-void {\bfseries capacityT} ()
-\begin{DoxyCompactList}\small\item\em Printa a ocupação de todas as turmas por ordem crescente. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_menu_a59c4cc0358939951b3bb3bea304009d7}{capacityT}} ()
+\item 
 \Hypertarget{class_menu_a4d548506b17c45f6b12be88b19bfde93}\label{class_menu_a4d548506b17c45f6b12be88b19bfde93} 
 void {\bfseries capacityC} ()
 \begin{DoxyCompactList}\small\item\em Printa a ocupação de todas as ucs por ordem crescente. \end{DoxyCompactList}\item 
@@ -106,18 +104,14 @@ bool \mbox{\hyperlink{class_menu_aadf9a7e63e490b8c19c10edad3ed053a}{switch\+Clas
 \item 
 bool \mbox{\hyperlink{class_menu_a55a6bff6acb45e66c6d0f725e0086d4e}{switch\+UC}} (\mbox{\hyperlink{class_student}{Student}} \&\mbox{\hyperlink{class_menu_a7da10ae63d84c96176a0029ea0e50aec}{student}}, std\+::string uc\+Inicial, std\+::string uc\+Final)
 \item 
-\Hypertarget{class_menu_a819413644b591f9752883a953aba8301}\label{class_menu_a819413644b591f9752883a953aba8301} 
-void {\bfseries waiting\+List} ()
-\begin{DoxyCompactList}\small\item\em Tratar dos pedidos na lista de espera. \end{DoxyCompactList}\item 
-\Hypertarget{class_menu_a90f8f740ba82d90daf0fbe7b972055ef}\label{class_menu_a90f8f740ba82d90daf0fbe7b972055ef} 
-void {\bfseries show\+Waiting\+List} ()
-\begin{DoxyCompactList}\small\item\em Mostrar lista de espera. \end{DoxyCompactList}\item 
-\Hypertarget{class_menu_a3b1fa8ed0fed0977751f9e8a434f8bf8}\label{class_menu_a3b1fa8ed0fed0977751f9e8a434f8bf8} 
-void {\bfseries remove\+FWaiting\+List} ()
-\begin{DoxyCompactList}\small\item\em Remover pedidos da lista de espera. \end{DoxyCompactList}\item 
-\Hypertarget{class_menu_a7d30a1882987a88955ff8925fefa9d68}\label{class_menu_a7d30a1882987a88955ff8925fefa9d68} 
-void {\bfseries show\+Registers} ()
-\begin{DoxyCompactList}\small\item\em Mostrar o histórico de ações efetuadas. \end{DoxyCompactList}\end{DoxyCompactItemize}
+void \mbox{\hyperlink{class_menu_a819413644b591f9752883a953aba8301}{waiting\+List}} ()
+\item 
+void \mbox{\hyperlink{class_menu_a90f8f740ba82d90daf0fbe7b972055ef}{show\+Waiting\+List}} ()
+\item 
+void \mbox{\hyperlink{class_menu_a3b1fa8ed0fed0977751f9e8a434f8bf8}{remove\+FWaiting\+List}} ()
+\item 
+void \mbox{\hyperlink{class_menu_a7d30a1882987a88955ff8925fefa9d68}{show\+Registers}} ()
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -174,7 +168,7 @@ Adicionar um estudante a uma turma numa determinada uc
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-true caso seja possível 
+true caso seja possível, Complexidade \+: n\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}5 
 \end{DoxyReturn}
 \Hypertarget{class_menu_a683f518d5598db8d9be6813b12a4a64c}\label{class_menu_a683f518d5598db8d9be6813b12a4a64c} 
 \index{Menu@{Menu}!addUC@{addUC}}
@@ -190,7 +184,13 @@ Adicionar um estudante a uma uc
 \begin{DoxyReturn}{Returns}
 true caso seja possível 
 \end{DoxyReturn}
-\Hypertarget{class_menu_a5f1853a1c45dde69e828386d2e149377}\label{class_menu_a5f1853a1c45dde69e828386d2e149377} 
+\Hypertarget{class_menu_a59c4cc0358939951b3bb3bea304009d7}\label{class_menu_a59c4cc0358939951b3bb3bea304009d7} 
+\index{Menu@{Menu}!capacityT@{capacityT}}
+\index{capacityT@{capacityT}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{capacityT()}{capacityT()}}
+{\footnotesize\ttfamily void Menu\+::capacityT (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Printa a ocupação de todas as turmas por ordem crescente, Complexidade \+: O(n log(n)) -\/ \texorpdfstring{$>$}{>} heap sort \Hypertarget{class_menu_a5f1853a1c45dde69e828386d2e149377}\label{class_menu_a5f1853a1c45dde69e828386d2e149377} 
 \index{Menu@{Menu}!getInT@{getInT}}
 \index{getInT@{getInT}!Menu@{Menu}}
 \doxysubsubsection{\texorpdfstring{getInT()}{getInT()}}
@@ -214,7 +214,13 @@ Interface que verifica se é possível remover um estudante de uma turma numa da
 \doxysubsubsection{\texorpdfstring{getOutUC()}{getOutUC()}}
 {\footnotesize\ttfamily void Menu\+::get\+Out\+UC (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-Interface que verifica se é possível remover um estudante de uma uc Essa confirmação é feita em \doxylink{class_menu_ae986a0bb607085286834eeb5aa117417}{remove\+UC()} \Hypertarget{class_menu_a67e7be64277e621832dc5474b6bb4959}\label{class_menu_a67e7be64277e621832dc5474b6bb4959} 
+Interface que verifica se é possível remover um estudante de uma uc Essa confirmação é feita em \doxylink{class_menu_ae986a0bb607085286834eeb5aa117417}{remove\+UC()} \Hypertarget{class_menu_a1cc8619340fc5d6935691fafe36ea958}\label{class_menu_a1cc8619340fc5d6935691fafe36ea958} 
+\index{Menu@{Menu}!nStudents@{nStudents}}
+\index{nStudents@{nStudents}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{nStudents()}{nStudents()}}
+{\footnotesize\ttfamily void Menu\+::n\+Students (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Interface para ver o número de estudantes num número mínimo n de UCs passadas por input, Complexidade \+: O(n\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}2) \Hypertarget{class_menu_a67e7be64277e621832dc5474b6bb4959}\label{class_menu_a67e7be64277e621832dc5474b6bb4959} 
 \index{Menu@{Menu}!removeClass@{removeClass}}
 \index{removeClass@{removeClass}!Menu@{Menu}}
 \doxysubsubsection{\texorpdfstring{removeClass()}{removeClass()}}
@@ -228,7 +234,13 @@ Remover um estudante de uma turma numa determinada uc
 \begin{DoxyReturn}{Returns}
 true caso seja possível 
 \end{DoxyReturn}
-\Hypertarget{class_menu_ae986a0bb607085286834eeb5aa117417}\label{class_menu_ae986a0bb607085286834eeb5aa117417} 
+\Hypertarget{class_menu_a3b1fa8ed0fed0977751f9e8a434f8bf8}\label{class_menu_a3b1fa8ed0fed0977751f9e8a434f8bf8} 
+\index{Menu@{Menu}!removeFWaitingList@{removeFWaitingList}}
+\index{removeFWaitingList@{removeFWaitingList}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{removeFWaitingList()}{removeFWaitingList()}}
+{\footnotesize\ttfamily void Menu\+::remove\+FWaiting\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Remover pedidos da lista de espera, Complexidade \+: O(n) \Hypertarget{class_menu_ae986a0bb607085286834eeb5aa117417}\label{class_menu_ae986a0bb607085286834eeb5aa117417} 
 \index{Menu@{Menu}!removeUC@{removeUC}}
 \index{removeUC@{removeUC}!Menu@{Menu}}
 \doxysubsubsection{\texorpdfstring{removeUC()}{removeUC()}}
@@ -265,7 +277,19 @@ Interface que apresenta diferentes opções de print do vetor que recebe, o util
 {\em infos} & \+: conjunto de pares (nºde estudante, nome de estudante) \\
 \hline
 \end{DoxyParams}
-\Hypertarget{class_menu_ad99477f03a8d257b17030dd3dc99d8da}\label{class_menu_ad99477f03a8d257b17030dd3dc99d8da} 
+\Hypertarget{class_menu_a7d30a1882987a88955ff8925fefa9d68}\label{class_menu_a7d30a1882987a88955ff8925fefa9d68} 
+\index{Menu@{Menu}!showRegisters@{showRegisters}}
+\index{showRegisters@{showRegisters}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{showRegisters()}{showRegisters()}}
+{\footnotesize\ttfamily void Menu\+::show\+Registers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Mostrar o histórico de ações efetuadas, Complexidade \+: O(n) \Hypertarget{class_menu_a90f8f740ba82d90daf0fbe7b972055ef}\label{class_menu_a90f8f740ba82d90daf0fbe7b972055ef} 
+\index{Menu@{Menu}!showWaitingList@{showWaitingList}}
+\index{showWaitingList@{showWaitingList}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{showWaitingList()}{showWaitingList()}}
+{\footnotesize\ttfamily void Menu\+::show\+Waiting\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Mostrar lista de espera, Complexidade \+: O(n) \Hypertarget{class_menu_ad99477f03a8d257b17030dd3dc99d8da}\label{class_menu_ad99477f03a8d257b17030dd3dc99d8da} 
 \index{Menu@{Menu}!sortingE@{sortingE}}
 \index{sortingE@{sortingE}!Menu@{Menu}}
 \doxysubsubsection{\texorpdfstring{sortingE()}{sortingE()}}
@@ -344,9 +368,15 @@ Verificar se os desiquilíbrios entre número de estudantes de cada turma não p
 \begin{DoxyReturn}{Returns}
 true caso seja possível 
 \end{DoxyReturn}
+\Hypertarget{class_menu_a819413644b591f9752883a953aba8301}\label{class_menu_a819413644b591f9752883a953aba8301} 
+\index{Menu@{Menu}!waitingList@{waitingList}}
+\index{waitingList@{waitingList}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{waitingList()}{waitingList()}}
+{\footnotesize\ttfamily void Menu\+::waiting\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+Tratar dos pedidos na lista de espera, Complexidade \+: O(n\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}6) 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-Menu.\+h\item 
-Menu.\+cpp\end{DoxyCompactItemize}
+C\+:/\+Users/\+Alexandre/\+Desktop/\+P AED/Menu.\+h\item 
+C\+:/\+Users/\+Alexandre/\+Desktop/\+P AED/Menu.\+cpp\end{DoxyCompactItemize}

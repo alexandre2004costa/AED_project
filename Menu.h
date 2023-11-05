@@ -83,7 +83,8 @@ public:
     ///@param both : booleano que indica se é para printar apenas o número ou o estudante e o número
     void sortingN(std::vector<std::pair<int,std::string>> infos,bool both);
 
-    /// Interface para ver o número de estudantes num número mínimo n de UCs passadas por input
+    /// Interface para ver o número de estudantes num número mínimo n de UCs passadas por input,
+    /// Complexidade : O(n**2)
     void nStudents();
 
     /// Interface que mostra as n UCs com o maior número de estudantes, esse n é um valor passado por input
@@ -95,7 +96,8 @@ public:
     /// Printa a ocupação de todos os anos por ordem crescente
     void capacityA();
 
-    /// Printa a ocupação de todas as turmas por ordem crescente
+    /// Printa a ocupação de todas as turmas por ordem crescente,
+    /// Complexidade : O(n log(n)) - > heap sort
     void capacityT();
 
     /// Printa a ocupação de todas as ucs por ordem crescente
@@ -157,7 +159,8 @@ public:
 
     /// Adicionar um estudante a uma turma numa determinada uc
     /// @param turma, student, uc
-    /// @return true caso seja possível
+    /// @return true caso seja possível,
+    ///Complexidade : n**5
     bool addClass(std::string turma, Student& student, std::string uc);
 
     /// Remover um estudante de uma turma numa determinada uc
@@ -175,16 +178,20 @@ public:
     /// @return true caso seja possível
     bool switchUC(Student& student,std::string ucInicial,std::string ucFinal);
 
-    /// Tratar dos pedidos na lista de espera
+    /// Tratar dos pedidos na lista de espera,
+    /// Complexidade : O(n**6)
     void waitingList();
 
-    /// Mostrar lista de espera
+    /// Mostrar lista de espera,
+    /// Complexidade : O(n)
     void showWaitingList();
 
-    /// Remover pedidos da lista de espera
+    /// Remover pedidos da lista de espera,
+    /// Complexidade : O(n)
     void removeFWaitingList();
 
-    /// Mostrar o histórico de ações efetuadas
+    /// Mostrar o histórico de ações efetuadas,
+    /// Complexidade : O(n)
     void showRegisters();
 
 };

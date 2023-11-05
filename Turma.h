@@ -73,7 +73,8 @@ public:
     int studentsOfUC(std::string uc); // Retorna o nº total de estudantes da turma numa determinada uc
 
     /// Obter os números de cada estudante numa turma numa dad uc
-    /// @return set desses números
+    /// @return set desses números,
+    /// Complexidade : O(log n) - > binary search
     std::set<int> studentsOfTurmaUc(std::string uc); // Retorna um set com todos os nº de estudantes da turma naquela uc
 
     /// Obter as aulas de uma das ucs na turma
