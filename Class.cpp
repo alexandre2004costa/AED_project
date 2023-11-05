@@ -4,8 +4,8 @@
 
 #include <iomanip>
 #include "Class.h"
-Class::Class(std::string uc,std::string wd,std::string tp,double st,double dur, std::string cC){// Cria uma aula dado uma uc, dia da semana, tipo de aula, hora de início, duração e uma turma
-    uc = uc;
+Class::Class(std::string Uc,std::string wd,std::string tp,double st,double dur, std::string cC){// Cria uma aula dado uma uc, dia da semana, tipo de aula, hora de início, duração e uma turma
+    uc = Uc;
     weekDay = wd;
     type = tp;
     startTime = st;
@@ -17,7 +17,8 @@ void Class::show(){
 }
 
 //Gets
-std::string Class::getUc(){return uc;}
+std::string Class::getUc(){
+    return uc;}
 
 std::string Class::getClassCode() {return classCode;}
 

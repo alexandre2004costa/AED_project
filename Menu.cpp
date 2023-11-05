@@ -657,7 +657,6 @@ void Menu::nStudents(){
     std::cout<<"##      0 -> Voltar                                ##"<<std::endl;
     std::cout<<"##                                                 ##"<<std::endl;
     std::cout<<"#####################################################"<<std::endl;
-
     int k;
     std::cout<<"Inserir numero de UCs: ";
     std::cin>>k;
@@ -665,21 +664,12 @@ void Menu::nStudents(){
 
     if (k == 0) MenuBase();
     for (auto pair : students) {
-        int count2 = 0;
         std::string lastUc = "";
-        for (auto c : pair.second.getSchedule().getClasses()) {    // Por cada aula nas aulas no horário desse estudante
-            if (c.getUc() != lastUc) {                                   // Se for diferente da UC anterior
-                count2++;                                                // Um contador é aumentado
-            }
-            lastUc = c.getUc();
-        }
-        if (count2 >= k) {                                               // Caso seja no mínimo igual ao valor inserido
-            count++;                                                     // A contagem pretendida é aumentada
-        }
+        int ucs = pair.second.getSchedule().numberOfUCs();
+        if (ucs >= k)count++;
     }
     std::cout << "O numero de estudantes e: " << count << std::endl;
-    registers.push("Numero de estudantes em pelo menos k UCs visualizado");  // a ação é adicionada ao histórico
-    // Volta ao início
+    registers.push("Numero de estudantes em pelo menos k UCs visualizado");
     MenuBase();
 }
 
@@ -711,22 +701,18 @@ void Menu::capacity() {
         // Adicionar ao histórico as ações realizadas
         case 0:
             MenuBase();
-            break;
         case 1:
             capacityA();
-            registers.push("Ocupação de cada ano visualizada");
-            break;
+
         case 2:
             capacityT();
-            registers.push("Ocupação de cada turma visualizada");
-            break;
+
         case 3:
             capacityC();
-            registers.push("Ocupação de cada Uc visualizada");
-            break;
+
         case 4:
             capacityTC();
-            registers.push("Ocupação de cada Turma/Uc visualizada");
+
     }
     capacity();
 
@@ -735,6 +721,7 @@ void Menu::capacity() {
 
 // Lotação de um ano letivo
 void Menu::capacityA() {
+    registers.push("Ocupacao de cada ano visualizada");
     // Para armazenar a lotação de cada ano
     std::unordered_map<int, int> anos;
 
@@ -759,10 +746,12 @@ void Menu::capacityA() {
     for (int i = 0; i < (int)vetor.size(); i++) {
         std::cout << "0 ano " << vetor[i].first << " tem " << vetor[i].second << " estudantes" << std::endl;
     }
+    capacity();
 }
 
 // Lotação de uma turma
 void Menu::capacityT() {
+    registers.push("Ocupacao de cada turma visualizada");
     std::unordered_map<std::string, int> t;
     for (Turma turma : turmas) {
         t[turma.getClassCode()] = turma.numberOfStudents();   // Armazenar quantos alunos tem cada turma
@@ -773,9 +762,11 @@ void Menu::capacityT() {
     for (int i = 0; i < (int)v.size(); i++) {
         std::cout << "A turma " << v[i].first << " tem " << v[i].second << " estudantes" << std::endl;
     }
+    capacity();
 }
 
 void Menu::capacityC() {
+    registers.push("Ocupação de cada Uc visualizada");
     std::unordered_map<std::string, int> ucs;
     for (auto pair : students) {
         std::string lastUc = "";
@@ -793,8 +784,10 @@ void Menu::capacityC() {
     for (int i = 0; i < (int)vetor.size(); i++) {
         std::cout << vetor[i].first << " tem " << vetor[i].second << " estudantes" << std::endl;
     }
+    capacity();
 }
 void Menu::capacityTC(){
+    registers.push("Ocupacao de cada Turma/Uc visualizada");
     std::unordered_map<std::string, int> t;
     for (Turma turma : turmas) {
         for (auto k : turma.getSchedule().getClasses()){                         // Por cada aula nas aulas do horário de cada turma
@@ -807,6 +800,7 @@ void Menu::capacityTC(){
     for (int i = 0; i < (int)v.size(); i++) {
         std::cout << "A turma/Uc " << v[i].first << " tem " << v[i].second << " estudantes" << std::endl;
     }
+    capacity();
 }
 
 // Mostrar as UCs com o maior número de estudantes
@@ -1025,6 +1019,7 @@ void Menu::getInT() {
         }else {
             std::cout << "Nao foi possivel adicionar de momento, o seu pedido esta registado." << std::endl; // Adição não realizada
             requests.push(Request("ac",numero,uc,turma));           // Pedido registado
+            registers.push(it->second.getName()+" foi adicionado a lista de espera");
         }
     }
     getIn();
@@ -1072,6 +1067,7 @@ void Menu::getInUC() {
         }else{
             std::cout << "Nao foi possivel adicionar de momento, o seu pedido esta registado." << std::endl; // Adição não realizada
             requests.push(Request("au",numero,uc));                             // Pedido registado
+            registers.push(it->second.getName()+" foi adicionado a lista de espera");
         }
     }
     getIn();
@@ -1154,6 +1150,7 @@ void Menu::getOutT() {
         }else{
             std::cout<<"Saida da turma "<<turma<< " recusada"<<std::endl;                          //Remoção não realizada
             requests.push(Request("rc",numero,uc,turma)); // Pedido registado
+            registers.push(it->second.getName()+" foi adicionado a lista de espera");
         }
     }
 
@@ -1201,6 +1198,7 @@ void Menu::getOutUC() {
         }else{
             std::cout<<"Saida da Uc "<<uc<< " recusada"<<std::endl;               // Remoção não realizada
             requests.push(Request("ru",numero,uc));  // Pedido registado
+            registers.push(it->second.getName()+" foi adicionado a lista de espera");
         }
     }
 
@@ -1274,6 +1272,7 @@ void Menu::replaceT() {
     }else{
         std::cout<<"Nao foi possivel realizar a troca"<<std::endl;   // Troca não realizada
         requests.push(Request("sc",numero,uc,tInicial,tFinal)); // Pedido registado
+        registers.push(it->second.getName()+" foi adicionado a lista de espera");
     }
     replace();
 }
@@ -1311,6 +1310,7 @@ void Menu::replaceU() {
     }else{
         std::cout<<"Nao foi possivel realizar a troca"<<std::endl;  // Troca não realizada
         requests.push(Request("su",numero,uInicial,"","",uFinal)); // Pedido registado
+        registers.push(it->second.getName()+" foi adicionado a lista de espera");
     }
     replace();
 }

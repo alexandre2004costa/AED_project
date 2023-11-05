@@ -6,7 +6,7 @@
 #include "Menu.h"
 #include <unordered_map>
 
-//Separa os diferentes parâmetros de cada linha dos ficheiros
+// Função para extrair substrings entre vírgulas
 std::vector<std::string> strings(std::string input) {
     std::vector<std::string> substrings;
     std::string substring;
@@ -32,7 +32,7 @@ void addClassToStudent(Student &student,std::string uc,std::string classC , std:
         if (classC == turma.getClassCode()){
             turma.addClassToG(std::make_pair(student.getNumber(),uc));// Adicionar o par Nºestudante:Uc à estrutura nEstudanteCadeira
             for (Class c : turma.classesOfUC(uc)){
-                    student.addToSchedule(c); // Adicionar as aulas ao horário do Estudante
+                student.addToSchedule(c); // Adicionar as aulas ao horário do Estudante
             }
         }
 
@@ -88,13 +88,13 @@ void loadingInfoToClasses(std::vector<Turma>& turmas){
             if (turma.getClassCode()==classCode){
                 isIn = true; // A turma já existe no vetor
                 turma.addClassToS(aula);
-                }
             }
+        }
         if (!isIn){ // Se a turma não existe no vetor nós adicionamos
             t = Turma(classCode);
             t.addClassToS(aula);
-            turmas.push_back(t);    
-        }   
+            turmas.push_back(t);
+        }
     }
 }
 void loadWaitingList(std::queue<Request> &requests){

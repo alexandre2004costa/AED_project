@@ -31,7 +31,7 @@ public:
     ///@param cC : ClassCode da turma da aula
     ///@param st : Hora de início da aula
     ///@param dur : Tempo de duração da aula
-    Class(std::string uc,std::string wd,std::string tp,double st,double dur, std::string cC);
+    Class(std::string Uc,std::string wd,std::string tp,double st,double dur, std::string cC);
 
     ///Mostra os diferentes atríbutos da aula
     void show();
