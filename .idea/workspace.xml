@@ -21,20 +21,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="799d4d66-0da8-4f6c-a0d4-e101a7a0b386" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Class.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Class.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Class.h" beforeDir="false" afterPath="$PROJECT_DIR$/Class.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Menu.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Menu.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Menu.h" beforeDir="false" afterPath="$PROJECT_DIR$/Menu.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Request.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Request.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Request.h" beforeDir="false" afterPath="$PROJECT_DIR$/Request.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Schedule.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Schedule.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Schedule.h" beforeDir="false" afterPath="$PROJECT_DIR$/Schedule.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Student.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Student.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Student.h" beforeDir="false" afterPath="$PROJECT_DIR$/Student.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Turma.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Turma.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Turma.h" beforeDir="false" afterPath="$PROJECT_DIR$/Turma.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/students_classes.csv" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/students_classes.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,28 +43,32 @@
     <option name="majorVersion" value="2022" />
     <option name="minorVersion" value="3.2" />
   </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 7
+}]]></component>
   <component name="ProjectId" id="2XB7dwhucPFQj02Pwz6hX5aAqqu" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Alexandre/Desktop/C++ 2year/week 7&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/Bárbara/Desktop/2ano/LDTS/AVAL/Proj",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Alexandre\Desktop\P AED\cmake-build-debug" />
@@ -115,6 +106,7 @@
       <workItem from="1699109040595" duration="4934000" />
       <workItem from="1699131353272" duration="6695000" />
       <workItem from="1699178529999" duration="7655000" />
+      <workItem from="1700645902674" duration="54000" />
     </task>
     <servers />
   </component>
